@@ -1,0 +1,7 @@
+parameters:
+
+
+services:
+    app_general.mailer:
+        class: App\GeneralBundle\Services\Mailer
+        arguments: [@mailer, %default_email%, %default_sender%]

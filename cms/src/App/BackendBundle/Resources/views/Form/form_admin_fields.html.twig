@@ -1,0 +1,20 @@
+{% extends 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
+
+{% block field_row %}
+<div class="control-group{% if errors|length > 0%} error{%endif%}" id="sonata-ba-field-container-{{ id }}">
+    
+    {{ form_label(form, label|default(null), { 'attr' : {'class' : 'control-label'} }) }}
+
+    <div class="controls sonata-ba-field sonata-ba-field {% if errors|length > 0 %}sonata-ba-field-error{% endif %}">
+
+        {{ form_widget(form) }}
+
+        {% if errors|length > 0 %}
+            <div class="help-inline sonata-ba-field-error-messages">
+                {{ form_errors(form) }}
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock field_row %}

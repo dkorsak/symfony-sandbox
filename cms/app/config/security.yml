@@ -1,0 +1,61 @@
+jms_security_extra:
+    secure_all_services: false
+    expressions: true
+
+security:
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_SONATA_ADMIN
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        
+        # for backend
+        admin:
+            switch_user:        false
+            context:            user
+            pattern:            /admin(.*)
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /admin/login
+                use_forward:    false
+                check_path:     /admin/login_check
+                default_target_path: /admin/dashboard
+                failure_path:   null
+                use_referer:    false
+            logout:
+                path:           /admin/logout
+                target:         /admin
+
+            anonymous:    true
+        
+        #for frontend - requires to enable fos routing, and configure access_controll
+        main:
+            switch_user:        false
+            context:            user
+            pattern:            .*
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /login
+                use_forward:    false
+                check_path:     /login_check
+                failure_path:   null
+            logout:             true
+            anonymous:          true
+
+    access_control:
+        - { path: ^/admin/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login-check$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: [ROLE_SUPER_ADMIN, ROLE_ADMIN] }
+        - { path: ^/.*, roles: IS_AUTHENTICATED_ANONYMOUSLY }

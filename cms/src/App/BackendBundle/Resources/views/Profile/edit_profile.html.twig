@@ -1,0 +1,43 @@
+{% extends base_template %}
+
+{% form_theme form 'AppBackendBundle:Form:form_admin_fields.html.twig' %}
+
+{% block form %}
+    <form class="form-horizontal" action="{{ path('app_backend_profile') }}" {{ form_enctype(form) }} method="POST">
+        
+        <div class="box">
+            <div class="box-header well"><h2>{% trans from 'profile' %}Personal data{% endtrans %}</h2></div>
+            <div class="box-content">
+                <fieldset>
+                    <div class="sonata-ba-collapsed-fields">
+                        {{ form_row(form.firstname) }}
+                        {{ form_row(form.lastname) }}
+                        {{ form_row(form.email) }}
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        
+        <div class="box">
+            <div class="box-header well"><h2>{% trans from 'profile' %}Change password{% endtrans %}</h2></div>
+            <div class="box-content">
+                <fieldset>
+                    <div class="sonata-ba-collapsed-fields">
+                        {{ form_row(form.oldPassword) }}
+                        {{ form_row(form.plainPassword) }}
+                        {{ form_row(form.retypePassword) }}
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        
+        <div class="well form-actions">
+            <input type="submit" class="btn btn-primary" name="btn_update" value="{% trans from 'profile' %}Update profile{% endtrans %}"/>
+        </div>
+        {{ form_rest(form) }}
+    </form>
+{% endblock %}
+
+{% block title %}
+    {% trans from 'profile' %}Edit profile{% endtrans %}
+{% endblock %}

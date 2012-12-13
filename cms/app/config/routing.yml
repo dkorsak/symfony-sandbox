@@ -1,0 +1,29 @@
+app_frontend:
+    resource: "@AppFrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app_backend:
+    resource: "@AppBackendBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+sonata_page_cache:
+    resource: '@SonataCacheBundle/Resources/config/routing/cache.xml'
+    prefix: /
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+    
+sonata_user:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix: /admin
+
+app_backend_homepage:
+    pattern:  /admin
+    defaults: { _controller: SonataUserBundle:AdminSecurity:login }
+        

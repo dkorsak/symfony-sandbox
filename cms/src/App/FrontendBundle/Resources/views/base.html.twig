@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+{% block stylesheets %}
+{% stylesheets filter='cssrewrite,?yui_css' output="css/frontend.css"
+'bundles/appfrontend/css/main.css'
+%}
+<link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+{% endstylesheets %}
+{% endblock %}
+{% block javascripts %}
+{% javascripts filter='?closure' output="js/frontend.js"
+'@AppGeneralBundle/Resources/public/js/jquery.min.js'
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+<title>Content Management System</title>
+</head>
+<body>
+{% block body %}
+{% endblock %}
+</body>
+</html>

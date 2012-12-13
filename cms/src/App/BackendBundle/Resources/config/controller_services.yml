@@ -1,0 +1,15 @@
+#definition of all sonata admin controllers
+services:
+    
+    # user list
+    app_backend.user_admin:
+        class: App\BackendBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Users, label: User list }
+        arguments: [null, App\GeneralBundle\Entity\User, AppBackendBundle:UserAdmin]
+        calls:
+            - [ setTranslationDomain, ["user"] ]
+            - [ setUserManager, [@fos_user.user_manager] ]
+            - [ setSecurityContent, [@security.context] ]
+            - [ setMailer, [@app_general.mailer] ]
+            - [ setTwig, [@twig] ]

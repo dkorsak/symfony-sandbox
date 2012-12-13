@@ -1,0 +1,21 @@
+# Bootstrap
+cms/app/bootstrap*
+
+# Symfony directories
+cms/vendor/*
+cms/app/logs/*
+cms/app/cache/*
+cms/web/uploads/*
+cms/web/bundles/*
+cms/web/css/*
+cms/web/js/*
+
+# Configuration files
+cms/app/config/parameters.ini
+cms/composer.phar
+
+#Project files
+.buildpath
+.settings
+.project
+test_result

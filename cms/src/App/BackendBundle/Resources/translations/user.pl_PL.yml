@@ -1,0 +1,25 @@
+# user list page
+Actions: Akcje
+Name: Imię i nazwisko
+Roles: Grupa
+General: Dane podstawowe
+Permissions: Uprawnienia
+Firstname: Imię
+Lastname: Nazwisko
+Active: Aktywny
+Groups: Grupy
+"User List": Lista użytkowników
+Enabled: Aktywny
+User Create: Dodaj użytkownika
+User Edit: Edycja użytkownika
+User Show: Podgląd danych użytkownika
+User Delete: Usuwanie użytkownika
+
+#account created
+Account was created: "Twoje konto zostało założone"
+Hi: Witaj
+Your account was created: Twoje konto zostało utworzone
+Your username: Twoj login
+Your password: Twoje hasło
+Click here: Naciśnij link
+to login: lub skopiuj go do paska przęglądarki, aby się zalogować

@@ -1,0 +1,17 @@
+{% extends '::mail.html.twig' %}
+
+{% block body %}
+
+<p>
+{% trans from 'user' %}Hi{% endtrans %} {{ user.firstname }}.
+</p>
+<p>
+{% trans from 'user' %}Your account was created{% endtrans %}:<br />
+{% trans from 'user' %}Your username{% endtrans %}: {{ user.email }}<br />
+{% trans from 'user' %}Your password{% endtrans %}: {{ password }}
+</p>
+<p>
+{% trans from 'user' %}Click here{% endtrans %} <a href="{{ url('app_backend_homepage') }}">{{ url('app_backend_homepage') }}</a> {% trans from 'user' %}to login{% endtrans %}.
+</p>
+
+{% endblock %}

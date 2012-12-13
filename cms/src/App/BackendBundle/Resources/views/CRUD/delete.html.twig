@@ -1,0 +1,34 @@
+{% extends base_template %}
+
+{% block actions %}
+    <div class="sonata-actions">
+        {% include 'AppBackendBundle:CRUD:edit_button.html.twig' %}
+        {% include 'AppBackendBundle:CRUD:create_button.html.twig' %}
+        {% include 'AppBackendBundle:CRUD:list_button.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block side_menu %}{{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active'}, 'list') }}{% endblock %}
+
+{% block content %}
+    <div class="sonata-ba-delete">
+
+        <h1>{{ 'title_delete'|trans({}, 'SonataAdminBundle') }}</h1>
+
+        {{ 'message_delete_confirmation'|trans({'%object%': object}, 'SonataAdminBundle') }}
+
+        <div class="well form-actions">
+            <form method="POST" action="{{ admin.generateObjectUrl('delete', object) }}">
+                <input type="hidden" value="DELETE" name="_method" />
+
+                <input type="submit" class="btn btn-danger" value="{{ 'btn_delete'|trans({}, 'SonataAdminBundle') }}" />
+
+                {% if admin.hasRoute('edit') and admin.isGranted('EDIT', object) %}
+                    {{ 'delete_or'|trans({}, 'SonataAdminBundle') }}
+
+                    <a class="btn btn-success" href="{{ admin.generateObjectUrl('edit', object) }}">{{ 'link_action_edit'|trans({}, 'SonataAdminBundle') }}</a>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+{% endblock %}

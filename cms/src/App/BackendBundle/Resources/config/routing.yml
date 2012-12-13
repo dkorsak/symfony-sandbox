@@ -1,0 +1,3 @@
+app_backend_profile:
+    pattern:  /profile
+    defaults: { _controller: AppBackendBundle:Profile:edit }

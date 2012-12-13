@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<project name="Symfony 2 Base Project" default="help" basedir=".">
+    <target name="help" description="Display help">
+        <echo>
+Build targets:
+  ############################ PARAMETERS #################################
+        
+  -Denv=                    - set environment. Default value is "dev".    
+        
+  ############################ TASKS ######################################
+  
+  build.db                  - builds database (drop, create, load fixtures)
+                              for given environment.
+            
+  cc                        - clears cache, dump assets for dev and prod environment.
+            
+  phpunit                   - executes phpunit tests with code coverage report.
+                              Result is saved into test_result directory.
+        </echo>
+    </target>
+    <import file="cms/build.xml" />
+</project>

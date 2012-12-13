@@ -1,0 +1,41 @@
+{% extends base_template %}
+
+{% block actions %}
+    <div class="sonata-actions">
+        {% include 'AppBackendBundle:CRUD:edit_button.html.twig' %}
+        {% if admin.hasroute('history') and admin.id(object) and admin.isGranted('EDIT', object) %}
+            <a class="btn sonata-action-element" href="{{ admin.generateObjectUrl('history', object) }}">
+            {{ 'link_action_history'|trans({}, 'SonataAdminBundle') }}
+            </a>
+        {% endif %}
+        {% include 'AppBackendBundle:CRUD:create_button.html.twig' %}
+        {% include 'AppBackendBundle:CRUD:list_button.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block side_menu %}{{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active'}, 'list') }}{% endblock %}
+
+{% block show %}
+    <div class="sonata-ba-view">
+        {% for name, view_group in admin.showgroups %}
+            <table class="table table-bordered">
+                {% if name %}
+                    <tr class="sonata-ba-view-title">
+                        <td colspan="2">
+                            {{ admin.trans(name) }}
+                        </td>
+                    </tr>
+                {% endif %}
+
+                {% for field_name in view_group.fields %}
+                    <tr class="sonata-ba-view-container">
+                        {% if elements[field_name] is defined %}
+                            {{ elements[field_name]|render_view_element(object) }}
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+    </div>
+{% endblock %}
+

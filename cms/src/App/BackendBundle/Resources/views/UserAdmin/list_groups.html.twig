@@ -1,0 +1,7 @@
+{% extends 'SonataDoctrineORMAdminBundle:CRUD:list_orm_many_to_many.html.twig' %}
+
+{% block field %}
+    {% for element in value%}
+        {{ element|render_relation_element(field_description) }}{% if not loop.last %}, {% endif %}
+    {% endfor %}
+{% endblock %}

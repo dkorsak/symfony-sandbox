@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Content Management System" default="" basedir=".">
+    
+    <property name="java.lib" value="java/lib" />
+    <property name="target" value=""/>
+    <property name="env" value="dev"/>
+    <property name="selenium.jar" value="${java.lib}/selenium-server-standalone-2.25.0.jar" />
+    
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="${java.lib}/ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+    
+    <macrodef name="build.database">
+        <attribute name="env" default="${env}"/>
+        <attribute name="destination" default="cms"/>
+        <attribute name="fixtures" default="true"/>
+        <sequential>
+            <echo>AND DEBUG: Building database for environment @{env}</echo>
+            <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:database:drop --env=@{env} --force" /></exec>
+            <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:database:create --env=@{env}" /></exec>
+            <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:schema:create --env=@{env}" /></exec>
+            <if>
+                <equals arg1="@{fixtures}" arg2="true" />
+                <then>
+                    <echo>AND DEBUG: Loading fixtures</echo>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:fixtures:load --env=@{env}" /></exec>
+                </then>
+            </if>
+        </sequential>
+    </macrodef>
+    
+    <macrodef name="cache.clear">
+        <attribute name="destination" default="cms"/>
+        <attribute name="env" default="${env}"/>
+        <attribute name="symlink" default=""/>
+        <attribute name="execute.assets.dump" default="true"/>
+        <sequential>
+            <echo>ANT DEBUG: Cleaning file cache for destination @{destination} and environment @{env}</echo>
+            <exec executable="php" dir="@{destination}"><arg line="app/console cache:clear --env=@{env} --no-debug" /></exec>
+            <if>
+                <equals arg1="@{execute.assets.dump}" arg2="true" />
+                <then>
+                    <echo>ANT DEBUG: Installing assets</echo>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console assets:install web @{symlink}" /></exec>
+                    <echo>ANT DEBUG: Dumping @{env} assets</echo>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console assetic:dump --env=@{env} --no-debug" /></exec>
+                </then>
+                </if>
+        </sequential>
+    </macrodef>
+    
+    <macrodef name="phpunit.tests">
+        <attribute name="destination" default="cms"/>
+        <sequential>
+            <echo>ANT DEBUG: Executing PHPUnit tests</echo>
+            <exec executable="phpunit" dir="@{destination}">
+                <arg line="-v -c app/phpunit.xml --coverage-html '${basedir}/test_result/coverage' --coverage-clover '${basedir}/test_result/clover.xml' --stderr --log-junit '${basedir}/test_result/phpunit.xml'" />
+            </exec>
+        </sequential>
+    </macrodef>
+    
+    <target name="check">
+        <if>
+            <equals arg1="${target}" arg2="" />
+            <then>
+                <var name="parameters-file-path" value="cms/app/config/parameters.ini"/>
+                <var name="local-build" value="true"/>
+            </then>
+            <else>
+                <var name="parameters-file-path" value="cms/app/config/parameters.${target}.ini"/>
+                <var name="local-build" value="false"/>
+            </else>
+        </if>
+        <property file="${parameters-file-path}" />
+        <echo>ANT DEBUG: Checking ${parameters-file-path} file</echo>
+        <available file="${parameters-file-path}" property="doesPropertyFileExist" />
+        <fail unless="doesPropertyFileExist" message="The build ${parameters-file-path} file does not exist, can't build." />
+    </target>
+    
+    <target name="clean-test-result-directory">
+        <echo>AND DEBUG: Cleaning test result directory</echo>
+        <delete dir="${basedir}/test_result" />
+        <mkdir dir="${basedir}/test_result" />
+    </target>
+    
+    <!--- ################################ TASKS ############################################################### -->
+    
+    <target name="build.db" description="Builds the database">
+        <build.database env="${env}"/>
+    </target>
+    
+    <target name="cc">
+        <cache.clear symlink="--symlink"/>
+        <cache.clear env="prod" execute.assets.dump="false"/>
+    </target> 
+    
+    <target name="phpunit" depends="clean-test-result-directory">
+        <phpunit.tests />
+    </target>
+
+</project>

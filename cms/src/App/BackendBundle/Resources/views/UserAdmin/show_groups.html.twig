@@ -1,0 +1,7 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field%}
+    {% for element in value%}
+        {{ element|render_relation_element(field_description) }}{% if not loop.last %}, {% endif %}
+    {% endfor %}
+{% endblock %}
