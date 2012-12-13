@@ -29,11 +29,13 @@
         "sonata-project/intl-bundle": "dev-master",
         "sonata-project/easy-extends-bundle": "dev-master",
         "sonata-project/user-bundle": "dev-master",
+        "sonata-project/seo-bundle": "dev-master",
         "mockery/mockery": ">=0.7.2",
         "stof/doctrine-extensions-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/doctrine-migrations-bundle":  "dev-master",
-        "friendsofsymfony/user-bundle": "*"
+        "friendsofsymfony/user-bundle": "*",
+        "genemu/form-bundle": "2.1.*"
     },
     "scripts": {
         "post-install-cmd": [

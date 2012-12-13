@@ -55,7 +55,57 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        entity_managers:
+            default:
+                dql: ~
+                result_cache_driver: ~
+                mappings:
+                    gedmo_translatable:
+                        type: annotation
+                        prefix: Gedmo\Translatable\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity/MappedSuperclass"
+                        alias: GedmoTranslatable
+                        is_bundle: false
+                    gedmo_loggable:
+                        type: annotation
+                        prefix: Gedmo\Loggable\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity/MappedSuperclass"
+                        alias: GedmoLoggable
+                        is_bundle: false
+                    gedmo_tree:
+                        type: annotation
+                        prefix: Gedmo\Tree\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                        alias: GedmoTree
+                        is_bundle: false
+                filters:
+                    gedmo_softdeleteable:
+                        class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                        enabled: false            
+                auto_mapping: true
+
+# Stof Configuration
+stof_doctrine_extensions:
+    default_locale: %locale%
+    translation_fallback: true
+    persist_default_translation: true
+    uploadable:
+        # Default file path: This is one of the three ways you can configure the path for the Uploadable extension
+        default_file_path:       %kernel.root_dir%/../web/uploads
+        # Mime type guesser class: Optional. By default, we provide an adapter for the one present in the HttpFoundation component of Symfony
+        mime_type_guesser_class: Stof\DoctrineExtensionsBundle\Uploadable\MimeTypeGuesserAdapter
+        # Default file info class implementing FileInfoInterface: Optional. By default we provide a class which is prepared to receive an UploadedFile instance.
+        default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
+    orm:
+        default:
+            timestampable:  true
+            blameable:      false
+            sluggable:      false
+            tree:           false
+            loggable:       false
+            sortable:       false
+            softdeleteable: false
+            uploadable:     false
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -72,7 +122,7 @@ fos_user:
     group:
         group_class: App\GeneralBundle\Entity\Group
     
-# SONATA    
+# Sonata Configuration  
 sonata_admin:
     #security:
     #    handler: sonata.admin.security.handler.role
@@ -154,3 +204,28 @@ sonata_user:
             handler:            sonata.user.profile.form.handler.default
             name:               sonata_user_profile_form
             validation_groups:  [Profile, Default]  
+
+sonata_seo:
+    default:          sonata.seo.page.default #service
+    title:            Symfony2 Sandbox
+    metas:
+        name:
+            keywords:             ""
+            description:          ""
+            robots:               index, follow
+
+        #property:
+            # Facebook application settings
+            #'fb:app_id':          XXXXXX
+            #'fb:admins':          admin1, admin2
+            #'og:site_name':       Sonata Project Sandbox
+            #'og:description':     A demo of the some rich bundles for your Symfony2 projects
+
+        http-equiv:
+            'Content-Type':         text/html; charset=utf-8
+            #'X-Ua-Compatible':      IE=EmulateIE7
+
+    head:
+        'lang':     'en'
+        #'xmlns:og':           http://opengraphprotocol.org/schema/
+        #'xmlns:fb':           "http://www.facebook.com/2008/fbml"            

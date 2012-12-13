@@ -23,6 +23,9 @@ class Group extends BaseGroup
      */
      protected $id;
      
+     /**
+      * @return string
+      */
      public function __toString()
      {
          return $this->name;

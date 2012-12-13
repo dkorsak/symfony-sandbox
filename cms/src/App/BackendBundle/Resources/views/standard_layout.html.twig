@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 {% block stylesheets %}
-{% stylesheets filter='cssrewrite,?yui_css' output="css/backend.css"
+{% stylesheets filter='cssrewrite,?yui_css' output="css/admin.css"
 'bundles/appgeneral/css/ui-darkness/jquery-ui.css'
 'bundles/appgeneral/bootstrap/css/bootstrap.css'
 'bundles/sonataadmin/css/colors.css' 
@@ -24,7 +24,7 @@
 {% endstylesheets %}
 {% endblock %}
 {% block javascripts %}
-{% javascripts filter='?closure' output="js/backend.js"
+{% javascripts filter='?closure' output="js/admin.js"
 '@AppGeneralBundle/Resources/public/js/jquery.min.js'
 '@AppGeneralBundle/Resources/public/js/ui/minified/jquery-ui.custom.min.js'
 '@AppGeneralBundle/Resources/public/js/ui/minified/i18n/jquery-ui-i18n.min.js'
@@ -46,7 +46,7 @@
 </head>
 <body class="sonata-bc{% if _side_menu is empty %} sonata-ba-no-side-menu{% endif %}">
     <div id="wrap">
-        <div class="content">
+        <div class="page-content">
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
                     <div class="container-fluid">

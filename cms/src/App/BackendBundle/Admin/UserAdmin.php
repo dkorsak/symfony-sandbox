@@ -2,6 +2,7 @@
 
 namespace App\BackendBundle\Admin;
 
+use Sonata\AdminBundle\Exception\ModelManagerException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use FOS\UserBundle\Model\UserManagerInterface;
@@ -16,7 +17,6 @@ use App\GeneralBundle\Services\Mailer;
 /**
  * Admin class for managing users
  * 
- *
  */
 class UserAdmin extends Admin
 {
@@ -153,6 +153,17 @@ class UserAdmin extends Admin
     /**
      * {@inheritdoc}
      */
+    public function preRemove($object)
+    {
+        // logged user can not delete own account
+        if ($this->securityContent->getToken()->getUser()->getId() == $object->getId()) {
+            throw new ModelManagerException("You can not delete own account");
+        }
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
     public function validate(ErrorElement $errorElement, $object)
     {
         
@@ -164,6 +175,15 @@ class UserAdmin extends Admin
     public function isGranted($name, $object = null)
     {
         return $this->securityContent->isGranted('ROLE_SUPER_ADMIN');
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getBatchActions()
+    {
+        // disable delete batch action
+        return array();
     }
     
     /**

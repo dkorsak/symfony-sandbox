@@ -1,5 +1,5 @@
 {
-    "hash": "d1b44e29eb86d18bb51e0864f9631e11",
+    "hash": "8c5a059c82c9bb04c1db39692787e1bf",
     "packages": [
         {
             "name": "doctrine/common",
@@ -614,6 +614,72 @@
             ]
         },
         {
+            "name": "genemu/form-bundle",
+            "version": "2.1.x-dev",
+            "target-dir": "Genemu/Bundle/FormBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/genemu/GenemuFormBundle.git",
+                "reference": "3e98e9edbe5a1a8063acdfbba7a7b084bea39bf5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/genemu/GenemuFormBundle/archive/3e98e9edbe5a1a8063acdfbba7a7b084bea39bf5.zip",
+                "reference": "3e98e9edbe5a1a8063acdfbba7a7b084bea39bf5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": ">=2.1,<2.3-dev",
+                "symfony/form": ">=2.1,<2.3-dev"
+            },
+            "require-dev": {
+                "symfony/finder": "2.*",
+                "doctrine/orm": "2.*",
+                "doctrine/doctrine-bundle": "1.*",
+                "doctrine/mongodb-odm-bundle": "*",
+                "propel/propel-bundle": "*"
+            },
+            "suggest": {
+                "symfony/twig-bridge": "2.*",
+                "symfony/doctrine-bundle": "1.*",
+                "symfony/finder": "2.*",
+                "symfony/mongodb-odm-bundle": "2.*",
+                "propel/propel-bundle": "*"
+            },
+            "time": "1353842825",
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Genemu\\Bundle\\FormBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Olivier Chauvel",
+                    "email": "olivier@generation-multiple.com"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/genemu/GenemuFormBundle/contributors"
+                }
+            ],
+            "description": "Extra Form",
+            "keywords": [
+                "form",
+                "extra form"
+            ]
+        },
+        {
             "name": "jdorn/sql-formatter",
             "version": "dev-master",
             "source": {
@@ -1156,12 +1222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog",
-                "reference": "546225bed27bea7d00b836e0f7d8954272e0cf42"
+                "reference": "b67085dc769de26348f08ad21f43220a156161dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/Seldaek/monolog/archive/546225bed27bea7d00b836e0f7d8954272e0cf42.zip",
-                "reference": "546225bed27bea7d00b836e0f7d8954272e0cf42",
+                "url": "https://github.com/Seldaek/monolog/archive/b67085dc769de26348f08ad21f43220a156161dc.zip",
+                "reference": "b67085dc769de26348f08ad21f43220a156161dc",
                 "shasum": ""
             },
             "require": {
@@ -1175,6 +1241,7 @@
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server"
             },
+            "time": "1355433243",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1203,8 +1270,7 @@
             "keywords": [
                 "log",
                 "logging"
-            ],
-            "time": "1354622369"
+            ]
         },
         {
             "name": "sensio/distribution-bundle",
@@ -1882,6 +1948,54 @@
             ]
         },
         {
+            "name": "sonata-project/seo-bundle",
+            "version": "dev-master",
+            "target-dir": "Sonata/SeoBundle",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/sonata-project/SonataSeoBundle.git",
+                "reference": "553741781e9d7d4fa94779ca5f861ac7163e07db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/sonata-project/SonataSeoBundle/archive/553741781e9d7d4fa94779ca5f861ac7163e07db.zip",
+                "reference": "553741781e9d7d4fa94779ca5f861ac7163e07db",
+                "shasum": ""
+            },
+            "require": {
+                "twig/twig": "*",
+                "symfony/symfony": "2.*"
+            },
+            "time": "1350233166",
+            "type": "symfony-bundle",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Sonata\\SeoBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org",
+                    "homepage": "http://sonata-project.org"
+                },
+                {
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonataSeoBundle/contributors"
+                }
+            ],
+            "description": "Symfony SonataSeoBundle",
+            "homepage": "http://sonata-project.org/bundles/seo",
+            "keywords": [
+                "sonata",
+                "seo"
+            ]
+        },
+        {
             "name": "sonata-project/user-bundle",
             "version": "dev-master",
             "target-dir": "Sonata/UserBundle",
@@ -2230,12 +2344,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "521fcb1c8b0aa2cefff8c0b8044e66c531ed22ea"
+                "reference": "2447757a4ea7a118797d8714eb4f91e2bbb745ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/521fcb1c8b0aa2cefff8c0b8044e66c531ed22ea.zip",
-                "reference": "521fcb1c8b0aa2cefff8c0b8044e66c531ed22ea",
+                "url": "https://github.com/symfony/symfony/archive/2447757a4ea7a118797d8714eb4f91e2bbb745ad.zip",
+                "reference": "2447757a4ea7a118797d8714eb4f91e2bbb745ad",
                 "shasum": ""
             },
             "require": {
@@ -2284,7 +2398,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "1.*"
             },
-            "time": "1355422466",
+            "time": "1355430110",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -2426,6 +2540,7 @@
         "sonata-project/intl-bundle": 20,
         "sonata-project/easy-extends-bundle": 20,
         "sonata-project/user-bundle": 20,
+        "sonata-project/seo-bundle": 20,
         "stof/doctrine-extensions-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
         "doctrine/doctrine-migrations-bundle": 20
