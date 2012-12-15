@@ -1,0 +1,5 @@
+/rsync_exclude*.txt
+/web/uploads
+/deploy.sh
+app/cache
+app/logs

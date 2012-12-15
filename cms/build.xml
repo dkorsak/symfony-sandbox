@@ -46,11 +46,19 @@
         <attribute name="symlink" default=""/>
         <attribute name="execute.assets.dump" default="true"/>
         <attribute name="execute.clear.cache.file" default="true"/>
+        <attribute name="execute.clear.sonata.cache" default="true"/>
         <sequential>
             <if>
                 <equals arg1="@{execute.clear.cache.file}" arg2="true" />
                 <then>
                     <clear.file.cache destination="@{destination}" env="@{env}"/>
+                </then>
+            </if>
+            <if>
+                <equals arg1="@{execute.clear.sonata.cache}" arg2="true" />
+                <then>
+                    <echo>ANT DEBUG: Cleaning sonata cache</echo>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console sonata:cache:flush-all" /></exec>
                 </then>
             </if>
             <if>
@@ -122,11 +130,18 @@
         <attribute name="env" default="${env}"/>
         <attribute name="symlink" default=""/>
         <sequential>
-            <cc symlink="@{symlink}" destination="@{destination}" env="@{env}" execute.assets.dump="${build.assets.dump}" execute.clear.cache.file="${build.clear.cache.file}"/>
+            <cc symlink="@{symlink}" destination="@{destination}" env="@{env}" execute.assets.dump="${build.assets.dump}" execute.clear.cache.file="${build.clear.cache.file}" execute.clear.sonata.cache="${build.clear.clear.sonata.cache}"/>
             <if>
                 <equals arg1="${build.build.db}" arg2="true" />
                 <then>
                     <build.db destination="@{destination}" env="@{env}"/>
+                </then>
+            </if>
+            <if>
+                <equals arg1="${build.doctrine.migrations}" arg2="true" />
+                <then>
+                    <echo>ANT DEBUG: Migrating database</echo>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:migrations:migrate --no-interaction" /></exec>
                 </then>
             </if>
         </sequential>
@@ -154,18 +169,23 @@
                 <exclude name="web/css/**" />
                 <exclude name="web/js/**" />
                 <exclude name="composer.*" />
-                <exclude name="behat.sh" />
+                <exclude name="deploy.sh" />
+                <exclude name="rsync_exclude.txt" />
             </fileset>
             </copy>
             <echo>AND DEBUG: Copying ${parameters-file-path} file</echo>
-            <copy preservelastmodified="true" overwrite="true" file="${parameters-file-path}" tofile="@{destination}/app/config/parameters.ini" />
+            <copy preservelastmodified="true" overwrite="true" file="${parameters-file-path}" tofile="@{destination}/app/config/parameters.ini"/>
             <build destination="@{destination}" env="prod"/>
             <if>
                 <equals arg1="${deploy.rsync}" arg2="true" />
                 <then>
                     <echo>AND DEBUG: Preparing deploy.sh file</echo>
-                    
+                    <copy file="${basedir}/cms/rsync_exclude.txt" tofile="@{destination}/rsync_exclude.txt" />
+                    <copy file="${basedir}/cms/deploy.sh" tofile="@{destination}/deploy.sh">
+                        <filterset filtersfile="${parameters-file-path}" />
+                    </copy>
                     <echo>AND DEBUG: Deploying project into ${deploy.host} server</echo>
+                    <exec executable="/bin/bash" dir="@{destination}"><arg line="deploy.sh run" /></exec>
                 </then>
             </if>
             <if>
