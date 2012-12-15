@@ -11,7 +11,7 @@ use Symfony\Component\Yaml\Yaml;
  * Loading fixtures from YML file
  *
  */
-abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInterface 
+abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInterface
 {
     
     /**

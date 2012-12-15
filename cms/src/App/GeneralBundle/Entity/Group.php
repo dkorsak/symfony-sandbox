@@ -21,13 +21,13 @@ class Group extends BaseGroup
      * @ORM\Column(type="integer")
      * @ORM\generatedValue(strategy="AUTO")
      */
-     protected $id;
+    protected $id;
      
-     /**
-      * @return string
-      */
-     public function __toString()
-     {
-         return $this->name;
-     }
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

@@ -4,6 +4,7 @@
     <property name="java.lib" value="java/lib" />
     <property name="target" value=""/>
     <property name="env" value="dev"/>
+    <property name="debug" value="true"/>
     <property name="selenium.jar" value="${java.lib}/selenium-server-standalone-2.25.0.jar" />
     
     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
@@ -12,7 +13,7 @@
         </classpath>
     </taskdef>
     
-    <macrodef name="build.database">
+    <macrodef name="build.db">
         <attribute name="env" default="${env}"/>
         <attribute name="destination" default="cms"/>
         <attribute name="fixtures" default="true"/>
@@ -31,7 +32,7 @@
         </sequential>
     </macrodef>
     
-    <macrodef name="cache.clear">
+    <macrodef name="cc">
         <attribute name="destination" default="cms"/>
         <attribute name="env" default="${env}"/>
         <attribute name="symlink" default=""/>
@@ -47,17 +48,59 @@
                     <echo>ANT DEBUG: Dumping @{env} assets</echo>
                     <exec executable="php" dir="@{destination}"><arg line="app/console assetic:dump --env=@{env} --no-debug" /></exec>
                 </then>
-                </if>
+            </if>
         </sequential>
     </macrodef>
     
-    <macrodef name="phpunit.tests">
+    <macrodef name="phpunit">
         <attribute name="destination" default="cms"/>
         <sequential>
             <echo>ANT DEBUG: Executing PHPUnit tests</echo>
             <exec executable="phpunit" dir="@{destination}">
                 <arg line="-v -c app/phpunit.xml --coverage-html '${basedir}/test_result/coverage' --coverage-clover '${basedir}/test_result/clover.xml' --stderr --log-junit '${basedir}/test_result/phpunit.xml'" />
             </exec>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="phpcs">
+        <attribute name="destination" default="cms"/>
+        <attribute name="debug" default="true"/>
+        <sequential>
+            <echo>ANT DEBUG: Creating coding standards report</echo>
+            <if>
+                <equals arg1="@{debug}" arg2="true" />
+                <then>
+                    <exec dir="@{destination}" executable="phpcs" failonerror="false">
+                        <arg line="-s --standard=${basedir}/coding_standards/Symfony --report=full ./src" />
+                    </exec>
+                </then>
+                <else>
+                    <exec dir="@{destination}" executable="phpcs" failonerror="false">
+                        <arg line="-s --standard=${basedir}/coding_standards/Symfony --report=checkstyle --report-file=${basedir}/test_result/checkstyle.xml ./src" />
+                    </exec>
+                </else>
+            </if>
+        </sequential>
+    </macrodef>
+        
+    <macrodef name="phpmd">
+        <attribute name="destination" default="cms"/>
+        <attribute name="debug" default="true"/>
+        <sequential>
+            <echo>ANT DEBUG: Creating PHPMD report</echo>
+            <if>
+                <equals arg1="@{debug}" arg2="true" />
+                <then>
+                    <exec executable="phpmd" dir="@{destination}/src" failonerror="off">
+                        <arg line=". xml codesize,unusedcode,design" />
+                    </exec>
+                </then>
+                <else>
+                    <exec executable="phpmd" dir="@{destination}/src" failonerror="off">
+                        <arg line=". xml codesize,unusedcode,design --reportfile '${basedir}/test_result/pmd.xml'" />
+                    </exec>
+                </else>
+            </if>
         </sequential>
     </macrodef>
     
@@ -87,17 +130,25 @@
     
     <!--- ################################ TASKS ############################################################### -->
     
-    <target name="build.db" description="Builds the database">
-        <build.database env="${env}"/>
+    <target name="build.db" description="Build database">
+        <build.db env="${env}"/>
     </target>
     
-    <target name="cc">
-        <cache.clear symlink="--symlink"/>
-        <cache.clear env="prod" execute.assets.dump="false"/>
+    <target name="cc" description="Clear cache">
+        <cc symlink="--symlink"/>
+        <cc env="prod" execute.assets.dump="false"/>
     </target> 
     
-    <target name="phpunit" depends="clean-test-result-directory">
-        <phpunit.tests />
+    <target name="phpunit" description="Execute PHPUnit test" depends="clean-test-result-directory">
+        <phpunit />
+    </target>
+    
+    <target name="phpcs" description="Check coding standards" depends="clean-test-result-directory">
+        <phpcs debug="${debug}"/>
+    </target>
+        
+    <target name="phpmd" description="Create PHPMD report" depends="clean-test-result-directory">
+        <phpmd debug="${debug}"/>
     </target>
 
 </project>

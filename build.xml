@@ -2,20 +2,29 @@
 <project name="Symfony 2 Base Project" default="help" basedir=".">
     <target name="help" description="Display help">
         <echo>
-Build targets:
-  ############################ PARAMETERS #################################
+  ###################### PARAMETERS ######################################
         
-  -Denv=                    - set environment. Default value is "dev".    
-        
-  ############################ TASKS ######################################
+  -Denv=               - set environment. Default value is "dev".
+  -Ddebug=             - display task result (phpcs and phpmd) on the screen 
+                         instead of write to file. Default value is "true".
+            
+  ###################### SYMFONY TASKS ###################################
   
-  build.db                  - builds database (drop, create, load fixtures)
-                              for given environment.
+  build.db             - build database (drop, create, load fixtures)
+                         for given environment.
             
-  cc                        - clears cache, dump assets for dev and prod environment.
+  cc                   - clear cache, dump assets for dev and prod environment.
+
+  ###################### TESTING #########################################
             
-  phpunit                   - executes phpunit tests with code coverage report.
-                              Result is saved into test_result directory.
+  phpunit              - execute phpunit tests with code coverage report.
+                         Result is saved into test_result directory.
+            
+  ###################### CODING STANDARDS ################################
+                    
+  phpcs                - run PHP_CodeSniffer to check conding standards.
+  
+  phpmd                - execute PHPMD checkstyle reports.
         </echo>
     </target>
     <import file="cms/build.xml" />

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<ruleset name="Symfony coding standards">
+
+  <description>Custom Symfony coding standards based on Zend standards</description>
+ 
+  
+  <exclude-pattern>/App/FrontendBundle/Resources/*</exclude-pattern>
+  <exclude-pattern>/App/GeneralBundle/Resources/*</exclude-pattern>
+  <exclude-pattern>/App/BackendBundle/Resources/*</exclude-pattern>
+  
+  
+  <rule ref="Zend">
+    <exclude name="Generic.Files.LineLength"/>
+    <!-- exclude Zend file for valid variable name. This file is added and update inside Symfony/NamingConventions/ValidVariableNameSniff.php -->
+    <exclude name="Zend.NamingConventions.ValidVariableName.NotCamelCaps"/>
+    <exclude name="Squiz.Functions.GlobalFunction.Found"/>
+    <exclude name="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+    
+    
+  </rule>
+  
+  <rule ref="Internal.LineEndings.Mixed">
+    <severity>0</severity>
+  </rule>
+  
+  <!-- ADDITIONAL RULEZ -->
+  
+  <rule ref="Generic.WhiteSpace.ScopeIndent.Incorrect"/>
+  <rule ref="Generic.Formatting.DisallowMultipleStatements.SameLine"/>
+  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.Found"/>
+  
+  
+ <!--  
+  <rule ref="Generic">
+    <exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.BraceOnNewLine"/>
+    <exclude name="Generic.PHP.UpperCaseConstant.Found"/>
+    <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning"/>
+    <exclude name="Generic.Formatting.SpaceAfterCast.NoSpace"/>
+    <exclude name="Generic.CodeAnalysis.ForLoopWithTestFunctionCall.NotAllowed"/>
+    <exclude name="Generic.Classes.DuplicateClassName.Found"/>
+    <exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed"/>
+    <exclude name="Generic.CodeAnalysis.UselessOverridingMethod.Found"/>
+    
+    
+  </rule>
+ --> 
+ </ruleset>

@@ -199,8 +199,7 @@ class UserAdmin extends Admin
             ->with('Permissions')
                 ->add("enabled", null, array("label" => "Status", 'template' => 'AppBackendBundle:CRUD:show_status.html.twig'))
                 ->add("groups", null, array('template' => 'AppBackendBundle:UserAdmin:show_groups.html.twig'))
-            ->end()
-         ;
+            ->end();
     }
     
     /**
@@ -217,8 +216,7 @@ class UserAdmin extends Admin
         ->with('Permissions')
             ->add("enabled", null, array("required" => false, "label" => "Active"))
             ->add("groups", null, array("expanded" => false, "multiple" => true, "property" => "name"))
-        ->end()
-        ;
+        ->end();
     }
     
     /**
@@ -231,14 +229,18 @@ class UserAdmin extends Admin
             ->add("email")
             ->add("groups", null, array("label" => "Roles", "template" => "AppBackendBundle:UserAdmin:list_groups.html.twig"))
             ->add("enabled", null, array("label" => "Status", "template" => "AppBackendBundle:CRUD:list_status.html.twig"))
-            ->add('_action', 'actions', array(
-                'label' => 'Actions',
-                'actions' => array(
-                    'view' => array('template' => 'AppBackendBundle:CRUD:list__action_view.html.twig'),
-                    'edit' => array('template' => 'AppBackendBundle:CRUD:list__action_edit.html.twig'),
-                    'delete' => array('template' => 'AppBackendBundle:CRUD:list__action_delete.html.twig'),
+            ->add(
+                '_action',
+                'actions',
+                array(
+                    'label' => 'Actions',
+                    'actions' => array(
+                        'view' => array('template' => 'AppBackendBundle:CRUD:list__action_view.html.twig'),
+                        'edit' => array('template' => 'AppBackendBundle:CRUD:list__action_edit.html.twig'),
+                        'delete' => array('template' => 'AppBackendBundle:CRUD:list__action_delete.html.twig'),
+                    )
                 )
-            ));
+            );
     }
     
     /**
@@ -247,19 +249,24 @@ class UserAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add("name", "doctrine_orm_callback", array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value || $value['value'] == "") {
-                        return;
-                    }
-                    $queryBuilder->orWhere($alias.'.firstname LIKE :name');
-                    $queryBuilder->orWhere($alias.'.lastname LIKE :name');
-                    $queryBuilder->setParameter('name', '%'.$value['value'].'%');
-                    return true;
-                }))
+            ->add(
+                "name",
+                "doctrine_orm_callback",
+                array(
+                    'callback' => 
+                        function($queryBuilder, $alias, $field, $value) {
+                            if (!$value || $value['value'] == "") {
+                                return;
+                            }
+                            $queryBuilder->orWhere($alias.'.firstname LIKE :name');
+                            $queryBuilder->orWhere($alias.'.lastname LIKE :name');
+                            $queryBuilder->setParameter('name', '%'.$value['value'].'%');
+                            return true;
+                        }
+                    )
+            )
             ->add("enabled", null, array("label" => "Enabled"))
-            ->add("email", null, array("label" => "Email"))
-        ;
+            ->add("email", null, array("label" => "Email"));
     }
     
     /**
@@ -291,5 +298,4 @@ class UserAdmin extends Admin
     {
         return substr(md5(time().rand(1, 10000)), 7, 8); 
     }
-    
 }

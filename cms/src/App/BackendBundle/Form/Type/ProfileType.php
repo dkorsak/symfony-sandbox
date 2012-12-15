@@ -39,8 +39,7 @@ class ProfileType extends AbstractType
             ->add('email', null, array('attr' => array('class' => 'span5')))
             ->add('oldPassword', 'password', array('required' => false, 'label' => 'Old password'))
             ->add('plainPassword', 'password', array('required' => false, 'label' => 'New password'))
-            ->add('retypePassword', 'password', array('required' => false, 'label' => 'Retype password'))
-        ;
+            ->add('retypePassword', 'password', array('required' => false, 'label' => 'Retype password'));
     }
 
     /**
@@ -48,10 +47,12 @@ class ProfileType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => $this->class,
-            'translation_domain' => 'profile',    
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => $this->class,
+                'translation_domain' => 'profile'
+            )
+        );
     }
 
     /**

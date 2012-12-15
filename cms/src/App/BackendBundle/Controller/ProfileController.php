@@ -12,9 +12,10 @@ class ProfileController extends Controller
 {
 
     /**
-     * @return Response
-     *
+     * Edit profile action
+     * 
      * @throws AccessDeniedException
+     * @return Response
      */
     public function editAction()
     {
@@ -33,10 +34,13 @@ class ProfileController extends Controller
             $this->get('session')->setFlash('sonata_flash_success', 'flash_edit_success');
             return new RedirectResponse($this->generateUrl('app_backend_profile'));
         }
-        return $this->render('AppBackendBundle:Profile:edit_profile.html.twig', array(
-            'admin_pool' => $this->get('sonata.admin.pool'),
-            'base_template' => $this->container->parameters['sonata.admin.configuration.templates']['layout'],        
-            'form' => $form->createView(),
-        ));
+        return $this->render(
+            'AppBackendBundle:Profile:edit_profile.html.twig',
+            array(
+                'admin_pool' => $this->get('sonata.admin.pool'),
+                'base_template' => $this->container->parameters['sonata.admin.configuration.templates']['layout'],        
+                'form' => $form->createView(),
+            )
+        );
     }
 }
