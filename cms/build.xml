@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="Content Management System" default="" basedir=".">
-    
     <property name="java.lib" value="java/lib" />
     <property name="target" value=""/>
     <property name="env" value="dev"/>
     <property name="debug" value="true"/>
     <property name="selenium.jar" value="${java.lib}/selenium-server-standalone-2.25.0.jar" />
-    
+
     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
         <classpath>
             <pathelement location="${java.lib}/ant-contrib-1.0b3.jar"/>
         </classpath>
     </taskdef>
-    
+
+    <macrodef name="clear.file.cache">
+        <attribute name="destination" default="cms"/>
+        <attribute name="env" default="${env}"/>
+        <sequential>
+            <echo>ANT DEBUG: Cleaning file cache for destination @{destination} and environment @{env}</echo>
+            <exec executable="php" dir="@{destination}"><arg line="app/console cache:clear --env=@{env} --no-debug" /></exec>
+        </sequential>
+    </macrodef>
+        
     <macrodef name="build.db">
         <attribute name="env" default="${env}"/>
         <attribute name="destination" default="cms"/>
@@ -31,15 +39,20 @@
             </if>
         </sequential>
     </macrodef>
-    
+
     <macrodef name="cc">
         <attribute name="destination" default="cms"/>
         <attribute name="env" default="${env}"/>
         <attribute name="symlink" default=""/>
         <attribute name="execute.assets.dump" default="true"/>
+        <attribute name="execute.clear.cache.file" default="true"/>
         <sequential>
-            <echo>ANT DEBUG: Cleaning file cache for destination @{destination} and environment @{env}</echo>
-            <exec executable="php" dir="@{destination}"><arg line="app/console cache:clear --env=@{env} --no-debug" /></exec>
+            <if>
+                <equals arg1="@{execute.clear.cache.file}" arg2="true" />
+                <then>
+                    <clear.file.cache destination="@{destination}" env="@{env}"/>
+                </then>
+            </if>
             <if>
                 <equals arg1="@{execute.assets.dump}" arg2="true" />
                 <then>
@@ -51,7 +64,7 @@
             </if>
         </sequential>
     </macrodef>
-    
+
     <macrodef name="phpunit">
         <attribute name="destination" default="cms"/>
         <sequential>
@@ -82,7 +95,7 @@
             </if>
         </sequential>
     </macrodef>
-        
+
     <macrodef name="phpmd">
         <attribute name="destination" default="cms"/>
         <attribute name="debug" default="true"/>
@@ -103,7 +116,79 @@
             </if>
         </sequential>
     </macrodef>
-    
+
+    <macrodef name="build">
+        <attribute name="destination" default="cms"/>
+        <attribute name="env" default="${env}"/>
+        <attribute name="symlink" default=""/>
+        <sequential>
+            <cc symlink="@{symlink}" destination="@{destination}" env="@{env}" execute.assets.dump="${build.assets.dump}" execute.clear.cache.file="${build.clear.cache.file}"/>
+            <if>
+                <equals arg1="${build.build.db}" arg2="true" />
+                <then>
+                    <build.db destination="@{destination}" env="@{env}"/>
+                </then>
+            </if>
+        </sequential>
+    </macrodef>    
+
+    <macrodef name="deploy">
+        <attribute name="destination" default="build"/>
+        <sequential>
+            <echo>ANT DEBUG: Deploying cms into @{destination} directory</echo>
+            <delete dir="@{destination}" />
+            <mkdir dir="@{destination}" />
+            <copy todir="@{destination}">
+            <fileset dir="cms">
+                <exclude name="build.xml" />
+                <exclude name=".git" />
+                <exclude name="app/config/parameters*" />
+                <exclude name="app/phpunit.xml" />
+                <exclude name="app/check.php" />
+                <exclude name="app/cache/**" />
+                <exclude name="bin/**" />
+                <exclude name="app/logs/**" />
+                <exclude name="web/bundles/**" />
+                <exclude name="web/app_dev.php" />
+                <exclude name="web/config.php" />
+                <exclude name="web/css/**" />
+                <exclude name="web/js/**" />
+                <exclude name="composer.*" />
+                <exclude name="behat.sh" />
+            </fileset>
+            </copy>
+            <echo>AND DEBUG: Copying ${parameters-file-path} file</echo>
+            <copy preservelastmodified="true" overwrite="true" file="${parameters-file-path}" tofile="@{destination}/app/config/parameters.ini" />
+            <build destination="@{destination}" env="prod"/>
+            <if>
+                <equals arg1="${deploy.rsync}" arg2="true" />
+                <then>
+                    <echo>AND DEBUG: Preparing deploy.sh file</echo>
+                    
+                    <echo>AND DEBUG: Deploying project into ${deploy.host} server</echo>
+                </then>
+            </if>
+            <if>
+                <equals arg1="${deploy.execute.phpunit}" arg2="true" />
+                <then>
+                    <phpunit />
+                </then>
+            </if>
+            <if>
+                <equals arg1="${deploy.execute.phpcs}" arg2="true" />
+                <then>
+                    <phpcs debug="false" />
+                </then>
+            </if>
+            <if>
+                <equals arg1="${deploy.execute.phpmd}" arg2="true" />
+                <then>
+                    <phpmd debug="false" />
+                </then>
+            </if>
+        </sequential>
+    </macrodef>
+
     <target name="check">
         <if>
             <equals arg1="${target}" arg2="" />
@@ -121,34 +206,53 @@
         <available file="${parameters-file-path}" property="doesPropertyFileExist" />
         <fail unless="doesPropertyFileExist" message="The build ${parameters-file-path} file does not exist, can't build." />
     </target>
-    
+
     <target name="clean-test-result-directory">
         <echo>AND DEBUG: Cleaning test result directory</echo>
         <delete dir="${basedir}/test_result" />
         <mkdir dir="${basedir}/test_result" />
     </target>
-    
+
     <!--- ################################ TASKS ############################################################### -->
     
+    <target name="composer" depends="check" description="Execute composer.phar">
+        <echo>ANT DEBUG: Updating vendor directory</echo>
+        <exec executable="${composer}" dir="cms"><arg line="self-update" /></exec>
+        <exec executable="${composer}" dir="cms"><arg line="update" /></exec>
+    </target>
+
     <target name="build.db" description="Build database">
         <build.db env="${env}"/>
     </target>
-    
+
     <target name="cc" description="Clear cache">
-        <cc symlink="--symlink"/>
-        <cc env="prod" execute.assets.dump="false"/>
+        <clear.file.cache env="prod"/>
+        <cc symlink="--symlink" env="dev"/>
     </target> 
-    
+
     <target name="phpunit" description="Execute PHPUnit test" depends="clean-test-result-directory">
         <phpunit />
     </target>
-    
+
     <target name="phpcs" description="Check coding standards" depends="clean-test-result-directory">
         <phpcs debug="${debug}"/>
     </target>
-        
+
     <target name="phpmd" description="Create PHPMD report" depends="clean-test-result-directory">
         <phpmd debug="${debug}"/>
     </target>
 
+    <target name="build" depends="check, composer">
+        <if>
+            <equals arg1="${build.clear.cache.file}" arg2="true" />
+            <then>
+                <clear.file.cache env="prod"/>
+            </then>
+        </if>
+        <build env="dev" symlink="--symlink"/>
+    </target>
+
+    <target name="deploy" depends="check, clean-test-result-directory, composer">
+        <deploy destination="${deploy.destination}"/> 
+    </target>
 </project>

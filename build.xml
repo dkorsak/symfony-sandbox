@@ -3,26 +3,36 @@
     <target name="help" description="Display help">
         <echo>
   ###################### PARAMETERS ######################################
-        
-  -Denv=               - set environment. Default value is "dev".
-  -Ddebug=             - display task result (phpcs and phpmd) on the screen 
-                         instead of write to file. Default value is "true".
-            
-  ###################### SYMFONY TASKS ###################################
-  
-  build.db             - build database (drop, create, load fixtures)
-                         for given environment.
-            
-  cc                   - clear cache, dump assets for dev and prod environment.
 
+  -Denv=               - set environment. Default value is "dev".
+  -Ddebug=             - display test result (phpcs and phpmd) on the screen 
+                         instead of write to file. Default value is "true".
+  -Dtarget=            - read configuration from /app/config/parameters.{target}.ini
+                         file.
+
+  ###################### SYMFONY #########################################
+
+  build.db             - build database (drop, create, load fixtures)
+                         for given -Denv= environment.
+            
+  cc                   - clear all cache file, dump all assets.
+
+  composer             - execute composer.phar (update vendor directory)
+
+  build                - build local project (composer, clear cache, build.db)
+
+  deploy               - deploy project into production server for given -Dtarget=
+                         parameter.
+            
   ###################### TESTING #########################################
             
   phpunit              - execute phpunit tests with code coverage report.
-                         Result is saved into test_result directory.
+
+  behat                - TODO
             
   ###################### CODING STANDARDS ################################
                     
-  phpcs                - run PHP_CodeSniffer to check conding standards.
+  phpcs                - run PHP Code Sniffer to check conding standards.
   
   phpmd                - execute PHPMD checkstyle reports.
         </echo>
