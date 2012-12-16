@@ -23,17 +23,17 @@
 
   deploy               - deploy project into production server for given -Dtarget=
                          parameter.
-            
+
   ###################### TESTING #########################################
-            
+
   phpunit              - execute phpunit tests with code coverage report.
 
-  behat                - TODO
+  behat                - execute E2E bahat tests
             
   ###################### CODING STANDARDS ################################
-                    
+
   phpcs                - run PHP Code Sniffer to check conding standards.
-  
+
   phpmd                - execute PHPMD checkstyle reports.
         </echo>
     </target>

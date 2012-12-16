@@ -58,7 +58,14 @@ doctrine:
         entity_managers:
             default:
                 dql: ~
-                result_cache_driver: ~
+                metadata_cache_driver: ~
+                result_cache_driver:
+                    type: memcached
+                    host: %memcached_host%
+                    port: %memcached_port%
+                    class: Doctrine\Common\Cache\MemcachedCache
+                    instance_class: Memcached
+                query_cache_driver: ~
                 mappings:
                     gedmo_translatable:
                         type: annotation
@@ -121,8 +128,20 @@ fos_user:
     user_class: App\GeneralBundle\Entity\User
     group:
         group_class: App\GeneralBundle\Entity\Group
-    
-# Sonata Configuration  
+
+# Sonata Configuration
+sonata_cache:
+    caches:
+        memcached:
+            prefix:  %memcached_prefix%
+            servers:
+                - {host: %memcached_host%, port: %memcached_port%}
+        apc:
+            token:  %apc_token%   # token used to clear the related cache
+            prefix: %apc_prefix%  # prefix to ensure there is no clash between instances
+            servers:
+                - { domain: %apc_domain%, ip: %apc_ip%, port: 80}
+
 sonata_admin:
     #security:
     #    handler: sonata.admin.security.handler.role

@@ -31,7 +31,7 @@
             <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:database:create --env=@{env}" /></exec>
             <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:schema:create --env=@{env}" /></exec>
             <if>
-                <equals arg1="@{fixtures}" arg2="true" />
+                <equals arg1="@{fixtures}" arg2="true"/>
                 <then>
                     <echo>AND DEBUG: Loading fixtures</echo>
                     <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:fixtures:load --env=@{env}" /></exec>
@@ -47,22 +47,32 @@
         <attribute name="execute.assets.dump" default="true"/>
         <attribute name="execute.clear.cache.file" default="true"/>
         <attribute name="execute.clear.sonata.cache" default="true"/>
+        <attribute name="execute.clear.doctrine.cache" default="true"/>
         <sequential>
             <if>
-                <equals arg1="@{execute.clear.cache.file}" arg2="true" />
+                <equals arg1="@{execute.clear.cache.file}" arg2="true"/>
                 <then>
                     <clear.file.cache destination="@{destination}" env="@{env}"/>
                 </then>
             </if>
             <if>
-                <equals arg1="@{execute.clear.sonata.cache}" arg2="true" />
+                <equals arg1="@{execute.clear.sonata.cache}" arg2="true"/>
                 <then>
                     <echo>ANT DEBUG: Cleaning sonata cache</echo>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console sonata:cache:flush-all" /></exec>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console sonata:cache:flush-all"/></exec>
                 </then>
             </if>
             <if>
-                <equals arg1="@{execute.assets.dump}" arg2="true" />
+                <equals arg1="@{execute.clear.doctrine.cache}" arg2="true"/>
+                <then>
+                    <echo>ANT DEBUG: Cleaning doctrine cache</echo>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-metadata"/></exec>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-query"/></exec>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-result"/></exec>
+                </then>
+            </if>
+            <if>
+                <equals arg1="@{execute.assets.dump}" arg2="true"/>
                 <then>
                     <echo>ANT DEBUG: Installing assets</echo>
                     <exec executable="php" dir="@{destination}"><arg line="app/console assets:install web @{symlink}" /></exec>
@@ -130,7 +140,7 @@
         <attribute name="env" default="${env}"/>
         <attribute name="symlink" default=""/>
         <sequential>
-            <cc symlink="@{symlink}" destination="@{destination}" env="@{env}" execute.assets.dump="${build.assets.dump}" execute.clear.cache.file="${build.clear.cache.file}" execute.clear.sonata.cache="${build.clear.clear.sonata.cache}"/>
+            <cc symlink="@{symlink}" destination="@{destination}" env="@{env}" execute.assets.dump="${build.assets.dump}" execute.clear.cache.file="${build.clear.cache.file}" execute.clear.sonata.cache="${build.clear.sonata.cache}" execute.clear.doctrine.cache="${build.clear.doctrine.cache}"/>
             <if>
                 <equals arg1="${build.build.db}" arg2="true" />
                 <then>
@@ -151,33 +161,33 @@
         <attribute name="destination" default="build"/>
         <sequential>
             <echo>ANT DEBUG: Deploying cms into @{destination} directory</echo>
-            <delete dir="@{destination}" />
-            <mkdir dir="@{destination}" />
+            <delete dir="@{destination}"/>
+            <mkdir dir="@{destination}"/>
             <copy todir="@{destination}">
             <fileset dir="cms">
-                <exclude name="build.xml" />
-                <exclude name=".git" />
-                <exclude name="app/config/parameters*" />
-                <exclude name="app/phpunit.xml" />
-                <exclude name="app/check.php" />
-                <exclude name="app/cache/**" />
-                <exclude name="bin/**" />
-                <exclude name="app/logs/**" />
-                <exclude name="web/bundles/**" />
-                <exclude name="web/app_dev.php" />
-                <exclude name="web/config.php" />
-                <exclude name="web/css/**" />
-                <exclude name="web/js/**" />
-                <exclude name="composer.*" />
-                <exclude name="deploy.sh" />
-                <exclude name="rsync_exclude.txt" />
+                <exclude name="build.xml"/>
+                <exclude name=".git"/>
+                <exclude name="app/config/parameters*"/>
+                <exclude name="app/phpunit.xml"/>
+                <exclude name="app/check.php"/>
+                <exclude name="app/cache/**"/>
+                <exclude name="bin/**"/>
+                <exclude name="app/logs/**"/>
+                <exclude name="web/bundles/**"/>
+                <exclude name="web/app_dev.php"/>
+                <exclude name="web/config.php"/>
+                <exclude name="web/css/**"/>
+                <exclude name="web/js/**"/>
+                <exclude name="composer.*"/>
+                <exclude name="deploy.sh"/>
+                <exclude name="rsync_exclude.txt"/>
             </fileset>
             </copy>
             <echo>AND DEBUG: Copying ${parameters-file-path} file</echo>
             <copy preservelastmodified="true" overwrite="true" file="${parameters-file-path}" tofile="@{destination}/app/config/parameters.ini"/>
             <build destination="@{destination}" env="prod"/>
             <if>
-                <equals arg1="${deploy.rsync}" arg2="true" />
+                <equals arg1="${deploy.rsync}" arg2="true"/>
                 <then>
                     <echo>AND DEBUG: Preparing deploy.sh file</echo>
                     <copy file="${basedir}/cms/rsync_exclude.txt" tofile="@{destination}/rsync_exclude.txt" />
@@ -189,23 +199,30 @@
                 </then>
             </if>
             <if>
-                <equals arg1="${deploy.execute.phpunit}" arg2="true" />
+                <equals arg1="${deploy.execute.phpunit}" arg2="true"/>
                 <then>
                     <phpunit />
                 </then>
             </if>
             <if>
-                <equals arg1="${deploy.execute.phpcs}" arg2="true" />
+                <equals arg1="${deploy.execute.phpcs}" arg2="true"/>
                 <then>
                     <phpcs debug="false" />
                 </then>
             </if>
             <if>
-                <equals arg1="${deploy.execute.phpmd}" arg2="true" />
+                <equals arg1="${deploy.execute.phpmd}" arg2="true"/>
                 <then>
                     <phpmd debug="false" />
                 </then>
             </if>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="behat">
+        <attribute name="destination" default="cms"/>
+        <sequential>
+            <echo>ANT DEBUG: Executing behat tests</echo>
         </sequential>
     </macrodef>
 
@@ -223,22 +240,46 @@
         </if>
         <property file="${parameters-file-path}" />
         <echo>ANT DEBUG: Checking ${parameters-file-path} file</echo>
-        <available file="${parameters-file-path}" property="doesPropertyFileExist" />
+        <available file="${parameters-file-path}" property="doesPropertyFileExist"/>
         <fail unless="doesPropertyFileExist" message="The build ${parameters-file-path} file does not exist, can't build." />
     </target>
 
     <target name="clean-test-result-directory">
         <echo>AND DEBUG: Cleaning test result directory</echo>
-        <delete dir="${basedir}/test_result" />
-        <mkdir dir="${basedir}/test_result" />
+        <delete dir="${basedir}/test_result"/>
+        <mkdir dir="${basedir}/test_result"/>
+    </target>
+
+    <target name="start-server" depends="check">
+        <echo>ANT DEBUG: Starting selenium server</echo>
+        <echo>ANT DEBUG: -browser browserName=${selenium.browser},version=${selenium.browser.version},maxInstances=1</echo>
+        <echo>ANT DEBUG: -port ${selenium.port}</echo>
+        <echo>ANT DEBUG: -log '${basedir}/test_result/selenium-server.log</echo>
+        <java jar="${selenium.jar}" fork="true" spawn="true">
+            <arg line="-browser browserName=${selenium.browser},version=${selenium.browser.version},maxInstances=1"/>
+            <arg line="-timeout 30"/>
+            <arg line="-port ${selenium.port}"/>
+            <arg line="-log '${basedir}/test_result/selenium-server.log'"/>
+        </java>
+        <echo>ANT DEBUG: Waiting 30 seconds for selenium up</echo>
+        <sleep seconds="30"/>
+   </target>
+
+    <target name="stop-server" depends="check">
+        <echo>ANT DEBUG: Stopping selenium server</echo>
+        <get taskname="selenium-shutdown"
+            src="http://localhost:${selenium.port}/selenium-server/driver/?cmd=shutDownSeleniumServer"
+            dest="${basedir}/test_result/selenium-server-shutdown.log" 
+            ignoreerrors="true" />
+        <echo taskname="selenium-shutdown" message="DGF Errors during shutdown are expected" />
     </target>
 
     <!--- ################################ TASKS ############################################################### -->
     
     <target name="composer" depends="check" description="Execute composer.phar">
         <echo>ANT DEBUG: Updating vendor directory</echo>
-        <exec executable="${composer}" dir="cms"><arg line="self-update" /></exec>
-        <exec executable="${composer}" dir="cms"><arg line="update" /></exec>
+        <exec executable="${composer}" dir="cms"><arg line="self-update"/></exec>
+        <exec executable="${composer}" dir="cms"><arg line="update"/></exec>
     </target>
 
     <target name="build.db" description="Build database">
@@ -251,7 +292,7 @@
     </target> 
 
     <target name="phpunit" description="Execute PHPUnit test" depends="clean-test-result-directory">
-        <phpunit />
+        <phpunit/>
     </target>
 
     <target name="phpcs" description="Check coding standards" depends="clean-test-result-directory">
@@ -274,5 +315,9 @@
 
     <target name="deploy" depends="check, clean-test-result-directory, composer">
         <deploy destination="${deploy.destination}"/> 
+    </target>
+
+    <target name="behat" depends="check">
+        <behat/>
     </target>
 </project>

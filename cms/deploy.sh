@@ -7,6 +7,7 @@ dest=@deploy.dest@
 
 clearfilecache=@deploy.rsync.clear.cache.file@
 clearsonata=@deploy.rsync.clear.sonata.cache@
+cleardoctrine=@deploy.rsync.clear.doctrine.cache@
 assetsdump=@deploy.rsync.assets.dump@
 buildbd=@deploy.rsync.build.db@
 migrate=@deploy.rsync.doctrine.migrations@
@@ -35,6 +36,14 @@ then
   then
     echo "Cleaning sonata cache............."
     ssh $user@$host '@deploy.dest@/app/console sonata:cache:flush-all'
+  fi
+
+  if $cleardoctrine
+  then
+    echo "Cleaning doctrine cache............."
+    ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-metadata'
+    ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-query'
+    ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-result'
   fi
 
   if $assetsdump
