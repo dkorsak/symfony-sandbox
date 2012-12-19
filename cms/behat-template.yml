@@ -1,0 +1,33 @@
+default:
+    formatter:
+        name: pretty
+        parameters:
+            decorated:              true
+            verbose:                false
+            time:                   true
+            language:               en
+            multiline_arguments:    true
+    extensions:
+        Behat\Symfony2Extension\Extension:
+            mink_driver: true
+            kernel:
+                env: test
+                debug: true
+        Behat\MinkExtension\Extension:
+            base_url: "@server_name@"
+            default_session: selenium2
+            javascript_session: selenium2
+            browser_name: "@selenium.browser@"
+            # absolute path to folder with files requires for behat tests - upload file tests
+            files_path:  "@file_path@/cms/src/..../Resources/files/"
+            selenium2:
+                wd_host : "http://localhost:@selenium.port@/wd/hub"
+                capabilities: { "browser": "@selenium.browser@", "version": "@selenium.browser.version@"}
+backend:
+    extensions:
+        Behat\Symfony2Extension\Extension:
+            bundle: AppBackendBundle
+frontend:
+    extensions:
+        Behat\Symfony2Extension\Extension:
+            bundle: AppFrontendBundle

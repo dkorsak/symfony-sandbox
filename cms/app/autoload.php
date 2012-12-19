@@ -2,7 +2,12 @@
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
 
-$loader = require __DIR__.'/../vendor/autoload.php';
+if (!class_exists('Composer\\Autoload\\ClassLoader', false)) {
+    $loader = require __DIR__.'/../vendor/autoload.php';
+} else {
+    $loader = new Composer\Autoload\ClassLoader();
+    $loader->register();
+}
 
 // intl
 if (!function_exists('intl_get_error_code')) {

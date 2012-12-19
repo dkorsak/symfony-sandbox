@@ -178,7 +178,8 @@
                 <exclude name="web/config.php"/>
                 <exclude name="web/css/**"/>
                 <exclude name="web/js/**"/>
-                <exclude name="composer.*"/>
+                <exclude name="behat*.*"/>
+                <exclude name="*.phar"/>
                 <exclude name="deploy.sh"/>
                 <exclude name="rsync_exclude.txt"/>
             </fileset>
@@ -194,26 +195,37 @@
                     <copy file="${basedir}/cms/deploy.sh" tofile="@{destination}/deploy.sh">
                         <filterset filtersfile="${parameters-file-path}" />
                     </copy>
-                    <echo>AND DEBUG: Deploying project into ${deploy.host} server</echo>
-                    <exec executable="/bin/bash" dir="@{destination}"><arg line="deploy.sh run" /></exec>
+                    <if>
+                        <equals arg1="${deploy.rsync.execute}" arg2="true"/>
+                        <then>
+                            <echo>AND DEBUG: Deploying project into ${deploy.host} server</echo>
+                            <exec executable="/bin/bash" dir="@{destination}"><arg line="deploy.sh run" /></exec>
+                        </then>
+                    </if>
                 </then>
             </if>
             <if>
                 <equals arg1="${deploy.execute.phpunit}" arg2="true"/>
                 <then>
-                    <phpunit />
+                    <phpunit/>
+                </then>
+            </if>
+            <if>
+                <equals arg1="${deploy.execute.behat}" arg2="true"/>
+                <then>
+                    <behat/>
                 </then>
             </if>
             <if>
                 <equals arg1="${deploy.execute.phpcs}" arg2="true"/>
                 <then>
-                    <phpcs debug="false" />
+                    <phpcs debug="false"/>
                 </then>
             </if>
             <if>
                 <equals arg1="${deploy.execute.phpmd}" arg2="true"/>
                 <then>
-                    <phpmd debug="false" />
+                    <phpmd debug="false"/>
                 </then>
             </if>
         </sequential>
@@ -222,7 +234,16 @@
     <macrodef name="behat">
         <attribute name="destination" default="cms"/>
         <sequential>
-            <echo>ANT DEBUG: Executing behat tests</echo>
+            <copy overwrite="true" file="${basedir}/cms/behat-template.yml" tofile="@{destination}/behat.yml">
+                <filterset filtersfile="${parameters-file-path}"/>
+            </copy>
+            <replace file="@{destination}/behat.yml" token="@file_path@" value="${basedir}" />
+            <antcall target="start-server" />
+            <echo>ANT DEBUG: Executing behat tests - frontend</echo>
+            <exec executable="php" dir="@{destination}"><arg line="bin/behat -p frontend -f pretty,junit --out ,'${basedir}/test_result/behat'"/></exec>
+            <echo>ANT DEBUG: Executing behat tests - backend</echo>
+            <exec executable="php" dir="@{destination}"><arg line="bin/behat -p backend -f pretty,junit --out ,'${basedir}/test_result/behat'"/></exec>
+            <antcall target="stop-server" />
         </sequential>
     </macrodef>
 
@@ -265,7 +286,7 @@
         <sleep seconds="30"/>
    </target>
 
-    <target name="stop-server" depends="check">
+    <target name="stop-server">
         <echo>ANT DEBUG: Stopping selenium server</echo>
         <get taskname="selenium-shutdown"
             src="http://localhost:${selenium.port}/selenium-server/driver/?cmd=shutDownSeleniumServer"
@@ -276,7 +297,7 @@
 
     <!--- ################################ TASKS ############################################################### -->
     
-    <target name="composer" depends="check" description="Execute composer.phar">
+    <target name="composer" depends="check" description="Update symfony vendor directory">
         <echo>ANT DEBUG: Updating vendor directory</echo>
         <exec executable="${composer}" dir="cms"><arg line="self-update"/></exec>
         <exec executable="${composer}" dir="cms"><arg line="update"/></exec>
@@ -305,7 +326,7 @@
 
     <target name="build" depends="check, composer">
         <if>
-            <equals arg1="${build.clear.cache.file}" arg2="true" />
+            <equals arg1="${build.clear.cache.file}" arg2="true"/>
             <then>
                 <clear.file.cache env="prod"/>
             </then>
@@ -317,7 +338,7 @@
         <deploy destination="${deploy.destination}"/> 
     </target>
 
-    <target name="behat" depends="check">
+    <target name="behat" depends="check, clean-test-result-directory">
         <behat/>
     </target>
 </project>

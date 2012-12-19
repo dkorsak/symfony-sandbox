@@ -28,7 +28,7 @@
 
   phpunit              - execute phpunit tests with code coverage report.
 
-  behat                - execute E2E bahat tests
+  behat                - execute E2E (selenium) bahat tests.
             
   ###################### CODING STANDARDS ################################
 
