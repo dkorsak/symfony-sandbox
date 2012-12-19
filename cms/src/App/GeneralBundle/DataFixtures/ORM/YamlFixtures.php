@@ -13,7 +13,6 @@ use Symfony\Component\Yaml\Yaml;
  */
 abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInterface
 {
-    
     /**
      * @var Symfony\Component\DependencyInjection\ContainerInterface
      */
@@ -25,7 +24,7 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
      * @return string
      */
     abstract function getModelFile();
-    
+
     /**
      * (non-PHPdoc)
      * @see Symfony\Component\DependencyInjection.ContainerAwareInterface::setContainer()
@@ -34,7 +33,7 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
     {
         $this->container = $container;
     }
-    
+
     /**
      * Loads fixtures from file
      * 
@@ -51,7 +50,7 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
         }
         return $fixtures;
     }
-    
+
     /**
      * Sets object variables from given array
      * 

@@ -5,21 +5,19 @@ namespace App\GeneralBundle\Services;
 /**
  * Mailer service
  * 
- *
  */
 class Mailer
 {
-
     /**
      * @var \Swift_Mailer
      */
     protected $swift;
-    
+
     /**
      * @var string
      */
     protected $from;
-    
+
     /** 
      * @var string
      */
@@ -38,7 +36,7 @@ class Mailer
         $this->from = $from;
         $this->sender = $sender;
     }
-    
+
     /**
      * Set from
      * 
@@ -50,7 +48,7 @@ class Mailer
         $this->from = $from;
         return $this;
     }
-    
+
     /**
      * Set sender
      * @param unknown_type $sender
@@ -61,7 +59,7 @@ class Mailer
         $this->sender = $sender;
         return $this;
     }
-    
+
     /**
      * Send email
      * 

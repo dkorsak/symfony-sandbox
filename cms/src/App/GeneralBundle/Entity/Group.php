@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Group extends BaseGroup
 {
-    
     /**
      * @var integer
      * 
@@ -22,7 +21,7 @@ class Group extends BaseGroup
      * @ORM\generatedValue(strategy="AUTO")
      */
     protected $id;
-     
+
     /**
      * @return string
      */

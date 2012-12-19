@@ -21,7 +21,6 @@ use App\GeneralBundle\Validator\Constraints as AppGeneralAssert;
  */
 class User extends BaseUser
 {
-
     /**
      * @var integer
      * 
@@ -30,7 +29,7 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @var string
      * 
@@ -38,7 +37,7 @@ class User extends BaseUser
      * @Assert\NotBlank()
      */
     protected $firstname;
-    
+
     /**
      * @var string
      *
@@ -46,7 +45,7 @@ class User extends BaseUser
      * @Assert\NotBlank()
      */
     protected $lastname;
-    
+
     /**
      * @var ArrayCollection
      * 
@@ -57,17 +56,17 @@ class User extends BaseUser
      * )
      */
     protected $groups;
-    
+
     /**
      * @var string
      */
     protected $retypePassword;
-    
+
     /**
      * @var string
      */
     protected $oldPassword;
-    
+
     /**
      * Constructor
      * 
@@ -144,7 +143,7 @@ class User extends BaseUser
         parent::addGroup($group);
         return $this;
     }
-    
+
     /**
      * Remove all old groups and add new one
      * 
@@ -159,7 +158,7 @@ class User extends BaseUser
         parent::addGroup($group);
         return $this;
     }
-    
+
     /**
      * Remove groups
      *
@@ -179,7 +178,7 @@ class User extends BaseUser
     {
         return parent::getGroups();
     }
-    
+
     /**
      * Get user full name
      * 
@@ -189,7 +188,7 @@ class User extends BaseUser
     {
         return $this->getFirstname() . ' ' . $this->getLastname();
     }
-    
+
     /**
      * Set retypePassword
      * 
@@ -201,7 +200,7 @@ class User extends BaseUser
         $this->retypePassword = $retypePassword;
         return $this;
     }
-    
+
     /**
      * Get retypePassword
      * 
@@ -211,7 +210,7 @@ class User extends BaseUser
     {
         return $this->retypePassword;
     }
-    
+
     /**
      * Set oldPassword
      *  
@@ -223,7 +222,7 @@ class User extends BaseUser
         $this->oldPassword = $oldPassword;
         return $this;
     }
-    
+
     /**
      * Get oldPassword
      * 

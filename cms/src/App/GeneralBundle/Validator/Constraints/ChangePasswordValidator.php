@@ -8,12 +8,11 @@ use Symfony\Component\Validator\Constraint;
 
 class ChangePasswordValidator extends ConstraintValidator
 {
-    
     /**
      * @var EncoderFactoryInterface
      */
     protected $encoderFactory;
-    
+
     /**
      * Constructor
      *  
@@ -23,7 +22,7 @@ class ChangePasswordValidator extends ConstraintValidator
     {
         $this->encoderFactory = $encoderFactory;
     }
-    
+
     /**
      * {@inheritdoc}
      */

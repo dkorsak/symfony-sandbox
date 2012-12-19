@@ -10,7 +10,6 @@ use Symfony\Component\Validator\Constraint;
  */
 class ChangePassword extends Constraint
 {
-    
     public $messageEmptyOldPassword = "Please provide old password";
     
     public $messageEmptyRetypePassword = "Please retype password";

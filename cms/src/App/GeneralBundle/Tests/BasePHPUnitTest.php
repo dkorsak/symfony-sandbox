@@ -6,9 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 abstract class BasePHPUnitTest extends WebTestCase
 {
-   
+    /**
+     * @var ContainerInterface
+     */
     protected $container;
-    
+
     public function setUp()
     {
         parent::setUp();

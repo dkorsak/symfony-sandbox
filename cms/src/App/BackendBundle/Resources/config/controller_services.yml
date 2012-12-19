@@ -1,6 +1,6 @@
 #definition of all sonata admin controllers
 services:
-    
+
     # user list
     app_backend.user_admin:
         class: App\BackendBundle\Admin\UserAdmin
@@ -11,5 +11,5 @@ services:
             - [ setTranslationDomain, ["user"] ]
             - [ setUserManager, [@fos_user.user_manager] ]
             - [ setSecurityContent, [@security.context] ]
-            - [ setMailer, [@app_general.mailer] ]
+            - [ setMailer, [@app_general.services_mailer] ]
             - [ setTwig, [@twig] ]

@@ -20,32 +20,31 @@ use App\GeneralBundle\Services\Mailer;
  */
 class UserAdmin extends Admin
 {
-    
     /**
      * @var UserManagerInterface
      */
     protected $userManager;
-    
+
     /**
      * @var SecurityContextInterface
      */
     protected $securityContent;
-    
+
     /**
      * @var Mailer 
      */
     protected $mailer;
-    
+
     /**
      * @var \Twig_Environment
      */
     protected $twig;
-    
+
     /**
      * @var string
      */
     protected $baseRoutePattern = 'users';
-    
+
     /**
      * @var array
      */
@@ -53,7 +52,7 @@ class UserAdmin extends Admin
         '_sort_order' => 'ASC', // sort direction
         '_sort_by' => 'email' // field name
     );
-    
+
     /**
      * Set userManager
      *
@@ -63,7 +62,7 @@ class UserAdmin extends Admin
     {
         $this->userManager = $userManager;
     }
-    
+
     /**
      * Get userManager
      *
@@ -73,7 +72,7 @@ class UserAdmin extends Admin
     {
         return $this->userManager;
     }
-    
+
     /**
      * Set mailer
      * 
@@ -83,7 +82,7 @@ class UserAdmin extends Admin
     {
         $this->mailer = $mailer;
     }
-    
+
     /**
      * Get mailer
      * 
@@ -93,7 +92,7 @@ class UserAdmin extends Admin
     {
         return $this->mailer;
     }
-    
+
     /**
      * Set twig
      * 
@@ -103,7 +102,7 @@ class UserAdmin extends Admin
     {
         $this->twig = $twig;    
     }
-    
+
     /**
      * Get twig
      * 
@@ -113,7 +112,7 @@ class UserAdmin extends Admin
     {
         return $this->twig;
     }
-    
+
     /**
      * Set securityContext
      * 
@@ -123,7 +122,7 @@ class UserAdmin extends Admin
     {
         $this->securityContent = $securityContext;
     }
-    
+
     /**
      * Get securityContent
      * 
@@ -133,7 +132,7 @@ class UserAdmin extends Admin
     {
         return $this->securityContent;
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -141,7 +140,7 @@ class UserAdmin extends Admin
     {
         $this->saveUser($user);
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -149,7 +148,7 @@ class UserAdmin extends Admin
     {
         $this->saveUser($user);
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -160,7 +159,7 @@ class UserAdmin extends Admin
             throw new ModelManagerException("You can not delete own account");
         }
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -168,7 +167,7 @@ class UserAdmin extends Admin
     {
         
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -176,7 +175,7 @@ class UserAdmin extends Admin
     {
         return $this->securityContent->isGranted('ROLE_SUPER_ADMIN');
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -185,7 +184,7 @@ class UserAdmin extends Admin
         // disable delete batch action
         return array();
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -201,7 +200,7 @@ class UserAdmin extends Admin
                 ->add("groups", null, array('template' => 'AppBackendBundle:UserAdmin:show_groups.html.twig'))
             ->end();
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -218,7 +217,7 @@ class UserAdmin extends Admin
             ->add("groups", null, array("expanded" => false, "multiple" => true, "property" => "name"))
         ->end();
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -242,7 +241,7 @@ class UserAdmin extends Admin
                 )
             );
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -268,7 +267,7 @@ class UserAdmin extends Admin
             ->add("enabled", null, array("label" => "Enabled"))
             ->add("email", null, array("label" => "Email"));
     }
-    
+
     /**
      * Save user
      * 
@@ -288,7 +287,7 @@ class UserAdmin extends Admin
             $this->getMailer()->send($this->trans("Account was created"), $body, $user->getEmail());
         }
     }
-    
+
     /**
      * Generate random user password
      * 
