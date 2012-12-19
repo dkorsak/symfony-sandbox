@@ -179,9 +179,12 @@
                 <exclude name="web/css/**"/>
                 <exclude name="web/js/**"/>
                 <exclude name="behat*.*"/>
+                <exclude name="composer*.*"/>
                 <exclude name="*.phar"/>
                 <exclude name="deploy.sh"/>
                 <exclude name="rsync_exclude.txt"/>
+                <exclude name="src/App/**/Features/**"/>
+                <exclude name="src/App/**/Tests/**"/>
             </fileset>
             </copy>
             <echo>AND DEBUG: Copying ${parameters-file-path} file</echo>

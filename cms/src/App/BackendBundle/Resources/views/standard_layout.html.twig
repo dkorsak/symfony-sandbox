@@ -115,9 +115,9 @@
                             {% if action is defined %}
                                 {% for label, uri in admin.breadcrumbs(action) %}
                                     {% if not loop.last  %}
-                                        <li><a href="{{ uri }}">{{ label }}</a><span class="divider">/</span></li>
+                                        <li><a href="{{ uri }}">{{ label|capitalize }}</a><span class="divider">/</span></li>
                                     {% else %}
-                                        <li class="active">{{ label }}</li>
+                                        <li class="active">{{ label|capitalize }}</li>
                                     {% endif %}
                                 {% endfor %}
                             {% endif %}
@@ -139,7 +139,7 @@
                     {% endfor %}
                 {% endblock %}
         
-                <div style="float: right">
+                <div class="pull-right">
                     {% block actions %}{% endblock %}
                 </div>
         
@@ -151,7 +151,7 @@
                             {% elseif action is defined %}
                                 {% for label, uri in admin.breadcrumbs(action) %}
                                     {% if loop.last  %}
-                                        {{ label }}
+                                        {{ label|capitalize }}
                                     {% endif %}
                                 {% endfor %}
                             {% endif%}

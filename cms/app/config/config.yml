@@ -147,7 +147,7 @@ sonata_admin:
     #    handler: sonata.admin.security.handler.role
         
     title:      Content Management System
-    title_logo: /bundles/appbackend/images/Content-Management-Systems.gif
+    title_logo: /bundles/appbackend/images/cms.gif
     templates:
         # default global templates
         layout:    AppBackendBundle::standard_layout.html.twig
