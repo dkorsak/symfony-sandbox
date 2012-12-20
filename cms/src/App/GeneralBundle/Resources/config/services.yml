@@ -1,7 +1,15 @@
 parameters:
 
-
 services:
-    app_general.services_mailer:
+
+    app_general.services.mailer:
         class: App\GeneralBundle\Services\Mailer
         arguments: [@mailer, %default_email%, %default_sender%]
+
+    app_general.services.stats.apc_stats:
+        class: App\GeneralBundle\Services\Stats\ApcStats
+        arguments: []
+
+    app_general.services.stats.memcached_stats:
+        class: App\GeneralBundle\Services\Stats\MemcachedStats
+        arguments: []

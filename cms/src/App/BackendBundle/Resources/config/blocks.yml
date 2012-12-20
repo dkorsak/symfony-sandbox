@@ -1,0 +1,14 @@
+# definition of block services
+services:
+
+    app_backend.block.apc_block:
+        class: App\BackendBundle\Block\APCBlock
+        arguments: [app_backend.block.apc_block, @templating, @app_general.services.stats.apc_stats]
+        tags:
+            - { name: sonata.block }
+
+    app_backend.block.memcached_block:
+        class: App\BackendBundle\Block\MemcachedBlock
+        arguments: [app_backend.block.memcached_block, @templating, @app_general.services.stats.memcached_stats]
+        tags:
+            - { name: sonata.block }

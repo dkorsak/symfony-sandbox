@@ -26,5 +26,6 @@ class AppBackendExtension extends Extension
         $loader->load('controller_services.yml');
         $loader->load('services.yml');
         $loader->load('forms.yml');
+        $loader->load('blocks.yml');
     }
 }

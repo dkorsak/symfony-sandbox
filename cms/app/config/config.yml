@@ -162,8 +162,9 @@ sonata_admin:
 
     dashboard:
         blocks:
-            # display a dashboard block
-        #    - { position: left, type: sonata.admin.block.admin_list }
+            # display a dashboard blocks
+            - { position: left, type: app_backend.block.apc_block }
+            - { position: right, type: app_backend.block.memcached_block }
 
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration
@@ -204,12 +205,18 @@ sonata_doctrine_orm_admin:
                 integer:    SonataAdminBundle:CRUD:base_show_field.html.twig
                 decimal:    SonataAdminBundle:CRUD:base_show_field.html.twig
 
+# Sonata block configuration
 sonata_block:
     default_contexts: [cms]
-    blocks: 
+    blocks:
         sonata.admin.block.admin_list:
             contexts:   [admin] 
-
+        app_backend.block.apc_block:
+            cache: sonata.cache.memcached
+            settings: {ttl: 60}
+        app_backend.block.memcached_block:
+            cache: sonata.cache.memcached
+            settings: {ttl: 60}
 
 sonata_user:
     security_acl:     false
@@ -222,8 +229,9 @@ sonata_user:
             type:               app_backend_user_profile_type
             handler:            sonata.user.profile.form.handler.default
             name:               sonata_user_profile_form
-            validation_groups:  [Profile, Default]  
+            validation_groups:  [Profile, Default]
 
+# Default SEO settings for frontend website
 sonata_seo:
     default:          sonata.seo.page.default #service
     title:            Symfony2 Sandbox

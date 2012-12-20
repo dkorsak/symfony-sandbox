@@ -11,5 +11,5 @@ services:
             - [ setTranslationDomain, ["user"] ]
             - [ setUserManager, [@fos_user.user_manager] ]
             - [ setSecurityContent, [@security.context] ]
-            - [ setMailer, [@app_general.services_mailer] ]
+            - [ setMailer, [@app_general.services.mailer] ]
             - [ setTwig, [@twig] ]
