@@ -1,8 +1,33 @@
 <div class="box">
     <div class="box-header well">
-        <h2><i class="icon-wrench"></i> {% trans %}Memcached stats{% endtrans %}</h2>
+        <h2><i class="icon-wrench"></i> {% trans %}Memcache server info{% endtrans %}</h2>
     </div>
     <div class="box-content">
-    TODO
+        {% if service.isConnected %}
+        <table class="table table-striped" style="margin-bottom: 0px;">
+            <tr>
+                <td>{% trans %}Memory allocation{% endtrans %}</td>
+                <td>{{ service.memoryAllocation|format_bytes }}</td>
+            </tr>
+            <tr>
+                <td>{% trans %}Used memory{% endtrans %}</td>
+                <td>{{ service.usedMemory|format_bytes }}</td>
+            </tr>
+            <tr>
+                <td>{% trans %}Free memory{% endtrans %}</td>
+                <td>{{ service.freeMemory|format_bytes }}</td>
+            </tr>
+            <tr>
+                <td>{% trans %}Used memory in percent{% endtrans %}</td>
+                <td>{{ percentage(service.usedMemory, service.memoryAllocation) }}</td>
+            </tr>
+            <tr>
+                <td>{% trans %}Free memory in percent{% endtrans %}</td>
+                <td>{{ percentage(service.freeMemory, service.memoryAllocation) }}</td>
+            </tr>
+        </table>
+        {% else %}
+        <div class="alert alert-box">{% trans %}Memcached is not enabled{% endtrans %}</div>
+        {% endif %}
     </div>
 </div>

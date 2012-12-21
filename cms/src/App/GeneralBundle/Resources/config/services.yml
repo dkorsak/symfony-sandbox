@@ -8,8 +8,7 @@ services:
 
     app_general.services.stats.apc_stats:
         class: App\GeneralBundle\Services\Stats\ApcStats
-        arguments: []
 
     app_general.services.stats.memcached_stats:
         class: App\GeneralBundle\Services\Stats\MemcachedStats
-        arguments: []
+        arguments: [%memcached_host%, %memcached_port%]

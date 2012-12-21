@@ -6,3 +6,12 @@ of: z
 Total: Razem
 Active: Aktywny
 Inactive: Wyłączony
+Memcache server info: Status pamięci serwera memcache
+Memory allocation: Razem
+Used memory: Używana
+Free memory: Wolna
+Used memory in percent: Używana w procentach
+Free memory in percent: Wolna w procentach
+Memcached is not enabled: Memcached nie jest skonfigurowany
+APC info: Status pamięci APC
+APC is not enabled: APC nie jest skonfigurowane
