@@ -52,7 +52,7 @@ class ApcStats
     }
 
     /**
-     * @return numer
+     * @return number
      */
     public function getFreeMemory()
     {
