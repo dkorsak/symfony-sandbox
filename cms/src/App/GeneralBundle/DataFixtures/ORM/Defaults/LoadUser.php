@@ -11,7 +11,6 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 class LoadUser extends YamlFixtures implements OrderedFixtureInterface, ContainerAwareInterface
 {
-    
     public function load(ObjectManager $manager)
     {
         $data = $this->getModelFixtures();
@@ -29,12 +28,12 @@ class LoadUser extends YamlFixtures implements OrderedFixtureInterface, Containe
         }
         $manager->flush();
     }
-    
+
     public function getOrder()
     {
         return 1;
     }
-    
+
     public function getModelFile()
     {
         return 'user';

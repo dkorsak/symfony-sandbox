@@ -30,6 +30,7 @@
             <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:database:drop --env=@{env} --force" /></exec>
             <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:database:create --env=@{env}" /></exec>
             <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:schema:create --env=@{env}" /></exec>
+            <exec executable="php" dir="@{destination}"><arg line="app/console app:create-pdo-session-table" /></exec>
             <if>
                 <equals arg1="@{fixtures}" arg2="true"/>
                 <then>
@@ -175,6 +176,7 @@
                 <exclude name="app/logs/**"/>
                 <exclude name="web/bundles/**"/>
                 <exclude name="web/app_dev.php"/>
+                <exclude name="web/app_test.php"/>
                 <exclude name="web/config.php"/>
                 <exclude name="web/css/**"/>
                 <exclude name="web/js/**"/>
@@ -182,6 +184,7 @@
                 <exclude name="composer*.*"/>
                 <exclude name="*.phar"/>
                 <exclude name="deploy.sh"/>
+                <exclude name="behat.sh"/>
                 <exclude name="rsync_exclude.txt"/>
                 <exclude name="src/App/**/Features/**"/>
                 <exclude name="src/App/**/Tests/**"/>
@@ -301,9 +304,22 @@
     <!--- ################################ TASKS ############################################################### -->
     
     <target name="composer" depends="check" description="Update symfony vendor directory">
+        <if>
+            <not>
+            <available file="${basedir}/cms/composer.phar"/>
+            </not>
+            <then>
+                <echo>ANT DEBUG: Downloading composer</echo>
+                <exec executable="curl" dir="cms" output="${basedir}/cms/composer.php"><arg line="-s https://getcomposer.org/installer"/></exec>
+                <exec executable="php" dir="cms"><arg line="composer.php"/></exec>
+                <delete file="${basedir}/cms/composer.php"/>
+            </then>
+            <else>
+                <exec executable="php" dir="cms"><arg line="composer.phar self-update"/></exec>
+            </else>
+        </if>
         <echo>ANT DEBUG: Updating vendor directory</echo>
-        <exec executable="${composer}" dir="cms"><arg line="self-update"/></exec>
-        <exec executable="${composer}" dir="cms"><arg line="update"/></exec>
+        <exec executable="php" dir="cms"><arg line="composer.phar update"/></exec>
     </target>
 
     <target name="build.db" description="Build database">

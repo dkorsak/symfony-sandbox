@@ -15,13 +15,14 @@ framework:
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
-    session:         ~
+    session: ~
+        #handler_id: session.handler.memcached
+        #handler_id: session.handler.pdo
 
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    
     globals: ~
 
 # Assetic Configuration
@@ -51,7 +52,7 @@ doctrine:
         charset:  UTF8
 
         types:
-            json: Sonata\Doctrine\Types\JsonType    
+            json: Sonata\Doctrine\Types\JsonType
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
@@ -256,3 +257,34 @@ sonata_seo:
         'lang':     'en'
         #'xmlns:og':           http://opengraphprotocol.org/schema/
         #'xmlns:fb':           "http://www.facebook.com/2008/fbml"            
+
+parameters:
+    # symfony pdo session database params
+    pdo.db_options:
+        db_table:    session
+        db_id_col:   session_id
+        db_data_col: session_value
+        db_time_col: session_time
+
+services:
+    # store symfony session in memcached
+    session.memcached:
+        class: Memcached
+        calls:
+          - [ addServer, [ %memcached_host%, %memcached_port% ]]
+
+    session.handler.memcached:
+        class: Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler
+        arguments: [ @session.memcached, { prefix: %memcached_session_prefix%, expiretime: %memcached_session_expire% } ]
+
+    # store symfony session in PDO
+    pdo:
+        class: PDO
+        arguments:
+          - "mysql:dbname=%database_name%;host=%database_host%;port=%database_port%"
+          - %database_user%
+          - %database_password%
+
+    session.handler.pdo:
+        class:     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+        arguments: [@pdo, %pdo.db_options%]

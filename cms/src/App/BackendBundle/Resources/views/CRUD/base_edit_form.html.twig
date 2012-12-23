@@ -16,18 +16,21 @@
             {% block sonata_pre_fieldsets %}{% endblock %}
 
             {% for name, form_group in admin.formgroups %}
-                <div class="box">
-                <div class="box-header well">
-                <h2>
-                {% if form_group.collapsed %}
-                    <a href="" class="sonata-ba-collapsed" title="{{ 'link_expand'|trans({}, 'SonataAdminBundle') }}">{{ name|trans({}, admin.translationdomain) }}</a>
-                {% else %}
+                <div class="box{% if form_group.collapsed %} form_box_fieldset-collapsed{% endif %}">
+                <div class="box-header well"{% if form_group.collapsed %} style="cursor: pointer;"{% endif %}>
+                    {% if form_group.collapsed %}
+                        <div class="box-icon">
+                        <a class="btn btn-minimize btn-round" href="#">
+                            <i class="icon-chevron-down"></i>
+                        </a>
+                        </div>
+                    {% endif %}
+                    <h2>
                     {{ name|trans({}, admin.translationdomain) }}
-                {% endif %}
-                </h2>
+                    </h2>
                 </div>
                 <div class="box-content">
-                <fieldset {% if form_group.collapsed %}class="sonata-ba-fielset-collapsed"{% endif %}>
+                <fieldset>
                     <div class="sonata-ba-collapsed-fields">
                         {% for field_name in form_group.fields %}
                             {% if admin.formfielddescriptions[field_name] is defined %}

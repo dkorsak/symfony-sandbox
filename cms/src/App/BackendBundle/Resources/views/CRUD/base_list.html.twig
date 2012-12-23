@@ -93,7 +93,7 @@
                                         {% endif %}
 
                                         {# Set the number of pages to display in the pager #}
-                                        {% for page in admin.datagrid.pager.getLinks() %}
+                                        {% for page in admin.datagrid.pager.getLinks(10) %}
                                             {% if page == admin.datagrid.pager.page %}
                                                 <li class="active"><a href="{{ admin.generateUrl('list', admin.modelmanager.paginationparameters(admin.datagrid, page)) }}">{{ page }}</a></li>
                                             {% else %}
@@ -166,10 +166,10 @@
         <div class="box">
             <div class="box-header well show_filters" style="cursor: pointer;">
             <div class="box-icon">
-				<a class="btn btn-minimize btn-round" href="#">
-				<i class="icon-chevron-{{ admin.datagrid.hasActiveFilters ? 'up' : 'down' }}"></i>
-				</a>
-			</div>
+                <a class="btn btn-minimize btn-round" href="#">
+                <i class="icon-chevron-{{ admin.datagrid.hasActiveFilters ? 'up' : 'down' }}"></i>
+                </a>
+            </div>
             <h2>{{ 'label_filters'|trans({}, 'SonataAdminBundle') }}</h2>
             </div>
         <div class="filter_container {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}">    
