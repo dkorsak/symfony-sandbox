@@ -69,13 +69,20 @@
                                 </ul>
                             </div>
                             {% endif %}
-                           
+
                             {% block logo %}
-                                {% if admin_pool.titlelogo is not empty %}
                                 <a href="{{ url('sonata_admin_dashboard') }}" class="brand">
-                                    <img src="{{ asset(admin_pool.titlelogo) }}"  alt="{{ admin_pool.title }}" />
+                                    {% if admin_pool.titlelogo is not empty %}
+                                    <img src="{{ asset(admin_pool.titlelogo) }}" alt="{{ admin_pool.title }}" />
+                                    {% endif %}
                                     {{ admin_pool.title }}
                                 </a>
+                                {% if admin_pool.titlelogo is not empty %}
+                                <script type="text/javascript">
+                                <!--[if IE 8]>
+                                    jQuery('.sonata-bc .navbar a.brand').width(jQuery('.sonata-bc .navbar a.brand').width()+30);
+                                <![endif]-->
+                                </script>
                                 {% endif %}
                             {% endblock %}
         
@@ -176,15 +183,15 @@
                         {% if _content is not empty %}
                             <div class="sonata-ba-content">{{ _content|raw }}</div>
                         {% endif %}
-        
+
                         {% if _show is not empty %}
                             <div class="sonata-ba-show">{{ _show|raw }}</div>
                         {% endif %}
-        
+
                         {% if _form is not empty %}
                             <div class="sonata-ba-form">{{ _form|raw }}</div>
                         {% endif %}
-        
+
                         {% if _list_table is not empty or _list_filters is not empty %}
                             <div class="sonata-ba-filter">
                                 {{ _list_filters|raw }}
@@ -193,7 +200,7 @@
                                 {{ _list_table|raw }}
                             </div>
                         {% endif %}
-        
+
                     {% endblock %}
                     </div>
                 </div>
@@ -207,6 +214,6 @@
             <div class="footer-border"><p class="pull-right">&copy; Content Management System</p></div>
         </div>
         {% endblock %}
-    </div>    
+    </div>
 </body>
 </html>

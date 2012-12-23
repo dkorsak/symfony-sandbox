@@ -1,6 +1,6 @@
 # definition of all form types
 services:
-    
+
     # user profile form type
     app_backend.profile_type:
         class: App\BackendBundle\Form\Type\ProfileType
