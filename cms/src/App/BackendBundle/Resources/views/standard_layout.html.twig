@@ -78,14 +78,12 @@
                                     {{ admin_pool.title }}
                                 </a>
                                 {% if admin_pool.titlelogo is not empty %}
-                                <script type="text/javascript">
                                 <!--[if IE 8]>
-                                    jQuery('.sonata-bc .navbar a.brand').width(jQuery('.sonata-bc .navbar a.brand').width()+30);
+                                <script type="text/javascript">jQuery('.sonata-bc .navbar a.brand').width(jQuery('.sonata-bc .navbar a.brand').width()+30);</script>
                                 <![endif]-->
-                                </script>
                                 {% endif %}
                             {% endblock %}
-        
+
                             <div class="nav-collapse">
                                 <ul class="nav">
                                     {% block top_bar_before_nav %} {% endblock %}
