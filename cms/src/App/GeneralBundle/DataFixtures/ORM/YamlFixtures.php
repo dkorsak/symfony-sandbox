@@ -14,20 +14,19 @@ use Symfony\Component\Yaml\Yaml;
 abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInterface
 {
     /**
-     * @var Symfony\Component\DependencyInjection\ContainerInterface
+     * @var ContainerInterface
      */
     protected $container;
 
     /**
-     * Gets model file name
+     * YML file name
      * 
      * @return string
      */
     abstract function getModelFile();
 
     /**
-     * (non-PHPdoc)
-     * @see Symfony\Component\DependencyInjection.ContainerAwareInterface::setContainer()
+     * @{inheritdoc}
      */
     public function setContainer(ContainerInterface $container = null)
     {
@@ -35,26 +34,22 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
     }
 
     /**
-     * Loads fixtures from file
+     * Load fixtures from file
      * 
      * @return array
      */
     public function getModelFixtures()
     {
-        $fixturesPath = $this->container->get('kernel')->getBundle('AppGeneralBundle')->getPath();    
+        $fixturesPath = $this->container->get('kernel')->getBundle('AppGeneralBundle')->getPath();
         $fixturesPath .= '/Resources/fixtures';
-        try {
-            $fixtures = Yaml::parse(file_get_contents($fixturesPath. '/'. $this->getModelFile(). '.yml'));
-        } catch (Exception $e) {
-            throw $e;
-        }
+        $fixtures = Yaml::parse(file_get_contents($fixturesPath. '/'. $this->getModelFile(). '.yml'));
         return $fixtures;
     }
 
     /**
-     * Sets object variables from given array
+     * Set object variables from given array
      * 
-     * @param Doctrine Entity $object
+     * @param object $object
      * @param array $array
      */
     public function fromArray($object, $array)

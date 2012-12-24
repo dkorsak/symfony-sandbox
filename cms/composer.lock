@@ -1,5 +1,5 @@
 {
-    "hash": "f6f8bc6456d08dc7ad61e7323b0f516c",
+    "hash": "e24002cc01ce31875a771cc51cd3caa5",
     "packages": [
         {
             "name": "alexandresalome/php-selenium",
@@ -642,19 +642,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal",
-                "reference": "8d0bd31ec311b50b5f62c3da6f266da83da25995"
+                "reference": "cb3ec49cb4401bd1c8be6ba9671f651802586eaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/dbal/archive/8d0bd31ec311b50b5f62c3da6f266da83da25995.zip",
-                "reference": "8d0bd31ec311b50b5f62c3da6f266da83da25995",
+                "url": "https://github.com/doctrine/dbal/archive/cb3ec49cb4401bd1c8be6ba9671f651802586eaf.zip",
+                "reference": "cb3ec49cb4401bd1c8be6ba9671f651802586eaf",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
                 "doctrine/common": "2.3.*"
             },
-            "time": "2012-12-22 11:34:26",
+            "time": "2012-12-23 20:28:39",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -936,12 +936,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/doctrine/doctrine2.git",
-                "reference": "f94b6c07c75605d5181fab50eef8764494201d59"
+                "reference": "019094655b6606852a3e3231de93425d9913bac4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/doctrine2/archive/f94b6c07c75605d5181fab50eef8764494201d59.zip",
-                "reference": "f94b6c07c75605d5181fab50eef8764494201d59",
+                "url": "https://github.com/doctrine/doctrine2/archive/019094655b6606852a3e3231de93425d9913bac4.zip",
+                "reference": "019094655b6606852a3e3231de93425d9913bac4",
                 "shasum": ""
             },
             "require": {
@@ -953,7 +953,7 @@
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
             },
-            "time": "2012-12-22 20:50:42",
+            "time": "2012-12-24 10:18:12",
             "bin": [
                 "bin/doctrine",
                 "bin/doctrine.php"
@@ -1263,18 +1263,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/jdorn/sql-formatter.git",
-                "reference": "v1.2.0"
+                "reference": "d0d9cea94cd6bdcdc3e164924e0d39e9192fe2bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/jdorn/sql-formatter/archive/v1.2.0.zip",
-                "reference": "v1.2.0",
+                "url": "https://github.com/jdorn/sql-formatter/archive/d0d9cea94cd6bdcdc3e164924e0d39e9192fe2bf.zip",
+                "reference": "d0d9cea94cd6bdcdc3e164924e0d39e9192fe2bf",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-22 21:46:50",
+            "time": "2012-12-24 01:54:21",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2975,12 +2975,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "031a09dc00502e152816179bb0de2dfe7b17c279"
+                "reference": "8fd34e4eae26c55c7aec04b9f452e10557b8bc89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/031a09dc00502e152816179bb0de2dfe7b17c279.zip",
-                "reference": "031a09dc00502e152816179bb0de2dfe7b17c279",
+                "url": "https://github.com/symfony/symfony/archive/8fd34e4eae26c55c7aec04b9f452e10557b8bc89.zip",
+                "reference": "8fd34e4eae26c55c7aec04b9f452e10557b8bc89",
                 "shasum": ""
             },
             "require": {
@@ -3029,7 +3029,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "1.*"
             },
-            "time": "2012-12-21 10:42:20",
+            "time": "2012-12-23 18:08:33",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -3166,7 +3166,6 @@
         "kriswallsmith/assetic": 20,
         "sonata-project/cache-bundle": 20,
         "sonata-project/block-bundle": 20,
-        "sonata-project/jquery-bundle": 20,
         "sonata-project/exporter": 20,
         "sonata-project/admin-bundle": 20,
         "sonata-project/doctrine-orm-admin-bundle": 20,

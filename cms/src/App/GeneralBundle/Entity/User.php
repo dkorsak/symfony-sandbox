@@ -4,6 +4,7 @@ namespace App\GeneralBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use FOS\UserBundle\Entity\User as BaseUser;
 use FOS\UserBundle\Model\GroupInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -13,7 +14,10 @@ use App\GeneralBundle\Validator\Constraints as AppGeneralAssert;
 /**
  * App\GeneralBundle\Entity\User
  * 
- * @ORM\Table(name="user")
+ * @ORM\Table(name="user", indexes={
+ *     @ORM\Index(name="username_idx", columns={"username"}),
+ *     @ORM\Index(name="email_idx", columns={"email"})
+ * })
  * @ORM\Entity(repositoryClass="App\GeneralBundle\Entity\UserRepository")
  * @UniqueEntity(fields={"email"})
  * @UniqueEntity(fields={"username"})
@@ -45,6 +49,22 @@ class User extends BaseUser
      * @Assert\NotBlank()
      */
     protected $lastname;
+
+    /**
+     * @var datetime
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+     protected $created;
+
+    /**
+     * @var datetime
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    protected $updated;
 
     /**
      * @var ArrayCollection
@@ -130,6 +150,50 @@ class User extends BaseUser
     public function getLastname()
     {
         return $this->lastname;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return User
+     */
+     public function setCreated($created)
+     {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return User
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 
     /**

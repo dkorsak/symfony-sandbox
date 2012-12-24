@@ -6,8 +6,8 @@ admin_user:
     lastname: Admin
     enabled: 1
     group_list:
-        - GROUP_SUPER_ADMIN 
-    
+        - GROUP_SUPER_ADMIN
+
 user:
     email: "admin@admin.com"
     username: "admin@admin.com"
@@ -16,5 +16,4 @@ user:
     lastname: User
     enabled: 1
     group_list:
-        - GROUP_ADMIN 
-    
+        - GROUP_ADMIN

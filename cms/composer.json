@@ -21,7 +21,6 @@
         "kriswallsmith/assetic": "1.1.*@dev",
         "sonata-project/cache-bundle": "dev-master",
         "sonata-project/block-bundle": "dev-master",
-        "sonata-project/jquery-bundle": "dev-master",
         "knplabs/knp-menu-bundle": "1.1.x",
         "sonata-project/exporter": "dev-master",
         "sonata-project/admin-bundle": "dev-master",

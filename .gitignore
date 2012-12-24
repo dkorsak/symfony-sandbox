@@ -16,6 +16,7 @@ cms/composer.phar
 cms/behat.phar
 cms/bin
 cms/behat.yml
+*.php~
 
 #Project files
 .buildpath

@@ -12,7 +12,6 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 class LoadGroup extends YamlFixtures implements OrderedFixtureInterface, ContainerAwareInterface
 {
-    
     public function load(ObjectManager $manager)
     {
         $data = $this->getModelFixtures();
@@ -24,12 +23,12 @@ class LoadGroup extends YamlFixtures implements OrderedFixtureInterface, Contain
         }
         $manager->flush();
     }
-    
+
     public function getOrder()
     {
         return 1;
     }
-    
+
     public function getModelFile()
     {
         return 'group';
