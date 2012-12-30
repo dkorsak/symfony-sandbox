@@ -56,7 +56,7 @@ class User extends BaseUser
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
-     protected $created;
+    protected $created;
 
     /**
      * @var datetime
@@ -158,8 +158,8 @@ class User extends BaseUser
      * @param \DateTime $created
      * @return User
      */
-     public function setCreated($created)
-     {
+    public function setCreated($created)
+    {
         $this->created = $created;
         return $this;
     }

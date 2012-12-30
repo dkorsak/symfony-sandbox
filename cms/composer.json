@@ -43,7 +43,8 @@
         "behat/mink-selenium2-driver":   "*",
         "behat/mink-selenium-driver":   "*",
         "behat/mink-zombie-driver":      "*",
-        "stealth35/apc-profiler-bundle": "*"
+        "stealth35/apc-profiler-bundle": "*",
+        "Trsteel/ckeditor-bundle": "*"
     },
     "scripts": {
         "post-install-cmd": [

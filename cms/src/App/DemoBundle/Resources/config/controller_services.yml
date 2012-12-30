@@ -1,0 +1,14 @@
+#definition of all sonata admin controllers
+services:
+
+    app_demo.article_category_admin:
+        class: App\DemoBundle\Admin\ArticleCategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Demo, label: Article categories }
+        arguments: [null, App\DemoBundle\Entity\ArticleCategory, AppDemoBundle:ArticleCategoryAdmin]
+
+    app_demo.article_admin:
+        class: App\DemoBundle\Admin\ArticleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Demo, label: Articles }
+        arguments: [null, App\DemoBundle\Entity\Article, AppDemoBundle:ArticleAdmin]

@@ -207,15 +207,15 @@ class UserAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-        ->with('General')
-            ->add("firstname")
-            ->add("lastname")
-            ->add("email")
-        ->end()
-        ->with('Permissions')
-            ->add("enabled", null, array("required" => false, "label" => "Active"))
-            ->add("groups", null, array("expanded" => false, "multiple" => true, "property" => "name"))
-        ->end();
+            ->with('General')
+                ->add("firstname")
+                ->add("lastname")
+                ->add("email")
+            ->end()
+            ->with('Permissions')
+                ->add("enabled", null, array("required" => false, "label" => "Active"))
+                ->add("groups", null, array("expanded" => false, "multiple" => true, "property" => "name"))
+            ->end();
     }
 
     /**

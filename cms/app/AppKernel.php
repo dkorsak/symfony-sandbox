@@ -33,9 +33,11 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
+            new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
             new App\BackendBundle\AppBackendBundle('SonataAdminBundle'),
             new App\FrontendBundle\AppFrontendBundle(),
             new App\GeneralBundle\AppGeneralBundle(),
+            new App\DemoBundle\AppDemoBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

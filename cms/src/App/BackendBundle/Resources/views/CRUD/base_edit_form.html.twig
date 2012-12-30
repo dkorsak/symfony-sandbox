@@ -16,7 +16,7 @@
             {% block sonata_pre_fieldsets %}{% endblock %}
 
             {% for name, form_group in admin.formgroups %}
-                <div class="box{% if form_group.collapsed %} form_box_fieldset-collapsed{% endif %}">
+                <div class="row-fluid box{% if form_group.collapsed %} form_box_fieldset-collapsed{% endif %}">
                 <div class="box-header well"{% if form_group.collapsed %} style="cursor: pointer;"{% endif %}>
                     {% if form_group.collapsed %}
                         <div class="box-icon">

@@ -1,6 +1,52 @@
 {
-    "hash": "e24002cc01ce31875a771cc51cd3caa5",
+    "hash": "99b1fb56451509e78142f2246f0bdf1d",
     "packages": [
+        {
+            "name": "Trsteel/ckeditor-bundle",
+            "version": "dev-master",
+            "target-dir": "Trsteel/CkeditorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/trsteel88/TrsteelCkeditorBundle",
+                "reference": "d5d4d21ded198da7925a19eda92cf4a0fdee8e09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/trsteel88/TrsteelCkeditorBundle/archive/d5d4d21ded198da7925a19eda92cf4a0fdee8e09.zip",
+                "reference": "d5d4d21ded198da7925a19eda92cf4a0fdee8e09",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "twig/twig": ">=1.1,<2.0-dev",
+                "symfony/form": "2.1.*",
+                "symfony/framework-bundle": "2.*,<2.3"
+            },
+            "time": "2012-12-28 13:55:45",
+            "type": "symfony-bundle",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Trsteel\\CkeditorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Trent Steel",
+                    "email": "trsteel88@gmail.com"
+                }
+            ],
+            "description": "Symfony2 bundle for easy integration of the CKEditor WYSIWYG",
+            "keywords": [
+                "wysiwyg",
+                "editor",
+                "CKEditor"
+            ]
+        },
         {
             "name": "alexandresalome/php-selenium",
             "version": "dev-master",
@@ -882,12 +928,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations",
-                "reference": "c1d875ce7d092dd1bc7508c3867b5c6b97431e43"
+                "reference": "e1f6efcd94993b493de5c6a413cbc327ea9c0caa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/migrations/archive/c1d875ce7d092dd1bc7508c3867b5c6b97431e43.zip",
-                "reference": "c1d875ce7d092dd1bc7508c3867b5c6b97431e43",
+                "url": "https://github.com/doctrine/migrations/archive/e1f6efcd94993b493de5c6a413cbc327ea9c0caa.zip",
+                "reference": "e1f6efcd94993b493de5c6a413cbc327ea9c0caa",
                 "shasum": ""
             },
             "require": {
@@ -901,6 +947,7 @@
             "suggest": {
                 "symfony/console": "to run the migration from the console"
             },
+            "time": "2012-12-27 16:39:29",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -908,6 +955,7 @@
                     "Doctrine\\DBAL\\Migrations": "lib"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL"
             ],
@@ -927,8 +975,7 @@
             "keywords": [
                 "database",
                 "migrations"
-            ],
-            "time": "2012-10-19 10:37:24"
+            ]
         },
         {
             "name": "doctrine/orm",
@@ -1008,12 +1055,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle",
-                "reference": "618b95d373f67c075a0d6f61339066bb061a0b71"
+                "reference": "401434d6c0ee395e91aebd42caf353d001bed282"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/FriendsOfSymfony/FOSUserBundle/archive/618b95d373f67c075a0d6f61339066bb061a0b71.zip",
-                "reference": "618b95d373f67c075a0d6f61339066bb061a0b71",
+                "url": "https://github.com/FriendsOfSymfony/FOSUserBundle/archive/401434d6c0ee395e91aebd42caf353d001bed282.zip",
+                "reference": "401434d6c0ee395e91aebd42caf353d001bed282",
                 "shasum": ""
             },
             "require": {
@@ -1034,7 +1081,7 @@
                 "doctrine/doctrine-bundle": "*",
                 "doctrine/mongodb-odm-bundle": "*"
             },
-            "time": "2012-12-22 15:52:39",
+            "time": "2012-12-28 16:42:49",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1263,18 +1310,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/jdorn/sql-formatter.git",
-                "reference": "d0d9cea94cd6bdcdc3e164924e0d39e9192fe2bf"
+                "reference": "7cc05be93fc352be9c551bf5a45c7b930f5d9e2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/jdorn/sql-formatter/archive/d0d9cea94cd6bdcdc3e164924e0d39e9192fe2bf.zip",
-                "reference": "d0d9cea94cd6bdcdc3e164924e0d39e9192fe2bf",
+                "url": "https://github.com/jdorn/sql-formatter/archive/7cc05be93fc352be9c551bf5a45c7b930f5d9e2a.zip",
+                "reference": "7cc05be93fc352be9c551bf5a45c7b930f5d9e2a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-24 01:54:21",
+            "time": "2012-12-29 19:41:32",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1954,12 +2001,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioGeneratorBundle",
-                "reference": "v2.1.4"
+                "reference": "v2.1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/v2.1.4.zip",
-                "reference": "v2.1.4",
+                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/v2.1.5.zip",
+                "reference": "v2.1.5",
                 "shasum": ""
             },
             "require": {
@@ -1971,6 +2018,7 @@
                 "doctrine/orm": ">=2.1,<2.4-dev",
                 "twig/twig": ">=1.8,<2.0-dev"
             },
+            "time": "2012-11-19 16:10:57",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1983,6 +2031,7 @@
                     "Sensio\\Bundle\\GeneratorBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1992,8 +2041,7 @@
                     "email": "fabien@symfony.com"
                 }
             ],
-            "description": "This bundle generates code for you",
-            "time": "2012-11-19 16:10:57"
+            "description": "This bundle generates code for you"
         },
         {
             "name": "sonata-project/admin-bundle",
@@ -2002,12 +2050,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "9b470e2782b72377565af912274fbc4601847a8c"
+                "reference": "9fd393fd7a7b307d35ccb299930ddc75cba72cf7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/SonataAdminBundle/archive/9b470e2782b72377565af912274fbc4601847a8c.zip",
-                "reference": "9b470e2782b72377565af912274fbc4601847a8c",
+                "url": "https://github.com/sonata-project/SonataAdminBundle/archive/9fd393fd7a7b307d35ccb299930ddc75cba72cf7.zip",
+                "reference": "9fd393fd7a7b307d35ccb299930ddc75cba72cf7",
                 "shasum": ""
             },
             "require": {
@@ -2032,7 +2080,7 @@
                 "sonata-project/doctrine-orm-admin-bundle": "dev-master",
                 "sonata-project/intl-bundle": "dev-master"
             },
-            "time": "2012-12-17 13:34:17",
+            "time": "2012-12-28 17:22:06",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -2338,21 +2386,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/exporter",
-                "reference": "a95d2edc789ffc83b87a2ba3b69c775d343ec9a0"
+                "reference": "1dde81f49c42fac827156c8eacf29c6809f572d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/exporter/archive/a95d2edc789ffc83b87a2ba3b69c775d343ec9a0.zip",
-                "reference": "a95d2edc789ffc83b87a2ba3b69c775d343ec9a0",
+                "url": "https://github.com/sonata-project/exporter/archive/1dde81f49c42fac827156c8eacf29c6809f572d4.zip",
+                "reference": "1dde81f49c42fac827156c8eacf29c6809f572d4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "suggest": {
-                "ext-curl": "*"
+            "require-dev": {
+                "php": ">=5.3.0",
+                "symfony/routing": "*"
             },
-            "time": "2012-12-14 12:45:51",
+            "suggest": {
+                "ext-curl": "*",
+                "symfony/routing": "*"
+            },
+            "time": "2012-12-27 17:01:27",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -2360,6 +2413,7 @@
                     "Exporter": "lib/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2511,6 +2565,7 @@
                     "Sonata\\jQueryBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2539,19 +2594,20 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/sonata-project/SonataSeoBundle.git",
-                "reference": "320340ef91b1dd75df0e8b2d6939fcc1c7895ddb"
+                "reference": "8492e5a647c597fe263af21fc291a0cdb86be1e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/SonataSeoBundle/archive/320340ef91b1dd75df0e8b2d6939fcc1c7895ddb.zip",
-                "reference": "320340ef91b1dd75df0e8b2d6939fcc1c7895ddb",
+                "url": "https://github.com/sonata-project/SonataSeoBundle/archive/8492e5a647c597fe263af21fc291a0cdb86be1e5.zip",
+                "reference": "8492e5a647c597fe263af21fc291a0cdb86be1e5",
                 "shasum": ""
             },
             "require": {
                 "twig/twig": "*",
-                "symfony/symfony": "2.*"
+                "symfony/symfony": "2.*",
+                "sonata-project/exporter": "dev-master"
             },
-            "time": "2012-12-14 12:30:11",
+            "time": "2012-12-27 18:12:36",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -2559,6 +2615,7 @@
                     "Sonata\\SeoBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2587,12 +2644,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle",
-                "reference": "e79f9a937b2cbaa7115b1dd9f532a86911f6d67c"
+                "reference": "61970890bcccc83175db972b6cbc2861e94840bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/SonataUserBundle/archive/e79f9a937b2cbaa7115b1dd9f532a86911f6d67c.zip",
-                "reference": "e79f9a937b2cbaa7115b1dd9f532a86911f6d67c",
+                "url": "https://github.com/sonata-project/SonataUserBundle/archive/61970890bcccc83175db972b6cbc2861e94840bd.zip",
+                "reference": "61970890bcccc83175db972b6cbc2861e94840bd",
                 "shasum": ""
             },
             "require": {
@@ -2609,7 +2666,7 @@
             "suggest": {
                 "sonata-project/doctrine-orm-admin-bundle": "dev-master"
             },
-            "time": "2012-12-23 11:15:56",
+            "time": "2012-12-27 14:44:13",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -2975,12 +3032,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "8fd34e4eae26c55c7aec04b9f452e10557b8bc89"
+                "reference": "477ddfb44dd4977c32d2ddcb77ca4f3c2f7497c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/8fd34e4eae26c55c7aec04b9f452e10557b8bc89.zip",
-                "reference": "8fd34e4eae26c55c7aec04b9f452e10557b8bc89",
+                "url": "https://github.com/symfony/symfony/archive/477ddfb44dd4977c32d2ddcb77ca4f3c2f7497c3.zip",
+                "reference": "477ddfb44dd4977c32d2ddcb77ca4f3c2f7497c3",
                 "shasum": ""
             },
             "require": {
@@ -3029,7 +3086,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "1.*"
             },
-            "time": "2012-12-23 18:08:33",
+            "time": "2012-12-29 22:37:16",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -3111,18 +3168,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "f095f3a1777431412954e478f92e8a10cb7b6495"
+                "reference": "1b1a6e7de018d300e6eb67727f3717c24f4540ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/archive/f095f3a1777431412954e478f92e8a10cb7b6495.zip",
-                "reference": "f095f3a1777431412954e478f92e8a10cb7b6495",
+                "url": "https://github.com/fabpot/Twig/archive/1b1a6e7de018d300e6eb67727f3717c24f4540ba.zip",
+                "reference": "1b1a6e7de018d300e6eb67727f3717c24f4540ba",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-18 10:01:32",
+            "time": "2012-12-27 16:33:50",
             "type": "library",
             "extra": {
                 "branch-alias": {

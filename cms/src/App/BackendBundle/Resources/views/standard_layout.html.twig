@@ -15,13 +15,14 @@
 <meta name="robots" content="noindex,nofollow">
 {% block stylesheets %}
 {% stylesheets filter='cssrewrite,?yui_css' output="css/admin.css"
-'bundles/appgeneral/css/ui-darkness/jquery-ui.css'
+'bundles/appgeneral/css/smoothness/jquery-ui.css'
 'bundles/appgeneral/bootstrap/css/bootstrap.css'
 'bundles/sonataadmin/css/colors.css' 
 'bundles/appbackend/css/main.css'
 %}
 <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
 {% endstylesheets %}
+{% if form is defined %}{{ form_stylesheet(form) }}{% endif %}
 {% endblock %}
 {% block javascripts %}
 {% javascripts filter='?closure' output="js/admin.js"
@@ -36,6 +37,7 @@
 %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
+{% if form is defined %}{{ form_javascript(form) }}{% endif %}
 {% endblock %}
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 <title>{{ admin_pool.title }} - {{ 'Admin'|trans({}, 'SonataAdminBundle') }}</title>
