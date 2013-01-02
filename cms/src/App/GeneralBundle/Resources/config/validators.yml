@@ -2,8 +2,8 @@
 services:
 
     #change user password validator
-    app_general.validator.change.password:
+    app_general.validator.constraints.change_password:
         class: App\GeneralBundle\Validator\Constraints\ChangePasswordValidator
         arguments:  [@security.encoder_factory]
         tags:
-            - { name: validator.constraint_validator, alias: app_general_change_password }
+            - { name: validator.constraint_validator, alias: app_general_constraints_change_password }

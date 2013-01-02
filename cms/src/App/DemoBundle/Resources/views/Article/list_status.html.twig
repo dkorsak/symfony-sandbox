@@ -3,9 +3,9 @@
 {% block field %}
 {% spaceless %}
     {% if value %}
-        <span class="label label-success">{% trans %}Published{% endtrans %}</span>
+        <span class="label label-success">{% trans from 'article' %}Published{% endtrans %}</span>
     {% else %}
-        <span class="label">{% trans %}Disabled{% endtrans %}</span>
+        <span class="label">{% trans from 'article' %}Disabled{% endtrans %}</span>
     {% endif %}
 {% endspaceless %}
 {% endblock %}

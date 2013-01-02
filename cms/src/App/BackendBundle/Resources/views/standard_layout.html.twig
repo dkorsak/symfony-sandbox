@@ -122,9 +122,9 @@
                             {% if action is defined %}
                                 {% for label, uri in admin.breadcrumbs(action) %}
                                     {% if not loop.last  %}
-                                        <li><a href="{{ uri }}">{{ label|capitalize }}</a><span class="divider">/</span></li>
+                                        <li><a href="{{ uri }}">{{ label|capitalize|trans({}, admin.translationdomain) }}</a><span class="divider">/</span></li>
                                     {% else %}
-                                        <li class="active">{{ label|capitalize }}</li>
+                                        <li class="active">{{ label|capitalize|trans({}, admin.translationdomain) }}</li>
                                     {% endif %}
                                 {% endfor %}
                             {% endif %}
@@ -158,7 +158,7 @@
                             {% elseif action is defined %}
                                 {% for label, uri in admin.breadcrumbs(action) %}
                                     {% if loop.last  %}
-                                        {{ label|capitalize }}
+                                        {{ label|capitalize|trans({}, admin.translationdomain) }}
                                     {% endif %}
                                 {% endfor %}
                             {% endif%}

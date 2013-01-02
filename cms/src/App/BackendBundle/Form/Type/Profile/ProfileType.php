@@ -1,6 +1,6 @@
 <?php
 
-namespace App\BackendBundle\Form\Type;
+namespace App\BackendBundle\Form\Type\Profile;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -59,6 +59,6 @@ class ProfileType extends AbstractType
      */
     public function getName()
     {
-        return 'app_backend_user_profile_type';
+        return 'app_backend_form_profile_profile_type';
     }
 }

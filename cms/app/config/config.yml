@@ -227,7 +227,7 @@ sonata_user:
 
     profile:
         form:
-            type:               app_backend_user_profile_type
+            type:               app_backend_form_profile_profile_type
             handler:            sonata.user.profile.form.handler.default
             name:               sonata_user_profile_form
             validation_groups:  [Profile, Default]

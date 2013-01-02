@@ -10,6 +10,14 @@ use Sonata\AdminBundle\Admin\Admin;
 class ArticleCategoryAdmin extends Admin
 {
     /**
+     * @var array
+     */
+    protected $datagridValues = array(
+        '_sort_order' => 'ASC',
+        '_sort_by' => 'name'
+    );
+
+    /**
      * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
