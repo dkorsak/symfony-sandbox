@@ -42,7 +42,7 @@ class JQueryDateType extends AbstractType
     private function getJQueryCulture()
     {
         $locale = \Locale::getDefault();
-        if (strpos('_', $locale) !== false) {
+        if (strpos($locale, '_') !== false) {
             list($localeJQuery, $locale) = explode("_", $locale);
         } else {
             $localeJQuery = $locale;

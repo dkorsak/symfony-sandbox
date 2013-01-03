@@ -317,12 +317,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/Behat/MinkExtension.git",
-                "reference": "f98a3092ac28f5d3c91d1efd5f039cc037f22ee5"
+                "reference": "624e66b121a911339639d0972d5bff33cf1d10b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/Behat/MinkExtension/archive/f98a3092ac28f5d3c91d1efd5f039cc037f22ee5.zip",
-                "reference": "f98a3092ac28f5d3c91d1efd5f039cc037f22ee5",
+                "url": "https://github.com/Behat/MinkExtension/archive/624e66b121a911339639d0972d5bff33cf1d10b2.zip",
+                "reference": "624e66b121a911339639d0972d5bff33cf1d10b2",
                 "shasum": ""
             },
             "require": {
@@ -333,7 +333,7 @@
             "require-dev": {
                 "behat/mink-goutte-driver": "*"
             },
-            "time": "2012-12-19 10:37:38",
+            "time": "2013-01-03 17:37:30",
             "type": "behat-extension",
             "installation-source": "source",
             "autoload": {
@@ -1056,12 +1056,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle",
-                "reference": "4eee8ba43d095d9bb85c280775826bea017d9746"
+                "reference": "7bbdf238f3b3e228a2b5a01d2619c73d43aa053d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/FriendsOfSymfony/FOSUserBundle/archive/4eee8ba43d095d9bb85c280775826bea017d9746.zip",
-                "reference": "4eee8ba43d095d9bb85c280775826bea017d9746",
+                "url": "https://github.com/FriendsOfSymfony/FOSUserBundle/archive/7bbdf238f3b3e228a2b5a01d2619c73d43aa053d.zip",
+                "reference": "7bbdf238f3b3e228a2b5a01d2619c73d43aa053d",
                 "shasum": ""
             },
             "require": {
@@ -1082,7 +1082,7 @@
                 "doctrine/doctrine-bundle": "*",
                 "doctrine/mongodb-odm-bundle": "*"
             },
-            "time": "2013-01-02 10:25:00",
+            "time": "2013-01-03 13:36:05",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -2053,12 +2053,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "29cae4cc88969b91db1a6ec18387bf51735bc4b9"
+                "reference": "03d1ca61910f0e98f01f26275aef5a508c4fe3a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/SonataAdminBundle/archive/29cae4cc88969b91db1a6ec18387bf51735bc4b9.zip",
-                "reference": "29cae4cc88969b91db1a6ec18387bf51735bc4b9",
+                "url": "https://github.com/sonata-project/SonataAdminBundle/archive/03d1ca61910f0e98f01f26275aef5a508c4fe3a5.zip",
+                "reference": "03d1ca61910f0e98f01f26275aef5a508c4fe3a5",
                 "shasum": ""
             },
             "require": {
@@ -2083,7 +2083,7 @@
                 "sonata-project/doctrine-orm-admin-bundle": "dev-master",
                 "sonata-project/intl-bundle": "dev-master"
             },
-            "time": "2012-12-30 23:21:02",
+            "time": "2013-01-03 16:35:54",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -3036,12 +3036,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "25f970a6d7c556e3e2a6b414869d8097c934146a"
+                "reference": "114bbce806fe7745a7e21c78e6ceb92e99897a30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/25f970a6d7c556e3e2a6b414869d8097c934146a.zip",
-                "reference": "25f970a6d7c556e3e2a6b414869d8097c934146a",
+                "url": "https://github.com/symfony/symfony/archive/114bbce806fe7745a7e21c78e6ceb92e99897a30.zip",
+                "reference": "114bbce806fe7745a7e21c78e6ceb92e99897a30",
                 "shasum": ""
             },
             "require": {
@@ -3090,7 +3090,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "1.*"
             },
-            "time": "2013-01-02 15:51:07",
+            "time": "2013-01-02 21:19:05",
             "type": "library",
             "installation-source": "source",
             "autoload": {

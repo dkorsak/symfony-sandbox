@@ -2,8 +2,10 @@
 
 namespace App\DemoBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * App\DemoBundle\Entity\ArticleCategory
@@ -26,6 +28,7 @@ class ArticleCategory
      * @var string
      * 
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     protected $name;
 
@@ -38,11 +41,27 @@ class ArticleCategory
     protected $slug;
 
     /**
+     * @var ArrayCollection
+     * 
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="articleCategory")
+     */
+    protected $articles;
+
+    /**
      * @return string
      */
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * Constructor
+     * 
+     */
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
     }
 
     /**
@@ -97,5 +116,38 @@ class ArticleCategory
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    
+    /**
+     * Add articles
+     *
+     * @param \App\DemoBundle\Entity\ArticleCategory $articles
+     * @return ArticleCategory
+     */
+    public function addArticle(\App\DemoBundle\Entity\ArticleCategory $articles)
+    {
+        $this->articles[] = $articles;
+        return $this;
+    }
+
+    /**
+     * Remove articles
+     *
+     * @param \App\DemoBundle\Entity\ArticleCategory $articles
+     */
+    public function removeArticle(\App\DemoBundle\Entity\ArticleCategory $articles)
+    {
+        $this->articles->removeElement($articles);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 }

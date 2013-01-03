@@ -4,6 +4,7 @@ namespace App\DemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * App\DemoBundle\Entity\Article
@@ -26,6 +27,7 @@ class Article
      * @var string
      * 
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     protected $title;
 
@@ -33,6 +35,7 @@ class Article
      * @var string
      * 
      * @ORM\Column(name="body", type="text", nullable=false)
+     * @Assert\NotBlank()
      */
     protected $body;
 
@@ -40,6 +43,8 @@ class Article
      * @var \DateTime
      * 
      * @ORM\Column(name="publish_date", type="datetime", nullable=false)
+     * @Assert\NotBlank()
+     * @Assert\DateTime()
      */
     protected $publishDate;
 
@@ -51,16 +56,26 @@ class Article
     protected $publish;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
+     * @Gedmo\Slug(fields={"title"}, updatable=false)
+     */
+    protected $slug;
+
+    /**
      * @var integer
      * 
-     * @ORM\ManyToOne(targetEntity="ArticleCategory")
+     * @ORM\ManyToOne(targetEntity="ArticleCategory",inversedBy="articles")
      * @ORM\JoinColumn(name="article_category_id", referencedColumnName="id", nullable=false, onDelete="RESTRICT")
+     * @Assert\NotBlank()
+     * @Assert\Type(type="App\DemoBundle\Entity\ArticleCategory")
      */
     protected $articleCategory;
 
     /**
      * Constructor
-     * 
+     *
      */
     public function __construct()
     {
@@ -164,6 +179,28 @@ class Article
     public function getPublish()
     {
         return $this->publish;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Article
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**

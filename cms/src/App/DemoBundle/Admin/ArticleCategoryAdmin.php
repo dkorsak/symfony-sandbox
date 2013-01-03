@@ -2,6 +2,7 @@
 
 namespace App\DemoBundle\Admin;
 
+use Sonata\AdminBundle\Exception\ModelManagerException;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -55,5 +56,15 @@ class ArticleCategoryAdmin extends Admin
     {
         $datagridMapper
             ->add('name');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function preRemove($object)
+    {
+        if ($object->getArticles()->count() > 0) {
+            throw new ModelManagerException('Cannot delete category. Category is used.');
+        }
     }
 }
