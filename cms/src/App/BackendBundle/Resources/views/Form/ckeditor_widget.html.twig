@@ -1,0 +1,12 @@
+{% block app_backend_form_ckeditor_type_widget %}
+
+    <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+    <script type="text/javascript" src="{{ asset('bundles/appbackend/js/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript">
+    CKEDITOR.replace("{{ id }}",{
+        customConfig: '{{ asset(custom_config) }}',
+        language: '{{ language }}'
+    })
+    </script>
+
+{% endblock %}

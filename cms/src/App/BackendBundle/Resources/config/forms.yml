@@ -7,10 +7,3 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: app_backend_form_profile_profile_type }
-
-    # jquery date picker widget
-    app_backend.form.jquery_date_type:
-        class: App\BackendBundle\Form\Type\JQueryDateType
-        arguments: [%fos_user.model.user.class%]
-        tags:
-            - { name: form.type, alias: app_backend_form_jquery_date_type }

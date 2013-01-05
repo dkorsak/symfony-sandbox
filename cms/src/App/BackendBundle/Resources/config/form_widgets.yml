@@ -1,0 +1,14 @@
+# definition of all form widgets
+services:
+
+    # jquery date picker widget
+    app_backend.form.jquery_date_type:
+        class: App\BackendBundle\Form\Type\JQueryDateType
+        tags:
+            - { name: form.type, alias: app_backend_form_jquery_date_type }
+
+    # ckeditor widget
+    app_backend.form.ckeditor_type:
+        class: App\BackendBundle\Form\Type\CKEditorType
+        tags:
+            - { name: form.type, alias: app_backend_form_ckeditor_type }

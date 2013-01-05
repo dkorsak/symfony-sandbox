@@ -11,6 +11,14 @@ use Sonata\AdminBundle\Admin\Admin;
 class ArticleAdmin extends Admin
 {
     /**
+     * @var array
+     */
+    protected $datagridValues = array(
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'publishDate'
+    );
+
+    /**
      * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
@@ -22,7 +30,8 @@ class ArticleAdmin extends Admin
                 ->add('title')
                 ->add('publishDate', 'app_backend_form_jquery_date_type', array('label' => 'Publish date'))
                 ->add('publish', null, array('required' => false, 'help' => $this->trans('If checked, article will be visible')))
-                ->add('body', 'ckeditor')
+                //->add('body', 'ckeditor')// from external bundle
+                ->add('body', 'app_backend_form_ckeditor_type')
             ->end();
     }
 

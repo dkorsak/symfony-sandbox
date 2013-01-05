@@ -295,6 +295,6 @@ class UserAdmin extends Admin
      */
     private function generateRandomPassword()
     {
-        return substr(md5(time().rand(1, 10000)), 7, 8); 
+        return substr(md5(time().rand(1, 10000)), 7, 8);
     }
 }
