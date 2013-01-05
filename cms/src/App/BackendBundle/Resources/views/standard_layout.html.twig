@@ -32,6 +32,8 @@
 '@AppGeneralBundle/Resources/public/js/jquery.form.js'
 '@AppGeneralBundle/Resources/public/bootstrap/js/bootstrap.min.js'
 '@SonataAdminBundle/Resources/public/qtip/jquery.qtip-1.0.0-rc3.min.js'
+'@AppGeneralBundle/Resources/public/js/webshim/minified/extras/modernizr-custom.js'
+'@AppGeneralBundle/Resources/public/js/webshim/minified/polyfiller.js'
 '@SonataAdminBundle/Resources/public/base.js'
 '@AppBackendBundle/Resources/public/js/global.js'
 %}
@@ -39,12 +41,13 @@
 {% endjavascripts %}
 {% if form is defined %}{{ form_javascript(form) }}{% endif %}
 {% endblock %}
+<script type="text/javascript">
+$.webshims.setOptions({ basePath: "/bundles/appgeneral/js/webshim/minified/shims/", 'forms': { customMessages: true } });
+$.webshims.activeLang('pl');
+$.webshims.polyfill("forms forms-ext");
+</script>
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 <title>{{ admin_pool.title }} - {{ 'Admin'|trans({}, 'SonataAdminBundle') }}</title>
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
 </head>
 <body class="sonata-bc{% if _side_menu is empty %} sonata-ba-no-side-menu{% endif %}">
     <div id="wrap">
