@@ -29,7 +29,8 @@ class AppBackendExtension extends Extension
         $loader->load('form_widgets.yml');
         $loader->load('blocks.yml');
         
-        $container->setParameter('twig.form.resources',
+        $container->setParameter(
+            'twig.form.resources',
             array_merge(
                 $container->getParameter('twig.form.resources'),
                 array('AppBackendBundle:Form:ckeditor_widget.html.twig')
