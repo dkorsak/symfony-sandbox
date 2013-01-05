@@ -2,6 +2,7 @@
 
 namespace App\DemoBundle\Admin;
 
+use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -17,6 +18,7 @@ class ArticleAdmin extends Admin
         $formMapper
             ->with('General')
                 ->add('articleCategory', 'sonata_type_model', array('property' => 'name', 'empty_value' => 'Please select', 'label' => 'Category'))
+                ->add('tags', 'sonata_type_model', array('required' => false, 'expanded' => true, 'property' => 'name', 'by_reference' => false, 'multiple' => true))
                 ->add('title')
                 ->add('publishDate', 'app_backend_form_jquery_date_type', array('label' => 'Publish date'))
                 ->add('publish', null, array('required' => false, 'help' => $this->trans('If checked, article will be visible')))
@@ -31,7 +33,7 @@ class ArticleAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('title')
-            ->add('articleCategory', 'trans', array('label' => 'Category', 'template' => 'SonataAdminBundle::CRUD:base_list_field.html.twig'))
+            ->add('articleCategory.name', null, array('sortable' => true, 'label' => 'Category', 'template' => 'SonataAdminBundle::CRUD:base_list_field.html.twig'))
             ->add('publishDate', null, array('label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:list_date.html.twig'))
             ->add('publish', null, array("template" => "AppDemoBundle:Article:list_status.html.twig"))
             ->add(
@@ -56,7 +58,24 @@ class ArticleAdmin extends Admin
         $datagridMapper
             ->add('title')
             ->add('articleCategory', null, array('label' => 'Category'))
-            ->add('publishDate', null, array('label' => 'Publish date'))
-            ->add('publish', null, array());
+            ->add('publishDate', 'doctrine_orm_date', array('label' => 'Publish date'))
+            ->add('publish');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureShowField(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->with('General')
+                ->add('title')
+                ->add('articleCategory.name', null, array('label' => 'Category'))
+                ->add('tags', null, array('template' => 'AppDemoBundle:ArticleTag:show_orm_many_to_many.html.twig'))
+                ->add('publishDate', null, array('label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:show_date.html.twig'))
+            ->end()
+            ->with('Body')
+                ->add('body', null, array('template' => 'AppDemoBundle:Article:show_article_body.html.twig'))
+            ->end();
     }
 }

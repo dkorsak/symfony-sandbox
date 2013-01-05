@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field%}
+    <ul class="sonata-ba-show-many-to-many" style="list-style-type: none; margin-left: 0px;">
+        {% for element in value%}
+            <li>
+                {{ element|render_relation_element(field_description) }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

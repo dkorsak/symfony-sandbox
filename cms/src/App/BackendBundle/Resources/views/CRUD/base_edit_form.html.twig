@@ -51,27 +51,33 @@
                 <div class="well form-actions">
                     {% if app.request.isxmlhttprequest %}
                         {% if admin.id(object) %}
-                            <input type="submit" class="btn btn-primary" name="btn_update" value="{{ 'btn_update'|trans({}, 'SonataAdminBundle') }}"/>
+                            {# <input type="submit" class="btn btn-primary" name="btn_update" value="{{ 'btn_update'|trans({}, 'SonataAdminBundle') }}"/> #}
+                            <button type="submit" class="btn btn-primary" name="btn_update" value="btn_update"><i class="icon-edit icon-white"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}</button>
                         {% else %}
-                            <input type="submit" class="btn" name="btn_create" value="{{ 'btn_create'|trans({}, 'SonataAdminBundle') }}"/>
+                            {# <input type="submit" class="btn" name="btn_create" value="{{ 'btn_create'|trans({}, 'SonataAdminBundle') }}"/> #}
+                            <button type="submit" class="btn" name="btn_create" value="btn_create"><i class="icon-plus"></i> {{ 'btn_create'|trans({}, 'SonataAdminBundle') }}</button>
                         {% endif %}
                     {% else %}
                         {% if admin.supportsPreviewMode %}
                             <input class="btn btn-info persist-preview" name="btn_preview" type="submit" value="{{ 'btn_preview'|trans({}, 'SonataAdminBundle') }}"/>
                         {% endif %}
                         {% if admin.id(object) %}
-                            <input type="submit" class="btn btn-primary" name="btn_update_and_edit" value="{{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}"/>
-                            <input type="submit" class="btn" name="btn_update_and_list" value="{{ 'btn_update_and_return_to_list'|trans({}, 'SonataAdminBundle') }}"/>
+                            {# <input type="submit" class="btn btn-primary" name="btn_update_and_edit" value="{{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}"/> #}
+                            <button type="submit" class="btn btn-primary" name="btn_update_and_edit" value="btn_update_and_edit"><i class="icon-edit icon-white"></i> {{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
+                            {# <input type="submit" class="btn" name="btn_update_and_list" value="{{ 'btn_update_and_return_to_list'|trans({}, 'SonataAdminBundle') }}"/> #}
+                            <button type="submit" class="btn" name="btn_update_and_list" value="btn_update_and_list"><i class="icon-th-list"></i> {{ 'btn_update_and_return_to_list'|trans({}, 'SonataAdminBundle') }}</button>
 
                             {% if admin.hasroute('delete') and admin.isGranted('DELETE', object) %}
                                 {{ 'delete_or'|trans({}, 'SonataAdminBundle') }}
                                 <a class="btn btn-danger" href="{{ admin.generateObjectUrl('delete', object) }}"><i class="icon-trash icon-white"></i> {{ 'link_delete'|trans({}, 'SonataAdminBundle') }}</a>
                             {% endif %}
                         {% else %}
-                            <input class="btn btn-primary" type="submit" name="btn_create_and_edit" value="{{ 'btn_create_and_edit_again'|trans({}, 'SonataAdminBundle') }}"/>
-                            <input class="btn" type="submit" name="btn_create_and_create" value="{{ 'btn_create_and_create_a_new_one'|trans({}, 'SonataAdminBundle') }}"/>
+                            {# <input class="btn btn-primary" type="submit" name="btn_create_and_edit" value="{{ 'btn_create_and_edit_again'|trans({}, 'SonataAdminBundle') }}"/> #}
+                            <button type="submit" class="btn btn-primary" name="btn_create_and_edit" value="btn_create_and_edit"><i class="icon-edit icon-white"></i> {{ 'btn_create_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
+                            <button type="submit" class="btn" name="btn_create_and_create" value="btn_create_and_create"><i class="icon-plus"></i> {{ 'btn_create_and_create_a_new_one'|trans({}, 'SonataAdminBundle') }}</button>
+                            {# <input class="btn" type="submit" name="btn_create_and_create" value="{{ 'btn_create_and_create_a_new_one'|trans({}, 'SonataAdminBundle') }}"/> #}
                             {# <input type="submit" class="btn btn-primary" name="btn_update_and_list" value="{{ 'btn_update_and_return_to_list'|trans({}, 'SonataAdminBundle') }}"/> #}
-                            <button type="submit" class="btn btn-primary" value="btn_update_and_list"><i class="icon-th-list icon-white"></i> {{ 'btn_update_and_return_to_list'|trans({}, 'SonataAdminBundle') }}</button>
+                            <button type="submit" class="btn btn-primary" name="btn_update_and_list" value="btn_update_and_list"><i class="icon-th-list icon-white"></i> {{ 'btn_update_and_return_to_list'|trans({}, 'SonataAdminBundle') }}</button>
                         {% endif %}
                     {% endif %}
                 </div>

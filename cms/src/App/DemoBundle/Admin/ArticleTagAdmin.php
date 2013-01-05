@@ -7,16 +7,8 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Admin\Admin;
 
-class ArticleCategoryAdmin extends Admin
+class ArticleTagAdmin extends Admin
 {
-    /**
-     * @var array
-     */
-    protected $datagridValues = array(
-        '_sort_order' => 'ASC',
-        '_sort_by' => 'name'
-    );
-
     /**
      * {@inheritdoc}
      */

@@ -6,14 +6,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * App\DemoBundle\Entity\ArticleCategory
+ * App\DemoBundle\Entity\ArticleTag
  *
- * @ORM\Table(name="demo_article_category")
+ * @ORM\Table(name="demo_article_tag")
  * @ORM\Entity()
+ * @UniqueEntity(fields={"name"})
  */
-class ArticleCategory
+class ArticleTag
 {
     /**
      * @var integer
@@ -27,7 +29,7 @@ class ArticleCategory
     /**
      * @var string
      * 
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @ORM\Column(name="name", type="string", length=255, nullable=false, unique=true)
      * @Assert\NotBlank()
      */
     protected $name;
@@ -43,13 +45,12 @@ class ArticleCategory
     /**
      * @var ArrayCollection
      * 
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="articleCategory")
+     * @ORM\ManyToMany(targetEntity="Article", mappedBy="tags")
      */
     protected $articles;
 
     /**
      * Constructor
-     * 
      */
     public function __construct()
     {
@@ -61,7 +62,7 @@ class ArticleCategory
      */
     public function __toString()
     {
-        return $this->name;
+        return $this->getName();
     }
 
     /**
@@ -78,7 +79,7 @@ class ArticleCategory
      * Set name
      *
      * @param string $name
-     * @return ArticleCategory
+     * @return ArticleTag
      */
     public function setName($name)
     {
@@ -100,7 +101,7 @@ class ArticleCategory
      * Set slug
      *
      * @param string $slug
-     * @return ArticleCategory
+     * @return ArticleTag
      */
     public function setSlug($slug)
     {
@@ -111,21 +112,20 @@ class ArticleCategory
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
         return $this->slug;
     }
 
-    
     /**
      * Add articles
      *
-     * @param \App\DemoBundle\Entity\ArticleCategory $articles
-     * @return ArticleCategory
+     * @param \App\DemoBundle\Entity\Article $articles
+     * @return ArticleTag
      */
-    public function addArticle(\App\DemoBundle\Entity\ArticleCategory $articles)
+    public function addArticle(\App\DemoBundle\Entity\Article $articles)
     {
         $this->articles[] = $articles;
         return $this;
@@ -134,9 +134,9 @@ class ArticleCategory
     /**
      * Remove articles
      *
-     * @param \App\DemoBundle\Entity\ArticleCategory $articles
+     * @param \App\DemoBundle\Entity\Article $articles
      */
-    public function removeArticle(\App\DemoBundle\Entity\ArticleCategory $articles)
+    public function removeArticle(\App\DemoBundle\Entity\Article $articles)
     {
         $this->articles->removeElement($articles);
     }
@@ -144,7 +144,7 @@ class ArticleCategory
     /**
      * Get articles
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getArticles()
     {

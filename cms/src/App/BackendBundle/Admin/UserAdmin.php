@@ -253,7 +253,7 @@ class UserAdmin extends Admin
                 "doctrine_orm_callback",
                 array(
                     'callback' => 
-                        function($queryBuilder, $alias, $field, $value) {
+                        function ($queryBuilder, $alias, $field, $value) {
                             if (!$value || $value['value'] == "") {
                                 return;
                             }

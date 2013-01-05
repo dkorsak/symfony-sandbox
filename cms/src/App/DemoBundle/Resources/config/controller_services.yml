@@ -9,6 +9,14 @@ services:
         calls:
             - [ setTranslationDomain, ["article_category"] ]
 
+    app_demo.admin.article_tag_admin:
+        class: App\DemoBundle\Admin\ArticleTagAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Demo, label: Article tags }
+        arguments: [null, App\DemoBundle\Entity\ArticleTag, AppDemoBundle:ArticleTagAdmin]
+        calls:
+            - [ setTranslationDomain, ["article_tag"] ]
+
     app_demo.admin.article_admin:
         class: App\DemoBundle\Admin\ArticleAdmin
         tags:

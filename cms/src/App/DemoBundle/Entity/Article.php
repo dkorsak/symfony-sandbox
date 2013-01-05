@@ -2,6 +2,7 @@
 
 namespace App\DemoBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -74,6 +75,17 @@ class Article
     protected $articleCategory;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="ArticleTag", inversedBy="articles")
+     * @ORM\JoinTable(name="demo_article_to_article_tag",
+     *     joinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)}
+     * )
+     */
+    protected $tags;
+
+    /**
      * Constructor
      *
      */
@@ -81,6 +93,7 @@ class Article
     {
         $this->publishDate = new \DateTime();
         $this->publish = true;
+        $this->tags = new ArrayCollection();
     }
 
     /**
@@ -223,5 +236,37 @@ class Article
     public function getArticleCategory()
     {
         return $this->articleCategory;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \App\DemoBundle\Entity\ArticleTag $tags
+     * @return Article
+     */
+    public function addTag(\App\DemoBundle\Entity\ArticleTag $tags)
+    {
+        $this->tags[] = $tags;
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \App\DemoBundle\Entity\ArticleTag $tags
+     */
+    public function removeTag(\App\DemoBundle\Entity\ArticleTag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

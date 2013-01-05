@@ -146,7 +146,8 @@
                                 {{ 'all_elements'|trans({}, 'SonataAdminBundle') }}
                             </label>
 
-                            <input type="submit" class="btn btn-primary" value="{{ 'btn_batch'|trans({}, 'SonataAdminBundle') }}" />
+                            {# <input type="submit" class="btn btn-primary" value="{{ 'btn_batch'|trans({}, 'SonataAdminBundle') }}" /> #}
+                            <button type="submit" class="btn btn-primary"><i class="icon-tasks icon-white"></i> {{ 'btn_batch'|trans({}, 'SonataAdminBundle') }}</button>
                         {% endblock %}
                     </div>
                 {% endblock %}
@@ -191,10 +192,9 @@
 
                     {% set foo = form.children['_page'].setRendered() %}
                     {{ form_rest(form) }}
-
-                    <input type="submit" class="btn btn-primary" value="{{ 'btn_filter'|trans({}, 'SonataAdminBundle') }}" />
-
-                    <a class="btn" href="{{ admin.generateUrl('list', {filters: 'reset'}) }}">{{ 'link_reset_filter'|trans({}, 'SonataAdminBundle') }}</a>
+                    <button type="submit" class="btn btn-primary"><i class="icon-filter icon-white"></i> {{ 'btn_filter'|trans({}, 'SonataAdminBundle') }}</button>
+                    {# <input type="submit" class="btn btn-primary" value="{{ 'btn_filter'|trans({}, 'SonataAdminBundle') }}" /> #}
+                    <a class="btn" href="{{ admin.generateUrl('list', {filters: 'reset'}) }}"><i class="icon-remove"></i> {{ 'link_reset_filter'|trans({}, 'SonataAdminBundle') }}</a>
 
                 
             </fieldset>
