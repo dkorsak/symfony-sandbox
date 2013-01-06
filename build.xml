@@ -5,10 +5,11 @@
   ###################### PARAMETERS ######################################
 
   -Denv=               - set environment. Default value is "dev".
-  -Ddebug=             - display test result (phpcs and phpmd) on the screen 
+  -Ddebug=             - display test result (phpcs and phpmd) on the screen.
                          instead of write to file. Default value is "true".
   -Dtarget=            - read configuration from /app/config/parameters.{target}.ini
                          file.
+  -Dbundle=            - bundle name for behat tests (frontend, backend).
 
   ###################### SYMFONY #########################################
 
@@ -17,7 +18,7 @@
             
   cc                   - clear all cache file, dump all assets.
 
-  composer             - execute composer.phar (update vendor directory)
+  composer             - execute composer.phar (update vendor directory).
 
   build                - build local project (composer, clear cache, build.db)
 
@@ -28,7 +29,8 @@
 
   phpunit              - execute phpunit tests with code coverage report.
 
-  behat                - execute E2E (selenium) bahat tests.
+  behat                - execute E2E (selenium) bahat tests for given -Dbundle=
+                         parameter. Default bundle="".
             
   ###################### CODING STANDARDS ################################
 

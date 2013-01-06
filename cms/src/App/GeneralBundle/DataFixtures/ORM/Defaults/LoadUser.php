@@ -31,7 +31,7 @@ class LoadUser extends YamlFixtures implements OrderedFixtureInterface, Containe
 
     public function getOrder()
     {
-        return 1;
+        return 10;
     }
 
     public function getModelFile()

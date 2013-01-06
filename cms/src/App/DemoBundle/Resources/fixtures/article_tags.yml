@@ -1,0 +1,14 @@
+ArticleTag1:
+    name: PHP
+
+ArticleTag2:
+    name: JavaScript
+
+ArticleTag3:
+    name: Inne
+
+ArticleTag4:
+    name: Ruby on Rails
+
+ArticleTag5:
+    name: Symfony 2

@@ -1,0 +1,9 @@
+Article1:
+    title: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    body: "<p>Sed ullamcorper urna vehicula nibh adipiscing aliquet. </p><p>Nunc nunc ipsum, tincidunt ac auctor vitae, ornare sed sapien. Fusce congue ultrices gravida. Quisque augue erat, laoreet nec aliquam ac, bibendum id est. Etiam volutpat quam ut massa auctor dignissim. Nullam odio turpis, rhoncus vel egestas sit amet, suscipit et urna. Vestibulum elementum molestie est in bibendum. Sed ultricies consectetur aliquet. Aliquam sed massa lacus. In orci turpis, facilisis id tempus eu, dapibus vitae nisi. Aliquam elementum tristique dictum. Vestibulum scelerisque auctor mi, id luctus odio elementum id. Curabitur in nunc sed nisl commodo lobortis quis at nisl. Etiam egestas ultricies nulla, a cursus ipsum imperdiet non. Proin non justo vel dui consectetur mattis.</p>"
+    article_category_id: ArticleCategory1
+    tags:
+        - ArticleTag1
+        - ArticleTag2
+        - ArticleTag3
+

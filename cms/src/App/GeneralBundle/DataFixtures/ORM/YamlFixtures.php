@@ -40,7 +40,7 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
      */
     public function getModelFixtures()
     {
-        $fixturesPath = $this->container->get('kernel')->getBundle('AppGeneralBundle')->getPath();
+        $fixturesPath = $this->container->get('kernel')->getBundle($this->getBundle())->getPath();
         $fixturesPath .= '/Resources/fixtures';
         $fixtures = Yaml::parse(file_get_contents($fixturesPath. '/'. $this->getModelFile(). '.yml'));
         return $fixtures;
@@ -52,7 +52,7 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
      * @param object $object
      * @param array $array
      */
-    public function fromArray($object, $array)
+    protected function fromArray($object, $array)
     {
         foreach ($array as $key => $value) {
             $method = 'set' . str_replace(" ", "", ucfirst(str_replace("_", " ", $key)));
@@ -60,5 +60,13 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
                 $object->$method($value);
             }
         }
+    }
+
+    /**
+     * @return string`
+     */
+    protected function getBundle()
+    {
+        return 'AppGeneralBundle';
     }
 } 

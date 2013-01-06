@@ -256,26 +256,10 @@ sonata_seo:
     head:
         'lang':     'en'
         #'xmlns:og':           http://opengraphprotocol.org/schema/
-        #'xmlns:fb':           "http://www.facebook.com/2008/fbml"            
+        #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
 
 genemu_form:
     date: ~
-
-trsteel_ckeditor:
-    skin: kama
-    startup_outline_blocks: false
-    toolbar: ['document', 'clipboard', 'editing', 'tools', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'colors']
-    toolbar_groups:
-        document: ['Source','-','Save','-','Templates']
-        clipboard: ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo']
-        editing: ['Find','Replace','-','SelectAll']
-        basicstyles: ['Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat']
-        paragraph: ['NumberedList','BulletedList','-','Outdent','Indent','-','JustifyLeft', 'JustifyCenter','JustifyRight','JustifyBlock']
-        links: ['Link','Unlink','Anchor']
-        insert: ['Image','Flash','Table','HorizontalRule','SpecialChar']
-        styles: ['Styles','Format', 'Font','FontSize']
-        tools: ['Maximize', 'ShowBlocks']
-        colors: ['TextColor','BGColor' ]
 
 parameters:
     # symfony pdo session database params

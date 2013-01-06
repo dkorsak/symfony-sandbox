@@ -2,6 +2,8 @@
 
 namespace App\DemoBundle\Admin;
 
+use Sonata\AdminBundle\Form\Type\BooleanType;
+
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -30,8 +32,8 @@ class ArticleAdmin extends Admin
                 ->add('title')
                 ->add('publishDate', 'app_backend_form_jquery_date_type', array('label' => 'Publish date'))
                 ->add('publish', null, array('required' => false, 'help' => $this->trans('If checked, article will be visible')))
-                //->add('body', 'ckeditor')// from external bundle
                 ->add('body', 'app_backend_form_ckeditor_type')
+                ->add('uploadedImage', 'file', array('required' => false))
             ->end();
     }
 
@@ -68,7 +70,7 @@ class ArticleAdmin extends Admin
             ->add('title')
             ->add('articleCategory', null, array('label' => 'Category'))
             ->add('publishDate', 'doctrine_orm_date', array('label' => 'Publish date'))
-            ->add('publish');
+            ->add('publish', null, array('field_options' => array('catalogue' => 'article', 'choices' => array(BooleanType::TYPE_NO => 'Disabled', BooleanType::TYPE_YES => 'Published'))));
     }
 
     /**

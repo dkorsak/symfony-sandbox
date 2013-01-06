@@ -2,6 +2,8 @@
 
 namespace App\DemoBundle\Entity;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -65,7 +67,14 @@ class Article
     protected $slug;
 
     /**
-     * @var integer
+     * @var string
+     * 
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    protected $image;
+
+    /**
+     * @var ArticleCategory
      * 
      * @ORM\ManyToOne(targetEntity="ArticleCategory",inversedBy="articles")
      * @ORM\JoinColumn(name="article_category_id", referencedColumnName="id", nullable=false, onDelete="RESTRICT")
@@ -84,6 +93,13 @@ class Article
      * )
      */
     protected $tags;
+
+    /**
+     * @var UploadedFile
+     * 
+     * @Assert\Image()
+     */
+    protected $uploadedImage;
 
     /**
      * Constructor
@@ -217,6 +233,28 @@ class Article
     }
 
     /**
+     * Set image
+     *
+     * @param string $image
+     * @return Article
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
      * Set articleCategory
      *
      * @param \App\DemoBundle\Entity\ArticleCategory $articleCategory
@@ -268,5 +306,27 @@ class Article
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set uploadedImage
+     * 
+     * @param UploadedFile $uploadedImage
+     * @return Article
+     */
+    public function setUploadedImage(UploadedFile $uploadedImage)
+    {
+        $this->uploadedImage = $uploadedImage;
+        return $this;
+    }
+
+    /**
+     * Get uploadedImage
+     * 
+     * @return UploadedFile
+     */
+    public function getUploadedImage()
+    {
+        return $this->uploadedImage;
     }
 }

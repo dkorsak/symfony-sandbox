@@ -25,7 +25,8 @@ class CKEditorType extends AbstractType
     {
         $defaultValues = array(
             'custom_config' => 'bundles/appbackend/js/ckeditor_config.js',
-            'language' => $this->getCKEditorCulture()
+            'language' => $this->getCKEditorCulture(),
+            'required' => false
         );
         $resolver->setDefaults($defaultValues);
     }

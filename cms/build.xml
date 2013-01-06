@@ -2,6 +2,7 @@
 <project name="Content Management System" default="" basedir=".">
     <property name="java.lib" value="java/lib" />
     <property name="target" value=""/>
+    <property name="bundle" value=""/>
     <property name="env" value="dev"/>
     <property name="debug" value="true"/>
     <property name="selenium.jar" value="${java.lib}/selenium-server-standalone-2.25.0.jar" />
@@ -20,7 +21,7 @@
             <exec executable="php" dir="@{destination}"><arg line="app/console cache:clear --env=@{env} --no-debug" /></exec>
         </sequential>
     </macrodef>
-        
+
     <macrodef name="build.db">
         <attribute name="env" default="${env}"/>
         <attribute name="destination" default="cms"/>
@@ -81,6 +82,7 @@
                     <exec executable="php" dir="@{destination}"><arg line="app/console assetic:dump --env=@{env} --no-debug" /></exec>
                 </then>
             </if>
+            <create.web.dirs destination="@{destination}"/>
         </sequential>
     </macrodef>
 
@@ -175,6 +177,7 @@
                 <exclude name="bin/**"/>
                 <exclude name="app/logs/**"/>
                 <exclude name="web/bundles/**"/>
+                <exclude name="web/uploads/**"/>
                 <exclude name="web/app_dev.php"/>
                 <exclude name="web/app_test.php"/>
                 <exclude name="web/config.php"/>
@@ -219,7 +222,8 @@
             <if>
                 <equals arg1="${deploy.execute.behat}" arg2="true"/>
                 <then>
-                    <behat/>
+                    <behat bundle="frontend"/>
+                    <behat bundle="backend"/>
                 </then>
             </if>
             <if>
@@ -239,17 +243,32 @@
 
     <macrodef name="behat">
         <attribute name="destination" default="cms"/>
+        <attribute name="bundle" default=""/>
         <sequential>
             <copy overwrite="true" file="${basedir}/cms/behat-template.yml" tofile="@{destination}/behat.yml">
                 <filterset filtersfile="${parameters-file-path}"/>
             </copy>
             <replace file="@{destination}/behat.yml" token="@file_path@" value="${basedir}" />
             <antcall target="start-server" />
-            <echo>ANT DEBUG: Executing behat tests - frontend</echo>
-            <exec executable="php" dir="@{destination}"><arg line="bin/behat -p frontend -f pretty,junit --out ,'${basedir}/test_result/behat'"/></exec>
-            <echo>ANT DEBUG: Executing behat tests - backend</echo>
-            <exec executable="php" dir="@{destination}"><arg line="bin/behat -p backend -f pretty,junit --out ,'${basedir}/test_result/behat'"/></exec>
+            <echo>ANT DEBUG: Executing behat tests - @{bundle}</echo>
+            <exec executable="php" dir="@{destination}"><arg line="bin/behat -p @{bundle} -f pretty,junit --out ,'${basedir}/test_result/behat'"/></exec>
             <antcall target="stop-server" />
+        </sequential>
+    </macrodef>
+
+    <macrodef name="create.web.dirs">
+        <attribute name="destination" default="cms"/>
+        <sequential>
+            <if>
+                <not>
+                    <available file="@{destination}/web/uploads"/>
+                </not>
+                <then>
+                    <echo>ANT DEBUG: Creating @{destination}/web/uploads dir</echo>
+                    <mkdir dir="@{destination}/web/uploads"/>
+                    <chmod dir="@{destination}/web/uploads" perm="777"/>
+                </then>
+            </if>
         </sequential>
     </macrodef>
 
@@ -288,8 +307,8 @@
             <arg line="-port ${selenium.port}"/>
             <arg line="-log '${basedir}/test_result/selenium-server.log'"/>
         </java>
-        <echo>ANT DEBUG: Waiting 30 seconds for selenium up</echo>
-        <sleep seconds="30"/>
+        <echo>ANT DEBUG: Waiting ${selenium.wait} seconds for selenium server up</echo>
+        <sleep seconds="${selenium.wait}"/>
    </target>
 
     <target name="stop-server">
@@ -298,15 +317,15 @@
             src="http://localhost:${selenium.port}/selenium-server/driver/?cmd=shutDownSeleniumServer"
             dest="${basedir}/test_result/selenium-server-shutdown.log" 
             ignoreerrors="true" />
-        <echo taskname="selenium-shutdown" message="DGF Errors during shutdown are expected" />
+        <sleep seconds="2"/>
     </target>
 
     <!--- ################################ TASKS ############################################################### -->
-    
+
     <target name="composer" depends="check" description="Update symfony vendor directory">
         <if>
             <not>
-            <available file="${basedir}/cms/composer.phar"/>
+                <available file="${basedir}/cms/composer.phar"/>
             </not>
             <then>
                 <echo>ANT DEBUG: Downloading composer</echo>
@@ -358,6 +377,15 @@
     </target>
 
     <target name="behat" depends="check, clean-test-result-directory">
-        <behat/>
+        <if>
+            <equals arg1="${bundle}" arg2=""/>
+            <then>
+                <behat bundle="frontend"/>
+                <behat bundle="backend"/>
+            </then>
+            <else>
+                <behat bundle="${bundle}"/>
+            </else>
+        </if>
     </target>
 </project>
