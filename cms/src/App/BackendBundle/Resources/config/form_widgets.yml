@@ -12,3 +12,9 @@ services:
         class: App\BackendBundle\Form\Type\CKEditorType
         tags:
             - { name: form.type, alias: app_backend_form_ckeditor_type }
+
+    # file widget with uploaded image preview
+    app_backend.form.upload_image_type:
+        class: App\BackendBundle\Form\Type\UploadImageType
+        tags:
+            - { name: form.type, alias: app_backend_form_upload_image_type }

@@ -33,7 +33,10 @@ class AppBackendExtension extends Extension
             'twig.form.resources',
             array_merge(
                 $container->getParameter('twig.form.resources'),
-                array('AppBackendBundle:Form:ckeditor_widget.html.twig')
+                array(
+                    'AppBackendBundle:Form:ckeditor_widget.html.twig',
+                    'AppBackendBundle:Form:upload_image_widget.html.twig'
+                )
             )
         );
     }

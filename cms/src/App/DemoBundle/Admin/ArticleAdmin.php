@@ -2,8 +2,8 @@
 
 namespace App\DemoBundle\Admin;
 
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Sonata\AdminBundle\Form\Type\BooleanType;
-
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -13,12 +13,41 @@ use Sonata\AdminBundle\Admin\Admin;
 class ArticleAdmin extends Admin
 {
     /**
+     * @var CacheManager $imageCacheManager
+     */
+    protected $imageCacheManager;
+
+    /**
      * @var array
      */
     protected $datagridValues = array(
         '_sort_order' => 'DESC',
         '_sort_by' => 'publishDate'
     );
+
+    /**
+     * @param CacheManager $imageCacheManager
+     */
+    public function setImageCacheManager(CacheManager $imageCacheManager)
+    {
+        $this->imageCacheManager = $imageCacheManager;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function postUpdate($object)
+    {
+        $this->imageCacheManager->remove('articles/' . $object->getImage(), 'article_thumb');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function postRemove($object)
+    {
+        $this->imageCacheManager->remove('articles/' . $object->getImage(), 'article_thumb');
+    }
 
     /**
      * {@inheritdoc}
@@ -33,7 +62,7 @@ class ArticleAdmin extends Admin
                 ->add('publishDate', 'app_backend_form_jquery_date_type', array('label' => 'Publish date'))
                 ->add('publish', null, array('required' => false, 'help' => $this->trans('If checked, article will be visible')))
                 ->add('body', 'app_backend_form_ckeditor_type')
-                ->add('uploadedImage', 'file', array('required' => false))
+                ->add('uploadedImage', 'app_backend_form_upload_image_type', array('required' => false))
             ->end();
     }
 
@@ -84,6 +113,7 @@ class ArticleAdmin extends Admin
                 ->add('articleCategory.name', null, array('label' => 'Category'))
                 ->add('tags', null, array('template' => 'AppDemoBundle:ArticleTag:show_orm_many_to_many.html.twig'))
                 ->add('publishDate', null, array('label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:show_date.html.twig'))
+                ->add('image', null, array('label' => 'Uploaded Image', 'template' => 'AppDemoBundle:Article:show_image.html.twig'))
             ->end()
             ->with('Body')
                 ->add('body', null, array('template' => 'AppDemoBundle:Article:show_article_body.html.twig'))

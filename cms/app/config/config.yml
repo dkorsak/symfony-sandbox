@@ -258,8 +258,49 @@ sonata_seo:
         #'xmlns:og':           http://opengraphprotocol.org/schema/
         #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
 
+# Genmenu form configuration
 genemu_form:
     date: ~
+
+#Vich uploader configuration
+vich_uploader:
+    db_driver: orm # or mongodb
+    gaufrette: true
+    storage: vich_uploader.storage.gaufrette
+    mappings:
+        article_image:
+            uri_prefix: /uploads/articles
+            upload_destination: article_image_fs
+            namer: app_demo.vich.namer.article_image_namer
+            delete_on_remove: true
+            inject_on_load: true
+
+# Gaufrette configuration
+knp_gaufrette:
+    adapters:
+        article_adaper:
+            local:
+                directory: %kernel.root_dir%/../web/uploads/articles
+
+    filesystems:
+        article_image_fs:
+            adapter:    article_adaper
+
+# Lipp imagine configuration
+liip_imagine:
+    driver:               gd #gd, imagick, gmagick
+    web_root:             %kernel.root_dir%/../web
+    data_root:            %kernel.root_dir%/../web/uploads
+    cache_mkdir_mode:     0777
+    cache_prefix:         /uploads/cache
+    cache:                web_path
+    cache_clearer:        false
+    data_loader:          filesystem
+    controller_action:    liip_imagine.controller:filterAction
+    filter_sets:
+        article_thumb:
+            filters:
+                relative_resize: { scale: 0.5 }
 
 parameters:
     # symfony pdo session database params

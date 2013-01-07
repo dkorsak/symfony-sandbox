@@ -26,4 +26,7 @@ sonata_user:
 app_backend_homepage:
     pattern:  /admin
     defaults: { _controller: SonataUserBundle:AdminSecurity:login }
-        
+
+_imagine:
+    resource: .
+    type:     imagine

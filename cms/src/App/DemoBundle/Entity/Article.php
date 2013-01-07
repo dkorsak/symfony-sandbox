@@ -3,17 +3,18 @@
 namespace App\DemoBundle\Entity;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * App\DemoBundle\Entity\Article
  *
  * @ORM\Table(name="demo_article")
  * @ORM\Entity()
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -98,6 +99,7 @@ class Article
      * @var UploadedFile
      * 
      * @Assert\Image()
+     * @Vich\UploadableField(mapping="article_image", fileNameProperty="image")
      */
     protected $uploadedImage;
 
@@ -314,7 +316,7 @@ class Article
      * @param UploadedFile $uploadedImage
      * @return Article
      */
-    public function setUploadedImage(UploadedFile $uploadedImage)
+    public function setUploadedImage(UploadedFile $uploadedImage = null)
     {
         $this->uploadedImage = $uploadedImage;
         return $this;

@@ -1,0 +1,11 @@
+{% block app_backend_form_upload_image_type_widget %}
+
+    {{ form_widget(form) }}
+    <div>
+    {% if form.parent.vars.data.image %}
+        {%  set name = 'articles/'~form.parent.vars.data.image %}
+    <img src="{{ name|imagine_filter('article_thumb') }}" alt="" />
+    {% endif %}
+    </div>
+
+{% endblock %}

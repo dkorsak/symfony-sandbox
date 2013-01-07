@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+{% spaceless %}
+    {% if value %}
+    <img src="{{ vich_uploader_asset(object, 'uploadedImage') }}" alt="" />
+    {% else %}
+    &nbsp;
+    {% endif %}
+{% endspaceless %}
+{% endblock %}

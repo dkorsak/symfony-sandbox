@@ -24,3 +24,4 @@ services:
         arguments: [null, App\DemoBundle\Entity\Article, AppDemoBundle:ArticleAdmin]
         calls:
             - [ setTranslationDomain, ["article"] ]
+            - [ setImageCacheManager, [@liip_imagine.cache.manager] ]
