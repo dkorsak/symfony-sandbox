@@ -173,35 +173,33 @@
             </div>
             <h2>{{ 'label_filters'|trans({}, 'SonataAdminBundle') }}</h2>
             </div>
-        <div class="filter_container {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}">    
-        <div class="box-content">
-        <form class="sonata-filter-form {{ admin.isChild and 1 == admin.datagrid.filters|length ? 'hide' : '' }}" action="{{ admin.generateUrl('list') }}" method="GET" style="margin-bottom: 0px;">
-            <fieldset class="filter_legend" style="border: none;">
-                
-                    <table class="table table-bordered" style="margin-top: 0px; width: 100%">
-                        {% for filter in admin.datagrid.filters %}
-                        <tr id="filter_{{ filter.name }}_row" class="filter {{ filter.isActive ? 'active' : 'inactive' }}">
-                                <td class="filter-title">{{ admin.trans(filter.label) }}</td>
-                                <td class="filter-type">{{ form_widget(form.children[filter.formName].children['type']) }}</td>
-                                <td class="filter-value">{{ form_widget(form.children[filter.formName].children['value']) }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
+            <div class="filter_container {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}" style="display: {% if admin.datagrid.hasActiveFilters %}block{% else %}none;{% endif %}">
+                <div class="box-content">
+                <form class="sonata-filter-form {{ admin.isChild and 1 == admin.datagrid.filters|length ? 'hide' : '' }}" action="{{ admin.generateUrl('list') }}" method="GET" style="margin-bottom: 0px;">
+                    <fieldset class="filter_legend" style="border: none;">
 
-                    <input type="hidden" name="filter[_page]" id="filter__page" value="1" />
+                            <table class="table table-bordered" style="margin-top: 0px; width: 100%">
+                                {% for filter in admin.datagrid.filters %}
+                                <tr id="filter_{{ filter.name }}_row" class="filter {{ filter.isActive ? 'active' : 'inactive' }}">
+                                    <td class="filter-title">{{ admin.trans(filter.label) }}</td>
+                                    <td class="filter-type">{{ form_widget(form.children[filter.formName].children['type']) }}</td>
+                                    <td class="filter-value">{{ form_widget(form.children[filter.formName].children['value']) }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
 
-                    {% set foo = form.children['_page'].setRendered() %}
-                    {{ form_rest(form) }}
-                    <button type="submit" class="btn btn-primary"><i class="icon-filter icon-white"></i> {{ 'btn_filter'|trans({}, 'SonataAdminBundle') }}</button>
-                    {# <input type="submit" class="btn btn-primary" value="{{ 'btn_filter'|trans({}, 'SonataAdminBundle') }}" /> #}
-                    <a class="btn" href="{{ admin.generateUrl('list', {filters: 'reset'}) }}"><i class="icon-remove"></i> {{ 'link_reset_filter'|trans({}, 'SonataAdminBundle') }}</a>
+                            <input type="hidden" name="filter[_page]" id="filter__page" value="1" />
 
-                
-            </fieldset>
+                            {% set foo = form.children['_page'].setRendered() %}
+                            {{ form_rest(form) }}
+                            <button type="submit" class="btn btn-primary"><i class="icon-filter icon-white"></i> {{ 'btn_filter'|trans({}, 'SonataAdminBundle') }}</button>
+                            {# <input type="submit" class="btn btn-primary" value="{{ 'btn_filter'|trans({}, 'SonataAdminBundle') }}" /> #}
+                            <a class="btn" href="{{ admin.generateUrl('list', {filters: 'reset'}) }}"><i class="icon-remove"></i> {{ 'link_reset_filter'|trans({}, 'SonataAdminBundle') }}</a>
 
-        </form>
+                    </fieldset>
+                </form>
+                </div>
+            </div>
         </div>
-        </div></div>
     {% endif %}
 {% endblock %}
-

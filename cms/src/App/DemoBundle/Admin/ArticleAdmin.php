@@ -2,6 +2,7 @@
 
 namespace App\DemoBundle\Admin;
 
+use App\DemoBundle\Entity\Article;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Sonata\AdminBundle\Form\Type\BooleanType;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -38,7 +39,7 @@ class ArticleAdmin extends Admin
      */
     public function postUpdate($object)
     {
-        $this->imageCacheManager->remove('articles/' . $object->getImage(), 'article_thumb');
+        $this->deleteAssets($object);
     }
 
     /**
@@ -46,7 +47,7 @@ class ArticleAdmin extends Admin
      */
     public function postRemove($object)
     {
-        $this->imageCacheManager->remove('articles/' . $object->getImage(), 'article_thumb');
+        $this->deleteAssets($object);
     }
 
     /**
@@ -62,7 +63,7 @@ class ArticleAdmin extends Admin
                 ->add('publishDate', 'app_backend_form_jquery_date_type', array('label' => 'Publish date'))
                 ->add('publish', null, array('required' => false, 'help' => $this->trans('If checked, article will be visible')))
                 ->add('body', 'app_backend_form_ckeditor_type')
-                ->add('uploadedImage', 'app_backend_form_upload_image_type', array('required' => false))
+                ->add('uploadedImage', 'liip_imagine_image', array('required' => false, 'image_filter' => 'article_thumb', 'image_path' => $this->getSubject()->getFullImagePath()))
             ->end();
     }
 
@@ -118,5 +119,17 @@ class ArticleAdmin extends Admin
             ->with('Body')
                 ->add('body', null, array('template' => 'AppDemoBundle:Article:show_article_body.html.twig'))
             ->end();
+    }
+
+    /**
+     * Delete all object assets from cache
+     * 
+     * @param Article $object
+     */
+    private function deleteAssets(Article $object)
+    {
+        if ($object->getFullImagePath() != "") {
+            $this->imageCacheManager->remove($object->getFullImagePath(), 'article_thumb');
+        }
     }
 }

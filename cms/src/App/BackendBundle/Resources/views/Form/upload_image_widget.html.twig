@@ -1,11 +1,16 @@
-{% block app_backend_form_upload_image_type_widget %}
-
+{% block app_backend_form_vich_upload_image_type_widget %}
+{# <img src="{{ vich_uploader_asset(object, 'uploadedImage') }}" alt="" /> #}
     {{ form_widget(form) }}
     <div>
     {% if form.parent.vars.data.image %}
-        {%  set name = 'articles/'~form.parent.vars.data.image %}
-    <img src="{{ name|imagine_filter('article_thumb') }}" alt="" />
+    <img src="{{ form.parent.vars.data.image|imagine_filter('article_thumb', false) }}" alt="" />
     {% endif %}
     </div>
-
+{#
+if (filer) {
+    path|imagine_filter(filter)
+} else {
+    vich_uploader_asset(data, 'name')
+}
+#}
 {% endblock %}

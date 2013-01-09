@@ -281,7 +281,6 @@ knp_gaufrette:
         article_adaper:
             local:
                 directory: %kernel.root_dir%/../web/uploads/articles
-
     filesystems:
         article_image_fs:
             adapter:    article_adaper
@@ -294,7 +293,7 @@ liip_imagine:
     cache_mkdir_mode:     0777
     cache_prefix:         /uploads/cache
     cache:                web_path
-    cache_clearer:        false
+    cache_clearer:        true
     data_loader:          filesystem
     controller_action:    liip_imagine.controller:filterAction
     filter_sets:

@@ -18,6 +18,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Article
 {
+    const IMAGE_UPLOAD_DIR = 'articles';
+
     /**
      * @var integer
      * 
@@ -330,5 +332,25 @@ class Article
     public function getUploadedImage()
     {
         return $this->uploadedImage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageUploadDir()
+    {
+        return self::IMAGE_UPLOAD_DIR;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullImagePath()
+    {
+        if ($this->getImage() != "") {
+            return $this->getImageUploadDir() . DIRECTORY_SEPARATOR . $this->getImage();
+        }
+
+        return "";
     }
 }
