@@ -15,7 +15,7 @@
 
   build.db             - build database (drop, create, load fixtures)
                          for given -Denv= environment.
-            
+
   cc                   - clear all cache file, dump all assets.
 
   composer             - execute composer.phar (update vendor directory).

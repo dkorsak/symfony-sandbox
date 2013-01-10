@@ -23,6 +23,7 @@ class FormatExtension extends \Twig_Extension
             'percentage' => new \Twig_Function_Method($this, 'getPercentage')
         );
     }
+
     /**
      * Convert bytes into kB, MB, GB
      * 

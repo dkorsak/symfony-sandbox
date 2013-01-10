@@ -126,12 +126,12 @@
                 <equals arg1="@{debug}" arg2="true" />
                 <then>
                     <exec executable="phpmd" dir="@{destination}/src" failonerror="off">
-                        <arg line=". xml codesize,unusedcode,design" />
+                        <arg line=". xml codesize,unusedcode,design --exclude /App/BackendBundle/Resources" />
                     </exec>
                 </then>
                 <else>
                     <exec executable="phpmd" dir="@{destination}/src" failonerror="off">
-                        <arg line=". xml codesize,unusedcode,design --reportfile '${basedir}/test_result/pmd.xml'" />
+                        <arg line=". xml codesize,unusedcode,design --reportfile '${basedir}/test_result/pmd.xml' --exclude /App/BackendBundle/Resources" />
                     </exec>
                 </else>
             </if>
