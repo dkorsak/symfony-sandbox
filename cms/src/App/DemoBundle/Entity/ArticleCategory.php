@@ -83,6 +83,7 @@ class ArticleCategory
     public function setName($name)
     {
         $this->name = $name;
+        
         return $this;
     }
 
@@ -105,6 +106,7 @@ class ArticleCategory
     public function setSlug($slug)
     {
         $this->slug = $slug;
+        
         return $this;
     }
 
@@ -128,6 +130,7 @@ class ArticleCategory
     public function addArticle(\App\DemoBundle\Entity\ArticleCategory $articles)
     {
         $this->articles[] = $articles;
+        
         return $this;
     }
 

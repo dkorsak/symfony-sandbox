@@ -135,6 +135,7 @@ class Article
     public function setTitle($title)
     {
         $this->title = $title;
+        
         return $this;
     }
 
@@ -157,6 +158,7 @@ class Article
     public function setBody($body)
     {
         $this->body = $body;
+        
         return $this;
     }
 
@@ -179,6 +181,7 @@ class Article
     public function setPublishDate($publishDate)
     {
         $this->publishDate = $publishDate;
+        
         return $this;
     }
 
@@ -201,6 +204,7 @@ class Article
     public function setPublish($publish)
     {
         $this->publish = $publish;
+        
         return $this;
     }
 
@@ -223,6 +227,7 @@ class Article
     public function setSlug($slug)
     {
         $this->slug = $slug;
+        
         return $this;
     }
 
@@ -245,6 +250,7 @@ class Article
     public function setImage($image)
     {
         $this->image = $image;
+        
         return $this;
     }
 
@@ -267,6 +273,7 @@ class Article
     public function setArticleCategory(\App\DemoBundle\Entity\ArticleCategory $articleCategory)
     {
         $this->articleCategory = $articleCategory;
+        
         return $this;
     }
 
@@ -289,6 +296,7 @@ class Article
     public function addTag(\App\DemoBundle\Entity\ArticleTag $tags)
     {
         $this->tags[] = $tags;
+        
         return $this;
     }
 
@@ -321,6 +329,7 @@ class Article
     public function setUploadedImage(UploadedFile $uploadedImage = null)
     {
         $this->uploadedImage = $uploadedImage;
+        
         return $this;
     }
 

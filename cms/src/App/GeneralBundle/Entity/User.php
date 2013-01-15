@@ -117,6 +117,7 @@ class User extends BaseUser
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
+        
         return $this;
     }
 
@@ -139,6 +140,7 @@ class User extends BaseUser
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
+        
         return $this;
     }
 
@@ -161,6 +163,7 @@ class User extends BaseUser
     public function setCreated($created)
     {
         $this->created = $created;
+        
         return $this;
     }
 
@@ -183,6 +186,7 @@ class User extends BaseUser
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+        
         return $this;
     }
 
@@ -205,6 +209,7 @@ class User extends BaseUser
     public function addGroup(GroupInterface $group)
     {
         parent::addGroup($group);
+        
         return $this;
     }
 
@@ -220,6 +225,7 @@ class User extends BaseUser
             $this->removeGroup($oldGroup);
         }
         parent::addGroup($group);
+        
         return $this;
     }
 
@@ -262,6 +268,7 @@ class User extends BaseUser
     public function setRetypePassword($retypePassword)
     {
         $this->retypePassword = $retypePassword;
+        
         return $this;
     }
 
@@ -284,6 +291,7 @@ class User extends BaseUser
     public function setOldPassword($oldPassword)
     {
         $this->oldPassword = $oldPassword;
+        
         return $this;
     }
 

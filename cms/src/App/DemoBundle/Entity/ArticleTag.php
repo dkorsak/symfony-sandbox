@@ -84,6 +84,7 @@ class ArticleTag
     public function setName($name)
     {
         $this->name = $name;
+        
         return $this;
     }
 
@@ -106,6 +107,7 @@ class ArticleTag
     public function setSlug($slug)
     {
         $this->slug = $slug;
+        
         return $this;
     }
 
@@ -128,6 +130,7 @@ class ArticleTag
     public function addArticle(\App\DemoBundle\Entity\Article $articles)
     {
         $this->articles[] = $articles;
+        
         return $this;
     }
 
