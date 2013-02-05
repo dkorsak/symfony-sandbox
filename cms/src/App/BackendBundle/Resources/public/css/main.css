@@ -298,7 +298,9 @@ html, body {
 .sonata-bc textarea.sonata-medium {
     height: 125px;
 }
-
+.sonata-bc div.sonata-medium-date {
+    overflow: hidden;
+}
 .sonata-bc div.sonata-medium-date select {
     width: 75px;
 }

@@ -12,7 +12,7 @@
             <ul class="dropdown-menu">
                 {% for subclass in admin.subclasses|keys %}
                     <li>
-                        <a href="{{ admin.generateUrl('create', {'subclass': subclass}) }}">{{ subclass }}</a>
+                        <a href="{{ admin.generateUrl('create', {'subclass': subclass}) }}">{{ subclass|trans({}, admin.translationdomain) }}</a>
                     </li>
                 {% endfor %}
             </ul>

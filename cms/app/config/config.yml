@@ -235,28 +235,30 @@ sonata_user:
 # Default SEO settings for frontend website
 sonata_seo:
     default:          sonata.seo.page.default #service
-    title:            Symfony2 Sandbox
-    metas:
-        name:
-            keywords:             ""
-            description:          ""
-            robots:               index, follow
+    encoding:         UTF-8
+    page:
+        title:            Symfony2 Sandbox
+        metas:
+            name:
+                keywords:             ""
+                description:          ""
+                robots:               index, follow
+    
+            #property:
+                # Facebook application settings
+                #'fb:app_id':          XXXXXX
+                #'fb:admins':          admin1, admin2
+                #'og:site_name':       Sonata Project Sandbox
+                #'og:description':     A demo of the some rich bundles for your Symfony2 projects
+    
+            http-equiv:
+                'Content-Type':         text/html; charset=utf-8
+                #'X-Ua-Compatible':      IE=EmulateIE7
 
-        #property:
-            # Facebook application settings
-            #'fb:app_id':          XXXXXX
-            #'fb:admins':          admin1, admin2
-            #'og:site_name':       Sonata Project Sandbox
-            #'og:description':     A demo of the some rich bundles for your Symfony2 projects
-
-        http-equiv:
-            'Content-Type':         text/html; charset=utf-8
-            #'X-Ua-Compatible':      IE=EmulateIE7
-
-    head:
-        'lang':     'en'
-        #'xmlns:og':           http://opengraphprotocol.org/schema/
-        #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
+        head:
+            'lang':     'en'
+            #'xmlns:og':           http://opengraphprotocol.org/schema/
+            #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
 
 # Genmenu form configuration
 genemu_form:

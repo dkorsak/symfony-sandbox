@@ -179,15 +179,6 @@ class UserAdmin extends Admin
     /**
      * {@inheritdoc}
      */
-    public function getBatchActions()
-    {
-        // disable delete batch action
-        return array();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     protected function configureShowField(ShowMapper $showMapper)
     {
         $showMapper
