@@ -125,7 +125,14 @@ $.webshims.polyfill("forms forms-ext");
                             {% if action is defined %}
                                 {% for label, uri in admin.breadcrumbs(action) %}
                                     {% if not loop.last  %}
-                                        <li><a href="{{ uri }}">{{ label|capitalize|trans({}, admin.translationdomain) }}</a><span class="divider">/</span></li>
+                                        <li>
+                                        {% if uri is not empty %}
+                                            <a href="{{ uri }}">{{ label|capitalize|trans({}, admin.translationdomain) }}</a>
+                                        {% else %}
+                                            {{ label|capitalize|trans({}, admin.translationdomain) }}
+                                        {% endif %}
+                                        <span class="divider">/</span>
+                                        </li>
                                     {% else %}
                                         <li class="active">{{ label|capitalize|trans({}, admin.translationdomain) }}</li>
                                     {% endif %}
