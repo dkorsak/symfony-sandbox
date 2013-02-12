@@ -91,8 +91,12 @@ class Article
      *
      * @ORM\ManyToMany(targetEntity="ArticleTag", inversedBy="articles")
      * @ORM\JoinTable(name="demo_article_to_article_tag",
-     *     joinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)}
+     *     joinColumns={
+     *         @ORM\JoinColumn(name="article_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     *     },
+     *     inverseJoinColumns={
+     *         @ORM\JoinColumn(name="tag_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     *     }
      * )
      */
     protected $tags;

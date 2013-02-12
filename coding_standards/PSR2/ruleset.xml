@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset name="PSR2 Conding standards">
+    <description>
+        PSR2 Conding standards
+        See https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
+    </description>
+    <exclude-pattern>/App/FrontendBundle/Resources/*</exclude-pattern>
+    <exclude-pattern>/App/GeneralBundle/Resources/*</exclude-pattern>
+    <exclude-pattern>/App/BackendBundle/Resources/*</exclude-pattern>
+    <rule ref="PSR2">
+    </rule>
+</ruleset>

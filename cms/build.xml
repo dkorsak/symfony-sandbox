@@ -5,7 +5,7 @@
     <property name="bundle" value=""/>
     <property name="env" value="dev"/>
     <property name="debug" value="true"/>
-    <property name="selenium.jar" value="${java.lib}/selenium-server-standalone-2.25.0.jar" />
+    <property name="selenium.jar" value="${java.lib}/selenium-server-standalone-2.28.0.jar" />
 
     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
         <classpath>
@@ -105,12 +105,12 @@
                 <equals arg1="@{debug}" arg2="true" />
                 <then>
                     <exec dir="@{destination}" executable="phpcs" failonerror="false">
-                        <arg line="-s --standard=${basedir}/coding_standards/Symfony --report=full ./src" />
+                        <arg line="-s --standard=${basedir}/coding_standards/PSR2 --report=full ./src" />
                     </exec>
                 </then>
                 <else>
                     <exec dir="@{destination}" executable="phpcs" failonerror="false">
-                        <arg line="-s --standard=${basedir}/coding_standards/Symfony --report=checkstyle --report-file=${basedir}/test_result/checkstyle.xml ./src" />
+                        <arg line="-s --standard=${basedir}/coding_standards/PSR2 --report=checkstyle --report-file=${basedir}/test_result/checkstyle.xml ./src" />
                     </exec>
                 </else>
             </if>

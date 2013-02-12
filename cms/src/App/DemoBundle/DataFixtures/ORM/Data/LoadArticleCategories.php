@@ -13,7 +13,7 @@ class LoadArticleCategories extends YamlFixtures implements OrderedFixtureInterf
     /**
      * {@inheritdoc}
      */
-    public function load(ObjectManager $manager) 
+    public function load(ObjectManager $manager)
     {
         $data = $this->getModelFixtures();
         foreach ($data as $reference => $item) {
@@ -47,5 +47,5 @@ class LoadArticleCategories extends YamlFixtures implements OrderedFixtureInterf
     protected function getBundle()
     {
         return 'AppDemoBundle';
-    } 
+    }
 }

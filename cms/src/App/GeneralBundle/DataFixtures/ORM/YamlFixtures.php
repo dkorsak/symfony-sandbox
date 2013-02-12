@@ -23,7 +23,7 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
      * 
      * @return string
      */
-    abstract function getModelFile();
+    abstract public function getModelFile();
 
     /**
      * @{inheritdoc}
@@ -69,4 +69,4 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
     {
         return 'AppGeneralBundle';
     }
-} 
+}

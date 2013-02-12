@@ -55,15 +55,26 @@ class ArticleAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $articleCategoryParams = array('property' => 'name', 'empty_value' => 'Please select', 'label' => 'Category');
+        $tagsParams = array(
+            'required' => false, 'expanded' => true, 'property' => 'name', 'by_reference' => false, 'multiple' => true
+        );
+
+        $translation = $this->trans('If checked, article will be visible');
+        $publishParams = array('required' => false, 'help' => $translation);
+
+        $imagePath = $this->getSubject()->getFullImagePath();
+        $uploadImageParams = array('required' => false, 'image_filter' => 'article_thumb', 'image_path' => $imagePath);
+
         $formMapper
             ->with('General')
-                ->add('articleCategory', 'sonata_type_model', array('property' => 'name', 'empty_value' => 'Please select', 'label' => 'Category'))
-                ->add('tags', 'sonata_type_model', array('required' => false, 'expanded' => true, 'property' => 'name', 'by_reference' => false, 'multiple' => true))
+                ->add('articleCategory', 'sonata_type_model', $articleCategoryParams)
+                ->add('tags', 'sonata_type_model', $tagsParams)
                 ->add('title')
                 ->add('publishDate', 'app_backend_form_jquery_date_type', array('label' => 'Publish date'))
-                ->add('publish', null, array('required' => false, 'help' => $this->trans('If checked, article will be visible')))
+                ->add('publish', null, $publishParams)
                 ->add('body', 'app_backend_form_ckeditor_type')
-                ->add('uploadedImage', 'liip_imagine_image', array('required' => false, 'image_filter' => 'article_thumb', 'image_path' => $this->getSubject()->getFullImagePath()))
+                ->add('uploadedImage', 'liip_imagine_image', $uploadImageParams)
             ->end();
     }
 
@@ -72,10 +83,18 @@ class ArticleAdmin extends Admin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        $articleCategoryParams = array(
+            'sortable' => true, 'label' => 'Category', 'template' => 'SonataAdminBundle::CRUD:base_list_field.html.twig'
+        );
+
+        $publishDateParams = array(
+            'label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:list_date.html.twig'
+        );
+
         $listMapper
             ->addIdentifier('title')
-            ->add('articleCategory.name', null, array('sortable' => true, 'label' => 'Category', 'template' => 'SonataAdminBundle::CRUD:base_list_field.html.twig'))
-            ->add('publishDate', null, array('label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:list_date.html.twig'))
+            ->add('articleCategory.name', null, $articleCategoryParams)
+            ->add('publishDate', null, $publishDateParams)
             ->add('publish', null, array("template" => "AppDemoBundle:Article:list_status.html.twig"))
             ->add(
                 '_action',
@@ -96,11 +115,18 @@ class ArticleAdmin extends Admin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
+        $publishParams = array(
+            'field_options' => array(
+                 'catalogue' => 'article',
+                 'choices' => array(BooleanType::TYPE_NO => 'Disabled', BooleanType::TYPE_YES => 'Published')
+            )
+        );
+        
         $datagridMapper
             ->add('title')
             ->add('articleCategory', null, array('label' => 'Category'))
             ->add('publishDate', 'doctrine_orm_date', array('label' => 'Publish date'))
-            ->add('publish', null, array('field_options' => array('catalogue' => 'article', 'choices' => array(BooleanType::TYPE_NO => 'Disabled', BooleanType::TYPE_YES => 'Published'))));
+            ->add('publish', null, $publishParams);
     }
 
     /**
@@ -108,13 +134,18 @@ class ArticleAdmin extends Admin
      */
     protected function configureShowField(ShowMapper $showMapper)
     {
+        $publishDateParams = array(
+            'label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:show_date.html.twig'
+        );
+        $imageParams = array('label' => 'Uploaded Image', 'template' => 'AppDemoBundle:Article:show_image.html.twig');
+
         $showMapper
             ->with('General')
                 ->add('title')
                 ->add('articleCategory.name', null, array('label' => 'Category'))
                 ->add('tags', null, array('template' => 'AppDemoBundle:ArticleTag:show_orm_many_to_many.html.twig'))
-                ->add('publishDate', null, array('label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:show_date.html.twig'))
-                ->add('image', null, array('label' => 'Uploaded Image', 'template' => 'AppDemoBundle:Article:show_image.html.twig'))
+                ->add('publishDate', null, $publishDateParams)
+                ->add('image', null, $imageParams)
             ->end()
             ->with('Body')
                 ->add('body', null, array('template' => 'AppDemoBundle:Article:show_article_body.html.twig'))

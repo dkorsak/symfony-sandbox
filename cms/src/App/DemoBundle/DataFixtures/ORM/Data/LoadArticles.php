@@ -13,7 +13,7 @@ class LoadArticles extends YamlFixtures implements OrderedFixtureInterface, Cont
     /**
      * {@inheritdoc}
      */
-    public function load(ObjectManager $manager) 
+    public function load(ObjectManager $manager)
     {
         $data = $this->getModelFixtures();
         foreach ($data as $reference => $item) {
@@ -53,5 +53,5 @@ class LoadArticles extends YamlFixtures implements OrderedFixtureInterface, Cont
     protected function getBundle()
     {
         return 'AppDemoBundle';
-    } 
+    }
 }

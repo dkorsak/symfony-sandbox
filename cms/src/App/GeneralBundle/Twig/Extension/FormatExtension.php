@@ -32,7 +32,7 @@ class FormatExtension extends \Twig_Extension
      */
     public function formatBytesFilter($bytes)
     {
-        foreach (array('','k','M','G') as $i => $k) {
+        foreach (array('','k','M','G') as $k) {
             if ($bytes < 1024) {
                 break;
             }

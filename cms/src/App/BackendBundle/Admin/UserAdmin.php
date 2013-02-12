@@ -100,7 +100,7 @@ class UserAdmin extends Admin
      */
     public function setTwig(\Twig_Environment $twig)
     {
-        $this->twig = $twig;    
+        $this->twig = $twig;
     }
 
     /**
@@ -187,7 +187,14 @@ class UserAdmin extends Admin
                 ->add("email")
             ->end()
             ->with('Permissions')
-                ->add("enabled", null, array("label" => "Status", 'template' => 'AppBackendBundle:CRUD:show_status.html.twig'))
+                ->add(
+                    "enabled",
+                    null,
+                    array(
+                        'label' => 'Status',
+                        'template' => 'AppBackendBundle:CRUD:show_status.html.twig'
+                    )
+                )
                 ->add("groups", null, array('template' => 'AppBackendBundle:UserAdmin:show_groups.html.twig'))
             ->end();
     }
@@ -214,11 +221,14 @@ class UserAdmin extends Admin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        $groupParams = array("label" => "Roles", "template" => "AppBackendBundle:UserAdmin:list_groups.html.twig");
+        $enabledParams = array("label" => "Status", "template" => "AppBackendBundle:CRUD:list_status.html.twig");
+        
         $listMapper
             ->addIdentifier("name")
             ->add("email")
-            ->add("groups", null, array("label" => "Roles", "template" => "AppBackendBundle:UserAdmin:list_groups.html.twig"))
-            ->add("enabled", null, array("label" => "Status", "template" => "AppBackendBundle:CRUD:list_status.html.twig"))
+            ->add("groups", null, $groupParams)
+            ->add("enabled", null, $enabledParams)
             ->add(
                 '_action',
                 'actions',
@@ -243,7 +253,7 @@ class UserAdmin extends Admin
                 "name",
                 "doctrine_orm_callback",
                 array(
-                    'callback' => 
+                    'callback' =>
                         function ($queryBuilder, $alias, $field, $value) {
                             if (!$value || $value['value'] == "") {
                                 return;
@@ -264,7 +274,7 @@ class UserAdmin extends Admin
      * 
      * @param User $user
      */
-    private function saveUser(User $user) 
+    private function saveUser(User $user)
     {
         if (!$user->getId()) {
             $password = $this->generateRandomPassword();
@@ -274,7 +284,8 @@ class UserAdmin extends Admin
         $this->getUserManager()->updateUser($user);
         // send email with password
         if (isset($password)) {
-            $body = $this->getTwig()->render("AppBackendBundle:Mail:create.account.html.twig", array("user" => $user, "password" => $password));
+            $template = "AppBackendBundle:Mail:create.account.html.twig";
+            $body = $this->getTwig()->render($template, array("user" => $user, "password" => $password));
             $this->getMailer()->send($this->trans("Account was created"), $body, $user->getEmail());
         }
     }
