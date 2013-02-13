@@ -308,4 +308,20 @@ class User extends BaseUser
     {
         return $this->oldPassword;
     }
+
+    /**
+     * @return DateTime
+     */
+    public function getExpiresAt()
+    {
+        return $this->expiresAt;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getCredentialsExpireAt()
+    {
+        return $this->credentialsExpireAt;
+    }
 }
