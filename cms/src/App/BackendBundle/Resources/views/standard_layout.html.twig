@@ -41,7 +41,7 @@
 {% endjavascripts %}
 {% if form is defined %}{{ form_javascript(form) }}{% endif %}
 {% endblock %}
-{# disable webshim too many recursion  
+{# disable webshim too many recursion
 <script type="text/javascript">
 $.webshims.setOptions({ basePath: "/bundles/appgeneral/js/webshim/minified/shims/", 'forms': { customMessages: true } });
 $.webshims.activeLang('en');
