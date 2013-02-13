@@ -36,7 +36,7 @@ class JQueryDateType extends AbstractType
 
     /**
      * Get JQuery valid culture from current locale
-     * 
+     *
      * @return string
      */
     private function getJQueryCulture()
@@ -47,7 +47,7 @@ class JQueryDateType extends AbstractType
         } else {
             $localeJQuery = $locale;
         }
-        
+
         return $localeJQuery;
     }
 }

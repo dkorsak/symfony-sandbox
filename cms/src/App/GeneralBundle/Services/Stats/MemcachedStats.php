@@ -16,8 +16,8 @@ class MemcachedStats
 
     /**
      * Constructor
-     * 
-     * @param string $host
+     *
+     * @param string  $host
      * @param integer $port
      */
     public function __construct($host, $port)
@@ -27,7 +27,7 @@ class MemcachedStats
             return;
         }
         $service = new \Memcached();
-        
+
         if ($service->addServer($host, $port)) {
             $stats = $service->getStats();
             if (isset($stats[$host . ':' . $port])) {
@@ -38,7 +38,7 @@ class MemcachedStats
     }
 
     /**
-     * @return boolean 
+     * @return boolean
      */
     public function isConnected()
     {

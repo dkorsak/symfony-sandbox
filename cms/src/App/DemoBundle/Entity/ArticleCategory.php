@@ -17,7 +17,7 @@ class ArticleCategory
 {
     /**
      * @var integer
-     * 
+     *
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -26,7 +26,7 @@ class ArticleCategory
 
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      * @Assert\NotBlank()
      */
@@ -34,7 +34,7 @@ class ArticleCategory
 
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
      * @Gedmo\Slug(fields={"name"}, updatable=true)
      */
@@ -42,14 +42,14 @@ class ArticleCategory
 
     /**
      * @var ArrayCollection
-     * 
+     *
      * @ORM\OneToMany(targetEntity="Article", mappedBy="articleCategory")
      */
     protected $articles;
 
     /**
      * Constructor
-     * 
+     *
      */
     public function __construct()
     {
@@ -67,7 +67,7 @@ class ArticleCategory
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -77,20 +77,20 @@ class ArticleCategory
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string          $name
      * @return ArticleCategory
      */
     public function setName($name)
     {
         $this->name = $name;
-        
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -100,37 +100,36 @@ class ArticleCategory
     /**
      * Set slug
      *
-     * @param string $slug
+     * @param  string          $slug
      * @return ArticleCategory
      */
     public function setSlug($slug)
     {
         $this->slug = $slug;
-        
+
         return $this;
     }
 
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
         return $this->slug;
     }
 
-    
     /**
      * Add articles
      *
-     * @param \App\DemoBundle\Entity\ArticleCategory $articles
+     * @param  \App\DemoBundle\Entity\ArticleCategory $articles
      * @return ArticleCategory
      */
     public function addArticle(\App\DemoBundle\Entity\ArticleCategory $articles)
     {
         $this->articles[] = $articles;
-        
+
         return $this;
     }
 

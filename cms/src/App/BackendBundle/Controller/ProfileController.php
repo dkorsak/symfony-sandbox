@@ -2,7 +2,6 @@
 
 namespace App\BackendBundle\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
@@ -12,7 +11,7 @@ class ProfileController extends Controller
 {
     /**
      * Edit profile action
-     * 
+     *
      * @throws AccessDeniedException
      * @return Response
      */
@@ -31,8 +30,10 @@ class ProfileController extends Controller
             $user->setUsername($user->getEmail());
             $this->get('fos_user.user_manager')->updateUser($user);
             $this->get('session')->setFlash('sonata_flash_success', 'flash_edit_success');
+
             return new RedirectResponse($this->generateUrl('app_backend_profile'));
         }
+
         return $this->render(
             'AppBackendBundle:Profile:edit_profile.html.twig',
             array(

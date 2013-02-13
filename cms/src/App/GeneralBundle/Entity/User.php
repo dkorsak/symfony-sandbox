@@ -13,7 +13,7 @@ use App\GeneralBundle\Validator\Constraints as AppGeneralAssert;
 
 /**
  * App\GeneralBundle\Entity\User
- * 
+ *
  * @ORM\Table(name="user", indexes={
  *     @ORM\Index(name="username_idx", columns={"username"}),
  *     @ORM\Index(name="email_idx", columns={"email"})
@@ -27,7 +27,7 @@ class User extends BaseUser
 {
     /**
      * @var integer
-     * 
+     *
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -36,7 +36,7 @@ class User extends BaseUser
 
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(name="firstname", type="string", length=50, nullable=false)
      * @Assert\NotBlank()
      */
@@ -68,7 +68,7 @@ class User extends BaseUser
 
     /**
      * @var ArrayCollection
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="Group")
      * @ORM\JoinTable(name="user_to_user_group",
      *     joinColumns={
@@ -93,7 +93,7 @@ class User extends BaseUser
 
     /**
      * Constructor
-     * 
+     *
      */
     public function __construct()
     {
@@ -105,7 +105,7 @@ class User extends BaseUser
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -115,20 +115,20 @@ class User extends BaseUser
     /**
      * Set firstname
      *
-     * @param string $firstname
+     * @param  string $firstname
      * @return User
      */
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
-        
+
         return $this;
     }
 
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -138,20 +138,20 @@ class User extends BaseUser
     /**
      * Set lastname
      *
-     * @param string $lastname
+     * @param  string $lastname
      * @return User
      */
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
-        
+
         return $this;
     }
 
     /**
      * Get lastname
      *
-     * @return string 
+     * @return string
      */
     public function getLastname()
     {
@@ -161,13 +161,13 @@ class User extends BaseUser
     /**
      * Set created
      *
-     * @param \DateTime $created
+     * @param  \DateTime $created
      * @return User
      */
     public function setCreated($created)
     {
         $this->created = $created;
-        
+
         return $this;
     }
 
@@ -184,13 +184,13 @@ class User extends BaseUser
     /**
      * Set updated
      *
-     * @param \DateTime $updated
+     * @param  \DateTime $updated
      * @return User
      */
     public function setUpdated($updated)
     {
         $this->updated = $updated;
-        
+
         return $this;
     }
 
@@ -207,20 +207,20 @@ class User extends BaseUser
     /**
      * Add groups
      *
-     * @param GroupInterface $groups
+     * @param  GroupInterface $groups
      * @return User
      */
     public function addGroup(GroupInterface $group)
     {
         parent::addGroup($group);
-        
+
         return $this;
     }
 
     /**
      * Remove all old groups and add new one
-     * 
-     * @param GroupInterface $group
+     *
+     * @param  GroupInterface $group
      * @return User
      */
     public function setGroups(GroupInterface $group)
@@ -229,7 +229,7 @@ class User extends BaseUser
             $this->removeGroup($oldGroup);
         }
         parent::addGroup($group);
-        
+
         return $this;
     }
 
@@ -246,7 +246,7 @@ class User extends BaseUser
     /**
      * Get groups
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getGroups()
     {
@@ -255,7 +255,7 @@ class User extends BaseUser
 
     /**
      * Get user full name
-     * 
+     *
      * @return string
      */
     public function getName()
@@ -265,20 +265,20 @@ class User extends BaseUser
 
     /**
      * Set retypePassword
-     * 
-     * @param string $retypePassword
+     *
+     * @param  string $retypePassword
      * @return User
      */
     public function setRetypePassword($retypePassword)
     {
         $this->retypePassword = $retypePassword;
-        
+
         return $this;
     }
 
     /**
      * Get retypePassword
-     * 
+     *
      * @return string
      */
     public function getRetypePassword()
@@ -288,20 +288,20 @@ class User extends BaseUser
 
     /**
      * Set oldPassword
-     *  
-     * @param string $oldPassword
+     *
+     * @param  string $oldPassword
      * @return User
      */
     public function setOldPassword($oldPassword)
     {
         $this->oldPassword = $oldPassword;
-        
+
         return $this;
     }
 
     /**
      * Get oldPassword
-     * 
+     *
      * @return string
      */
     public function getOldPassword()

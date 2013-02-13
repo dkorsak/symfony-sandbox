@@ -26,8 +26,8 @@ class FormatExtension extends \Twig_Extension
 
     /**
      * Convert bytes into kB, MB, GB
-     * 
-     * @param number $bytes
+     *
+     * @param  number $bytes
      * @return string
      */
     public function formatBytesFilter($bytes)
@@ -38,19 +38,21 @@ class FormatExtension extends \Twig_Extension
             }
             $bytes/=1024;
         }
+
         return round($bytes, 2) . " {$k}B";
     }
 
     /**
      * Get percentage value of 2 variables
-     * 
-     * @param number $amount
-     * @param number $total
+     *
+     * @param  number $amount
+     * @param  number $total
      * @return string
      */
     public function getPercentage($amount, $total = 100)
     {
         $percent = round(($amount / $total) * 100, 2);
+
         return $percent . '%';
     }
 

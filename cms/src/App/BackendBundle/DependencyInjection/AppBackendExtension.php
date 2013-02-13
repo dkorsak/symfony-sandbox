@@ -28,7 +28,7 @@ class AppBackendExtension extends Extension
         $loader->load('forms.yml');
         $loader->load('form_widgets.yml');
         $loader->load('blocks.yml');
-        
+
         $container->setParameter(
             'twig.form.resources',
             array_merge(

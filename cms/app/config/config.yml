@@ -89,7 +89,7 @@ doctrine:
                 filters:
                     gedmo_softdeleteable:
                         class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
-                        enabled: false            
+                        enabled: false
                 auto_mapping: true
 
 # Stof Configuration
@@ -146,7 +146,7 @@ sonata_cache:
 sonata_admin:
     #security:
     #    handler: sonata.admin.security.handler.role
-        
+
     title:      Content Management System
     title_logo: /bundles/appbackend/images/cms.gif
     templates:
@@ -159,7 +159,7 @@ sonata_admin:
         list:    AppBackendBundle:CRUD:list.html.twig
         show:    AppBackendBundle:CRUD:show.html.twig
         edit:    AppBackendBundle:CRUD:edit.html.twig
-        delete:  AppBackendBundle:CRUD:delete.html.twig 
+        delete:  AppBackendBundle:CRUD:delete.html.twig
 
     dashboard:
         blocks:
@@ -211,7 +211,7 @@ sonata_block:
     default_contexts: [cms]
     blocks:
         sonata.admin.block.admin_list:
-            contexts:   [admin] 
+            contexts:   [admin]
         app_backend.block.apc_block:
             cache: sonata.cache.memcached
             settings: {ttl: 60}
@@ -243,14 +243,14 @@ sonata_seo:
                 keywords:             ""
                 description:          ""
                 robots:               index, follow
-    
+
             #property:
                 # Facebook application settings
                 #'fb:app_id':          XXXXXX
                 #'fb:admins':          admin1, admin2
                 #'og:site_name':       Sonata Project Sandbox
                 #'og:description':     A demo of the some rich bundles for your Symfony2 projects
-    
+
             http-equiv:
                 'Content-Type':         text/html; charset=utf-8
                 #'X-Ua-Compatible':      IE=EmulateIE7

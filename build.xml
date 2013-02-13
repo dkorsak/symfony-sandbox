@@ -37,6 +37,8 @@
   phpcs                - run PHP Code Sniffer to check conding standards.
 
   phpmd                - execute PHPMD checkstyle reports.
+
+  fixcs                - execute php-cs-fixer - fix symfony conding standards.
         </echo>
     </target>
     <import file="cms/build.xml" />

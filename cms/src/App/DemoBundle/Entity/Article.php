@@ -22,7 +22,7 @@ class Article
 
     /**
      * @var integer
-     * 
+     *
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -31,7 +31,7 @@ class Article
 
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
      * @Assert\NotBlank()
      */
@@ -39,7 +39,7 @@ class Article
 
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(name="body", type="text", nullable=false)
      * @Assert\NotBlank()
      */
@@ -47,7 +47,7 @@ class Article
 
     /**
      * @var \DateTime
-     * 
+     *
      * @ORM\Column(name="publish_date", type="datetime", nullable=false)
      * @Assert\NotBlank()
      * @Assert\DateTime()
@@ -71,14 +71,14 @@ class Article
 
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     protected $image;
 
     /**
      * @var ArticleCategory
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="ArticleCategory",inversedBy="articles")
      * @ORM\JoinColumn(name="article_category_id", referencedColumnName="id", nullable=false, onDelete="RESTRICT")
      * @Assert\NotBlank()
@@ -103,7 +103,7 @@ class Article
 
     /**
      * @var UploadedFile
-     * 
+     *
      * @Assert\Image()
      * @Vich\UploadableField(mapping="article_image", fileNameProperty="image")
      */
@@ -123,7 +123,7 @@ class Article
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -133,20 +133,20 @@ class Article
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string  $title
      * @return Article
      */
     public function setTitle($title)
     {
         $this->title = $title;
-        
+
         return $this;
     }
 
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -156,20 +156,20 @@ class Article
     /**
      * Set body
      *
-     * @param string $body
+     * @param  string  $body
      * @return Article
      */
     public function setBody($body)
     {
         $this->body = $body;
-        
+
         return $this;
     }
 
     /**
      * Get body
      *
-     * @return string 
+     * @return string
      */
     public function getBody()
     {
@@ -179,20 +179,20 @@ class Article
     /**
      * Set publishDate
      *
-     * @param \DateTime $publishDate
+     * @param  \DateTime $publishDate
      * @return Article
      */
     public function setPublishDate($publishDate)
     {
         $this->publishDate = $publishDate;
-        
+
         return $this;
     }
 
     /**
      * Get publishDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishDate()
     {
@@ -202,13 +202,13 @@ class Article
     /**
      * Set publish
      *
-     * @param boolean $publish
+     * @param  boolean $publish
      * @return Article
      */
     public function setPublish($publish)
     {
         $this->publish = $publish;
-        
+
         return $this;
     }
 
@@ -225,13 +225,13 @@ class Article
     /**
      * Set slug
      *
-     * @param string $slug
+     * @param  string  $slug
      * @return Article
      */
     public function setSlug($slug)
     {
         $this->slug = $slug;
-        
+
         return $this;
     }
 
@@ -248,13 +248,13 @@ class Article
     /**
      * Set image
      *
-     * @param string $image
+     * @param  string  $image
      * @return Article
      */
     public function setImage($image)
     {
         $this->image = $image;
-        
+
         return $this;
     }
 
@@ -271,20 +271,20 @@ class Article
     /**
      * Set articleCategory
      *
-     * @param \App\DemoBundle\Entity\ArticleCategory $articleCategory
+     * @param  \App\DemoBundle\Entity\ArticleCategory $articleCategory
      * @return Article
      */
     public function setArticleCategory(\App\DemoBundle\Entity\ArticleCategory $articleCategory)
     {
         $this->articleCategory = $articleCategory;
-        
+
         return $this;
     }
 
     /**
      * Get articleCategory
      *
-     * @return \App\DemoBundle\Entity\ArticleCategory 
+     * @return \App\DemoBundle\Entity\ArticleCategory
      */
     public function getArticleCategory()
     {
@@ -294,13 +294,13 @@ class Article
     /**
      * Add tags
      *
-     * @param \App\DemoBundle\Entity\ArticleTag $tags
+     * @param  \App\DemoBundle\Entity\ArticleTag $tags
      * @return Article
      */
     public function addTag(\App\DemoBundle\Entity\ArticleTag $tags)
     {
         $this->tags[] = $tags;
-        
+
         return $this;
     }
 
@@ -317,7 +317,7 @@ class Article
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
@@ -326,20 +326,20 @@ class Article
 
     /**
      * Set uploadedImage
-     * 
-     * @param UploadedFile $uploadedImage
+     *
+     * @param  UploadedFile $uploadedImage
      * @return Article
      */
     public function setUploadedImage(UploadedFile $uploadedImage = null)
     {
         $this->uploadedImage = $uploadedImage;
-        
+
         return $this;
     }
 
     /**
      * Get uploadedImage
-     * 
+     *
      * @return UploadedFile
      */
     public function getUploadedImage()

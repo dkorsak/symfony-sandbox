@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * App\GeneralBundle\Entity\Group
- * 
+ *
  * @ORM\Table(name="user_group")
  * @ORM\Entity
  */
@@ -15,7 +15,7 @@ class Group extends BaseGroup
 {
     /**
      * @var integer
-     * 
+     *
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")

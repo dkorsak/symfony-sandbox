@@ -121,7 +121,7 @@ class ArticleAdmin extends Admin
                  'choices' => array(BooleanType::TYPE_NO => 'Disabled', BooleanType::TYPE_YES => 'Published')
             )
         );
-        
+
         $datagridMapper
             ->add('title')
             ->add('articleCategory', null, array('label' => 'Category'))
@@ -154,7 +154,7 @@ class ArticleAdmin extends Admin
 
     /**
      * Delete all object assets from cache
-     * 
+     *
      * @param Article $object
      */
     private function deleteAssets(Article $object)

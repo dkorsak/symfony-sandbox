@@ -22,6 +22,6 @@ class MailerTest extends BasePHPUnitTest
 
     public function testSend()
     {
-        $this->assertTrue((boolean)$this->service->send("Title", "Body", "foo@bar.com"));
+        $this->assertTrue((boolean) $this->service->send("Title", "Body", "foo@bar.com"));
     }
 }

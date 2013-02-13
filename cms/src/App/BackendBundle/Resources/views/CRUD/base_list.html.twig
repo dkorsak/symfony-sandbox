@@ -99,7 +99,7 @@
 
                                             {# <input type="submit" class="btn btn-small btn-primary" value="{{ 'btn_batch'|trans({}, 'SonataAdminBundle') }}"/> #}
                                             <button type="submit" class="btn btn-primary"><i class="icon-tasks icon-white"></i> {{ 'btn_batch'|trans({}, 'SonataAdminBundle') }}</button>
-                                            
+
                                             <div class="pull-right">
                                                 {% if admin.hasRoute('export') and admin.isGranted("EXPORT") and admin.getExportFormats()|length %}
                                                     {{ "label_export_download"|trans({}, "SonataAdminBundle") }}
@@ -221,6 +221,6 @@
                 </div>
             </div>
         </div>
-        
+
     {% endif %}
 {% endblock %}

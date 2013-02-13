@@ -19,7 +19,7 @@ class ProfileType extends AbstractType
 
     /**
      * Constructor
-     * 
+     *
      * @param string $class The User class name
      */
     public function __construct($class)

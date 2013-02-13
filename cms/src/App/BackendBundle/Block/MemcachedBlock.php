@@ -19,10 +19,10 @@ class MemcachedBlock extends BaseBlockService
 
     /**
      * Constructor
-     * 
-     * @param string $name
+     *
+     * @param string          $name
      * @param EngineInterface $templating
-     * @param MemcachedStats $apcStats
+     * @param MemcachedStats  $apcStats
      */
     public function __construct($name, EngineInterface $templating, MemcachedStats $memcachedStats)
     {
@@ -45,7 +45,7 @@ class MemcachedBlock extends BaseBlockService
         $template = 'AppBackendBundle:Block:memcached.block.html.twig';
         $response = $this->renderResponse($template, array('service' => $this->memcachedStats), $response);
         $response->setTtl(10);
-        
+
         return $response;
     }
 

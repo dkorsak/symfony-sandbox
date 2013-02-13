@@ -19,7 +19,7 @@ class ArticleTag
 {
     /**
      * @var integer
-     * 
+     *
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,7 +28,7 @@ class ArticleTag
 
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(name="name", type="string", length=255, nullable=false, unique=true)
      * @Assert\NotBlank()
      */
@@ -36,7 +36,7 @@ class ArticleTag
 
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
      * @Gedmo\Slug(fields={"name"}, updatable=true)
      */
@@ -44,7 +44,7 @@ class ArticleTag
 
     /**
      * @var ArrayCollection
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="Article", mappedBy="tags")
      */
     protected $articles;
@@ -68,7 +68,7 @@ class ArticleTag
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -78,20 +78,20 @@ class ArticleTag
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string     $name
      * @return ArticleTag
      */
     public function setName($name)
     {
         $this->name = $name;
-        
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -101,13 +101,13 @@ class ArticleTag
     /**
      * Set slug
      *
-     * @param string $slug
+     * @param  string     $slug
      * @return ArticleTag
      */
     public function setSlug($slug)
     {
         $this->slug = $slug;
-        
+
         return $this;
     }
 
@@ -124,13 +124,13 @@ class ArticleTag
     /**
      * Add articles
      *
-     * @param \App\DemoBundle\Entity\Article $articles
+     * @param  \App\DemoBundle\Entity\Article $articles
      * @return ArticleTag
      */
     public function addArticle(\App\DemoBundle\Entity\Article $articles)
     {
         $this->articles[] = $articles;
-        
+
         return $this;
     }
 
@@ -147,7 +147,7 @@ class ArticleTag
     /**
      * Get articles
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getArticles()
     {

@@ -16,7 +16,6 @@
 	var Modernizr = window.Modernizr;
 	var asyncWebshims = window.asyncWebshims;
 	var addTest = Modernizr.addTest;
-	var browserVersion = parseFloat($.browser.version, 10);
 	var Object = window.Object;
 	var html5 = window.html5 || {};
 	var needModernizr = function(tests, fn){
@@ -33,10 +32,13 @@
 	};
 	
 	Modernizr.advancedObjectProperties = Modernizr.objectAccessor = Modernizr.ES5 = !!('create' in Object && 'seal' in Object);
-
+	
+	if(!$.event.customEvent){
+		$.event.customEvent = {};
+	}
 	
 	var webshims = {
-		version: '1.9.4',
+		version: '1.9.6',
 		cfg: {
 			useImportantStyles: true,
 			//addCacheBuster: false,
@@ -54,7 +56,6 @@
 			})()
 		},
 		bugs: {},
-		browserVersion: browserVersion,
 		/*
 		 * some data
 		 */
@@ -208,6 +209,7 @@
 			};
 		})(),
 		isReady: function(name, _set){
+			
 			if(webshimsFeatures[name] && webshimsFeatures[name].delayReady > 0){
 				if(_set){
 					webshimsFeatures[name].callReady = true;
@@ -225,7 +227,7 @@
 						details.handler.call(this, name);
 					}
 				});
-				$.event.trigger(name);
+				$(document).triggerHandler(name);
 			}
 			return !!(special[name] && special[name].add) || false;
 		},
@@ -268,11 +270,12 @@
 			}
 			$.each(names, function(i, name){
 				var handler = function(e){
+					
 					e = $.event.fix(e);
 					if (_maybePrevented && webshims.capturingEventPrevented) {
 						webshims.capturingEventPrevented(e);
 					}
-					return $.event.handle.call(this, e);
+					return ($.event.dispatch || $.event.handle).call(this, e);
 				};
 				special[name] = special[name] || {};
 				if (special[name].setup || special[name].teardown) {
@@ -521,7 +524,7 @@
 	$.webshims = webshims;
 	var protocol = (location.protocol == 'https:') ? 'https://' : 'http://';
 	var googleAPIs = protocol + 'ajax.googleapis.com/ajax/libs/';
-	var uiLib = googleAPIs + 'jqueryui/1.8.24/';
+	var uiLib = googleAPIs + 'jqueryui/1.9.2/';
 	var webCFG = webshims.cfg;
 	var webshimsFeatures = webshims.features;
 	var isReady = webshims.isReady;
@@ -847,7 +850,7 @@
 	});
 		
 	
-	//<localstorage
+	//<json-storage
 	needModernizr('localstorage');
 	addPolyfill('json-storage', {
 		test: Modernizr.localstorage && 'sessionStorage' in window && 'JSON' in window,
@@ -857,7 +860,7 @@
 		noAutoCallback: true,
 		c: [14]
 	});
-	//>localstorage
+	//>json-storage
 	
 	
 	//<geolocation
@@ -952,7 +955,7 @@
 			bugs.bustedValidity = bustedValidity = Modernizr.formattribute === false || !Modernizr.fieldsetdisabled || !('value' in document.createElement('output')) || !($('<input type="date" value="1488-12-11" />')[0].validity || {valid: true}).valid || !('required' in select) || (select.validity || {}).valid;
 		}
 		
-		formExtend = Modernizr[formvalidation] && !bustedValidity ? 'form-native-extend' : 'form-extend';
+		formExtend = Modernizr[formvalidation] && !bustedValidity ? 'form-native-extend' : 'form-shim-extend';
 		
 		addTest('styleableinputrange', function(){
 			if(!modernizrInputTypes.range){

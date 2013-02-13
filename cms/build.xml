@@ -82,7 +82,7 @@
                     <exec executable="php" dir="@{destination}"><arg line="app/console assetic:dump --env=@{env} --no-debug" /></exec>
                 </then>
             </if>
-            <create.web.dirs destination="@{destination}"/>
+            <!--<create.web.dirs destination="@{destination}"/>-->
         </sequential>
     </macrodef>
 
@@ -158,7 +158,7 @@
                 </then>
             </if>
         </sequential>
-    </macrodef>    
+    </macrodef>
 
     <macrodef name="deploy">
         <attribute name="destination" default="build"/>
@@ -188,6 +188,7 @@
                 <exclude name="*.phar"/>
                 <exclude name="deploy.sh"/>
                 <exclude name="behat.sh"/>
+                <exclude name=".php_cs"/>
                 <exclude name="rsync_exclude.txt"/>
                 <exclude name="src/App/**/Features/**"/>
                 <exclude name="src/App/**/Tests/**"/>
@@ -229,6 +230,7 @@
             <if>
                 <equals arg1="${deploy.execute.phpcs}" arg2="true"/>
                 <then>
+                    <antcall target="fixcs"/>
                     <phpcs debug="false"/>
                 </then>
             </if>
@@ -315,7 +317,7 @@
         <echo>ANT DEBUG: Stopping selenium server</echo>
         <get taskname="selenium-shutdown"
             src="http://localhost:${selenium.port}/selenium-server/driver/?cmd=shutDownSeleniumServer"
-            dest="${basedir}/test_result/selenium-server-shutdown.log" 
+            dest="${basedir}/test_result/selenium-server-shutdown.log"
             ignoreerrors="true" />
         <sleep seconds="2"/>
     </target>
@@ -341,6 +343,24 @@
         <exec executable="php" dir="cms"><arg line="composer.phar update"/></exec>
     </target>
 
+    <target name="fixcs" description="Execute php-cs-fixer">
+        <if>
+            <not>
+                <available file="${basedir}/cms/php-cs-fixer.phar"/>
+            </not>
+            <then>
+                <echo>ANT DEBUG: Downloading php-cs-fixer.phar</echo>
+                <exec executable="curl" dir="cms" output="${basedir}/cms/php-cs-fixer.phar"><arg line="-s http://cs.sensiolabs.org/get/php-cs-fixer.phar"/></exec>
+                <exec executable="php" dir="cms"><arg line="php-cs-fixer.phar self-update"/></exec>
+            </then>
+            <else>
+                <exec executable="php" dir="cms"><arg line="php-cs-fixer.phar self-update"/></exec>
+            </else>
+        </if>
+        <echo>ANT DEBUG: Fixing coding standards</echo>
+        <exec executable="php" dir="cms"><arg line="php-cs-fixer.phar fix ."/></exec>
+    </target>
+
     <target name="build.db" description="Build database">
         <build.db env="${env}"/>
     </target>
@@ -348,7 +368,7 @@
     <target name="cc" description="Clear cache">
         <clear.file.cache env="prod"/>
         <cc symlink="--symlink" env="dev"/>
-    </target> 
+    </target>
 
     <target name="phpunit" description="Execute PHPUnit test" depends="clean-test-result-directory">
         <phpunit/>
@@ -373,7 +393,7 @@
     </target>
 
     <target name="deploy" depends="check, clean-test-result-directory, composer">
-        <deploy destination="${deploy.destination}"/> 
+        <deploy destination="${deploy.destination}"/>
     </target>
 
     <target name="behat" depends="check, clean-test-result-directory">

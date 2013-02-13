@@ -15,7 +15,7 @@ class ChangePasswordValidator extends ConstraintValidator
 
     /**
      * Constructor
-     *  
+     *
      * @param EncoderFactoryInterface $encoderFactory
      */
     public function __construct(EncoderFactoryInterface $encoderFactory)
@@ -29,10 +29,9 @@ class ChangePasswordValidator extends ConstraintValidator
     public function validate($user, Constraint $constraint)
     {
         if ($user->getPlainPassword() == "" || $user->getId() == "") {
-            
             return;
         }
-        
+
         if ($user->getOldPassword() == "") {
             $this->context->addViolationAtSubPath('oldPassword', $constraint->messageEmptyOldPassword);
         } else {
@@ -41,13 +40,13 @@ class ChangePasswordValidator extends ConstraintValidator
                 $this->context->addViolationAtSubPath('oldPassword', $constraint->messageInvalidOldPassword);
             }
         }
-        
+
         if ($user->getRetypePassword() == "") {
             $this->context->addViolationAtSubPath('retypePassword', $constraint->messageEmptyRetypePassword);
-            
+
             return;
         }
-        
+
         if ($user->getRetypePassword() != $user->getPlainPassword()) {
             $this->context->addViolationAtSubPath('plainPassword', $constraint->messagePasswordsMustBeEqual);
         }

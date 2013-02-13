@@ -49,7 +49,7 @@ class CKEditorType extends AbstractType
 
     /**
      * Get CKEditor valid culture from current locale
-     * 
+     *
      * @return string
      */
     private function getCKEditorCulture()
@@ -60,7 +60,7 @@ class CKEditorType extends AbstractType
         } else {
             $localeCKEditor = $locale;
         }
-        
+
         return $localeCKEditor;
     }
 }

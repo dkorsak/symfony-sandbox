@@ -4,7 +4,7 @@ namespace App\GeneralBundle\Services;
 
 /**
  * Mailer service
- * 
+ *
  */
 class Mailer
 {
@@ -18,17 +18,17 @@ class Mailer
      */
     protected $from;
 
-    /** 
+    /**
      * @var string
      */
     protected $sender;
-    
+
     /**
      * Constructor
-     * 
+     *
      * @param \Swift_Mailer $swift
-     * @param string $from
-     * @param string $sender
+     * @param string        $from
+     * @param string        $sender
      */
     public function __construct(\Swift_Mailer $swift, $from = "", $sender = "")
     {
@@ -39,33 +39,35 @@ class Mailer
 
     /**
      * Set from
-     * 
-     * @param string $from
+     *
+     * @param  string $from
      * @return Mailer
      */
     public function setFrom($from)
     {
         $this->from = $from;
+
         return $this;
     }
 
     /**
      * Set sender
-     * @param unknown_type $sender
+     * @param  unknown_type $sender
      * @return Mailer
      */
     public function setSender($sender)
     {
         $this->sender = $sender;
+
         return $this;
     }
 
     /**
      * Send email
-     * 
-     * @param string $title
-     * @param string $body
-     * @param string $to
+     *
+     * @param  string  $title
+     * @param  string  $body
+     * @param  string  $to
      * @return boolean
      */
     public function send($title, $body, $to)
@@ -75,6 +77,7 @@ class Mailer
         $msg->setTo($to);
         $msg->setBody($body, 'text/html');
         $msg->setSubject($title);
+
         return $this->swift->send($msg);
     }
 }
