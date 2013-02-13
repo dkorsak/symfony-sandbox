@@ -41,10 +41,12 @@
 {% endjavascripts %}
 {% if form is defined %}{{ form_javascript(form) }}{% endif %}
 {% endblock %}
+{# disable webshim too many recursion  
 <script type="text/javascript">
 $.webshims.setOptions({ basePath: "/bundles/appgeneral/js/webshim/minified/shims/", 'forms': { customMessages: true } });
 $.webshims.activeLang('en');
 $.webshims.polyfill("forms forms-ext");
+#}
 </script>
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 <title>{{ admin_pool.title }} - {{ 'Admin'|trans({}, 'SonataAdminBundle') }}</title>
