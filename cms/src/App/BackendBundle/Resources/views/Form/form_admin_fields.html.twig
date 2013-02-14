@@ -1,6 +1,8 @@
 {% extends 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
 
+{# FOR PAGES WITHOUT SONATA GENERATOR #}
 {% block field_row %}
+
 <div class="control-group{% if errors|length > 0%} error{%endif%}" id="sonata-ba-field-container-{{ id }}">
 
     {{ form_label(form, label|default(null), { 'attr' : {'class' : 'control-label'} }) }}
@@ -17,4 +19,5 @@
 
     </div>
 </div>
+
 {% endblock field_row %}

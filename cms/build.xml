@@ -230,7 +230,6 @@
             <if>
                 <equals arg1="${deploy.execute.phpcs}" arg2="true"/>
                 <then>
-                    <antcall target="fixcs"/>
                     <phpcs debug="false"/>
                 </then>
             </if>

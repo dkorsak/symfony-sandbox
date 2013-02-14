@@ -28,12 +28,10 @@
 {% javascripts filter='?closure' output="js/admin.js"
 '@AppGeneralBundle/Resources/public/js/jquery.min.js'
 '@AppGeneralBundle/Resources/public/js/ui/minified/jquery-ui.custom.min.js'
-'@AppGeneralBundle/Resources/public/js/ui/minified/i18n/jquery-ui-i18n.min.js'
+'@AppGeneralBundle/Resources/public/js/ui/i18n/jquery.ui.datepicker-pl.js'
 '@AppGeneralBundle/Resources/public/js/jquery.form.js'
 '@AppBackendBundle/Resources/public/bootstrap/js/bootstrap.min.js'
 '@SonataAdminBundle/Resources/public/qtip/jquery.qtip-1.0.0-rc3.min.js'
-'@AppGeneralBundle/Resources/public/js/webshim/minified/extras/modernizr-custom.js'
-'@AppGeneralBundle/Resources/public/js/webshim/minified/polyfiller.js'
 '@SonataAdminBundle/Resources/public/base.js'
 '@AppBackendBundle/Resources/public/js/global.js'
 %}
@@ -41,15 +39,19 @@
 {% endjavascripts %}
 {% if form is defined %}{{ form_javascript(form) }}{% endif %}
 {% endblock %}
-{# disable webshim too many recursion
-<script type="text/javascript">
+{#
+<!--[if lt IE 9]><script type="text/javascript">
+'@AppGeneralBundle/Resources/public/js/webshim/minified/extras/modernizr-custom.js'
+'@AppGeneralBundle/Resources/public/js/webshim/minified/polyfiller.js'
 $.webshims.setOptions({ basePath: "/bundles/appgeneral/js/webshim/minified/shims/", 'forms': { customMessages: true } });
 $.webshims.activeLang('en');
 $.webshims.polyfill("forms forms-ext");
-#}
 </script>
+<![endif]-->
+DISABLED DOES NOT WORK #}
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 <title>{{ admin_pool.title }} - {{ 'Admin'|trans({}, 'SonataAdminBundle') }}</title>
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body class="sonata-bc{% if _side_menu is empty %} sonata-ba-no-side-menu{% endif %}">
     <div id="wrap">
@@ -112,7 +114,7 @@ $.webshims.polyfill("forms forms-ext");
                                             {% endfor %}
                                         {% endif %}
                                     {% endblock %}
-                                    {% block top_bar_after_nav %} {% endblock %}
+                                    {% block top_bar_after_nav %}{% endblock %}
                                 </ul>
                             </div>
                         {% endif %}
