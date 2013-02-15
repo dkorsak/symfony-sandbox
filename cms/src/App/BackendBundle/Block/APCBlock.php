@@ -43,10 +43,8 @@ class APCBlock extends BaseBlockService
     public function execute(BlockInterface $block, Response $response = null)
     {
         $template = 'AppBackendBundle:Block:apc.block.html.twig';
-        $response = $this->renderResponse($template, array('service' => $this->apcStats), $response);
-        $response->setTtl(10);
 
-        return $response;
+        return $this->renderResponse($template, array('service' => $this->apcStats), $response);
     }
 
     /**

@@ -30,3 +30,6 @@ app_backend_homepage:
 _imagine:
     resource: .
     type:     imagine
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
