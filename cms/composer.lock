@@ -1603,13 +1603,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/KnpLabs/Gaufrette",
-                "reference": "dd76593609f717c5c3e505c8ab788da153586e95"
+                "url": "https://github.com/KnpLabs/Gaufrette.git",
+                "reference": "f6ff97e24b3d5c4a5586ec12470a025e5ae61a66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/Gaufrette/zipball/dd76593609f717c5c3e505c8ab788da153586e95",
-                "reference": "dd76593609f717c5c3e505c8ab788da153586e95",
+                "url": "https://api.github.com/repos/KnpLabs/Gaufrette/zipball/f6ff97e24b3d5c4a5586ec12470a025e5ae61a66",
+                "reference": "f6ff97e24b3d5c4a5586ec12470a025e5ae61a66",
                 "shasum": ""
             },
             "require": {
@@ -1634,7 +1634,7 @@
                 "ext-zip": "to use the Zip adapter",
                 "knplabs/knp-gaufrette-bundle": "*"
             },
-            "time": "2013-02-12 18:47:06",
+            "time": "2013-02-15 07:56:34",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1680,7 +1680,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/KnpLabs/KnpGaufretteBundle/archive/c260b10a0b472a7dcc32e0068b7d151db4f14f8a.zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpGaufretteBundle/zipball/c260b10a0b472a7dcc32e0068b7d151db4f14f8a",
                 "reference": "c260b10a0b472a7dcc32e0068b7d151db4f14f8a",
                 "shasum": ""
             },
@@ -1970,13 +1970,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git://github.com/padraic/mockery.git",
-                "reference": "9fcbd0bcf4fe1f92b44acce9cad019d7b30c959f"
+                "url": "https://github.com/padraic/mockery.git",
+                "reference": "88bc366b3727e7a51419ae956f834f1924b40630"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/9fcbd0bcf4fe1f92b44acce9cad019d7b30c959f",
-                "reference": "9fcbd0bcf4fe1f92b44acce9cad019d7b30c959f",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/88bc366b3727e7a51419ae956f834f1924b40630",
+                "reference": "88bc366b3727e7a51419ae956f834f1924b40630",
                 "shasum": ""
             },
             "require": {
@@ -1985,10 +1985,7 @@
             "require-dev": {
                 "hamcrest/hamcrest": "1.1.0"
             },
-            "suggest": {
-                "Hamcrest": "1.0.0"
-            },
-            "time": "2013-02-14 10:13:09",
+            "time": "2013-02-14 20:03:37",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -2292,13 +2289,13 @@
             "target-dir": "Sonata/BlockBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sonata-project/SonataBlockBundle",
-                "reference": "3effdf4f8da8ebd256bfef9e42ad0f7ca53a5f9b"
+                "url": "https://github.com/sonata-project/SonataBlockBundle.git",
+                "reference": "46738edd9d0414c3ce904ec761f8041424331fd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/3effdf4f8da8ebd256bfef9e42ad0f7ca53a5f9b",
-                "reference": "3effdf4f8da8ebd256bfef9e42ad0f7ca53a5f9b",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/46738edd9d0414c3ce904ec761f8041424331fd2",
+                "reference": "46738edd9d0414c3ce904ec761f8041424331fd2",
                 "shasum": ""
             },
             "require": {
@@ -2313,7 +2310,7 @@
                 "sonata-project/admin-bundle": "dev-master",
                 "sonata-project/cache-bundle": "dev-master"
             },
-            "time": "2013-02-11 17:36:47",
+            "time": "2013-02-14 18:47:42",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -3200,7 +3197,7 @@
             "version": "2.1.x-dev",
             "source": {
                 "type": "git",
-                "url": "git://github.com/symfony/symfony.git",
+                "url": "https://github.com/symfony/symfony.git",
                 "reference": "7d143aac423111b271b1f6aeff069a1015bc087b"
             },
             "dist": {
