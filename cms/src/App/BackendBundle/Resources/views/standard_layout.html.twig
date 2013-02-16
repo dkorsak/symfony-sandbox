@@ -40,9 +40,12 @@
 %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
+{% endblock %}
+{% if app.environment == 'dev' %}
+<script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+{% endif %}
 {# genemu/form-bundle #}
 {% if form is defined %}{{ form_javascript(form) }}{% endif %}
-{% endblock %}
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 <title>{{ admin_pool.title }} - {{ 'Admin'|trans({}, 'SonataAdminBundle') }}</title>
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->

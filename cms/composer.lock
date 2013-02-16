@@ -2025,12 +2025,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "88bc366b3727e7a51419ae956f834f1924b40630"
+                "reference": "a790198e57a6cc5ccb849906d67e5c527528e8d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/88bc366b3727e7a51419ae956f834f1924b40630",
-                "reference": "88bc366b3727e7a51419ae956f834f1924b40630",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/a790198e57a6cc5ccb849906d67e5c527528e8d2",
+                "reference": "a790198e57a6cc5ccb849906d67e5c527528e8d2",
                 "shasum": ""
             },
             "require": {
@@ -2039,7 +2039,7 @@
             "require-dev": {
                 "hamcrest/hamcrest": "1.1.0"
             },
-            "time": "2013-02-14 20:03:37",
+            "time": "2013-02-16 17:40:05",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -2275,13 +2275,13 @@
             "target-dir": "Sonata/AdminBundle",
             "source": {
                 "type": "git",
-                "url": "git://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "54e161e32b51e11eb245a70a8abfb8f80341a068"
+                "url": "https://github.com/sonata-project/SonataAdminBundle.git",
+                "reference": "a4865122d800189622166ca323f3fdcc213b0696"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/54e161e32b51e11eb245a70a8abfb8f80341a068",
-                "reference": "54e161e32b51e11eb245a70a8abfb8f80341a068",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/a4865122d800189622166ca323f3fdcc213b0696",
+                "reference": "a4865122d800189622166ca323f3fdcc213b0696",
                 "shasum": ""
             },
             "require": {
@@ -2306,7 +2306,7 @@
                 "sonata-project/doctrine-orm-admin-bundle": "dev-master",
                 "sonata-project/intl-bundle": "dev-master"
             },
-            "time": "2013-02-13 10:25:56",
+            "time": "2013-02-16 15:01:12",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -2344,12 +2344,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataBlockBundle.git",
-                "reference": "46738edd9d0414c3ce904ec761f8041424331fd2"
+                "reference": "23c04147b54ab93432a1ae2a044eca2edbdf27a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/46738edd9d0414c3ce904ec761f8041424331fd2",
-                "reference": "46738edd9d0414c3ce904ec761f8041424331fd2",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/23c04147b54ab93432a1ae2a044eca2edbdf27a5",
+                "reference": "23c04147b54ab93432a1ae2a044eca2edbdf27a5",
                 "shasum": ""
             },
             "require": {
@@ -2364,7 +2364,7 @@
                 "sonata-project/admin-bundle": "dev-master",
                 "sonata-project/cache-bundle": "dev-master"
             },
-            "time": "2013-02-14 18:47:42",
+            "time": "2013-02-16 14:05:06",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -2400,12 +2400,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCacheBundle.git",
-                "reference": "a0dc9a172847b3584d068b4085d420dc9ad85261"
+                "reference": "2ac53eb6a44f43e8dd47f08190af7eac81265b6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCacheBundle/zipball/a0dc9a172847b3584d068b4085d420dc9ad85261",
-                "reference": "a0dc9a172847b3584d068b4085d420dc9ad85261",
+                "url": "https://api.github.com/repos/sonata-project/SonataCacheBundle/zipball/2ac53eb6a44f43e8dd47f08190af7eac81265b6b",
+                "reference": "2ac53eb6a44f43e8dd47f08190af7eac81265b6b",
                 "shasum": ""
             },
             "require": {
@@ -2425,7 +2425,7 @@
                 "ext-apc": "Caching with ext/apc",
                 "ext-memcached": "Caching with ext/memcached"
             },
-            "time": "2013-02-14 18:08:20",
+            "time": "2013-02-16 14:06:32",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -2507,13 +2507,13 @@
             "target-dir": "Sonata/DoctrineORMAdminBundle",
             "source": {
                 "type": "git",
-                "url": "git://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "855707e5270e91dccb8bee869a0867485674464c"
+                "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
+                "reference": "45b31bbf4b966448249d9cd0f174cbf4c724ea7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/855707e5270e91dccb8bee869a0867485674464c",
-                "reference": "855707e5270e91dccb8bee869a0867485674464c",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/45b31bbf4b966448249d9cd0f174cbf4c724ea7a",
+                "reference": "45b31bbf4b966448249d9cd0f174cbf4c724ea7a",
                 "shasum": ""
             },
             "require": {
@@ -2521,7 +2521,7 @@
                 "sonata-project/admin-bundle": "dev-master",
                 "symfony/symfony": ">=2.1,<2.3-dev"
             },
-            "time": "2013-01-26 09:14:44",
+            "time": "2013-02-16 14:08:01",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -2559,13 +2559,13 @@
             "target-dir": "Sonata/EasyExtendsBundle",
             "source": {
                 "type": "git",
-                "url": "git://github.com/sonata-project/SonataEasyExtendsBundle.git",
-                "reference": "33d9dced64afc785976828cbc3edf141061fedee"
+                "url": "https://github.com/sonata-project/SonataEasyExtendsBundle.git",
+                "reference": "b5d9e0b3029b3f332d552f11b7bab03308a97006"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataEasyExtendsBundle/zipball/33d9dced64afc785976828cbc3edf141061fedee",
-                "reference": "33d9dced64afc785976828cbc3edf141061fedee",
+                "url": "https://api.github.com/repos/sonata-project/SonataEasyExtendsBundle/zipball/b5d9e0b3029b3f332d552f11b7bab03308a97006",
+                "reference": "b5d9e0b3029b3f332d552f11b7bab03308a97006",
                 "shasum": ""
             },
             "require": {
@@ -2574,7 +2574,7 @@
                 "symfony/finder": "2.*",
                 "symfony/framework-bundle": "2.*"
             },
-            "time": "2013-01-23 11:39:05",
+            "time": "2013-02-16 14:09:24",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -2662,18 +2662,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/GoogleAuthenticator.git",
-                "reference": "181c8341e38cf7b2f82697ef38c91fe65af1f409"
+                "reference": "1.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/GoogleAuthenticator/zipball/181c8341e38cf7b2f82697ef38c91fe65af1f409",
-                "reference": "181c8341e38cf7b2f82697ef38c91fe65af1f409",
+                "url": "https://api.github.com/repos/sonata-project/GoogleAuthenticator/zipball/1.0.0",
+                "reference": "1.0.0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2012-10-27 13:53:48",
+            "time": "2013-02-16 14:20:21",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -2712,12 +2712,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "0208ca4b0fbb9531a5cfe059f1d3458a49e94602"
+                "reference": "6cf5666e98dda36d4705b33503cfd5c1763c6d16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/0208ca4b0fbb9531a5cfe059f1d3458a49e94602",
-                "reference": "0208ca4b0fbb9531a5cfe059f1d3458a49e94602",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/6cf5666e98dda36d4705b33503cfd5c1763c6d16",
+                "reference": "6cf5666e98dda36d4705b33503cfd5c1763c6d16",
                 "shasum": ""
             },
             "require": {
@@ -2728,7 +2728,7 @@
                 "symfony/templating": "2.*",
                 "twig/twig": "*"
             },
-            "time": "2012-10-22 20:05:45",
+            "time": "2013-02-16 14:24:04",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -2814,13 +2814,13 @@
             "target-dir": "Sonata/SeoBundle",
             "source": {
                 "type": "git",
-                "url": "git://github.com/sonata-project/SonataSeoBundle.git",
-                "reference": "1.1.0"
+                "url": "https://github.com/sonata-project/SonataSeoBundle.git",
+                "reference": "12c5f6328224191793ae8bed374dceaf1f26440c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/1.1.0",
-                "reference": "1.1.0",
+                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/12c5f6328224191793ae8bed374dceaf1f26440c",
+                "reference": "12c5f6328224191793ae8bed374dceaf1f26440c",
                 "shasum": ""
             },
             "require": {
@@ -2828,7 +2828,7 @@
                 "symfony/symfony": "2.*",
                 "twig/twig": "*"
             },
-            "time": "2013-02-09 15:24:50",
+            "time": "2013-02-16 15:10:11",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -2863,13 +2863,13 @@
             "target-dir": "Sonata/UserBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sonata-project/SonataUserBundle",
-                "reference": "32c74dc130b859c0e1b9f0293784a80e806ce9b6"
+                "url": "https://github.com/sonata-project/SonataUserBundle.git",
+                "reference": "094b5fe412b18a99813cb5cf728f094954d20deb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/32c74dc130b859c0e1b9f0293784a80e806ce9b6",
-                "reference": "32c74dc130b859c0e1b9f0293784a80e806ce9b6",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/094b5fe412b18a99813cb5cf728f094954d20deb",
+                "reference": "094b5fe412b18a99813cb5cf728f094954d20deb",
                 "shasum": ""
             },
             "require": {
@@ -2886,7 +2886,7 @@
             "suggest": {
                 "sonata-project/doctrine-orm-admin-bundle": "dev-master"
             },
-            "time": "2013-02-13 22:33:35",
+            "time": "2013-02-16 14:54:54",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
