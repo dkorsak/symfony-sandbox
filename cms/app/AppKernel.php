@@ -36,6 +36,7 @@ class AppKernel extends Kernel
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
 
             new App\BackendBundle\AppBackendBundle(),
             new App\FrontendBundle\AppFrontendBundle(),
@@ -47,7 +48,7 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-            //$bundles[] = new Stealth35\ApcProfilerBundle\ApcProfilerBundle();
+            $bundles[] = new Stealth35\ApcProfilerBundle\ApcProfilerBundle();
         }
 
         return $bundles;

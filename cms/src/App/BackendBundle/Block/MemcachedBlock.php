@@ -43,7 +43,7 @@ class MemcachedBlock extends BaseBlockService
     public function execute(BlockInterface $block, Response $response = null)
     {
         $template = 'AppBackendBundle:Block:memcached.block.html.twig';
-        
+
         return $this->renderResponse($template, array('service' => $this->memcachedStats), $response);
     }
 

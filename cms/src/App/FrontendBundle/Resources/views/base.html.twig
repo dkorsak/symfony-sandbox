@@ -15,10 +15,15 @@
 {% block javascripts %}
 {% javascripts filter='?closure' output="js/site.js"
 '@AppGeneralBundle/Resources/public/js/jquery.min.js'
+'@FOSJsRoutingBundle/Resources/public/js/router.js'
+'js/fos_js_routes.js'
 %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
 {% endblock %}
+{% if app.environment == 'dev' %}
+<script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+{% endif %}
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>

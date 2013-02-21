@@ -1,5 +1,5 @@
 {
-    "hash": "f6c7d90aa278ba7374d23f2b3a25eab4",
+    "hash": "15a7efc11e64ddb98eb174c90b5dd005",
     "packages": [
         {
             "name": "alexandresalome/php-selenium",
@@ -1049,6 +1049,60 @@
             ]
         },
         {
+            "name": "friendsofsymfony/jsrouting-bundle",
+            "version": "dev-master",
+            "target-dir": "FOS/JsRoutingBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle",
+                "reference": "1.1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/1.1.2",
+                "reference": "1.1.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/console": ">=2.0,<2.3-dev",
+                "symfony/framework-bundle": ">=2.0,<2.3-dev",
+                "symfony/serializer": ">=2.0,<2.3-dev"
+            },
+            "time": "2013-01-14 18:53:13",
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "FOS\\JsRoutingBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William Durand",
+                    "email": "william.durand1@gmail.com",
+                    "homepage": "http://www.willdurand.fr"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/friendsofsymfony/FOSJsRoutingBundle/contributors"
+                }
+            ],
+            "description": "Symfony FOSJsRoutingBundle",
+            "homepage": "http://friendsofsymfony.github.com",
+            "keywords": [
+                "Js Routing"
+            ]
+        },
+        {
             "name": "friendsofsymfony/user-bundle",
             "version": "dev-master",
             "target-dir": "FOS/UserBundle",
@@ -1307,7 +1361,7 @@
         },
         {
             "name": "instaclick/php-webdriver",
-            "version": "dev-master",
+            "version": "1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/instaclick/php-webdriver.git",
@@ -2421,12 +2475,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sonata-project/sonata-doctrine-extensions",
+                "url": "https://github.com/sonata-project/sonata-doctrine-extensions.git",
                 "reference": "d2cd67a25602fecab6067290536f163ea54f1c8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/sonata-doctrine-extensions/archive/d2cd67a25602fecab6067290536f163ea54f1c8c.zip",
+                "url": "https://api.github.com/repos/sonata-project/sonata-doctrine-extensions/zipball/d2cd67a25602fecab6067290536f163ea54f1c8c",
                 "reference": "d2cd67a25602fecab6067290536f163ea54f1c8c",
                 "shasum": ""
             },
@@ -2734,7 +2788,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/SonatajQueryBundle/archive/5f87a761302e6c78304e071416f75d41eb1fb3c2.zip",
+                "url": "https://api.github.com/repos/sonata-project/SonatajQueryBundle/zipball/5f87a761302e6c78304e071416f75d41eb1fb3c2",
                 "reference": "5f87a761302e6c78304e071416f75d41eb1fb3c2",
                 "shasum": ""
             },

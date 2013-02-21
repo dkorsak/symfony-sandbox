@@ -39,6 +39,9 @@ assetic:
             jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
         yui_js:
             jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+        less:
+            node: %less.node%
+            node_paths: [%less.node_paths%]
 
 # Doctrine Configuration
 doctrine:
@@ -243,6 +246,7 @@ sonata_seo:
                 keywords:             ""
                 description:          ""
                 robots:               index, follow
+                viewport:             width=device-width, initial-scale=1.0
 
             #property:
                 # Facebook application settings
@@ -253,7 +257,7 @@ sonata_seo:
 
             http-equiv:
                 'Content-Type':         text/html; charset=utf-8
-                #'X-Ua-Compatible':      IE=EmulateIE7
+                'X-Ua-Compatible':      IE=edge,chrome=1
 
         head:
             'lang':     'en'

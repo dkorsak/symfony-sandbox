@@ -57,6 +57,8 @@
                     <clear.file.cache destination="@{destination}" env="@{env}"/>
                 </then>
             </if>
+            <echo>ANT DEBUG: Creating FOS js routing file</echo>
+            <exec executable="php" dir="@{destination}"><arg line="app/console fos:js-routing:dump"/></exec>
             <if>
                 <equals arg1="@{execute.clear.sonata.cache}" arg2="true"/>
                 <then>
@@ -180,6 +182,7 @@
                 <exclude name="web/uploads/**"/>
                 <exclude name="web/app_dev.php"/>
                 <exclude name="web/app_test.php"/>
+                <exclude name="web/app.php.dist"/>
                 <exclude name="web/config.php"/>
                 <exclude name="web/css/**"/>
                 <exclude name="web/js/**"/>
@@ -196,6 +199,14 @@
             </copy>
             <echo>AND DEBUG: Copying ${parameters-file-path} file</echo>
             <copy preservelastmodified="true" overwrite="true" file="${parameters-file-path}" tofile="@{destination}/app/config/parameters.ini"/>
+            <if>
+                <equals arg1="${apc_symfony_class_loader}" arg2="true"/>
+                <then>
+                    <copy overwrite="true" file="${basedir}/cms/web/app.php.dist" tofile="@{destination}/web/app.php">
+                        <filterset filtersfile="${parameters-file-path}"/>
+                    </copy>
+                </then>
+            </if>
             <build destination="@{destination}" env="prod"/>
             <if>
                 <equals arg1="${deploy.rsync}" arg2="true"/>
