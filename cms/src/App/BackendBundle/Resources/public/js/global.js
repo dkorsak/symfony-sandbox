@@ -22,7 +22,7 @@ jQuery(document).ready(function() {
     // show/hide form fieldset
     jQuery('.form_box_fieldset-collapsed').not(':has(.error)').find('.box-content').hide();
     jQuery('.form_box_fieldset-collapsed').has('.error').find('div.box-icon i').removeClass('icon-chevron-down').addClass('icon-chevron-up');
-    jQuery('.form_box_fieldset-collapsed .box-header').live("click", function(){
+    jQuery('.form_box_fieldset-collapsed .box-header').on("click", function(){
         toggleUpDownIcon(this);
         jQuery(this).next().toggle();
     });
