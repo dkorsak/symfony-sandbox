@@ -1016,7 +1016,7 @@
                     "Doctrine\\ORM": "lib/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1291,7 +1291,7 @@
                     "Genemu\\Bundle\\FormBundle": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1387,7 +1387,7 @@
                     "WebDriver": "lib/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -3318,12 +3318,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "f61295d67d7b6f840efd88056be754f157f5be9d"
+                "reference": "83382bc7986ffe6322f8078af816f226d65737c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/f61295d67d7b6f840efd88056be754f157f5be9d",
-                "reference": "f61295d67d7b6f840efd88056be754f157f5be9d",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/83382bc7986ffe6322f8078af816f226d65737c0",
+                "reference": "83382bc7986ffe6322f8078af816f226d65737c0",
                 "shasum": ""
             },
             "require": {
@@ -3379,7 +3379,7 @@
                     "SessionHandlerInterface": "src/Symfony/Component/HttpFoundation/Resources/stubs"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
