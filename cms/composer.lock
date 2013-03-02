@@ -188,19 +188,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkBrowserKitDriver.git",
-                "reference": "v1.0.2"
+                "reference": "7c9ef1fc996962ca825427d2b5af613011ff043d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkBrowserKitDriver/zipball/v1.0.2",
-                "reference": "v1.0.2",
+                "url": "https://api.github.com/repos/Behat/MinkBrowserKitDriver/zipball/7c9ef1fc996962ca825427d2b5af613011ff043d",
+                "reference": "7c9ef1fc996962ca825427d2b5af613011ff043d",
                 "shasum": ""
             },
             "require": {
                 "behat/mink": ">=1.4,<1.5-dev",
                 "php": ">=5.3.1",
-                "symfony/browser-kit": ">=2.0,<2.3-dev",
-                "symfony/dom-crawler": ">=2.0,<2.3-dev"
+                "symfony/browser-kit": ">=2.0,<2.4-dev",
+                "symfony/dom-crawler": ">=2.0,<2.4-dev"
             },
             "require-dev": {
                 "silex/silex": "@dev"
@@ -235,7 +235,7 @@
                 "browser",
                 "testing"
             ],
-            "time": "2013-02-17 15:44:44"
+            "time": "2013-03-02 13:43:19"
         },
         {
             "name": "behat/mink-extension",
