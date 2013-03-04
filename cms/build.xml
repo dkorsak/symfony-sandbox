@@ -182,7 +182,6 @@
                 <exclude name="web/uploads/**"/>
                 <exclude name="web/app_dev.php"/>
                 <exclude name="web/app_test.php"/>
-                <exclude name="web/app.php.dist"/>
                 <exclude name="web/config.php"/>
                 <exclude name="web/css/**"/>
                 <exclude name="web/js/**"/>

@@ -35,7 +35,7 @@ class JQueryDateType extends AbstractType
     }
 
     /**
-     * Get JQuery valid culture from current locale
+     * Get jQuery valid culture from current locale
      *
      * @return string
      */

@@ -28,7 +28,7 @@ class ChangePasswordValidator extends ConstraintValidator
      */
     public function validate($user, Constraint $constraint)
     {
-        if ($user->getPlainPassword() == "" || $user->getId() == "") {
+        if ($user->getPlainPassword() == "" || !$user->getId()) {
             return;
         }
 

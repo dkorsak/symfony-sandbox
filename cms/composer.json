@@ -30,7 +30,7 @@
         "sonata-project/easy-extends-bundle": "dev-master",
         "sonata-project/user-bundle": "dev-master",
         "sonata-project/seo-bundle": "dev-master",
-        "mockery/mockery": ">=0.7.2",
+        "mockery/mockery": "dev-master",
         "stof/doctrine-extensions-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/doctrine-migrations-bundle":  "dev-master",

@@ -16,7 +16,7 @@
 <meta name="robots" content="noindex,nofollow">
 {% block stylesheets %}
 {% stylesheets filter='cssrewrite,?yui_css' output="css/admin.css"
-'bundles/appgeneral/css/smoothness/jquery-ui.css'
+'bundles/appbackend/css/smoothness/jquery-ui.css'
 'bundles/appbackend/bootstrap/css/bootstrap.css'
 'bundles/sonataadmin/css/colors.css'
 'bundles/appbackend/css/main.css'
@@ -27,10 +27,10 @@
 {% endblock %}
 {% block javascripts %}
 {% javascripts filter='?closure' output="js/admin.js"
-'@AppGeneralBundle/Resources/public/js/jquery.min.js'
-'@AppGeneralBundle/Resources/public/js/ui/minified/jquery-ui.custom.min.js'
-'@AppGeneralBundle/Resources/public/js/ui/i18n/jquery.ui.datepicker-pl.js'
-'@AppGeneralBundle/Resources/public/js/jquery.form.js'
+'@SonatajQueryBundle/Resources/public/jquery-1.8.3.js'
+'@AppBackendBundle/Resources/public/js/ui/minified/jquery-ui.custom.min.js'
+'@AppBackendBundle/Resources/public/js/ui/i18n/jquery.ui.datepicker-pl.js'
+'@SonataAdminBundle/Resources/public/jquery/jquery.form.js'
 '@AppBackendBundle/Resources/public/bootstrap/js/bootstrap.min.js'
 '@SonataAdminBundle/Resources/public/qtip/jquery.qtip-1.0.0-rc3.min.js'
 '@FOSJsRoutingBundle/Resources/public/js/router.js'
