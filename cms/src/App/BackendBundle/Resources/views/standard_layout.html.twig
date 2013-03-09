@@ -120,31 +120,6 @@
             </div>
 
             <div class="container-fluid">
-                {% if _breadcrumb is not empty or action is defined %}
-                    <ul class="breadcrumb">
-                        {% if _breadcrumb is empty %}
-                            {% if action is defined %}
-                                {% for label, uri in admin.breadcrumbs(action) %}
-                                    {% if not loop.last  %}
-                                        <li>
-                                        {% if uri is not empty %}
-                                            <a href="{{ uri }}">{{ label|capitalize|trans({}, admin.translationdomain) }}</a>
-                                        {% else %}
-                                            {{ label|capitalize|trans({}, admin.translationdomain) }}
-                                        {% endif %}
-                                        <span class="divider">/</span>
-                                        </li>
-                                    {% else %}
-                                        <li class="active">{{ label|capitalize|trans({}, admin.translationdomain) }}</li>
-                                    {% endif %}
-                                {% endfor %}
-                            {% endif %}
-                        {% else %}
-                            {{ _breadcrumb|raw }}
-                        {% endif %}
-                    </ul>
-                {% endif %}
-
                 {% block notice %}
                     {% for notice_level in ['success','error','info', 'warning'] %}
                         {% set session_var = 'sonata_flash_' ~ notice_level %}
@@ -157,12 +132,8 @@
                     {% endfor %}
                 {% endblock %}
 
-                <div class="pull-right">
-                    {% block actions %}{% endblock %}
-                </div>
-
                 {% if _title is not empty or action is defined %}
-                    <div class="page-header">
+                    <div class="page-header" style="margin-top: 0px; display: none;">
                         <h1>
                             {% if _title is not empty %}
                                 {{ _title|raw }}
@@ -178,46 +149,81 @@
                 {% endif%}
 
                 <div class="row-fluid">
+                    <div class="span6">
+                    {% if _breadcrumb is not empty or action is defined %}
+                        <ul class="breadcrumb">
+                            {% if _breadcrumb is empty %}
+                                {% if action is defined %}
+                                    {% for label, uri in admin.breadcrumbs(action) %}
+                                        {% if not loop.last  %}
+                                            <li>
+                                            {% if uri is not empty %}
+                                                <a href="{{ uri }}">{{ label|capitalize|trans({}, admin.translationdomain) }}</a>
+                                            {% else %}
+                                                {{ label|capitalize|trans({}, admin.translationdomain) }}
+                                            {% endif %}
+                                            <span class="divider">/</span>
+                                            </li>
+                                        {% else %}
+                                            <li class="active">{{ label|capitalize|trans({}, admin.translationdomain) }}</li>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% else %}
+                                {{ _breadcrumb|raw }}
+                            {% endif %}
+                        </ul>
+                    {% endif %}
+                    </div>
+    
+                    <div class="span4 offset2">
+                        {% block actions %}{% endblock %}
+                    </div>
+                </div>
+                
+                <div class="row-fluid">
                     {% if _side_menu is not empty %}
                         <div class="sidebar span2">
                             <div class="well sonata-ba-side-menu" style="padding: 8px 0;">{{ _side_menu|raw }}</div>
                         </div>
                     {% endif %}
-
+    
                     <div class="content {{ _side_menu is not empty ? ' span10' : 'span12' }}">
-                    {% block sonata_admin_content %}
-
-                        {% if _preview is not empty %}
-                            <div class="sonata-ba-preview">{{ _preview|raw }}</div>
-                        {% endif %}
-
-                        {% if _content is not empty %}
-                            <div class="sonata-ba-content">{{ _content|raw }}</div>
-                        {% endif %}
-
-                        {% if _show is not empty %}
-                            <div class="sonata-ba-show">{{ _show|raw }}</div>
-                        {% endif %}
-
-                        {% if _form is not empty %}
-                            <div class="sonata-ba-form">{{ _form|raw }}</div>
-                        {% endif %}
-
-                        {% if _list_table is not empty or _list_filters is not empty %}
-                            <div class="sonata-ba-filter">
-                                {{ _list_filters|raw }}
-                            </div>
-                            <div class="sonata-ba-list">
-                                {{ _list_table|raw }}
-                            </div>
-                        {% endif %}
-
-                    {% endblock %}
+                        {% block sonata_admin_content %}
+    
+                            {% if _preview is not empty %}
+                                <div class="sonata-ba-preview">{{ _preview|raw }}</div>
+                            {% endif %}
+    
+                            {% if _content is not empty %}
+                                <div class="sonata-ba-content">{{ _content|raw }}</div>
+                            {% endif %}
+    
+                            {% if _show is not empty %}
+                                <div class="sonata-ba-show">{{ _show|raw }}</div>
+                            {% endif %}
+    
+                            {% if _form is not empty %}
+                                <div class="sonata-ba-form">{{ _form|raw }}</div>
+                            {% endif %}
+    
+                            {% if _list_table is not empty or _list_filters is not empty %}
+                                <div class="row-fluid">
+                                    <div class="sonata-ba-list span10">
+                                        {{ _list_table|raw }}
+                                    </div>
+                                    <div class="sonata-ba-filter span2">
+                                        {{ _list_filters|raw }}
+                                    </div>
+                                </div>
+                            {% endif %}
+    
+                        {% endblock %}
                     </div>
                 </div>
             </div>
+            <div id="push"></div>
         </div>
-        <div id="push"></div>
     </div>
     <div id="footer">
         {% block footer %}

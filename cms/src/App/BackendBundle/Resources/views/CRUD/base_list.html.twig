@@ -1,7 +1,7 @@
 {% extends base_template %}
 
 {% block actions %}
-    <div class="sonata-actions">
+    <div class="sonata-actions btn-group">
         {% include 'SonataAdminBundle:Core:create_button.html.twig' %}
     </div>
 {% endblock %}
@@ -194,33 +194,30 @@
         <h2>{{ 'label_filters'|trans({}, 'SonataAdminBundle') }}</h2>
         </div>
         <div class="filter_container {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}" style="display: {% if admin.datagrid.hasActiveFilters %}block{% else %}none;{% endif %}">
-        <div class="box-content">
-        <form style="margin-bottom: 0px;" class="sonata-filter-form {{ admin.isChild and 1 == admin.datagrid.filters|length ? 'hide' : '' }}" action="{{ admin.generateUrl('list') }}" method="GET">
-            <fieldset class="filter_legend" style="border: none;">
-
-                <div class="filter_container {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}">
-                    <table class="table table-bordered" style="margin-top: 0px; width: 100%">
+            <div class="box-content">
+                <form class="sonata-filter-form {{ admin.isChild and 1 == admin.datagrid.filters|length ? 'hide' : '' }}" action="{{ admin.generateUrl('list') }}" method="GET" style="margin-bottom: 0px;">
+                <fieldset class="filter_legend" style="border: none;">
+                    <div>
                         {% for filter in admin.datagrid.filters %}
-                        <tr id="filter_{{ filter.name }}_row" class="filter {{ filter.isActive ? 'active' : 'inactive' }}">
-                                <td class="filter-title">{{ admin.trans(filter.label) }}</td>
-                                <td class="filter-type">{{ form_widget(form.children[filter.formName].children['type']) }}</td>
-                                <td class="filter-value">{{ form_widget(form.children[filter.formName].children['value']) }}</td>
-                            </tr>
+                            <div class="clearfix">
+                                <label for="{{ form.children[filter.formName].children['value'].get('id') }}">{{ admin.trans(filter.label) }}</label>
+                                {{ form_widget(form.children[filter.formName].children['type'], {'attr': {'class': 'span8 sonata-filter-option'}}) }}
+                                {{ form_widget(form.children[filter.formName].children['value'], {'attr': {'class': 'span8'}}) }}
+                            </div>
                         {% endfor %}
-                    </table>
+                    </div>
 
                     <input type="hidden" name="filter[_page]" id="filter__page" value="1" />
 
                     {% set foo = form.children['_page'].setRendered() %}
                     {{ form_rest(form) }}
-                    <button type="submit" class="btn btn-primary"><i class="icon-filter icon-white"></i> {{ 'btn_filter'|trans({}, 'SonataAdminBundle') }}</button>
-                    <a class="btn" href="{{ admin.generateUrl('list', {filters: 'reset'}) }}"><i class="icon-remove"></i> {{ 'link_reset_filter'|trans({}, 'SonataAdminBundle') }}</a>
-                 </div>
-            </fieldset>
-        </form>
-                </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-small"><i class="icon-filter icon-white"></i> {{ 'btn_filter'|trans({}, 'SonataAdminBundle') }}</button>
+                    <a class="btn btn-small" href="{{ admin.generateUrl('list', {filters: 'reset'}) }}"><i class="icon-remove"></i> {{ 'link_reset_filter'|trans({}, 'SonataAdminBundle') }}</a>
+                </fieldset>
+                </form>
             </div>
         </div>
-
+    </div>
     {% endif %}
 {% endblock %}

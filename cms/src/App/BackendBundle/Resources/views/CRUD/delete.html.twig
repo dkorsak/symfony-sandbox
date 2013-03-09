@@ -1,7 +1,7 @@
 {% extends base_template %}
 
 {% block actions %}
-    <div class="sonata-actions">
+    <div class="sonata-actions btn-group">
         {% include 'AppBackendBundle:CRUD:edit_button.html.twig' %}
         {% include 'AppBackendBundle:CRUD:create_button.html.twig' %}
         {% include 'AppBackendBundle:CRUD:list_button.html.twig' %}
@@ -18,7 +18,7 @@
         {{ 'message_delete_confirmation'|trans({'%object%': object}, 'SonataAdminBundle') }}
 
         <div class="well form-actions">
-            <form method="POST" action="{{ admin.generateObjectUrl('delete', object) }}">
+            <form method="POST" action="{{ admin.generateObjectUrl('delete', object) }}" style="margin-bottom: 0px;">
                 <input type="hidden" value="DELETE" name="_method" />
 
                 {#<input type="submit" class="btn btn-danger" value="{{ 'btn_delete'|trans({}, 'SonataAdminBundle') }}" />#}

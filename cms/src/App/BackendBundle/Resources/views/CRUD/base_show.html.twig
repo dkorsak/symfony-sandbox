@@ -1,7 +1,7 @@
 {% extends base_template %}
 
 {% block actions %}
-    <div class="sonata-actions">
+    <div class="sonata-actions btn-group">
         {% include 'AppBackendBundle:CRUD:edit_button.html.twig' %}
         {% if admin.hasroute('history') and admin.id(object) and admin.isGranted('EDIT', object) %}
             <a class="btn sonata-action-element" href="{{ admin.generateObjectUrl('history', object) }}">

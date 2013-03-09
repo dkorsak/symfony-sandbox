@@ -403,3 +403,6 @@ legend.sonata-ba-fieldset-collapsed-description + .sonata-ba-collapsed-fields {
 .sonata-ba-list-field-header th a {
     text-decoration: none;
 }
+.sonata-bc div.sonata-actions {
+    float: right;
+}
