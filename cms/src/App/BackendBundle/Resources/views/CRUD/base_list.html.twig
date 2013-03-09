@@ -198,7 +198,7 @@
         <form style="margin-bottom: 0px;" class="sonata-filter-form {{ admin.isChild and 1 == admin.datagrid.filters|length ? 'hide' : '' }}" action="{{ admin.generateUrl('list') }}" method="GET">
             <fieldset class="filter_legend" style="border: none;">
 
-                <div class="filter_container {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}">
+                <!-- <div class="filter_container {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}">-->
                     <table class="table table-bordered" style="margin-top: 0px; width: 100%">
                         {% for filter in admin.datagrid.filters %}
                         <tr id="filter_{{ filter.name }}_row" class="filter {{ filter.isActive ? 'active' : 'inactive' }}">
@@ -215,7 +215,7 @@
                     {{ form_rest(form) }}
                     <button type="submit" class="btn btn-primary"><i class="icon-filter icon-white"></i> {{ 'btn_filter'|trans({}, 'SonataAdminBundle') }}</button>
                     <a class="btn" href="{{ admin.generateUrl('list', {filters: 'reset'}) }}"><i class="icon-remove"></i> {{ 'link_reset_filter'|trans({}, 'SonataAdminBundle') }}</a>
-                 </div>
+                 <!-- </div> -->
             </fieldset>
         </form>
                 </div>
