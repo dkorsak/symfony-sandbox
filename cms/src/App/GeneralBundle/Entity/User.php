@@ -343,7 +343,7 @@ class User extends BaseUser
     public function isGroupValid(ExecutionContext $context)
     {
         if ($this->groups->count() == 0) {
-            $context->addViolationAtSubPath('groups', 'This value should not be blank.', array(), null);
+            $context->addViolationAt('groups', 'This value should not be blank.', array(), null);
         }
     }
 }
