@@ -57,8 +57,6 @@
                     <clear.file.cache destination="@{destination}" env="@{env}"/>
                 </then>
             </if>
-            <echo>ANT DEBUG: Creating FOS js routing file</echo>
-            <exec executable="php" dir="@{destination}"><arg line="app/console fos:js-routing:dump"/></exec>
             <if>
                 <equals arg1="@{execute.clear.sonata.cache}" arg2="true"/>
                 <then>
@@ -75,6 +73,8 @@
                     <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-result"/></exec>
                 </then>
             </if>
+            <echo>ANT DEBUG: Creating FOS js routing file</echo>
+            <exec executable="php" dir="@{destination}"><arg line="app/console fos:js-routing:dump"/></exec>
             <if>
                 <equals arg1="@{execute.assets.dump}" arg2="true"/>
                 <then>
