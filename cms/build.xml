@@ -165,6 +165,13 @@
     <macrodef name="deploy">
         <attribute name="destination" default="build"/>
         <sequential>
+            <if>
+                <equals arg1="${local-build}" arg2="false" />
+                <then>
+                    <delete quiet="true" file="${basedir}/cms/app/config/parameters.ini"/>
+                    <copy preservelastmodified="true" overwrite="false" file="${basedir}/cms/app/config/parameters.${target}.ini" tofile="${basedir}/cms/app/config/parameters.ini" />
+                </then>
+            </if>
             <echo>ANT DEBUG: Deploying cms into @{destination} directory</echo>
             <delete dir="@{destination}"/>
             <mkdir dir="@{destination}"/>
