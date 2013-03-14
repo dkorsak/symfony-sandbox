@@ -49,7 +49,7 @@ class ChangePasswordValidatorTest extends BasePHPUnitTest
 
     public function testShouldOnlyDisplayOldPasswordIsRequiredMessage()
     {
-        $this->mockContext->shouldReceive('addViolationAtSubPath')
+        $this->mockContext->shouldReceive('addViolationAt')
             ->with("oldPassword", \Mockery::any())->once()->andReturn(null);
 
         $user = $this->createObjectWithId('App\GeneralBundle\Entity\User', 1);
@@ -60,7 +60,7 @@ class ChangePasswordValidatorTest extends BasePHPUnitTest
 
     public function testShouldOnlyDisplayInvalidOldPasswordMessage()
     {
-        $this->mockContext->shouldReceive('addViolationAtSubPath')
+        $this->mockContext->shouldReceive('addViolationAt')
             ->with("oldPassword", \Mockery::any())->once()->andReturnNull();
         $this->encoderMock->shouldReceive('isPasswordValid')->withAnyArgs()->andReturn(false);
         $user = $this->createObjectWithId('App\GeneralBundle\Entity\User', 1);
@@ -72,7 +72,7 @@ class ChangePasswordValidatorTest extends BasePHPUnitTest
 
     public function testShouldNotDisplayInvalidOldPasswordMessage()
     {
-        $this->mockContext->shouldReceive('addViolationAtSubPath')
+        $this->mockContext->shouldReceive('addViolationAt')
             ->with("oldPassword", \Mockery::any())->never();
 
         $this->encoderMock->shouldReceive('isPasswordValid')->withAnyArgs()->andReturn(true);
@@ -86,7 +86,7 @@ class ChangePasswordValidatorTest extends BasePHPUnitTest
 
     public function testShouldOnlyDisplayPasswordMustMatchMessage()
     {
-        $this->mockContext->shouldReceive('addViolationAtSubPath')
+        $this->mockContext->shouldReceive('addViolationAt')
             ->with("plainPassword", \Mockery::any())->once()->andReturnNull();
 
         $this->encoderMock->shouldReceive('isPasswordValid')->withAnyArgs()->andReturn(true);
@@ -100,7 +100,7 @@ class ChangePasswordValidatorTest extends BasePHPUnitTest
 
     public function testShouldOnlyDisplayRetypePasswordIsEmptyMessage()
     {
-        $this->mockContext->shouldReceive('addViolationAtSubPath')
+        $this->mockContext->shouldReceive('addViolationAt')
             ->with("retypePassword", \Mockery::any())->once()->andReturnNull();
 
         $this->encoderMock->shouldReceive('isPasswordValid')->withAnyArgs()->andReturn(true);
@@ -114,9 +114,9 @@ class ChangePasswordValidatorTest extends BasePHPUnitTest
 
     public function testShouldDisplayOldPasswordIsEmptyAndRetypePasswordIsEmptyMessages()
     {
-        $this->mockContext->shouldReceive('addViolationAtSubPath')
+        $this->mockContext->shouldReceive('addViolationAt')
             ->with("oldPassword", \Mockery::any())->once()->andReturnNull();
-        $this->mockContext->shouldReceive('addViolationAtSubPath')
+        $this->mockContext->shouldReceive('addViolationAt')
             ->with("retypePassword", \Mockery::any())->once()->andReturnNull();
 
         $user = $this->createObjectWithId('App\GeneralBundle\Entity\User', 1);
