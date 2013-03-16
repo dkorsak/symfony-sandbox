@@ -113,6 +113,14 @@ class User extends BaseUser
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return trim($this->getName()) != "" ? $this->getName() : 'User create';
+    }
+
+    /**
      * Get id
      *
      * @return integer

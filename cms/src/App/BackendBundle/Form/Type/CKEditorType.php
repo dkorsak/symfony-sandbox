@@ -14,8 +14,8 @@ class CKEditorType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->set('custom_config', $options['custom_config']);
-        $view->set('language', $options['language']);
+        $view->vars['custom_config'] = $options['custom_config'];
+        $view->vars['language'] = $options['language'];
     }
 
     /**

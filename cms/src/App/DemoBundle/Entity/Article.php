@@ -121,6 +121,14 @@ class Article
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getTitle() ? $this->getTitle() : 'Article create';
+    }
+
+    /**
      * Get id
      *
      * @return integer
