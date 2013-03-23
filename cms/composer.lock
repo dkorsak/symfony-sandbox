@@ -242,12 +242,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkExtension.git",
-                "reference": "07014c6c81ffdb7a2c41681816e513d8c03376e2"
+                "reference": "4233585822a8bbd3f5a78f3ba74605a0feba3392"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkExtension/zipball/07014c6c81ffdb7a2c41681816e513d8c03376e2",
-                "reference": "07014c6c81ffdb7a2c41681816e513d8c03376e2",
+                "url": "https://api.github.com/repos/Behat/MinkExtension/zipball/4233585822a8bbd3f5a78f3ba74605a0feba3392",
+                "reference": "4233585822a8bbd3f5a78f3ba74605a0feba3392",
                 "shasum": ""
             },
             "require": {
@@ -288,7 +288,7 @@
                 "test",
                 "web"
             ],
-            "time": "2013-03-12 09:30:49"
+            "time": "2013-03-23 19:49:15"
         },
         {
             "name": "behat/mink-selenium2-driver",

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project name="Content Management System" default="" basedir=".">
     <property name="java.lib" value="java/lib" />
     <property name="target" value=""/>
@@ -19,6 +19,51 @@
         <sequential>
             <echo>ANT DEBUG: Cleaning file cache for destination @{destination} and environment @{env}</echo>
             <exec executable="php" dir="@{destination}"><arg line="app/console cache:clear --env=@{env} --no-debug" /></exec>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="syncfiles">
+        <attribute name="destination" default="build"/>
+        <attribute name="source" default="cms"/>
+        <sequential>
+            <sync todir="@{destination}" overwrite="false" failonerror="false" includeemptydirs="true">
+                <fileset dir="@{source}">
+                    <exclude name="build.xml"/>
+                    <exclude name=".git"/>
+                    <exclude name="app/config/parameters*"/>
+                    <exclude name="app/phpunit.xml"/>
+                    <exclude name="app/check.php"/>
+                    <exclude name="app/cache/**"/>
+                    <exclude name="bin/**"/>
+                    <exclude name="app/logs/**"/>
+                    <exclude name="web/bundles/**"/>
+                    <exclude name="web/uploads/**"/>
+                    <exclude name="web/app_dev.php"/>
+                    <exclude name="web/app_test.php"/>
+                    <exclude name="web/config.php"/>
+                    <exclude name="web/css/**"/>
+                    <exclude name="web/js/**"/>
+                    <exclude name="behat*.*"/>
+                    <exclude name="composer*.*"/>
+                    <exclude name="*.phar"/>
+                    <exclude name="deploy.sh"/>
+                    <exclude name="behat.sh"/>
+                    <exclude name=".php_cs"/>
+                    <exclude name="rsync_exclude.txt"/>
+                    <exclude name="src/App/**/Features/**"/>
+                    <exclude name="src/App/**/Tests/**"/>
+                    <exclude name="vendor/liip/imagine-bundle/Liip/ImagineBundle/Tests/Fixtures/assets/**"/>
+                </fileset>
+                <preserveInTarget>
+                    <include name="app/cache/prod/**"/>
+                    <include name="app/logs/**"/>
+                    <include name="web/uploads/**"/>
+                    <include name="app/config/parameters.ini"/>
+                    <include name="web/bundles/**"/>
+                    <include name="web/css/**"/>
+                    <include name="web/js/**"/>
+                </preserveInTarget>
+            </sync>
         </sequential>
     </macrodef>
 
@@ -84,7 +129,7 @@
                     <exec executable="php" dir="@{destination}"><arg line="app/console assetic:dump --env=@{env} --no-debug" /></exec>
                 </then>
             </if>
-            <!--<create.web.dirs destination="@{destination}"/>-->
+            <create.web.dirs destination="@{destination}"/>
         </sequential>
     </macrodef>
 
@@ -166,43 +211,22 @@
         <attribute name="destination" default="build"/>
         <sequential>
             <if>
-                <equals arg1="${local-build}" arg2="false" />
+                <equals arg1="${local-build}" arg2="false"/>
                 <then>
-                    <delete quiet="true" file="${basedir}/cms/app/config/parameters.ini"/>
-                    <copy preservelastmodified="true" overwrite="false" file="${basedir}/cms/app/config/parameters.${target}.ini" tofile="${basedir}/cms/app/config/parameters.ini" />
+                    <copy preservelastmodified="true" overwrite="true" file="${basedir}/cms/app/config/parameters.${target}.ini" tofile="${basedir}/cms/app/config/parameters.ini" />
                 </then>
             </if>
-            <echo>ANT DEBUG: Deploying cms into @{destination} directory</echo>
-            <delete dir="@{destination}"/>
-            <mkdir dir="@{destination}"/>
-            <copy todir="@{destination}">
-            <fileset dir="cms">
-                <exclude name="build.xml"/>
-                <exclude name=".git"/>
-                <exclude name="app/config/parameters*"/>
-                <exclude name="app/phpunit.xml"/>
-                <exclude name="app/check.php"/>
-                <exclude name="app/cache/**"/>
-                <exclude name="bin/**"/>
-                <exclude name="app/logs/**"/>
-                <exclude name="web/bundles/**"/>
-                <exclude name="web/uploads/**"/>
-                <exclude name="web/app_dev.php"/>
-                <exclude name="web/app_test.php"/>
-                <exclude name="web/config.php"/>
-                <exclude name="web/css/**"/>
-                <exclude name="web/js/**"/>
-                <exclude name="behat*.*"/>
-                <exclude name="composer*.*"/>
-                <exclude name="*.phar"/>
-                <exclude name="deploy.sh"/>
-                <exclude name="behat.sh"/>
-                <exclude name=".php_cs"/>
-                <exclude name="rsync_exclude.txt"/>
-                <exclude name="src/App/**/Features/**"/>
-                <exclude name="src/App/**/Tests/**"/>
-            </fileset>
-            </copy>
+            <echo>ANT DEBUG: Syncing cms into @{destination} directory</echo>
+            <if>
+                <not>
+                    <available file="@{destination}"/>
+                </not>
+                <then>
+                    <mkdir dir="@{destination}"/>
+                </then>
+            </if>
+            <syncfiles destination="@{destination}"/>
+            <chmod dir="@{destination}/app/console" perm="+x"/>
             <echo>AND DEBUG: Copying ${parameters-file-path} file</echo>
             <copy preservelastmodified="true" overwrite="true" file="${parameters-file-path}" tofile="@{destination}/app/config/parameters.ini"/>
             <build destination="@{destination}" env="prod"/>
@@ -314,6 +338,7 @@
         <java jar="${selenium.jar}" fork="true" spawn="true">
             <arg line="-browser browserName=${selenium.browser},version=${selenium.browser.version},maxInstances=1"/>
             <arg line="-timeout 30"/>
+            <arg line="-browserSessionReuse"/>
             <arg line="-port ${selenium.port}"/>
             <arg line="-log '${basedir}/test_result/selenium-server.log'"/>
         </java>

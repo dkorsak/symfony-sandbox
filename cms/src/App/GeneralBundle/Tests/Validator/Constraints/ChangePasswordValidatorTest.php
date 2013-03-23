@@ -125,10 +125,4 @@ class ChangePasswordValidatorTest extends BasePHPUnitTest
         $user->setOldPassword("");
         $this->service->validate($user, $this->constraint);
     }
-
-    protected function tearDown()
-    {
-        parent::tearDown();
-        \Mockery::close();
-    }
 }
