@@ -1699,12 +1699,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/cg-library.git",
-                "reference": "fb8a054a061d92ae963a984d34846ed34c012d31"
+                "reference": "75a519d83a33f6b893a25aef835a1e5fc166a6d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/cg-library/zipball/fb8a054a061d92ae963a984d34846ed34c012d31",
-                "reference": "fb8a054a061d92ae963a984d34846ed34c012d31",
+                "url": "https://api.github.com/repos/schmittjoh/cg-library/zipball/75a519d83a33f6b893a25aef835a1e5fc166a6d7",
+                "reference": "75a519d83a33f6b893a25aef835a1e5fc166a6d7",
                 "shasum": ""
             },
             "require": {
@@ -1729,7 +1729,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -1737,7 +1737,7 @@
             "keywords": [
                 "code generation"
             ],
-            "time": "2013-02-17 22:10:19"
+            "time": "2013-03-23 08:03:00"
         },
         {
             "name": "jms/di-extra-bundle",
@@ -2339,12 +2339,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "e01c03dfa2f12086c3bbd69e9ca19e4953c6c7d9"
+                "reference": "84b43613e4346d7892ee4375a30614edf1ad36c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/e01c03dfa2f12086c3bbd69e9ca19e4953c6c7d9",
-                "reference": "e01c03dfa2f12086c3bbd69e9ca19e4953c6c7d9",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/84b43613e4346d7892ee4375a30614edf1ad36c2",
+                "reference": "84b43613e4346d7892ee4375a30614edf1ad36c2",
                 "shasum": ""
             },
             "require": {
@@ -2384,7 +2384,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2013-03-19 17:42:50"
+            "time": "2013-03-22 12:04:50"
         },
         {
             "name": "monolog/monolog",
@@ -2454,12 +2454,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/php-option.git",
-                "reference": "c8829c3b675f17aa465557f721d909deb67d904f"
+                "reference": "535d91641d6218a7742fcabb4b50743ee37ad047"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/c8829c3b675f17aa465557f721d909deb67d904f",
-                "reference": "c8829c3b675f17aa465557f721d909deb67d904f",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/535d91641d6218a7742fcabb4b50743ee37ad047",
+                "reference": "535d91641d6218a7742fcabb4b50743ee37ad047",
                 "shasum": ""
             },
             "require": {
@@ -2484,7 +2484,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -2495,7 +2495,7 @@
                 "php",
                 "type"
             ],
-            "time": "2013-03-03 09:30:51"
+            "time": "2013-03-22 13:43:21"
         },
         {
             "name": "psr/log",
@@ -2542,12 +2542,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioDistributionBundle.git",
-                "reference": "a6c670b01a9e0372d02c29231c5564c43ce34c0b"
+                "reference": "329d87ab0a0621bf7075f8041cba6885807f3e5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensio/SensioDistributionBundle/zipball/a6c670b01a9e0372d02c29231c5564c43ce34c0b",
-                "reference": "a6c670b01a9e0372d02c29231c5564c43ce34c0b",
+                "url": "https://api.github.com/repos/sensio/SensioDistributionBundle/zipball/329d87ab0a0621bf7075f8041cba6885807f3e5e",
+                "reference": "329d87ab0a0621bf7075f8041cba6885807f3e5e",
                 "shasum": ""
             },
             "require": {
@@ -2579,7 +2579,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2013-03-21 16:43:22"
+            "time": "2013-03-23 14:19:22"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -3444,12 +3444,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "b6bfc8f7f8ae5dac7883885ee323dc3b53ab7d21"
+                "reference": "7d490f435afdde9b54633bc2ecab6c153720614a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/b6bfc8f7f8ae5dac7883885ee323dc3b53ab7d21",
-                "reference": "b6bfc8f7f8ae5dac7883885ee323dc3b53ab7d21",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/7d490f435afdde9b54633bc2ecab6c153720614a",
+                "reference": "7d490f435afdde9b54633bc2ecab6c153720614a",
                 "shasum": ""
             },
             "require": {
@@ -3485,7 +3485,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2013-02-04 10:09:01"
+            "time": "2013-03-22 14:03:11"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -3669,12 +3669,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "e24ce2f22f880de1b706755fa7e21d8bbd65954e"
+                "reference": "9885798dd133b7f67db02bd87deb15681d1a4b37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/e24ce2f22f880de1b706755fa7e21d8bbd65954e",
-                "reference": "e24ce2f22f880de1b706755fa7e21d8bbd65954e",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/9885798dd133b7f67db02bd87deb15681d1a4b37",
+                "reference": "9885798dd133b7f67db02bd87deb15681d1a4b37",
                 "shasum": ""
             },
             "require": {
@@ -3760,7 +3760,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-03-20 13:55:39"
+            "time": "2013-03-23 12:53:00"
         },
         {
             "name": "twig/extensions",
@@ -3815,12 +3815,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "ba67e2cf8e2ca6cada1de5a316a724df648c52ac"
+                "reference": "ff724c81cabe0fe6b9cffdb6fed55a92e34ba2e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/ba67e2cf8e2ca6cada1de5a316a724df648c52ac",
-                "reference": "ba67e2cf8e2ca6cada1de5a316a724df648c52ac",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/ff724c81cabe0fe6b9cffdb6fed55a92e34ba2e8",
+                "reference": "ff724c81cabe0fe6b9cffdb6fed55a92e34ba2e8",
                 "shasum": ""
             },
             "require": {
@@ -3856,7 +3856,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-03-10 07:23:01"
+            "time": "2013-03-22 15:32:12"
         },
         {
             "name": "vich/uploader-bundle",
