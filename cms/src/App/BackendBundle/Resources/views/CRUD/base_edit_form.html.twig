@@ -13,37 +13,38 @@
                 </div>
             {% endif %}
 
-            {% block sonata_pre_fieldsets %}{% endblock %}
-
-            {% for name, form_group in admin.formgroups %}
-                <div class="row-fluid box{% if form_group.collapsed %} form_box_fieldset-collapsed{% endif %}">
-                <div class="box-header well"{% if form_group.collapsed %} style="cursor: pointer;"{% endif %}>
-                    {% if form_group.collapsed %}
-                        <div class="box-icon">
-                        <a class="btn btn-minimize btn-round" href="#">
-                            <i class="icon-chevron-down"></i>
-                        </a>
-                        </div>
-                    {% endif %}
-                    <h2>
-                    {{ name|trans({}, admin.translationdomain) }}
-                    </h2>
-                </div>
-                <div class="box-content">
-                <fieldset>
-                    <div class="sonata-ba-collapsed-fields">
-                        {% for field_name in form_group.fields %}
-                            {% if admin.formfielddescriptions[field_name] is defined %}
-                                {{ form_row(form[field_name])}}
-                            {% endif %}
+            {% block sonata_pre_fieldsets %}
+                <div class="tabbable">
+                    <ul class="nav nav-tabs">
+                        {% for name, form_group in admin.formgroups %}
+                            <li class="{% if loop.first %}active{% endif %}"><a href="#{{ name }}" data-toggle="tab">{{ name|trans({}, admin.translationdomain) }}</a></li>
                         {% endfor %}
-                    </div>
-                </fieldset>
-                </div>
-                </div>
-            {% endfor %}
+                    </ul>
+            {% endblock %}
 
-            {% block sonata_post_fieldsets %}{% endblock %}
+                <div class="tab-content">
+                    {% for name, form_group in admin.formgroups %}
+                        <div class="tab-pane {% if loop.first %} active{% endif %}" id="{{ name }}">
+                            <fieldset>
+                                <div class="sonata-ba-collapsed-fields">
+                                    {% if form_group.description != false %}
+                                        <p>{{ form_group.description|raw }}</p>
+                                    {% endif %}
+
+                                    {% for field_name in form_group.fields %}
+                                        {% if admin.formfielddescriptions[field_name] is defined %}
+                                            {{ form_row(form[field_name])}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </fieldset>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            {% block sonata_post_fieldsets %}
+                </div>
+            {% endblock %}
 
             {{ form_rest(form) }}
 
