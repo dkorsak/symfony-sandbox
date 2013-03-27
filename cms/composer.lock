@@ -1351,12 +1351,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "2a59134c7d6ac3f04e34b527a7de37ef0d593bbd"
+                "reference": "e96e48a988f7fffbe3cca4763df84f77ba79ddde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/2a59134c7d6ac3f04e34b527a7de37ef0d593bbd",
-                "reference": "2a59134c7d6ac3f04e34b527a7de37ef0d593bbd",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/e96e48a988f7fffbe3cca4763df84f77ba79ddde",
+                "reference": "e96e48a988f7fffbe3cca4763df84f77ba79ddde",
                 "shasum": ""
             },
             "require": {
@@ -1422,7 +1422,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-03-24 06:26:57"
+            "time": "2013-03-27 16:49:35"
         },
         {
             "name": "genemu/form-bundle",
@@ -2591,12 +2591,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioFrameworkExtraBundle.git",
-                "reference": "7c5a42bd9c7433b24f9387be5592825587b4f56b"
+                "reference": "148da1657cde54e2f5688b96caa2e350e7e28637"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensio/SensioFrameworkExtraBundle/zipball/7c5a42bd9c7433b24f9387be5592825587b4f56b",
-                "reference": "7c5a42bd9c7433b24f9387be5592825587b4f56b",
+                "url": "https://api.github.com/repos/sensio/SensioFrameworkExtraBundle/zipball/148da1657cde54e2f5688b96caa2e350e7e28637",
+                "reference": "148da1657cde54e2f5688b96caa2e350e7e28637",
                 "shasum": ""
             },
             "require": {
@@ -2629,7 +2629,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2013-03-21 16:41:54"
+            "time": "2013-03-27 06:44:29"
         },
         {
             "name": "sensio/generator-bundle",
@@ -2686,12 +2686,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "3918c8f23a6c475925d012c5d2f04c544975b3d9"
+                "reference": "325508ca99e45428db20828985857a5f6eb8f911"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/3918c8f23a6c475925d012c5d2f04c544975b3d9",
-                "reference": "3918c8f23a6c475925d012c5d2f04c544975b3d9",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/325508ca99e45428db20828985857a5f6eb8f911",
+                "reference": "325508ca99e45428db20828985857a5f6eb8f911",
                 "shasum": ""
             },
             "require": {
@@ -2752,7 +2752,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2013-03-12 17:03:08"
+            "time": "2013-03-27 18:08:43"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -2824,12 +2824,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCacheBundle.git",
-                "reference": "48f1c56e7e05f24e32c854f9013c5b082e323642"
+                "reference": "2.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCacheBundle/zipball/48f1c56e7e05f24e32c854f9013c5b082e323642",
-                "reference": "48f1c56e7e05f24e32c854f9013c5b082e323642",
+                "url": "https://api.github.com/repos/sonata-project/SonataCacheBundle/zipball/2.1.2",
+                "reference": "2.1.2",
                 "shasum": ""
             },
             "require": {
@@ -2938,12 +2938,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "78f7c08d33f9eaf8a89c7ba3d1cabc7257c67577"
+                "reference": "923a9d26f8fbd9305e915259659a024c30bdd312"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/78f7c08d33f9eaf8a89c7ba3d1cabc7257c67577",
-                "reference": "78f7c08d33f9eaf8a89c7ba3d1cabc7257c67577",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/923a9d26f8fbd9305e915259659a024c30bdd312",
+                "reference": "923a9d26f8fbd9305e915259659a024c30bdd312",
                 "shasum": ""
             },
             "require": {
@@ -2990,7 +2990,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2013-03-11 17:35:17"
+            "time": "2013-03-27 18:08:39"
         },
         {
             "name": "sonata-project/easy-extends-bundle",
@@ -3157,12 +3157,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "3e5b49415afe8343803b52e8f0ffea8ca38c2bd3"
+                "reference": "cadf18c8d46c7c2c3da5efba59f573201cb2bc2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/3e5b49415afe8343803b52e8f0ffea8ca38c2bd3",
-                "reference": "3e5b49415afe8343803b52e8f0ffea8ca38c2bd3",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/cadf18c8d46c7c2c3da5efba59f573201cb2bc2c",
+                "reference": "cadf18c8d46c7c2c3da5efba59f573201cb2bc2c",
                 "shasum": ""
             },
             "require": {
@@ -3209,7 +3209,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2013-03-05 21:40:19"
+            "time": "2013-03-27 16:29:41"
         },
         {
             "name": "sonata-project/jquery-bundle",
