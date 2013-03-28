@@ -133,7 +133,7 @@
         </sequential>
     </macrodef>
 
-    <macrodef name="phpunit">
+    <macrodef name="phpunit" description="PHPUnit and Clover PHP">
         <attribute name="destination" default="cms"/>
         <sequential>
             <echo>ANT DEBUG: Executing PHPUnit tests</echo>
@@ -143,7 +143,7 @@
         </sequential>
     </macrodef>
 
-    <macrodef name="phpcs">
+    <macrodef name="phpcs" description="PHP_CodeSniffer">
         <attribute name="destination" default="cms"/>
         <attribute name="debug" default="true"/>
         <sequential>
@@ -164,7 +164,7 @@
         </sequential>
     </macrodef>
 
-    <macrodef name="phpmd">
+    <macrodef name="phpmd" description="Project Mess Detection">
         <attribute name="destination" default="cms"/>
         <attribute name="debug" default="true"/>
         <sequential>
@@ -182,6 +182,91 @@
                     </exec>
                 </else>
             </if>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="phpcpd" description="Find duplicate code using PHPCPD">
+        <attribute name="destination" default="cms"/>
+        <attribute name="debug" default="true"/>
+        <sequential>
+            <echo>ANT DEBUG: Creating copy/paste detector PHPCPD report</echo>
+            <if>
+                <equals arg1="@{debug}" arg2="true" />
+                <then>
+                    <exec executable="phpcpd" dir="@{destination}" failonerror="off">
+                        <arg value="--exclude"/>
+                        <arg value="App/BackendBundle/Resources/public"/>
+                        <arg value="--exclude"/>
+                        <arg value="App/FrontendBundle/Resources/public"/>
+                        <arg value="--log-pmd"/>
+                        <arg value="${basedir}/test_result/pmd-cpd.xml"/>
+                        <arg value="./src"/>
+                    </exec>
+                </then>
+                <else>
+                    <exec executable="phpcpd" dir="@{destination}" failonerror="off">
+                        <arg value="--exclude"/>
+                        <arg value="App/BackendBundle/Resources/public"/>
+                        <arg value="--exclude"/>
+                        <arg value="App/FrontendBundle/Resources/public"/>
+                        <arg value="--log-pmd"/>
+                        <arg value="${basedir}/test_result/pmd-cpd.xml"/>
+                        <arg value="--quiet"/>
+                        <arg value="./src"/>
+                    </exec>
+                </else>
+            </if>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="pdepend" description="Calculate software metrics using PHP_Depend">
+        <attribute name="destination" default="cms"/>
+        <sequential>
+            <echo>ANT DEBUG: Creating software metrics report using PHP_Depend</echo>
+            <exec executable="pdepend" dir="@{destination}" failonerror="off">
+                <arg value="--jdepend-xml=${basedir}/test_result/pdepend-jdepend.xml"/>
+                <arg value="--jdepend-chart=${basedir}/test_result/pdepend-dependencies.svg"/>
+                <arg value="--overview-pyramid=${basedir}/test_result/pdepend-overview-pyramid.svg"/>
+                <arg value="--ignore=App/BackendBundle/Resources/public,App/FrontendBundle/Resources/public"/>
+                <arg value="./src"/>
+            </exec>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="phploc" description="Measure project size using PHPLOC">
+        <attribute name="destination" default="cms"/>
+        <sequential>
+            <echo>ANT DEBUG: Creating measure project size using report</echo>
+            <exec executable="phploc" dir="@{destination}" failonerror="off">
+                <arg value="--log-csv"/>
+                <arg value="${basedir}/test_result/phploc.csv"/>
+                <arg value="--exclude"/>
+                <arg value="App/BackendBundle/Resources/public"/>
+                <arg value="--exclude"/>
+                <arg value="App/FrontendBundle/Resources/public"/>
+                <arg value="./src"/>
+            </exec>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
+        <attribute name="destination" default="cms"/>
+        <sequential>
+            <echo>ANT DEBUG: Aggregating output with PHP_CodeBrowser</echo>
+            <exec executable="phpcb" dir="@{destination}" failonerror="off">
+                <arg value="--log"/>
+                <arg path="${basedir}/test_result"/>
+                <arg value="--source"/>
+                <arg path="./@{destination}/src"/>
+                <arg value="--output"/>
+                <arg path="${basedir}/test_result/code-browser"/>
+                <arg value="--ignore"/>
+                <arg path="./@{destination}/src/App/BackendBundle/Resources"/>
+                <arg value="--ignore"/>
+                <arg path="./@{destination}/src/App/FrontendBundle/Resources"/>
+                <arg value="--ignore"/>
+                <arg path="./@{destination}/src/App/GeneralBundle/Resources"/>
+            </exec>
         </sequential>
     </macrodef>
 
@@ -413,6 +498,26 @@
 
     <target name="phpmd" description="Create PHPMD report" depends="clean-test-result-directory">
         <phpmd debug="${debug}"/>
+    </target>
+
+    <target name="phpcpd" description="Find duplicate code using PHPCPD" depends="clean-test-result-directory">
+        <phpcpd debug="${debug}"/>
+    </target>
+
+    <target name="pdepend" description="Calculate software metrics using PHP_Depend" depends="clean-test-result-directory">
+        <pdepend/>
+    </target>
+
+    <target name="phploc" description="Measure project size using PHPLOC" depends="clean-test-result-directory">
+        <phploc/>
+    </target>
+
+    <target name="codereport" description="Generating code report" depends="clean-test-result-directory">
+        <phpmd debug="false"/>
+        <phpcpd debug="false"/>
+        <pdepend/>
+        <phploc/>
+        <phpcb/>
     </target>
 
     <target name="build" depends="check, composer">
