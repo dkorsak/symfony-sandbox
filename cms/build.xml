@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Content Management System" default="" basedir=".">
-    <property name="java.lib" value="java/lib" />
+    <property name="java.lib" value="java/lib"/>
     <property name="target" value=""/>
     <property name="bundle" value=""/>
     <property name="env" value="dev"/>
     <property name="debug" value="true"/>
-    <property name="selenium.jar" value="${java.lib}/selenium-server-standalone-2.31.0.jar" />
+    <property name="selenium.jar" value="${java.lib}/selenium-server-standalone-2.31.0.jar"/>
 
     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
         <classpath>
@@ -18,7 +18,7 @@
         <attribute name="env" default="${env}"/>
         <sequential>
             <echo>ANT DEBUG: Cleaning file cache for destination @{destination} and environment @{env}</echo>
-            <exec executable="php" dir="@{destination}"><arg line="app/console cache:clear --env=@{env} --no-debug" /></exec>
+            <exec executable="php" dir="@{destination}"><arg line="app/console cache:clear --env=@{env} --no-debug"/></exec>
         </sequential>
     </macrodef>
 
@@ -73,15 +73,15 @@
         <attribute name="fixtures" default="true"/>
         <sequential>
             <echo>AND DEBUG: Building database for environment @{env}</echo>
-            <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:database:drop --env=@{env} --force" /></exec>
-            <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:database:create --env=@{env}" /></exec>
-            <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:schema:create --env=@{env}" /></exec>
-            <exec executable="php" dir="@{destination}"><arg line="app/console app:create-pdo-session-table" /></exec>
+            <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:database:drop --env=@{env} --force"/></exec>
+            <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:database:create --env=@{env}"/></exec>
+            <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:schema:create --env=@{env}"/></exec>
+            <exec executable="php" dir="@{destination}"><arg line="app/console app:create-pdo-session-table"/></exec>
             <if>
                 <equals arg1="@{fixtures}" arg2="true"/>
                 <then>
                     <echo>AND DEBUG: Loading fixtures</echo>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:fixtures:load --env=@{env}" /></exec>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:fixtures:load --env=@{env}"/></exec>
                 </then>
             </if>
         </sequential>
@@ -124,9 +124,9 @@
                 <equals arg1="@{execute.assets.dump}" arg2="true"/>
                 <then>
                     <echo>ANT DEBUG: Installing assets</echo>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console assets:install web @{symlink}" /></exec>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console assets:install web @{symlink}"/></exec>
                     <echo>ANT DEBUG: Dumping @{env} assets</echo>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console assetic:dump --env=@{env} --no-debug" /></exec>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console assetic:dump --env=@{env} --no-debug"/></exec>
                 </then>
             </if>
             <create.web.dirs destination="@{destination}"/>
@@ -149,10 +149,10 @@
         <sequential>
             <echo>ANT DEBUG: Creating coding standards report</echo>
             <if>
-                <equals arg1="@{debug}" arg2="true" />
+                <equals arg1="@{debug}" arg2="true"/>
                 <then>
                     <exec dir="@{destination}" executable="phpcs" failonerror="false">
-                        <arg line="-s --standard=${basedir}/coding_standards/PSR2 --report=full ./src" />
+                        <arg line="-s --standard=${basedir}/coding_standards/PSR2 --report=full ./src"/>
                     </exec>
                 </then>
                 <else>
@@ -170,15 +170,15 @@
         <sequential>
             <echo>ANT DEBUG: Creating PHPMD report</echo>
             <if>
-                <equals arg1="@{debug}" arg2="true" />
+                <equals arg1="@{debug}" arg2="true"/>
                 <then>
                     <exec executable="phpmd" dir="@{destination}/src" failonerror="off">
-                        <arg line=". xml codesize,unusedcode,design --exclude /App/BackendBundle/Resources"/>
+                        <arg line=". xml codesize,unusedcode,design --exclude /App/BackendBundle/Resources,/App/FrontendBundle/Resources,/App/GeneralBundle/Resources"/>
                     </exec>
                 </then>
                 <else>
                     <exec executable="phpmd" dir="@{destination}/src" failonerror="off">
-                        <arg line=". xml codesize,unusedcode,design --reportfile '${basedir}/test_result/pmd.xml' --exclude /App/BackendBundle/Resources"/>
+                        <arg line=". xml codesize,unusedcode,design --reportfile '${basedir}/test_result/pmd.xml' --exclude /App/BackendBundle/Resources,/App/FrontendBundle/Resources,/App/GeneralBundle/Resources"/>
                     </exec>
                 </else>
             </if>
@@ -191,13 +191,17 @@
         <sequential>
             <echo>ANT DEBUG: Creating copy/paste detector PHPCPD report</echo>
             <if>
-                <equals arg1="@{debug}" arg2="true" />
+                <equals arg1="@{debug}" arg2="true"/>
                 <then>
                     <exec executable="phpcpd" dir="@{destination}" failonerror="off">
+                        <arg value="--min-lines"/>
+                        <arg value="5"/>
                         <arg value="--exclude"/>
-                        <arg value="App/BackendBundle/Resources/public"/>
+                        <arg value="App/FrontendBundle/Resources"/>
                         <arg value="--exclude"/>
-                        <arg value="App/FrontendBundle/Resources/public"/>
+                        <arg value="App/BackendBundle/Resources"/>
+                        <arg value="--exclude"/>
+                        <arg value="App/GeneralBundle/Resources"/>
                         <arg value="--log-pmd"/>
                         <arg value="${basedir}/test_result/pmd-cpd.xml"/>
                         <arg value="./src"/>
@@ -205,10 +209,14 @@
                 </then>
                 <else>
                     <exec executable="phpcpd" dir="@{destination}" failonerror="off">
+                        <arg value="--min-lines"/>
+                        <arg value="5"/>
                         <arg value="--exclude"/>
-                        <arg value="App/BackendBundle/Resources/public"/>
+                        <arg value="App/BackendBundle/Resources"/>
                         <arg value="--exclude"/>
-                        <arg value="App/FrontendBundle/Resources/public"/>
+                        <arg value="App/FrontendBundle/Resources"/>
+                        <arg value="--exclude"/>
+                        <arg value="App/GeneralBundle/Resources"/>
                         <arg value="--log-pmd"/>
                         <arg value="${basedir}/test_result/pmd-cpd.xml"/>
                         <arg value="--quiet"/>
@@ -241,9 +249,11 @@
                 <arg value="--log-csv"/>
                 <arg value="${basedir}/test_result/phploc.csv"/>
                 <arg value="--exclude"/>
-                <arg value="App/BackendBundle/Resources/public"/>
+                <arg value="App/BackendBundle/Resources"/>
                 <arg value="--exclude"/>
-                <arg value="App/FrontendBundle/Resources/public"/>
+                <arg value="App/FrontendBundle/Resources"/>
+                <arg value="--exclude"/>
+                <arg value="App/GeneralBundle/Resources"/>
                 <arg value="./src"/>
             </exec>
         </sequential>
@@ -254,19 +264,21 @@
         <sequential>
             <echo>ANT DEBUG: Aggregating output with PHP_CodeBrowser</echo>
             <exec executable="phpcb" dir="@{destination}" failonerror="off">
-                <arg value="--log"/>
-                <arg path="${basedir}/test_result"/>
-                <arg value="--source"/>
-                <arg path="./@{destination}/src"/>
-                <arg value="--output"/>
-                <arg path="${basedir}/test_result/code-browser"/>
-                <arg value="--ignore"/>
-                <arg path="./@{destination}/src/App/BackendBundle/Resources"/>
-                <arg value="--ignore"/>
-                <arg path="./@{destination}/src/App/FrontendBundle/Resources"/>
-                <arg value="--ignore"/>
-                <arg path="./@{destination}/src/App/GeneralBundle/Resources"/>
+                <arg line="--log ${basedir}/test_result --source ./src --output ${basedir}/test_result/code-browser --ignore ./src/App/BackendBundle/Resources,./src/App/FrontendBundle/Resources,./src/App/GeneralBundle/Resources"/>
             </exec>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="codereport" description="Aggregate tool output with PHP_CodeBrowser">
+        <attribute name="destination" default="cms"/>
+        <sequential>
+            <echo>ANT DEBUG: Generating code report</echo>
+            <phpcs debug="false" destination="@{destination}"/>
+            <phpmd debug="false" destination="@{destination}"/>
+            <phpcpd debug="false" destination="@{destination}"/>
+            <pdepend destination="@{destination}"/>
+            <phploc destination="@{destination}"/>
+            <phpcb destination="@{destination}"/>
         </sequential>
     </macrodef>
 
@@ -321,7 +333,7 @@
                     <echo>AND DEBUG: Preparing deploy.sh file</echo>
                     <copy file="${basedir}/cms/rsync_exclude.txt" tofile="@{destination}/rsync_exclude.txt"/>
                     <copy file="${basedir}/cms/deploy.sh" tofile="@{destination}/deploy.sh">
-                        <filterset filtersfile="${parameters-file-path}" />
+                        <filterset filtersfile="${parameters-file-path}"/>
                     </copy>
                     <if>
                         <equals arg1="${deploy.rsync.execute}" arg2="true"/>
@@ -346,15 +358,9 @@
                 </then>
             </if>
             <if>
-                <equals arg1="${deploy.execute.phpcs}" arg2="true"/>
+                <equals arg1="${deploy.execute.codereport}" arg2="true"/>
                 <then>
-                    <phpcs debug="false"/>
-                </then>
-            </if>
-            <if>
-                <equals arg1="${deploy.execute.phpmd}" arg2="true"/>
-                <then>
-                    <phpmd debug="false"/>
+                    <codereport destination="@{destination}"/>
                 </then>
             </if>
         </sequential>
@@ -367,11 +373,11 @@
             <copy overwrite="true" file="${basedir}/cms/behat-template.yml" tofile="@{destination}/behat.yml">
                 <filterset filtersfile="${parameters-file-path}"/>
             </copy>
-            <replace file="@{destination}/behat.yml" token="@file_path@" value="${basedir}" />
-            <antcall target="start-server" />
+            <replace file="@{destination}/behat.yml" token="@file_path@" value="${basedir}"/>
+            <antcall target="start-server"/>
             <echo>ANT DEBUG: Executing behat tests - @{bundle}</echo>
             <exec executable="php" dir="@{destination}"><arg line="bin/behat -p @{bundle} -f pretty,junit --out ,'${basedir}/test_result/behat'"/></exec>
-            <antcall target="stop-server" />
+            <antcall target="stop-server"/>
         </sequential>
     </macrodef>
 
@@ -393,7 +399,7 @@
 
     <target name="check">
         <if>
-            <equals arg1="${target}" arg2="" />
+            <equals arg1="${target}" arg2=""/>
             <then>
                 <var name="parameters-file-path" value="cms/app/config/parameters.ini"/>
                 <var name="local-build" value="true"/>
@@ -403,7 +409,7 @@
                 <var name="local-build" value="false"/>
             </else>
         </if>
-        <property file="${parameters-file-path}" />
+        <property file="${parameters-file-path}"/>
         <echo>ANT DEBUG: Checking ${parameters-file-path} file</echo>
         <available file="${parameters-file-path}" property="doesPropertyFileExist"/>
         <fail unless="doesPropertyFileExist" message="The build ${parameters-file-path} file does not exist, can't build."/>
@@ -436,7 +442,7 @@
         <get taskname="selenium-shutdown"
             src="http://localhost:${selenium.port}/selenium-server/driver/?cmd=shutDownSeleniumServer"
             dest="${basedir}/test_result/selenium-server-shutdown.log"
-            ignoreerrors="true" />
+            ignoreerrors="true"/>
         <sleep seconds="2"/>
     </target>
 
@@ -513,11 +519,7 @@
     </target>
 
     <target name="codereport" description="Generating code report" depends="clean-test-result-directory">
-        <phpmd debug="false"/>
-        <phpcpd debug="false"/>
-        <pdepend/>
-        <phploc/>
-        <phpcb/>
+        <codereport/>
     </target>
 
     <target name="build" depends="check, composer">

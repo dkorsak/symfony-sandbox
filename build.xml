@@ -5,10 +5,13 @@
   ###################### PARAMETERS ######################################
 
   -Denv=               - set environment. Default value is "dev".
+
   -Ddebug=             - display test result (phpcs and phpmd) on the screen.
                          instead of write to file. Default value is "true".
+
   -Dtarget=            - read configuration from /app/config/parameters.{target}.ini
                          file.
+
   -Dbundle=            - bundle name for behat tests (frontend, backend).
 
   ###################### SYMFONY #########################################
