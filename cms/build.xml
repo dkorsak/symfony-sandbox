@@ -138,7 +138,7 @@
         <sequential>
             <echo>ANT DEBUG: Executing PHPUnit tests</echo>
             <exec executable="phpunit" dir="@{destination}">
-                <arg line="-v -c app/phpunit.xml --coverage-html '${basedir}/test_result/coverage' --coverage-clover '${basedir}/test_result/clover.xml' --stderr --log-junit '${basedir}/test_result/phpunit.xml'" />
+                <arg line="-v -c app/phpunit.xml --coverage-html '${basedir}/test_result/coverage' --coverage-clover '${basedir}/test_result/clover.xml' --stderr --log-junit '${basedir}/test_result/phpunit.xml'"/>
             </exec>
         </sequential>
     </macrodef>
@@ -157,7 +157,7 @@
                 </then>
                 <else>
                     <exec dir="@{destination}" executable="phpcs" failonerror="false">
-                        <arg line="-s --standard=${basedir}/coding_standards/PSR2 --report=checkstyle --report-file=${basedir}/test_result/checkstyle.xml ./src" />
+                        <arg line="-s --standard=${basedir}/coding_standards/PSR2 --report=checkstyle --report-file=${basedir}/test_result/checkstyle.xml ./src"/>
                     </exec>
                 </else>
             </if>
@@ -173,12 +173,12 @@
                 <equals arg1="@{debug}" arg2="true" />
                 <then>
                     <exec executable="phpmd" dir="@{destination}/src" failonerror="off">
-                        <arg line=". xml codesize,unusedcode,design --exclude /App/BackendBundle/Resources" />
+                        <arg line=". xml codesize,unusedcode,design --exclude /App/BackendBundle/Resources"/>
                     </exec>
                 </then>
                 <else>
                     <exec executable="phpmd" dir="@{destination}/src" failonerror="off">
-                        <arg line=". xml codesize,unusedcode,design --reportfile '${basedir}/test_result/pmd.xml' --exclude /App/BackendBundle/Resources" />
+                        <arg line=". xml codesize,unusedcode,design --reportfile '${basedir}/test_result/pmd.xml' --exclude /App/BackendBundle/Resources"/>
                     </exec>
                 </else>
             </if>
@@ -277,16 +277,16 @@
         <sequential>
             <cc symlink="@{symlink}" destination="@{destination}" env="@{env}" execute.assets.dump="${build.assets.dump}" execute.clear.cache.file="${build.clear.cache.file}" execute.clear.sonata.cache="${build.clear.sonata.cache}" execute.clear.doctrine.cache="${build.clear.doctrine.cache}"/>
             <if>
-                <equals arg1="${build.build.db}" arg2="true" />
+                <equals arg1="${build.build.db}" arg2="true"/>
                 <then>
                     <build.db destination="@{destination}" env="@{env}"/>
                 </then>
             </if>
             <if>
-                <equals arg1="${build.doctrine.migrations}" arg2="true" />
+                <equals arg1="${build.doctrine.migrations}" arg2="true"/>
                 <then>
                     <echo>ANT DEBUG: Migrating database</echo>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:migrations:migrate --no-interaction" /></exec>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:migrations:migrate --no-interaction"/></exec>
                 </then>
             </if>
         </sequential>
@@ -298,7 +298,7 @@
             <if>
                 <equals arg1="${local-build}" arg2="false"/>
                 <then>
-                    <copy preservelastmodified="true" overwrite="true" file="${basedir}/cms/app/config/parameters.${target}.ini" tofile="${basedir}/cms/app/config/parameters.ini" />
+                    <copy preservelastmodified="true" overwrite="true" file="${basedir}/cms/app/config/parameters.${target}.ini" tofile="${basedir}/cms/app/config/parameters.ini"/>
                 </then>
             </if>
             <echo>ANT DEBUG: Syncing cms into @{destination} directory</echo>
@@ -319,7 +319,7 @@
                 <equals arg1="${deploy.rsync}" arg2="true"/>
                 <then>
                     <echo>AND DEBUG: Preparing deploy.sh file</echo>
-                    <copy file="${basedir}/cms/rsync_exclude.txt" tofile="@{destination}/rsync_exclude.txt" />
+                    <copy file="${basedir}/cms/rsync_exclude.txt" tofile="@{destination}/rsync_exclude.txt"/>
                     <copy file="${basedir}/cms/deploy.sh" tofile="@{destination}/deploy.sh">
                         <filterset filtersfile="${parameters-file-path}" />
                     </copy>
@@ -327,7 +327,7 @@
                         <equals arg1="${deploy.rsync.execute}" arg2="true"/>
                         <then>
                             <echo>AND DEBUG: Deploying project into ${deploy.host} server</echo>
-                            <exec executable="/bin/bash" dir="@{destination}"><arg line="deploy.sh run" /></exec>
+                            <exec executable="/bin/bash" dir="@{destination}"><arg line="deploy.sh run"/></exec>
                         </then>
                     </if>
                 </then>
@@ -406,7 +406,7 @@
         <property file="${parameters-file-path}" />
         <echo>ANT DEBUG: Checking ${parameters-file-path} file</echo>
         <available file="${parameters-file-path}" property="doesPropertyFileExist"/>
-        <fail unless="doesPropertyFileExist" message="The build ${parameters-file-path} file does not exist, can't build." />
+        <fail unless="doesPropertyFileExist" message="The build ${parameters-file-path} file does not exist, can't build."/>
     </target>
 
     <target name="clean-test-result-directory">
