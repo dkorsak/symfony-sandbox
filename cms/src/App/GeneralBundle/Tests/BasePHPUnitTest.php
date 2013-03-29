@@ -21,7 +21,7 @@ abstract class BasePHPUnitTest extends WebTestCase
 
     protected function tearDown()
     {
-        parent::tearDown();
+        $this->container->get('doctrine')->getConnection()->close();
         \Mockery::close();
         $refl = new \ReflectionObject($this);
         foreach ($refl->getProperties() as $prop) {
@@ -30,6 +30,7 @@ abstract class BasePHPUnitTest extends WebTestCase
                 $prop->setValue($this, null);
             }
         }
+        parent::tearDown();
     }
 
     /**

@@ -360,7 +360,7 @@
             <if>
                 <equals arg1="${deploy.execute.codereport}" arg2="true"/>
                 <then>
-                    <codereport destination="@{destination}"/>
+                    <codereport destination="cms"/>
                 </then>
             </if>
         </sequential>
