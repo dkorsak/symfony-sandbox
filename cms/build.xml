@@ -97,12 +97,6 @@
         <attribute name="execute.clear.doctrine.cache" default="true"/>
         <sequential>
             <if>
-                <equals arg1="@{execute.clear.cache.file}" arg2="true"/>
-                <then>
-                    <clear.file.cache destination="@{destination}" env="@{env}"/>
-                </then>
-            </if>
-            <if>
                 <equals arg1="@{execute.clear.sonata.cache}" arg2="true"/>
                 <then>
                     <echo>ANT DEBUG: Cleaning sonata cache</echo>
@@ -116,6 +110,12 @@
                     <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-metadata"/></exec>
                     <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-query"/></exec>
                     <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-result"/></exec>
+                </then>
+            </if>
+            <if>
+                <equals arg1="@{execute.clear.cache.file}" arg2="true"/>
+                <then>
+                    <clear.file.cache destination="@{destination}" env="@{env}"/>
                 </then>
             </if>
             <echo>ANT DEBUG: Creating FOS js routing file</echo>
