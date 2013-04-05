@@ -167,7 +167,7 @@
                             {% if _title is not empty %}
                                 {{ _title|raw }}
                             {% elseif action is defined %}
-                                {% for menu in admin.breadcrumbs(action) %} 
+                                {% for menu in admin.breadcrumbs(action) %}
                                     {% if loop.last  %}
                                         {{ menu.label }}
                                     {% endif %}
