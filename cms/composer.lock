@@ -2686,12 +2686,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "42a9762b705b5cde74643b2f624ae1b4ae76bf73"
+                "reference": "0760aa127f5bb68862eee88d3af78bafe10fdb76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/42a9762b705b5cde74643b2f624ae1b4ae76bf73",
-                "reference": "42a9762b705b5cde74643b2f624ae1b4ae76bf73",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/0760aa127f5bb68862eee88d3af78bafe10fdb76",
+                "reference": "0760aa127f5bb68862eee88d3af78bafe10fdb76",
                 "shasum": ""
             },
             "require": {
@@ -2752,7 +2752,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2013-04-05 13:52:07"
+            "time": "2013-04-05 15:43:36"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -2938,12 +2938,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "923a9d26f8fbd9305e915259659a024c30bdd312"
+                "reference": "5e27b299e0fd8dfd63a52e62751a251497c7c3c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/923a9d26f8fbd9305e915259659a024c30bdd312",
-                "reference": "923a9d26f8fbd9305e915259659a024c30bdd312",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/5e27b299e0fd8dfd63a52e62751a251497c7c3c8",
+                "reference": "5e27b299e0fd8dfd63a52e62751a251497c7c3c8",
                 "shasum": ""
             },
             "require": {
@@ -2990,7 +2990,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2013-03-27 18:08:39"
+            "time": "2013-04-05 15:44:24"
         },
         {
             "name": "sonata-project/easy-extends-bundle",
