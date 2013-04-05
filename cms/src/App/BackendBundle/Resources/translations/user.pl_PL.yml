@@ -1,19 +1,20 @@
 # user list page
 Actions: Akcje
 Name: Imię i nazwisko
-Roles: Grupa
 General: Dane podstawowe
 Permissions: Uprawnienia
 Firstname: Imię
 Lastname: Nazwisko
 Active: Aktywny
 Groups: Grupy
-"User List": Lista użytkowników
+User List: Lista użytkowników
 Enabled: Aktywny
 User Create: Dodaj użytkownika
+User create: Dodaj użytkownika
 User Edit: Edycja użytkownika
 User Show: Podgląd danych użytkownika
 User Delete: Usuwanie użytkownika
+Role: Rola
 
 #account created
 Account was created: "Twoje konto zostało założone"

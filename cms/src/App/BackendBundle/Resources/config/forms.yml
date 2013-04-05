@@ -7,3 +7,9 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: app_backend_form_profile_profile_type }
+
+    # form type for managing single user role
+    app_backend.form.user.single_role_type:
+        class: App\BackendBundle\Form\Type\User\SingleRoleType
+        tags:
+            - { name: form.type, alias: app_backend_form_user_single_role_type }

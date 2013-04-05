@@ -41,7 +41,6 @@ class Article
      * @var string
      *
      * @ORM\Column(name="body", type="text", nullable=true)
-     * @Assert\NotBlank()
      */
     protected $body;
 
@@ -118,6 +117,14 @@ class Article
         $this->publishDate = new \DateTime();
         $this->publish = true;
         $this->tags = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getTitle() ? $this->getTitle() : 'Article create';
     }
 
     /**

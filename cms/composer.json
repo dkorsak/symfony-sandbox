@@ -6,6 +6,9 @@
     },
     "require": {
         "php": ">=5.3.3",
+        "ext-memcache": "*",
+        "ext-memcached": "2.*",
+        "ext-apc": "*",
         "symfony/symfony": "2.2.*",
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "1.2.*",

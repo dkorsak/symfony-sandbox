@@ -15,7 +15,7 @@
 
         <h1>{{ 'title_delete'|trans({}, 'SonataAdminBundle') }}</h1>
 
-        {{ 'message_delete_confirmation'|trans({'%object%': object}, 'SonataAdminBundle') }}
+        {{ 'message_delete_confirmation'|trans({'%object%': admin.toString(object)}, 'SonataAdminBundle') }}
 
         <div class="well form-actions">
             <form method="POST" action="{{ admin.generateObjectUrl('delete', object) }}" style="margin-bottom: 0px;">

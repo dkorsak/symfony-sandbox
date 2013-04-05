@@ -120,67 +120,51 @@
             </div>
 
             <div class="container-fluid">
+
                 {% block notice %}
                     {% for notice_level in ['success','error','info', 'warning'] %}
                         {% set session_var = 'sonata_flash_' ~ notice_level %}
                         {% for flash in app.session.flashbag.get(session_var) %}
                             <div class="alert {{ 'alert-' ~ notice_level }}">
                                 {{ flash|trans([], 'SonataAdminBundle') }}
-                                <button data-dismiss="alert" class="close" type="button">×</button>
                             </div>
                         {% endfor %}
                     {% endfor %}
                 {% endblock %}
-
-                {% if _title is not empty or action is defined %}
-                    <div class="page-header" style="margin-top: 0px; display: none;">
-                        <h1>
-                            {% if _title is not empty %}
-                                {{ _title|raw }}
-                            {% elseif action is defined %}
-                                {% for label, uri in admin.breadcrumbs(action) %}
-                                    {% if loop.last  %}
-                                        {{ label|capitalize|trans({}, admin.translationdomain) }}
-                                    {% endif %}
-                                {% endfor %}
-                            {% endif%}
-                        </h1>
-                    </div>
-                {% endif%}
-
+    
                 <div class="row-fluid">
                     <div class="span6">
-                    {% if _breadcrumb is not empty or action is defined %}
-                        <ul class="breadcrumb">
-                            {% if _breadcrumb is empty %}
-                                {% if action is defined %}
-                                    {% for label, uri in admin.breadcrumbs(action) %}
-                                        {% if not loop.last  %}
-                                            <li>
-                                            {% if uri is not empty %}
-                                                <a href="{{ uri }}">{{ label|capitalize|trans({}, admin.translationdomain) }}</a>
+                        {% if _breadcrumb is not empty or action is defined %}
+                            <ul class="breadcrumb">
+                                {% if _breadcrumb is empty %}
+                                    {% if action is defined %}
+                                        {% for menu in admin.breadcrumbs(action) %}
+                                            {% if not loop.last  %}
+                                                <li>
+                                                    {% if menu.uri is not empty %}
+                                                        <a href="{{ menu.uri }}">{{ menu.label }}</a>
+                                                    {% else %}
+                                                        {{ menu.label }}
+                                                    {% endif %}
+                                                    <span class="divider">/</span>
+                                                </li>
                                             {% else %}
-                                                {{ label|capitalize|trans({}, admin.translationdomain) }}
+                                                <li class="active">{{ menu.label }}</li>
                                             {% endif %}
-                                            <span class="divider">/</span>
-                                            </li>
-                                        {% else %}
-                                            <li class="active">{{ label|capitalize|trans({}, admin.translationdomain) }}</li>
-                                        {% endif %}
-                                    {% endfor %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% else %}
+                                    {{ _breadcrumb|raw }}
                                 {% endif %}
-                            {% else %}
-                                {{ _breadcrumb|raw }}
-                            {% endif %}
-                        </ul>
-                    {% endif %}
+                            </ul>
+                        {% endif %}
                     </div>
     
                     <div class="span4 offset2">
-                        {% block actions %}{% endblock %}
+                        {%block actions %}{% endblock %}
                     </div>
                 </div>
-                
+    
                 <div class="row-fluid">
                     {% if _side_menu is not empty %}
                         <div class="sidebar span2">
@@ -221,10 +205,10 @@
                         {% endblock %}
                     </div>
                 </div>
-            </div>
+            </div>{# end contaier fluid #}
             <div id="push"></div>
-        </div>
-    </div>
+        </div>{# end page content #}
+    </div>{# end wrapper #}
     <div id="footer">
         {% block footer %}
         <div class="container-fluid">

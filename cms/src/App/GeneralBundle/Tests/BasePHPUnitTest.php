@@ -19,6 +19,20 @@ abstract class BasePHPUnitTest extends WebTestCase
         $this->container = $kernel->getContainer();
     }
 
+    protected function tearDown()
+    {
+        $this->container->get('doctrine')->getConnection()->close();
+        \Mockery::close();
+        $refl = new \ReflectionObject($this);
+        foreach ($refl->getProperties() as $prop) {
+            if (!$prop->isStatic() && 0 !== strpos($prop->getDeclaringClass()->getName(), 'PHPUnit_')) {
+                $prop->setAccessible(true);
+                $prop->setValue($this, null);
+            }
+        }
+        parent::tearDown();
+    }
+
     /**
      * Create object from class name and set id property
      *

@@ -23,10 +23,21 @@ use App\GeneralBundle\Validator\Constraints as AppGeneralAssert;
  * @UniqueEntity(fields={"email"})
  * @UniqueEntity(fields={"username"})
  * @AppGeneralAssert\ChangePassword(groups={"Profile"})
- * @Assert\Callback(methods={"isGroupValid"})
+ * Assert\Callback(methods={"isGroupValid"})
  */
 class User extends BaseUser
 {
+    const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+
+    /**
+     * @var array
+     */
+    public static $userRoles = array(
+        'ROLE_SUPER_ADMIN' => 'Super administrator',
+        'ROLE_ADMIN' => 'Administrator'
+    );
+
     /**
      * @var integer
      *
@@ -92,6 +103,14 @@ class User extends BaseUser
     protected $groups;
 
     /**
+     * Sometimes user has only one role.
+     * This property is for managing user permissions only for one role
+     *
+     * @var string
+     */
+    protected $singleRole;
+
+    /**
      * @var string
      */
     protected $retypePassword;
@@ -110,6 +129,14 @@ class User extends BaseUser
         parent::__construct();
         $this->groups = new ArrayCollection();
         $this->enabled = true;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return trim($this->getName()) != "" ? $this->getName() : 'User create';
     }
 
     /**
@@ -274,6 +301,49 @@ class User extends BaseUser
     }
 
     /**
+     * Set singleRole
+     * Clear all user roles and set new one
+     *
+     * @param  string $role
+     * @return User
+     */
+    public function setSingleRole($role)
+    {
+        foreach ($this->roles as $role) {
+            $this->removeRole($role);
+        }
+        $this->addRole($role);
+        $this->singleRole = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get singleRole
+     *
+     * @return string
+     */
+    public function getSingleRole()
+    {
+        $roles = $this->roles;
+
+        return isset($roles[0]) ? $roles[0] : null;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSingleRoleName()
+    {
+        $constRole = $this->getSingleRole();
+        if ($constRole != "" && isset(static::$userRoles[$constRole])) {
+            return static::$userRoles[$constRole];
+        }
+
+        return null;
+    }
+
+    /**
      * Set retypePassword
      *
      * @param  string $retypePassword
@@ -343,7 +413,7 @@ class User extends BaseUser
     public function isGroupValid(ExecutionContext $context)
     {
         if ($this->groups->count() == 0) {
-            $context->addViolationAtSubPath('groups', 'This value should not be blank.', array(), null);
+            $context->addViolationAt('groups', 'This value should not be blank.', array(), null);
         }
     }
 }

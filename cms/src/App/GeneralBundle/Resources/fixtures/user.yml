@@ -5,8 +5,7 @@ admin_user:
     firstname: System
     lastname: Admin
     enabled: 1
-    group_list:
-        - GROUP_SUPER_ADMIN
+    single_role: ROLE_SUPER_ADMIN # User::ROLE_SUPER_ADMIN
 
 user:
     email: "admin@admin.com"
@@ -15,5 +14,4 @@ user:
     firstname: System
     lastname: User
     enabled: 1
-    group_list:
-        - GROUP_ADMIN
+    single_role: ROLE_ADMIN # User::ROLE_ADMIN

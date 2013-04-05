@@ -179,7 +179,7 @@ class UserAdmin extends Admin
     /**
      * {@inheritdoc}
      */
-    protected function configureShowField(ShowMapper $showMapper)
+    protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
             ->with("General")
@@ -195,6 +195,7 @@ class UserAdmin extends Admin
                         'template' => 'AppBackendBundle:CRUD:show_status.html.twig'
                     )
                 )
+                ->add("singleRoleName", null, array("label" => "Role"))
                 ->add("groups", null, array('template' => 'AppBackendBundle:UserAdmin:show_groups.html.twig'))
             ->end();
     }
@@ -204,6 +205,8 @@ class UserAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $groupsParams = array("expanded" => false, "multiple" => true, "property" => "name", "required" => false);
+
         $formMapper
             ->with('General')
                 ->add("firstname")
@@ -212,7 +215,8 @@ class UserAdmin extends Admin
             ->end()
             ->with('Permissions')
                 ->add("enabled", null, array("required" => false, "label" => "Active"))
-                ->add("groups", null, array("expanded" => false, "multiple" => true, "property" => "name"))
+                ->add("singleRole", 'app_backend_form_user_single_role_type', array('label' => 'Role'))
+                ->add("groups", null, $groupsParams)
             ->end();
     }
 
@@ -221,12 +225,13 @@ class UserAdmin extends Admin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
-        $groupParams = array("label" => "Roles", "template" => "AppBackendBundle:UserAdmin:list_groups.html.twig");
+        $groupParams = array("label" => "Groups", "template" => "AppBackendBundle:UserAdmin:list_groups.html.twig");
         $enabledParams = array("label" => "Status", "template" => "AppBackendBundle:CRUD:list_status.html.twig");
 
         $listMapper
             ->addIdentifier("name")
             ->add("email")
+            ->add("singleRoleName", null, array("label" => "Role"))
             ->add("groups", null, $groupParams)
             ->add("enabled", null, $enabledParams)
             ->add(

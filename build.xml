@@ -5,10 +5,13 @@
   ###################### PARAMETERS ######################################
 
   -Denv=               - set environment. Default value is "dev".
+
   -Ddebug=             - display test result (phpcs and phpmd) on the screen.
                          instead of write to file. Default value is "true".
+
   -Dtarget=            - read configuration from /app/config/parameters.{target}.ini
                          file.
+
   -Dbundle=            - bundle name for behat tests (frontend, backend).
 
   ###################### SYMFONY #########################################
@@ -31,14 +34,24 @@
 
   behat                - execute E2E (selenium) bahat tests for given -Dbundle=
                          parameter. Default bundle="".
-            
+
   ###################### CODING STANDARDS ################################
 
   phpcs                - run PHP Code Sniffer to check conding standards.
 
+  fixcs                - execute php-cs-fixer - fix symfony conding standards.
+
+  ###################### CODE REPORTS ####################################
+
   phpmd                - execute PHPMD checkstyle reports.
 
-  fixcs                - execute php-cs-fixer - fix symfony conding standards.
+  phpcpd               - execute phpcpd - duplicate code using PHPCPD.
+
+  pdepend              - execute pdepend - calculate software metrics using PHP_Depend.
+
+  phploc               - execute phploc - Measure project size using PHPLOC.
+
+  codereport           - run all code reports tasks and create aggregation report.
         </echo>
     </target>
     <import file="cms/build.xml" />
