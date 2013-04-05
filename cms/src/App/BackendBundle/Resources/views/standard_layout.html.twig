@@ -124,18 +124,18 @@
                     <ul class="breadcrumb">
                         {% if _breadcrumb is empty %}
                             {% if action is defined %}
-                                {% for label, uri in admin.breadcrumbs(action) %}
+                                {% for menu in admin.breadcrumbs(action) %}
                                     {% if not loop.last  %}
                                         <li>
-                                        {% if uri is not empty %}
-                                            <a href="{{ uri }}">{{ label|capitalize|trans({}, admin.translationdomain) }}</a>
+                                        {% if menu.uri is not empty %}
+                                            <a href="{{ menu.uri }}">{{ menu.label }}</a>
                                         {% else %}
-                                            {{ label|capitalize|trans({}, admin.translationdomain) }}
+                                            {{ menu.label }}
                                         {% endif %}
                                         <span class="divider">/</span>
                                         </li>
                                     {% else %}
-                                        <li class="active">{{ label|capitalize|trans({}, admin.translationdomain) }}</li>
+                                        <li class="active">{{ menu.label|trans({}, admin.translationdomain) }}</li>
                                     {% endif %}
                                 {% endfor %}
                             {% endif %}
@@ -167,9 +167,9 @@
                             {% if _title is not empty %}
                                 {{ _title|raw }}
                             {% elseif action is defined %}
-                                {% for label, uri in admin.breadcrumbs(action) %}
+                                {% for menu in admin.breadcrumbs(action) %} 
                                     {% if loop.last  %}
-                                        {{ label|capitalize|trans({}, admin.translationdomain) }}
+                                        {{ menu.label }}
                                     {% endif %}
                                 {% endfor %}
                             {% endif%}

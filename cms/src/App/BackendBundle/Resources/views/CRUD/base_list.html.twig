@@ -68,7 +68,7 @@
                 {% block table_footer %}
                     <tfoot>
                     <tr>
-                        <th colspan="{{ admin.list.elements|length - (app.request.isXmlHttpRequest ? 2 : 0) }}">
+                        <th colspan="{{ admin.list.elements|length - (app.request.isXmlHttpRequest ? 1 : 0) }}">
                             <div class="form-inline">
                                 {% if not app.request.isXmlHttpRequest %}
                                     {% if batchactions|length > 0  %}
