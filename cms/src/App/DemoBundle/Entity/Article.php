@@ -41,7 +41,6 @@ class Article
      * @var string
      *
      * @ORM\Column(name="body", type="text", nullable=true)
-     * @Assert\NotBlank()
      */
     protected $body;
 
