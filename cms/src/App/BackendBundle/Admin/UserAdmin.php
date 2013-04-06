@@ -2,6 +2,7 @@
 
 namespace App\BackendBundle\Admin;
 
+use App\GeneralBundle\Utils\StringUtil;
 use Sonata\AdminBundle\Exception\ModelManagerException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Sonata\AdminBundle\Validator\ErrorElement;
@@ -165,7 +166,10 @@ class UserAdmin extends Admin
      */
     public function validate(ErrorElement $errorElement, $object)
     {
-
+        $errorElement
+            ->with('singleRole')
+                ->assertNotBlank()
+            ->end();
     }
 
     /**
@@ -173,7 +177,7 @@ class UserAdmin extends Admin
      */
     public function isGranted($name, $object = null)
     {
-        return $this->securityContent->isGranted('ROLE_SUPER_ADMIN');
+        return $this->securityContent->isGranted(User::ROLE_SUPER_ADMIN);
     }
 
     /**
@@ -283,7 +287,7 @@ class UserAdmin extends Admin
     private function saveUser(User $user)
     {
         if (!$user->getId()) {
-            $password = $this->generateRandomPassword();
+            $password = StringUtil::generateRandomPassword();
             $user->setPlainPassword($password);
         }
         $user->setUsername($user->getEmail());
@@ -294,15 +298,5 @@ class UserAdmin extends Admin
             $body = $this->getTwig()->render($template, array("user" => $user, "password" => $password));
             $this->getMailer()->send($this->trans("Account was created"), $body, $user->getEmail());
         }
-    }
-
-    /**
-     * Generate random user password
-     *
-     * @return string
-     */
-    private function generateRandomPassword()
-    {
-        return substr(md5(time().rand(1, 10000)), 7, 8);
     }
 }

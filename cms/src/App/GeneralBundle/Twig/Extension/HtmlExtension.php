@@ -8,6 +8,7 @@ class HtmlExtension extends \Twig_Extension
 {
     /**
      * {@inheritdoc}
+     * @codeCoverageIgnore
      */
     public function getFilters()
     {
@@ -29,6 +30,7 @@ class HtmlExtension extends \Twig_Extension
 
     /**
      * {@inheritdoc}
+     * @codeCoverageIgnore
      */
     public function getName()
     {

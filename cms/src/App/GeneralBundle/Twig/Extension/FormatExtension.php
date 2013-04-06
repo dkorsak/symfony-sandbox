@@ -6,6 +6,7 @@ class FormatExtension extends \Twig_Extension
 {
     /**
      * {@inheritdoc}
+     * @codeCoverageIgnore
      */
     public function getFilters()
     {
@@ -58,6 +59,7 @@ class FormatExtension extends \Twig_Extension
 
     /**
      * {@inheritdoc}
+     * @codeCoverageIgnore
      */
     public function getName()
     {

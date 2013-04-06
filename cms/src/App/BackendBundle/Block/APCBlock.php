@@ -2,8 +2,8 @@
 
 namespace App\BackendBundle\Block;
 
+use App\GeneralBundle\Services\Stats\StatsInterface;
 use Symfony\Component\Templating\EngineInterface;
-use App\GeneralBundle\Services\Stats\ApcStats;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\HttpFoundation\Response;
 use Sonata\BlockBundle\Model\BlockInterface;
@@ -22,9 +22,9 @@ class APCBlock extends BaseBlockService
      *
      * @param string          $name
      * @param EngineInterface $templating
-     * @param ApcStats        $apcStats
+     * @param StatsInterface  $apcStats
      */
-    public function __construct($name, EngineInterface $templating, ApcStats $apcStats)
+    public function __construct($name, EngineInterface $templating, StatsInterface $apcStats)
     {
         parent::__construct($name, $templating);
         $this->apcStats = $apcStats;
@@ -32,6 +32,7 @@ class APCBlock extends BaseBlockService
 
     /**
      * {@inheritdoc}
+     * @codeCoverageIgnore
      */
     public function validateBlock(ErrorElement $errorElement, BlockInterface $block)
     {
@@ -49,6 +50,7 @@ class APCBlock extends BaseBlockService
 
     /**
      * {@inheritdoc}
+     * @codeCoverageIgnore
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
@@ -56,6 +58,7 @@ class APCBlock extends BaseBlockService
 
     /**
      * {@inheritdoc}
+     * @codeCoverageIgnore
      */
     public function getName()
     {
@@ -64,6 +67,7 @@ class APCBlock extends BaseBlockService
 
     /**
      * {@inheritdoc}
+     * @codeCoverageIgnore
      */
     public function getDefaultSettings()
     {

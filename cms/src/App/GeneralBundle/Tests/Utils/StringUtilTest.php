@@ -22,4 +22,14 @@ class StringUtilTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('FooController', $result['controller']);
         $this->assertEquals('barAction', $result['action']);
     }
+
+    public function testGenerateRandomPassword()
+    {
+        $passwords = array();
+        for ($i=0; $i<=100; $i++) {
+            $password = StringUtil::generateRandomPassword();
+            $this->assertFalse(in_array($password, $passwords));
+            $passwords[] = $password;
+        }
+    }
 }

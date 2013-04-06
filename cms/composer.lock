@@ -1233,12 +1233,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle.git",
-                "reference": "a972380bb31835ee81cd767bd37ca3f97b154675"
+                "reference": "1.1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/a972380bb31835ee81cd767bd37ca3f97b154675",
-                "reference": "a972380bb31835ee81cd767bd37ca3f97b154675",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/1.1.5",
+                "reference": "1.1.5",
                 "shasum": ""
             },
             "require": {
@@ -1278,7 +1278,7 @@
             "keywords": [
                 "Js Routing"
             ],
-            "time": "2013-04-03 10:19:38"
+            "time": "2013-04-05 20:13:12"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1351,12 +1351,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "c893252900762f0c7a6e2e72994e983015e33ebe"
+                "reference": "48f235a942914d2511680197ba134b3e227df0f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/c893252900762f0c7a6e2e72994e983015e33ebe",
-                "reference": "c893252900762f0c7a6e2e72994e983015e33ebe",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/48f235a942914d2511680197ba134b3e227df0f0",
+                "reference": "48f235a942914d2511680197ba134b3e227df0f0",
                 "shasum": ""
             },
             "require": {
@@ -1422,7 +1422,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-04-03 03:54:53"
+            "time": "2013-04-05 22:01:11"
         },
         {
             "name": "genemu/form-bundle",

@@ -25,4 +25,12 @@ class StringUtil
 
         return array('namespace' => $namespace, 'bundle' => $bundle, 'controller' => $controller, 'action' => $action);
     }
+
+    /**
+     * @return string
+     */
+    public static function generateRandomPassword()
+    {
+        return substr(md5(time().rand(1, 10000000)), 7, 8);
+    }
 }
