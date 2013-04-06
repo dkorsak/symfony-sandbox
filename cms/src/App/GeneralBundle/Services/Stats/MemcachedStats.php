@@ -2,7 +2,7 @@
 
 namespace App\GeneralBundle\Services\Stats;
 
-class MemcachedStats
+class MemcachedStats implements StatsInterface
 {
     /**
      * @var \ArrayObject
@@ -38,7 +38,7 @@ class MemcachedStats
     }
 
     /**
-     * @return boolean
+     * {@inheritdoc}
      */
     public function isConnected()
     {

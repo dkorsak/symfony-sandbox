@@ -2,7 +2,7 @@
 
 namespace App\GeneralBundle\Services\Stats;
 
-class ApcStats
+class ApcStats implements StatsInterface
 {
     /**
      * @var \ArrayObject
@@ -20,7 +20,7 @@ class ApcStats
     }
 
     /**
-     * @return boolean
+     * {@inheritdoc}
      */
     public function isConnected()
     {
