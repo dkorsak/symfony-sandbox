@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.3.3",
         "ext-memcache": "*",
-        "ext-memcached": "1.*",
+        "ext-memcached": "*",
         "ext-apc": "*",
         "symfony/symfony": "2.2.*",
         "doctrine/orm": "~2.2,>=2.2.3",
