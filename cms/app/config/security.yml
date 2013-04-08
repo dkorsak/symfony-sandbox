@@ -5,7 +5,7 @@ jms_security_extra:
 security:
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
 
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
@@ -24,6 +24,7 @@ security:
             switch_user:        false
             context:            user
             pattern:            /admin(.*)
+            access_denied_url:  /admin/error403
             form_login:
                 provider:       fos_userbundle
                 login_path:     /admin/login

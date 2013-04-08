@@ -1,3 +1,7 @@
 app_backend_profile:
     pattern:  /profile
     defaults: { _controller: AppBackendBundle:Profile:edit }
+
+app_backend_error_403:
+    pattern:  /error403
+    defaults: { _controller: AppBackendBundle:Default:error403 }
