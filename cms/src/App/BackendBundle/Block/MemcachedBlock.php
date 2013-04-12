@@ -10,9 +10,17 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Block\BaseBlockService;
 
+/**
+ * Class for displaying admin dashboard block
+ * with memcache server stats
+ * 
+ * @package App\Backend
+ */
 class MemcachedBlock extends BaseBlockService
 {
     /**
+     * Mamcached stats service
+     * 
      * @var MemcachedStats
      */
     private $memcachedStats;
@@ -22,7 +30,7 @@ class MemcachedBlock extends BaseBlockService
      *
      * @param string          $name
      * @param EngineInterface $templating
-     * @param StatsInterface  $apcStats
+     * @param StatsInterface  $memcachedStats
      */
     public function __construct($name, EngineInterface $templating, StatsInterface $memcachedStats)
     {

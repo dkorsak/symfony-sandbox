@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <title>Symfony Sandbox</title>
+    <parser>
+        <target>../../phpdoc</target>
+        <extensions>
+            <extension>php</extension>
+        </extensions>
+    </parser>
+    <transformer>
+        <target>../../phpdoc</target>
+    </transformer>
+    <transformations>
+        <template name="responsive"/>
+    </transformations>
+    <files>
+        <directory>../src</directory>
+        <ignore>App/**/Resources/*</ignore>
+        <ignore>App/**/Tests/*</ignore>
+        <ignore>App/**/Features/*</ignore>
+        <ignore>App/DemoBundle/*</ignore>
+    </files>
+</phpdoc>

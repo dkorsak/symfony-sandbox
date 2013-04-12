@@ -363,6 +363,12 @@
                     <codereport destination="cms"/>
                 </then>
             </if>
+            <if>
+                <equals arg1="${deploy.execute.phpdoc}" arg2="true"/>
+                <then>
+                    <antcall target="phpdoc"/>
+                </then>
+            </if>
         </sequential>
     </macrodef>
 
@@ -516,6 +522,10 @@
 
     <target name="phploc" description="Measure project size using PHPLOC" depends="clean-test-result-directory">
         <phploc/>
+    </target>
+
+    <target name="phpdoc" description="Execute php documentor">
+        <exec executable="phpdoc" dir="cms"><arg line="-c ./app/phpdoc.xml -p --parseprivate --force --defaultpackagename App"/></exec>
     </target>
 
     <target name="codereport" description="Generating code report" depends="clean-test-result-directory">

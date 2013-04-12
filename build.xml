@@ -41,6 +41,10 @@
 
   fixcs                - execute php-cs-fixer - fix symfony conding standards.
 
+  ###################### PHP DOCUMENTATION ###############################
+
+  phpdoc               - create phpDocumentor report.
+
   ###################### CODE REPORTS ####################################
 
   phpmd                - execute PHPMD checkstyle reports.
