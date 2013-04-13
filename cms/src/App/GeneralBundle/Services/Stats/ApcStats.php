@@ -24,7 +24,7 @@ class ApcStats implements StatsInterface
      */
     public function isConnected()
     {
-        return function_exists('apc_cache_info');
+        return function_exists('apc_cache_info') && 'cli' !== php_sapi_name();
     }
 
     /**
