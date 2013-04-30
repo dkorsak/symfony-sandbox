@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b0a2fd5fb448b1d217d7bae12a59a12f",
+    "hash": "e2cee2beeaae3905e85ede21e22272d2",
     "packages": [
         {
             "name": "behat/behat",
@@ -811,12 +811,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "v1.2.0"
+                "reference": "80a7198c470d74755db64aa3f75898f3808778b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/v1.2.0",
-                "reference": "v1.2.0",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/80a7198c470d74755db64aa3f75898f3808778b7",
+                "reference": "80a7198c470d74755db64aa3f75898f3808778b7",
                 "shasum": ""
             },
             "require": {
@@ -872,7 +872,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2013-03-25 20:13:59"
+            "time": "2013-04-30 09:04:17"
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",
@@ -1435,23 +1435,23 @@
         },
         {
             "name": "genemu/form-bundle",
-            "version": "dev-master",
+            "version": "2.2.x-dev",
             "target-dir": "Genemu/Bundle/FormBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/genemu/GenemuFormBundle.git",
-                "reference": "v2.1.3"
+                "reference": "179882c711fc9da36f4affe94002ada29a691636"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/genemu/GenemuFormBundle/zipball/v2.1.3",
-                "reference": "v2.1.3",
+                "url": "https://api.github.com/repos/genemu/GenemuFormBundle/zipball/179882c711fc9da36f4affe94002ada29a691636",
+                "reference": "179882c711fc9da36f4affe94002ada29a691636",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/form": ">=2.1,<3.0",
-                "symfony/framework-bundle": ">=2.1,<3.0"
+                "symfony/form": ">=2.1,<2.3-dev",
+                "symfony/framework-bundle": ">=2.1,<2.3-dev"
             },
             "require-dev": {
                 "doctrine/doctrine-bundle": "1.*",
@@ -1459,7 +1459,7 @@
                 "doctrine/orm": "2.*",
                 "phpunit/phpunit": "3.7.*",
                 "propel/propel-bundle": "*",
-                "symfony/doctrine-bridge": ">=2.1,<3.0",
+                "symfony/doctrine-bridge": ">=2.1,<2.3-dev",
                 "symfony/finder": "2.*"
             },
             "suggest": {
@@ -1502,7 +1502,7 @@
                 "extra form",
                 "form"
             ],
-            "time": "2013-04-28 19:26:46"
+            "time": "2013-04-29 13:59:15"
         },
         {
             "name": "imagine/Imagine",
@@ -2353,12 +2353,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "f0d465adfd157a254a856e9ef0302fc2239642d3"
+                "reference": "3bd6f1712642838b4c0524d3a47359940df72e80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/f0d465adfd157a254a856e9ef0302fc2239642d3",
-                "reference": "f0d465adfd157a254a856e9ef0302fc2239642d3",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/3bd6f1712642838b4c0524d3a47359940df72e80",
+                "reference": "3bd6f1712642838b4c0524d3a47359940df72e80",
                 "shasum": ""
             },
             "require": {
@@ -2398,7 +2398,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2013-04-17 21:08:10"
+            "time": "2013-04-29 23:44:28"
         },
         {
             "name": "monolog/monolog",
@@ -3682,12 +3682,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "b4b4326a1016220e6240211d054cc3ecfadd74be"
+                "reference": "d1cad7e2432b9f8a904032ba0b53796be24cae3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/b4b4326a1016220e6240211d054cc3ecfadd74be",
-                "reference": "b4b4326a1016220e6240211d054cc3ecfadd74be",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/d1cad7e2432b9f8a904032ba0b53796be24cae3f",
+                "reference": "d1cad7e2432b9f8a904032ba0b53796be24cae3f",
                 "shasum": ""
             },
             "require": {
@@ -3773,7 +3773,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-04-27 07:33:31"
+            "time": "2013-04-30 09:53:49"
         },
         {
             "name": "twig/extensions",
