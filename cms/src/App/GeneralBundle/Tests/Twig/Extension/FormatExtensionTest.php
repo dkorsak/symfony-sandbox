@@ -28,5 +28,6 @@ class FormatExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals("10%", $this->extension->getPercentage(10, 100));
         $this->assertEquals("33.33%", $this->extension->getPercentage(33, 99));
+        $this->assertEquals("00.00%", $this->extension->getPercentage(33, 0));
     }
 }

@@ -28,7 +28,7 @@ class APCBlockTest extends BasePHPUnitTest
 
     public function testExecute()
     {
-        $block = \Mockery::mock('Sonata\BlockBundle\Model\BlockInterface');
+        $block = \Mockery::mock('Sonata\BlockBundle\Block\BlockContextInterface');
         $response = $this->apcBlock->execute($block);
         $this->assertTrue($response instanceof Response);
         // used memory in percentage

@@ -81,7 +81,7 @@
                 <equals arg1="@{fixtures}" arg2="true"/>
                 <then>
                     <echo>AND DEBUG: Loading fixtures</echo>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:fixtures:load --env=@{env}"/></exec>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:fixtures:load --env=@{env}  --no-interaction"/></exec>
                 </then>
             </if>
         </sequential>
@@ -136,6 +136,7 @@
     <macrodef name="phpunit" description="PHPUnit and Clover PHP">
         <attribute name="destination" default="cms"/>
         <sequential>
+            <clear.file.cache destination="@{destination}" env="test"/>
             <echo>ANT DEBUG: Executing PHPUnit tests</echo>
             <exec executable="phpunit" dir="@{destination}">
                 <arg line="-v -c app/phpunit.xml --coverage-html '${basedir}/test_result/coverage' --coverage-clover '${basedir}/test_result/clover.xml' --stderr --log-junit '${basedir}/test_result/phpunit.xml'"/>

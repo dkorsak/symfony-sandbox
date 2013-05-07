@@ -7,20 +7,21 @@ use Symfony\Component\Templating\EngineInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\HttpFoundation\Response;
 use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Block\BaseBlockService;
 
 /**
  * Class for displaying admin dashboard block
  * with memcache server stats
- * 
+ *
  * @package App\Backend
  */
 class MemcachedBlock extends BaseBlockService
 {
     /**
      * Mamcached stats service
-     * 
+     *
      * @var MemcachedStats
      */
     private $memcachedStats;
@@ -49,7 +50,7 @@ class MemcachedBlock extends BaseBlockService
     /**
      * {@inheritdoc}
      */
-    public function execute(BlockInterface $block, Response $response = null)
+    public function execute(BlockContextInterface $block, Response $response = null)
     {
         $template = 'AppBackendBundle:Block:memcached.block.html.twig';
 

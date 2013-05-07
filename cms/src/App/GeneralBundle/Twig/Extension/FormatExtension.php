@@ -52,6 +52,9 @@ class FormatExtension extends \Twig_Extension
      */
     public function getPercentage($amount, $total = 100)
     {
+        if (0 == $total) {
+            return '00.00%';
+        }
         $percent = round(($amount / $total) * 100, 2);
 
         return $percent . '%';
