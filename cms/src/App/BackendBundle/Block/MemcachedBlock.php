@@ -10,6 +10,7 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Block\BaseBlockService;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Class for displaying admin dashboard block
@@ -78,9 +79,8 @@ class MemcachedBlock extends BaseBlockService
      * {@inheritdoc}
      * @codeCoverageIgnore
      */
-    public function getDefaultSettings()
+    public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
-        return array();
     }
 
     /**
