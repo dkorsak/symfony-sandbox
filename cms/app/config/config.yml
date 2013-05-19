@@ -161,7 +161,7 @@ sonata_admin:
         # default actions templates, should extend a global templates
         # see full list in Sonata\AdminBundle\DependencyInjection\Configuration.php
         list:               AppBackendBundle:CRUD:list.html.twig
-        show:               AppBackendBundle:CRUD:show.html.twig
+        show:               SonataAdminBundle:CRUD:show.html.twig
         edit:               AppBackendBundle:CRUD:edit.html.twig
         delete:             AppBackendBundle:CRUD:delete.html.twig
         batch_confirmation: AppBackendBundle:CRUD:batch_confirmation.html.twig

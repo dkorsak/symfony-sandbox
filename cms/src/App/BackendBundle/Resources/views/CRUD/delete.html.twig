@@ -1,10 +1,10 @@
 {% extends base_template %}
 
 {% block actions %}
-    <div class="sonata-actions">
-        {% include 'AppBackendBundle:CRUD:edit_button.html.twig' %}
-        {% include 'AppBackendBundle:CRUD:create_button.html.twig' %}
-        {% include 'AppBackendBundle:CRUD:list_button.html.twig' %}
+    <div class="sonata-actions btn-group">
+        {% include 'SonataAdminBundle:Button:edit_button.html.twig' %}
+        {% include 'SonataAdminBundle:Button:create_button.html.twig' %}
+        {% include 'SonataAdminBundle:Button:list_button.html.twig' %}
     </div>
 {% endblock %}
 
