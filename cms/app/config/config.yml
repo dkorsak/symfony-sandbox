@@ -14,7 +14,8 @@ framework:
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
-    trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
+    trusted_proxies: ~
+    http_method_override: true
     session: ~
         #handler_id: session.handler.memcached
         #handler_id: session.handler.pdo
@@ -77,6 +78,12 @@ doctrine:
                         dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity/MappedSuperclass"
                         alias: GedmoTranslatable
                         is_bundle: false
+                    gedmo_translator:
+                        type: annotation
+                        prefix: Gedmo\Translator\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
+                        alias: GedmoTranslator
+                        is_bundle: false
                     gedmo_loggable:
                         type: annotation
                         prefix: Gedmo\Loggable\Entity
@@ -110,6 +117,7 @@ stof_doctrine_extensions:
     orm:
         default:
             timestampable:  true
+            translatable:   false
             blameable:      false
             sluggable:      true
             tree:           false
