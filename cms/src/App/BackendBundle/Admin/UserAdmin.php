@@ -5,7 +5,6 @@ namespace App\BackendBundle\Admin;
 use App\GeneralBundle\Utils\StringUtil;
 use Sonata\AdminBundle\Exception\ModelManagerException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
-use Sonata\AdminBundle\Validator\ErrorElement;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -52,6 +51,13 @@ class UserAdmin extends Admin
     protected $datagridValues = array(
         '_sort_order' => 'ASC', // sort direction
         '_sort_by' => 'email' // field name
+    );
+
+    /**
+     * @var array
+     */
+    protected $formOptions = array(
+        'validation_groups' => array('Admin user')
     );
 
     /**
@@ -159,17 +165,6 @@ class UserAdmin extends Admin
         if ($this->securityContent->getToken()->getUser()->getId() == $object->getId()) {
             throw new ModelManagerException("You can not delete own account");
         }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function validate(ErrorElement $errorElement, $object)
-    {
-        $errorElement
-            ->with('singleRole')
-                ->assertNotBlank()
-            ->end();
     }
 
     /**

@@ -107,6 +107,8 @@ class User extends BaseUser
      * This property is for managing user permissions only for one role
      *
      * @var string
+     *
+     * @Assert\NotBlank(groups={"Admin user"})
      */
     protected $singleRole;
 
