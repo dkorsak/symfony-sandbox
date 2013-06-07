@@ -311,8 +311,8 @@ class User extends BaseUser
      */
     public function setSingleRole($role)
     {
-        foreach ($this->roles as $role) {
-            $this->removeRole($role);
+        foreach ($this->roles as $oldRole) {
+            $this->removeRole($oldRole);
         }
         $this->addRole($role);
         $this->singleRole = $role;
