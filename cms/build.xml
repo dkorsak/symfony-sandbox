@@ -32,6 +32,7 @@
                     <exclude name=".git"/>
                     <exclude name="app/config/parameters*"/>
                     <exclude name="app/phpunit.xml"/>
+                    <exclude name="app/phpdoc.xml"/>
                     <exclude name="app/check.php"/>
                     <exclude name="app/cache/**"/>
                     <exclude name="bin/**"/>
