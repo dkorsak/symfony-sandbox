@@ -29,7 +29,7 @@ class ProfileController extends Controller
             // update username, needs to be the same as email
             $user->setUsername($user->getEmail());
             $this->get('fos_user.user_manager')->updateUser($user);
-            $this->get('session')->setFlash('sonata_flash_success', 'flash_edit_success');
+            $this->get('session')->getFlashBag()->add('sonata_flash_success', 'flash_edit_success');
 
             return new RedirectResponse($this->generateUrl('app_backend_profile'));
         }
