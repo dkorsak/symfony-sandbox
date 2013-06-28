@@ -11,6 +11,7 @@ use FOS\UserBundle\Model\GroupInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\GeneralBundle\Validator\Constraints as AppGeneralAssert;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 /**
  * App\GeneralBundle\Entity\User
@@ -24,6 +25,7 @@ use App\GeneralBundle\Validator\Constraints as AppGeneralAssert;
  * @UniqueEntity(fields={"username"})
  * @AppGeneralAssert\ChangePassword(groups={"Profile"})
  * Assert\Callback(methods={"isGroupValid"})
+ * @HasLifecycleCallbacks
  */
 class User extends BaseUser
 {
@@ -318,6 +320,16 @@ class User extends BaseUser
         $this->singleRole = $role;
 
         return $this;
+    }
+
+    /**
+     * Post load doctrine event
+     *
+     * @ORM\PostLoad()
+     */
+    public function updateSingleRole()
+    {
+        $this->singleRole = $this->getSingleRole();
     }
 
     /**
