@@ -162,6 +162,8 @@ sonata_admin:
 
     title:      Content Management System
     title_logo: /bundles/appbackend/images/cms.gif
+    options:
+        html5_validate: true
     templates:
         # default global templates
         layout:    AppBackendBundle::standard_layout.html.twig
