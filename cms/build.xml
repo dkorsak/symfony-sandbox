@@ -59,7 +59,7 @@
                     <include name="app/cache/prod/**"/>
                     <include name="app/logs/**"/>
                     <include name="web/uploads/**"/>
-                    <include name="app/config/parameters.ini"/>
+                    <include name="app/config/parameters.yml"/>
                     <include name="web/bundles/**"/>
                     <include name="web/css/**"/>
                     <include name="web/js/**"/>
@@ -119,8 +119,6 @@
                     <clear.file.cache destination="@{destination}" env="@{env}"/>
                 </then>
             </if>
-            <echo>ANT DEBUG: Creating FOS js routing file</echo>
-            <exec executable="php" dir="@{destination}"><arg line="app/console fos:js-routing:dump"/></exec>
             <if>
                 <equals arg1="@{execute.assets.dump}" arg2="true"/>
                 <then>
@@ -128,6 +126,8 @@
                     <exec executable="php" dir="@{destination}"><arg line="app/console assets:install web @{symlink}"/></exec>
                     <echo>ANT DEBUG: Dumping @{env} assets</echo>
                     <exec executable="php" dir="@{destination}"><arg line="app/console assetic:dump --env=@{env} --no-debug"/></exec>
+                    <echo>ANT DEBUG: Creating FOS js routing file</echo>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console fos:js-routing:dump"/></exec>
                 </then>
             </if>
             <create.web.dirs destination="@{destination}"/>
@@ -312,7 +312,7 @@
             <if>
                 <equals arg1="${local-build}" arg2="false"/>
                 <then>
-                    <copy preservelastmodified="true" overwrite="true" file="${basedir}/cms/app/config/parameters.${target}.ini" tofile="${basedir}/cms/app/config/parameters.ini"/>
+                    <copy preservelastmodified="true" overwrite="true" file="${basedir}/cms/app/config/parameters.${target}.yml" tofile="${basedir}/cms/app/config/parameters.yml"/>
                 </then>
             </if>
             <echo>ANT DEBUG: Syncing cms into @{destination} directory</echo>
@@ -327,7 +327,7 @@
             <syncfiles destination="@{destination}"/>
             <chmod dir="@{destination}/app/console" perm="+x"/>
             <echo>AND DEBUG: Copying ${parameters-file-path} file</echo>
-            <copy preservelastmodified="true" overwrite="true" file="${parameters-file-path}" tofile="@{destination}/app/config/parameters.ini"/>
+            <copy preservelastmodified="true" overwrite="true" file="${parameters-file-path}" tofile="@{destination}/app/config/parameters.yml"/>
             <build destination="@{destination}" env="prod"/>
             <if>
                 <equals arg1="${deploy.rsync}" arg2="true"/>
@@ -409,18 +409,34 @@
         <if>
             <equals arg1="${target}" arg2=""/>
             <then>
-                <var name="parameters-file-path" value="cms/app/config/parameters.ini"/>
+                <var name="parameters-file-path" value="cms/app/config/parameters.yml"/>
                 <var name="local-build" value="true"/>
             </then>
             <else>
-                <var name="parameters-file-path" value="cms/app/config/parameters.${target}.ini"/>
+                <var name="parameters-file-path" value="cms/app/config/parameters.${target}.yml"/>
                 <var name="local-build" value="false"/>
             </else>
         </if>
-        <property file="${parameters-file-path}"/>
         <echo>ANT DEBUG: Checking ${parameters-file-path} file</echo>
         <available file="${parameters-file-path}" property="doesPropertyFileExist"/>
         <fail unless="doesPropertyFileExist" message="The build ${parameters-file-path} file does not exist, can't build."/>
+        <path id="script.classpath">
+            <fileset file="${java.lib}/snakeyaml-1.11.jar"/>
+        </path>
+        <script language="javascript" classpathref="script.classpath">
+        <![CDATA[
+            importPackage(Packages.org.yaml.snakeyaml);
+            importPackage(java.lang, java.util, java.io);
+            var input = new FileInputStream(new File(project.getProperty("parameters-file-path")));
+            var yml = new Yaml();
+            var list = yml.load(input);
+            var literator = list.get("parameters").entrySet().iterator();
+            while (literator.hasNext()) {
+                var elem = literator.next();
+                project.setProperty(elem.getKey(), elem.getValue());
+            };
+        ]]>
+        </script>
     </target>
 
     <target name="clean-test-result-directory">
@@ -456,7 +472,7 @@
 
     <!--- ################################ TASKS ############################################################### -->
 
-    <target name="composer" depends="check" description="Update symfony vendor directory">
+    <target name="composer" description="Update symfony vendor directory">
         <if>
             <not>
                 <available file="${basedir}/cms/composer.phar"/>
@@ -471,8 +487,19 @@
                 <exec executable="php" dir="cms"><arg line="composer.phar self-update"/></exec>
             </else>
         </if>
-        <echo>ANT DEBUG: Updating vendor directory</echo>
-        <exec executable="php" dir="cms"><arg line="composer.phar update"/></exec>
+        <if>
+            <not>
+                <available file="${basedir}/cms/vendor" type="dir"/>
+            </not>
+            <then>
+                <echo>ANT DEBUG: Installing dependencies</echo>
+                <exec executable="php" dir="cms"><arg line="composer.phar install"/></exec>
+            </then>
+            <else>
+                <echo>ANT DEBUG: Updating vendor directory</echo>
+                <exec executable="php" dir="cms"><arg line="composer.phar update"/></exec>
+            </else>
+        </if>
     </target>
 
     <target name="fixcs" description="Execute php-cs-fixer">

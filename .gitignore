@@ -11,7 +11,7 @@ cms/web/css/*
 cms/web/js/*
 
 # Configuration files
-cms/app/config/parameters.ini
+cms/app/config/parameters.yml
 cms/composer.phar
 cms/php-cs-fixer.phar
 cms/behat.phar

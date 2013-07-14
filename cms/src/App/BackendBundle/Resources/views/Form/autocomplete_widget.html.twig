@@ -1,0 +1,17 @@
+{% block app_backend_form_autocomplete_type_widget %}
+{% spaceless %}
+    {{ block("hidden_widget") }}
+    {% set hiddenId  = id %}
+    {% set id = "autocompleter_" ~ id %}
+    {% set full_name = "autocompleter_" ~ full_name %}
+    {% set value = autocompleter_value %}
+    {{ block("form_widget_simple") }}
+    <script type="text/javascript">
+        $('#{{ id }}').keyup(function() {
+            if ("" == $(this).val()) {
+                $('#{{ hiddenId }}').val("");
+            }
+        })
+    </script>
+{% endspaceless %}
+{% endblock %}

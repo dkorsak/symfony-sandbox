@@ -12,3 +12,9 @@ services:
         class: App\BackendBundle\Form\Type\CKEditorType
         tags:
             - { name: form.type, alias: app_backend_form_ckeditor_type }
+
+    # autocomplete select type
+    app_backend.form.autocomplete_type:
+        class: App\BackendBundle\Form\Type\AutocompleteType
+        tags:
+            - { name: form.type, alias: app_backend_form_autocomplete_type }
