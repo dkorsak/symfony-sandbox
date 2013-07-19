@@ -1,0 +1,21 @@
+{% block app_backend_form_date_range_type_widget %}
+
+    {{ form_widget(form.start) }}
+    {{ form_widget(form.end) }}
+    <div id="{{ id }}">
+        <i class="icon-calendar icon-large"></i>
+        <span>CURRENT DATE</span> <b class="caret"></b>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#{{ id }}').daterangepicker(
+                {
+                },
+                function(start, end) {
+                    $('#{{ id }} span').html(start.toString('MMMM d, yyyy') + ' - ' + end.toString('MMMM d, yyyy'));
+                }
+            );
+        });
+    </script>
+
+{% endblock %}

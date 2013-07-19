@@ -373,4 +373,9 @@ class Article
 
         return "";
     }
+    
+    public function getDateRange()
+    {
+        return null;
+    }
 }

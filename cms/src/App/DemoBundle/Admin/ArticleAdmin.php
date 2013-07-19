@@ -72,6 +72,7 @@ class ArticleAdmin extends Admin
                 ->add('tags', 'sonata_type_model', $tagsParams)
                 ->add('title')
                 ->add('publishDate', 'app_backend_form_jquery_date_type', array('label' => 'Publish date'))
+                ->add('dateRange', 'app_backend_form_date_range_type', array('label' => 'Publish date'))
                 ->add('publish', null, $publishParams)
                 ->add('body', 'app_backend_form_ckeditor_type')
                 ->add('uploadedImage', 'liip_imagine_image', $uploadImageParams)
