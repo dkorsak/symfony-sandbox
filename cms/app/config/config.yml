@@ -164,6 +164,7 @@ sonata_admin:
     title_logo: /bundles/appbackend/images/cms.gif
     options:
         html5_validate: true
+        confirm_exit: true
     templates:
         # default global templates
         layout:    AppBackendBundle::standard_layout.html.twig

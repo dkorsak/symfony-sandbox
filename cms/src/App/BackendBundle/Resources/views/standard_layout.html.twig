@@ -26,6 +26,14 @@
 {% if form is defined %}{{ form_stylesheet(form) }}{% endif %}
 {% endblock %}
 {% block javascripts %}
+<script type="text/javascript">
+window.SONATA_CONFIG = {
+    CONFIRM_EXIT: {% if admin_pool.getOption('confirm_exit') %}true{% else %}false{% endif %}
+};
+window.SONATA_TRANSLATIONS = {
+    CONFIRM_EXIT:  '{{ 'confirm_exit'|trans({}, 'SonataAdminBundle')|escape('js') }}'
+};
+</script>
 {% javascripts filter='?closure' output="js/admin.js"
 '@SonatajQueryBundle/Resources/public/jquery-1.8.3.js'
 '@AppBackendBundle/Resources/public/js/ui/minified/jquery-ui.custom.min.js'
@@ -34,6 +42,7 @@
 '@AppBackendBundle/Resources/public/bootstrap/js/bootstrap.min.js'
 '@FOSJsRoutingBundle/Resources/public/js/router.js'
 'js/fos_js_routes.js'
+'@SonataAdminBundle/Resources/public/jquery/jquery.confirmExit.js'
 '@SonataAdminBundle/Resources/public/base.js'
 '@AppBackendBundle/Resources/public/js/global.js'
 %}
