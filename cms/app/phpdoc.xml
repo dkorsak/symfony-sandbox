@@ -13,6 +13,13 @@
     <transformations>
         <template name="responsive"/>
     </transformations>
+    <logging>
+        <level>warn</level>
+        <paths>
+            <default>../../test_result/phpdoc_log_{DATE}.log</default>
+            <errors>../../test_result/phpdoc_log_{DATE}.errors.log</errors>
+        </paths>
+    </logging>
     <files>
         <directory>../src</directory>
         <ignore>App/**/Resources/*</ignore>
