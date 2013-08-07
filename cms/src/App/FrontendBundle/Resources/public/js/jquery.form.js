@@ -1,6 +1,6 @@
 /*!
  * jQuery Form Plugin
- * version: 3.33.0-2013.05.02
+ * version: 3.39.0-2013.07.31
  * @requires jQuery v1.5 or later
  * Copyright (c) 2013 M. Alsup
  * Examples and documentation at: http://malsup.com/jquery/form/
@@ -89,9 +89,12 @@ $.fn.ajaxSubmit = function(options) {
     if (typeof options == 'function') {
         options = { success: options };
     }
+    else if ( options === undefined ) {
+        options = {};
+    }
 
-    method = this.attr2('method');
-    action = this.attr2('action');
+    method = options.type || this.attr2('method');
+    action = options.url  || this.attr2('action');
 
     url = (typeof action === 'string') ? $.trim(action) : '';
     url = url || window.location.href || '';
@@ -103,7 +106,7 @@ $.fn.ajaxSubmit = function(options) {
     options = $.extend(true, {
         url:  url,
         success: $.ajaxSettings.success,
-        type: method || 'GET',
+        type: method || $.ajaxSettings.type,
         iframeSrc: /^https/i.test(window.location.href || '') ? 'javascript:false' : 'about:blank'
     }, options);
 
@@ -206,7 +209,7 @@ $.fn.ajaxSubmit = function(options) {
 
     // [value] (issue #113), also see comment:
     // https://github.com/malsup/form/commit/588306aedba1de01388032d5f42a60159eea9228#commitcomment-2180219
-    var fileInputs = $('input[type=file]:enabled[value!=""]', this);
+    var fileInputs = $('input[type=file]:enabled:not([value=""])', this);
 
     var hasFileInputs = fileInputs.length > 0;
     var mp = 'multipart/form-data';
@@ -251,7 +254,7 @@ $.fn.ajaxSubmit = function(options) {
 
     // utility fn for deep serialization
     function deepSerialize(extraData){
-        var serialized = $.param(extraData).split('&');
+        var serialized = $.param(extraData, options.traditional).split('&');
         var len = serialized.length;
         var result = [];
         var i, part;
@@ -292,7 +295,7 @@ $.fn.ajaxSubmit = function(options) {
         if (options.uploadProgress) {
             // workaround because jqXHR does not expose upload property
             s.xhr = function() {
-                var xhr = jQuery.ajaxSettings.xhr();
+                var xhr = $.ajaxSettings.xhr();
                 if (xhr.upload) {
                     xhr.upload.addEventListener('progress', function(event) {
                         var percent = 0;
@@ -322,6 +325,11 @@ $.fn.ajaxSubmit = function(options) {
     function fileUploadIframe(a) {
         var form = $form[0], el, i, s, g, id, $io, io, xhr, sub, n, timedOut, timeoutHandle;
         var deferred = $.Deferred();
+
+        // #341
+        deferred.abort = function(status) {
+            xhr.abort(status);
+        };
 
         if (a) {
             // ensure that every serialized input is still enabled
@@ -1187,4 +1195,4 @@ function log() {
     }
 }
 
-})(jQuery);
+})( (typeof(jQuery) != 'undefined') ? jQuery : window.Zepto );
