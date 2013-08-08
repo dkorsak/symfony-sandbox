@@ -29,6 +29,7 @@ then
   if $clearfilecache
   then
     echo "Cleaning file cache............."
+    ssh $user@$host 'rm @deploy.dest@/app/cache/* -Rf'
     ssh $user@$host '@deploy.dest@/app/console cache:clear --env=prod --no-debug'
   fi
 

@@ -22,6 +22,16 @@
         </sequential>
     </macrodef>
 
+    <macrodef name="delete.cache">
+        <attribute name="destination" default="cms"/>
+        <sequential>
+            <echo>ANT DEBUG: Deleting all files from cache directory</echo>
+            <delete includeemptydirs="true">
+                <fileset dir="@{destination}/app/cache" includes="**/*" defaultexcludes="false"/>
+            </delete>
+        </sequential>
+    </macrodef>
+
     <macrodef name="syncfiles">
         <attribute name="destination" default="build"/>
         <attribute name="source" default="cms"/>
@@ -289,6 +299,7 @@
         <attribute name="env" default="${env}"/>
         <attribute name="symlink" default=""/>
         <sequential>
+            <delete.cache destination="@{destination}"/>
             <cc symlink="@{symlink}" destination="@{destination}" env="@{env}" execute.assets.dump="${build.assets.dump}" execute.clear.cache.file="${build.clear.cache.file}" execute.clear.sonata.cache="${build.clear.sonata.cache}" execute.clear.doctrine.cache="${build.clear.doctrine.cache}"/>
             <if>
                 <equals arg1="${build.build.db}" arg2="true"/>
@@ -525,6 +536,7 @@
     </target>
 
     <target name="cc" description="Clear cache">
+        <delete.cache/>
         <clear.file.cache env="prod"/>
         <cc symlink="--symlink" env="dev"/>
     </target>
