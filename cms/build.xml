@@ -26,7 +26,7 @@
         <attribute name="destination" default="cms"/>
         <sequential>
             <echo>ANT DEBUG: Deleting all files from cache directory</echo>
-            <delete includeemptydirs="true">
+            <delete includeemptydirs="true" failonerror="false">
                 <fileset dir="@{destination}/app/cache" includes="**/*" defaultexcludes="false"/>
             </delete>
         </sequential>
