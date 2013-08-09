@@ -48,7 +48,8 @@
         "vich/uploader-bundle": "dev-master",
         "knplabs/knp-gaufrette-bundle" : "dev-master",
         "liip/imagine-bundle": "dev-master",
-        "friendsofsymfony/jsrouting-bundle": "1.1.*"
+        "friendsofsymfony/jsrouting-bundle": "1.1.*",
+        "lexik/maintenance-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

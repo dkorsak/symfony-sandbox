@@ -38,6 +38,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Lexik\Bundle\MaintenanceBundle\LexikMaintenanceBundle(),
 
             new App\BackendBundle\AppBackendBundle(),
             new App\FrontendBundle\AppFrontendBundle(),

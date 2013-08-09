@@ -1,0 +1,16 @@
+# media cacheable services
+services:
+
+    # annotation reader
+    app_general.driver.annotation_driver:
+        class: App\GeneralBundle\Driver\AnnotationDriver
+        public: false
+        arguments: [ @annotation_reader ]
+
+    # media cacheable event listener
+    app_general.event_listener.media_cacheable_listener:
+        class: App\GeneralBundle\EventListener\MediaCacheableListener
+        public: false
+        arguments: [ @app_general.driver.annotation_driver, @liip_imagine.cache.manager ]
+        tags:
+            - { name: doctrine.event_subscriber }

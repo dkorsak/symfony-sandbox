@@ -3,7 +3,6 @@
 namespace App\DemoBundle\Admin;
 
 use App\DemoBundle\Entity\Article;
-use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Sonata\AdminBundle\Form\Type\BooleanType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -14,41 +13,12 @@ use Sonata\AdminBundle\Admin\Admin;
 class ArticleAdmin extends Admin
 {
     /**
-     * @var CacheManager $imageCacheManager
-     */
-    protected $imageCacheManager;
-
-    /**
      * @var array
      */
     protected $datagridValues = array(
         '_sort_order' => 'DESC',
         '_sort_by' => 'publishDate'
     );
-
-    /**
-     * @param CacheManager $imageCacheManager
-     */
-    public function setImageCacheManager(CacheManager $imageCacheManager)
-    {
-        $this->imageCacheManager = $imageCacheManager;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function postUpdate($object)
-    {
-        $this->deleteAssets($object);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function postRemove($object)
-    {
-        $this->deleteAssets($object);
-    }
 
     /**
      * {@inheritdoc}
@@ -150,17 +120,5 @@ class ArticleAdmin extends Admin
             ->with('Body')
                 ->add('body', null, array('template' => 'AppDemoBundle:Article:show_article_body.html.twig'))
             ->end();
-    }
-
-    /**
-     * Delete all object assets from cache
-     *
-     * @param Article $object
-     */
-    private function deleteAssets(Article $object)
-    {
-        if ($object->getFullImagePath() != "") {
-            $this->imageCacheManager->remove($object->getFullImagePath(), 'article_thumb');
-        }
     }
 }

@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use App\GeneralBundle\Mapping\Annotation\MediaCacheable;
+use App\GeneralBundle\Mapping\Annotation\MediaCacheableField;
 
 /**
  * App\DemoBundle\Entity\Article
@@ -15,6 +17,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Table(name="demo_article")
  * @ORM\Entity()
  * @Vich\Uploadable
+ * @MediaCacheable
  */
 class Article
 {
@@ -27,7 +30,7 @@ class Article
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
@@ -35,14 +38,14 @@ class Article
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
      * @Assert\NotBlank()
      */
-    protected $title;
+    private $title;
 
     /**
      * @var string
      *
      * @ORM\Column(name="body", type="text", nullable=true)
      */
-    protected $body;
+    private $body;
 
     /**
      * @var \DateTime
@@ -51,14 +54,14 @@ class Article
      * @Assert\NotBlank()
      * @Assert\DateTime()
      */
-    protected $publishDate;
+    private $publishDate;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="publish", type="boolean", nullable=false)
      */
-    protected $publish;
+    private $publish;
 
     /**
      * @var string
@@ -66,14 +69,15 @@ class Article
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      */
-    protected $slug;
+    private $slug;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     * @MediaCacheableField(filters={"article_thumb"}, path_getter="imageUploadDir")
      */
-    protected $image;
+    private $image;
 
     /**
      * @var ArticleCategory
@@ -83,7 +87,7 @@ class Article
      * @Assert\NotBlank()
      * @Assert\Type(type="App\DemoBundle\Entity\ArticleCategory")
      */
-    protected $articleCategory;
+    private $articleCategory;
 
     /**
      * @var ArrayCollection
@@ -98,7 +102,7 @@ class Article
      *     }
      * )
      */
-    protected $tags;
+    private $tags;
 
     /**
      * @var UploadedFile
@@ -106,7 +110,7 @@ class Article
      * @Assert\Image()
      * @Vich\UploadableField(mapping="article_image", fileNameProperty="image")
      */
-    protected $uploadedImage;
+    private $uploadedImage;
 
     /**
      * Constructor

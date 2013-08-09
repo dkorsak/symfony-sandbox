@@ -326,6 +326,19 @@ liip_imagine:
             filters:
                 relative_resize: { scale: 0.5 }
 
+#LexikMaintenanceBundle https://github.com/lexik/LexikMaintenanceBundle
+lexik_maintenance:
+    driver:
+        ttl: 3600
+        # File driver
+        #class: '\Lexik\Bundle\MaintenanceBundle\Drivers\FileDriver'                # class for file driver
+        #options: {file_path: %kernel.root_dir%/cache/lock}                         # file_path is the complete path for create the file
+        # MemCache driver
+        #class: Lexik\Bundle\MaintenanceBundle\Drivers\MemCacheDriver               # class for MemCache driver
+        #options: {key_name: 'maintenance', host: 127.0.0.1, port: 11211}           # need to define a key_name, the host and port
+        # Database driver:
+        class: 'Lexik\Bundle\MaintenanceBundle\Drivers\DatabaseDriver'             # class for database driver
+
 parameters:
     # symfony pdo session database params
     pdo.db_options:
