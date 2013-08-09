@@ -427,3 +427,32 @@ legend.sonata-ba-fieldset-collapsed-description + .sonata-ba-collapsed-fields {
     width: 18px;
     margin-top: -10px;
 }
+
+.ui-widget-overlay {
+    position: fixed;
+    z-index: 1040;
+}
+
+form {
+    margin-bottom: 0px;
+}
+
+.ui-dialog .form-actions {
+    margin-bottom: 0px;
+}
+
+#ajax_loader {
+    position: fixed;
+    top: 60px;
+    right: 30px;
+    display: none;
+    z-index: 1000;
+}
+.ui-dialog .ui-dialog-content {
+    padding: 1em;
+}
+
+.ui-dialog .sonata-ba-list,
+.ui-dialog .sonata-ba-filter {
+    display: none;
+}

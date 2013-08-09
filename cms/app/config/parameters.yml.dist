@@ -55,6 +55,8 @@ parameters:
 
     # deploy project into server parameters for ANT deploy task
     deploy.destination              : build
+    # enable or disable maitenance page
+    deploy.lock                     : false
     deploy.execute.phpunit          : true
     deploy.execute.behat            : true
     deploy.execute.codereport       : true

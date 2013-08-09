@@ -134,10 +134,10 @@
                 <then>
                     <echo>ANT DEBUG: Installing assets</echo>
                     <exec executable="php" dir="@{destination}"><arg line="app/console assets:install web @{symlink}"/></exec>
-                    <echo>ANT DEBUG: Dumping @{env} assets</echo>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console assetic:dump --env=@{env} --no-debug"/></exec>
                     <echo>ANT DEBUG: Creating FOS js routing file</echo>
                     <exec executable="php" dir="@{destination}"><arg line="app/console fos:js-routing:dump"/></exec>
+                    <echo>ANT DEBUG: Dumping @{env} assets</echo>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console assetic:dump --env=@{env} --no-debug"/></exec>
                 </then>
             </if>
             <create.web.dirs destination="@{destination}"/>

@@ -59,6 +59,9 @@ window.SONATA_TRANSLATIONS = {
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body class="sonata-bc{% if _side_menu is empty %} sonata-ba-no-side-menu{% endif %}">
+    <div id="ajax_loader">
+        <img src="{{ asset('/bundles/appbackend/images/ajax-loader.gif') }}" alt=""/>
+    </div>
     <div id="wrap">
         <div class="page-content">
             <div class="navbar navbar-fixed-top">

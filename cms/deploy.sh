@@ -11,6 +11,7 @@ cleardoctrine=@deploy.rsync.clear.doctrine.cache@
 assetsdump=@deploy.rsync.assets.dump@
 buildbd=@deploy.rsync.build.db@
 migrate=@deploy.rsync.doctrine.migrations@
+enablemaitenance=@deploy.lock@
 
 if [ "$1" == "run" ] 
 then
@@ -25,6 +26,12 @@ rsync --progress $dry_run -rlzcC --force --delete --exclude-from=./rsync_exclude
 
 if [ "$1" == "run" ] 
 then
+
+  if $enablemaitenance
+  then
+    echo "Enabling maitenance page............."
+    ssh $user@$host '@deploy.dest@/app/console lexik:maintenance:lock --no-interaction --set-ttl'
+  fi
 
   if $clearfilecache
   then
@@ -67,6 +74,12 @@ then
   then
      echo "Migrating database........."
      ssh $user@$host '@deploy.dest@/app/console doctrine:migrations:migrate --no-interaction'
+  fi
+
+  if $enablemaitenance
+  then
+    echo "Disabling maitenance page............."
+    ssh $user@$host '@deploy.dest@/app/console lexik:maintenance:unlock --no-interaction'
   fi
 fi
 

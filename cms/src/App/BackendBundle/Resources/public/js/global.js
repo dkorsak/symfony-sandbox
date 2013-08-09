@@ -33,4 +33,11 @@ jQuery(document).ready(function() {
         }
         jQuery(this).data("on-sumbit", "on-submit")
     });
+    jQuery(document).ajaxStart(function() {
+        jQuery('#ajax_loader').show();
+    });
+
+    jQuery(document).ajaxStop(function() {
+        jQuery('#ajax_loader').hide();
+    });
 })
