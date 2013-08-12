@@ -28,7 +28,7 @@
 {% block javascripts %}
 <script type="text/javascript">
 window.SONATA_CONFIG = {
-    CONFIRM_EXIT: {% if admin_pool.getOption('confirm_exit') %}true{% else %}false{% endif %}
+    CONFIRM_EXIT: {% if admin_pool is defined and admin_pool.getOption('confirm_exit') %}true{% else %}false{% endif %}
 };
 window.SONATA_TRANSLATIONS = {
     CONFIRM_EXIT:  '{{ 'confirm_exit'|trans({}, 'SonataAdminBundle')|escape('js') }}'

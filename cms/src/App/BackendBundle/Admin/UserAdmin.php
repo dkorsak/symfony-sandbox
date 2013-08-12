@@ -178,6 +178,14 @@ class UserAdmin extends Admin
     /**
      * {@inheritdoc}
      */
+    public function getUniqid()
+    {
+        return 'user';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
