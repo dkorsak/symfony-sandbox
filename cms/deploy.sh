@@ -66,7 +66,7 @@ then
     echo "Building database..........."
     ssh $user@$host '@deploy.dest@/app/console doctrine:schema:drop --force'
     ssh $user@$host '@deploy.dest@/app/console doctrine:schema:create'
-    ssh $user@$host '@deploy.dest@app/console app:create-pdo-session-table'
+    ssh $user@$host '@deploy.dest@/app/console app:create-pdo-session-table'
     ssh $user@$host '@deploy.dest@/app/console doctrine:fixtures:load'
   fi
 
