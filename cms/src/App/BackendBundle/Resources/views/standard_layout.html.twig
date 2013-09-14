@@ -8,7 +8,7 @@
 {% set _title        = block('title') %}
 {% set _breadcrumb   = block('breadcrumb') %}
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html {% block html_attributes %}class="no-js" lang="en"{% endblock %}>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
