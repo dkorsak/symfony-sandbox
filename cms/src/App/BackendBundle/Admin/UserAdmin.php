@@ -247,7 +247,7 @@ class UserAdmin extends Admin
                 array(
                     'label' => 'Actions',
                     'actions' => array(
-                        'view' => array('template' => 'AppBackendBundle:CRUD:list__action_view.html.twig'),
+                        'show' => array('template' => 'AppBackendBundle:CRUD:list__action_view.html.twig'),
                         'edit' => array('template' => 'AppBackendBundle:CRUD:list__action_edit.html.twig'),
                         'delete' => array('template' => 'AppBackendBundle:CRUD:list__action_delete.html.twig'),
                     )
