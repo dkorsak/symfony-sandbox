@@ -95,7 +95,7 @@ class ArticleAdmin extends Admin
         $datagridMapper
             ->add('title')
             ->add('articleCategory', null, array('label' => 'Category'))
-            ->add('publishDate', 'doctrine_orm_date', array('label' => 'Publish date'))
+            ->add('publishDate', 'jquery_date_range_filter', array('label' => 'Publish date'))
             ->add('publish', null, $publishParams);
     }
 

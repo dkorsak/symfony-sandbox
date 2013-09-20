@@ -55,7 +55,10 @@ class APCBlock extends BaseBlockService
     {
         $template = 'AppBackendBundle:Block:apc.block.html.twig';
 
-        return $this->renderResponse($template, array('service' => $this->apcStats), $response);
+        $response = $this->renderResponse($template, array('service' => $this->apcStats), $response);
+        $response->setTtl($block->getSetting('ttl'));
+
+        return $response;
     }
 
     /**

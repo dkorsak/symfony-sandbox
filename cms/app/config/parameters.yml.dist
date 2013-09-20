@@ -30,7 +30,7 @@ parameters:
     default_email     : admin@admin.com
     default_sender    : Admin User
 
-    locale            : pl_PL
+    locale            : pl
     secret            : ThisTokenIsNotSoSecretChangeIt
     # your website URL
     server_name       : http://SITE_URL

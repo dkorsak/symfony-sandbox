@@ -1,0 +1,20 @@
+# Sonata Admin Filter Definitions
+services:
+    # daterange filter
+    app_backend.filter.jquery_date_range_filter:
+        class: App\BackendBundle\Filter\JQueryDateRangeFilter
+        tags:
+            - { name: sonata.admin.filter.type, alias: jquery_date_range_filter }
+
+    # daterange filter form form type
+    app_backend.form.filter.filter_date_range_type:
+        class: App\BackendBundle\Form\Type\Filter\FilterDateRangeType
+        arguments:  [ @translator ]
+        tags:
+            - { name: form.type, alias: app_backend_form_filter_filter_date_range_type }
+
+    # datatrange form type
+    app_backend.form.filter.date_range_type:
+        class: App\BackendBundle\Form\Type\Filter\DateRangeType
+        tags:
+            - { name: form.type, alias: app_backend_form_filter_date_range_type }
