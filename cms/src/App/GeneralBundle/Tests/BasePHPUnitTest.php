@@ -84,7 +84,7 @@ abstract class BasePHPUnitTest extends WebTestCase
      */
     protected function doAdminLogin(Client $client, $username = self::ADMIN_USER, $password = self::ADMIN_PASSWORD)
     {
-        $crawler = $client->request('GET', '/admin');
+        $crawler = $client->request('GET', '/admin/login');
         $this->assertTrue($client->getResponse()->isSuccessful());
 
         //$form = $crawler->selectButton('Login')->form();
