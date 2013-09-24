@@ -28,7 +28,7 @@ class MemcachedBlockTest extends BasePHPUnitTest
 
     public function testExecute()
     {
-        $block = \Mockery::mock('Sonata\BlockBundle\Block\BlockContextInterface');
+        $block = \Mockery::mock('Sonata\BlockBundle\Block\BlockContextInterface', array('getSetting' => null));
         $response = $this->memcachedBlock->execute($block);
         $this->assertTrue($response instanceof Response);
         // used memory in percentage
