@@ -2082,12 +2082,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpGaufretteBundle.git",
-                "reference": "bd695f91949439a5677fad5c155e520046b29631"
+                "reference": "b4f15993a285fdaf04519702d7fafcd34f97b55b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpGaufretteBundle/zipball/bd695f91949439a5677fad5c155e520046b29631",
-                "reference": "bd695f91949439a5677fad5c155e520046b29631",
+                "url": "https://api.github.com/repos/KnpLabs/KnpGaufretteBundle/zipball/b4f15993a285fdaf04519702d7fafcd34f97b55b",
+                "reference": "b4f15993a285fdaf04519702d7fafcd34f97b55b",
                 "shasum": ""
             },
             "require": {
@@ -2133,7 +2133,7 @@
                 "filesystem",
                 "media"
             ],
-            "time": "2013-08-24 10:58:34"
+            "time": "2013-09-24 06:39:44"
         },
         {
             "name": "knplabs/knp-menu",
@@ -2432,12 +2432,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "b6fe71cbc1909927b5574219ff6d50e3b264abdb"
+                "reference": "f0e6b1a184acd6dd9f33da7d7f552e71c4167e64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/b6fe71cbc1909927b5574219ff6d50e3b264abdb",
-                "reference": "b6fe71cbc1909927b5574219ff6d50e3b264abdb",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/f0e6b1a184acd6dd9f33da7d7f552e71c4167e64",
+                "reference": "f0e6b1a184acd6dd9f33da7d7f552e71c4167e64",
                 "shasum": ""
             },
             "require": {
@@ -2478,7 +2478,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2013-08-21 19:34:19"
+            "time": "2013-09-24 18:54:55"
         },
         {
             "name": "monolog/monolog",
@@ -2486,12 +2486,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "c766d624e9993e1a743dcea0f887b068d8401ef5"
+                "reference": "ca18e81f79484c552b6bac0e40e4ee3fd0161000"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c766d624e9993e1a743dcea0f887b068d8401ef5",
-                "reference": "c766d624e9993e1a743dcea0f887b068d8401ef5",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/ca18e81f79484c552b6bac0e40e4ee3fd0161000",
+                "reference": "ca18e81f79484c552b6bac0e40e4ee3fd0161000",
                 "shasum": ""
             },
             "require": {
@@ -2541,7 +2541,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-09-23 09:55:45"
+            "time": "2013-09-24 08:48:58"
         },
         {
             "name": "phpoption/phpoption",
@@ -2778,12 +2778,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "de01ce8af40c9becbe818f69c7ab27ad1d3df889"
+                "reference": "7aac462687cc0db732b43860ec9775c1ac353424"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/de01ce8af40c9becbe818f69c7ab27ad1d3df889",
-                "reference": "de01ce8af40c9becbe818f69c7ab27ad1d3df889",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/7aac462687cc0db732b43860ec9775c1ac353424",
+                "reference": "7aac462687cc0db732b43860ec9775c1ac353424",
                 "shasum": ""
             },
             "require": {
@@ -2847,7 +2847,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2013-09-23 16:26:21"
+            "time": "2013-09-24 13:06:29"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -3031,12 +3031,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "71527f81b963bcf8b274ec71ca9f7f4a41f8819e"
+                "reference": "a8860d937b152fe74593540610858353920e9fb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/71527f81b963bcf8b274ec71ca9f7f4a41f8819e",
-                "reference": "71527f81b963bcf8b274ec71ca9f7f4a41f8819e",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/a8860d937b152fe74593540610858353920e9fb3",
+                "reference": "a8860d937b152fe74593540610858353920e9fb3",
                 "shasum": ""
             },
             "require": {
@@ -3079,7 +3079,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2013-09-20 08:31:05"
+            "time": "2013-09-23 21:56:14"
         },
         {
             "name": "sonata-project/easy-extends-bundle",

@@ -7,6 +7,7 @@
 {% set _content      = block('content') %}
 {% set _title        = block('title') %}
 {% set _breadcrumb   = block('breadcrumb') %}
+{% set _actions      = block('actions') %}
 <!DOCTYPE html>
 <html {% block html_attributes %}class="no-js" lang="en"{% endblock %}>
 <head>
@@ -177,7 +178,9 @@ window.SONATA_TRANSLATIONS = {
                 {% endblock %}
 
                 <div class="pull-right">
-                    {% block actions %}{% endblock %}
+                    {% if _actions is not empty %}
+                        {{ _actions|raw }}
+                    {% endif %}
                 </div>
 
                 {% if _title is not empty or action is defined %}

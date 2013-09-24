@@ -55,7 +55,10 @@ class MemcachedBlock extends BaseBlockService
     {
         $template = 'AppBackendBundle:Block:memcached.block.html.twig';
 
-        return $this->renderResponse($template, array('service' => $this->memcachedStats), $response);
+        $response = $this->renderResponse($template, array('service' => $this->memcachedStats), $response);
+        $response->setTtl($block->getSetting('ttl'));
+
+        return $response;
     }
 
     /**
