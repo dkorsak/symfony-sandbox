@@ -504,11 +504,11 @@
             </not>
             <then>
                 <echo>ANT DEBUG: Installing dependencies</echo>
-                <exec executable="php" dir="cms"><arg line="composer.phar install"/></exec>
+                <exec executable="php" dir="cms"><arg line="composer.phar install --optimize-autoloader"/></exec>
             </then>
             <else>
                 <echo>ANT DEBUG: Updating vendor directory</echo>
-                <exec executable="php" dir="cms"><arg line="composer.phar update"/></exec>
+                <exec executable="php" dir="cms"><arg line="composer.phar update --optimize-autoloader"/></exec>
             </else>
         </if>
     </target>
