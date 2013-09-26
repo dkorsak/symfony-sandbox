@@ -164,12 +164,12 @@
                 <equals arg1="@{debug}" arg2="true"/>
                 <then>
                     <exec dir="@{destination}" executable="phpcs" failonerror="false">
-                        <arg line="-s --standard=${basedir}/coding_standards/PSR2 --report=full ./src"/>
+                        <arg line="-s --standard=${basedir}/coding_standards/PSR2/ruleset.xml --report=full ./src"/>
                     </exec>
                 </then>
                 <else>
                     <exec dir="@{destination}" executable="phpcs" failonerror="false">
-                        <arg line="-s --standard=${basedir}/coding_standards/PSR2 --report=checkstyle --report-file=${basedir}/test_result/checkstyle.xml ./src"/>
+                        <arg line="-s --standard=${basedir}/coding_standards/PSR2/ruleset.xml --report=checkstyle --report-file=${basedir}/test_result/checkstyle.xml ./src"/>
                     </exec>
                 </else>
             </if>
