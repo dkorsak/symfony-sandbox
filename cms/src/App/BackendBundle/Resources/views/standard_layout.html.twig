@@ -17,6 +17,7 @@
 <meta name="robots" content="noindex,nofollow">
 {% block stylesheets %}
 {% stylesheets filter='cssrewrite,?yui_css' output="css/admin.css"
+'bundles/sonataadmin/select2/select2.css'
 'bundles/appbackend/css/bootstrap-theme/jquery-ui-1.10.3.custom.css'
 'bundles/appbackend/bootstrap/css/bootstrap.css'
 'bundles/sonataadmin/css/colors.css'
@@ -29,7 +30,8 @@
 {% block javascripts %}
 <script type="text/javascript">
 window.SONATA_CONFIG = {
-    CONFIRM_EXIT: {% if admin_pool is defined and admin_pool.getOption('confirm_exit') %}true{% else %}false{% endif %}
+    CONFIRM_EXIT: {% if admin_pool is defined and admin_pool.getOption('confirm_exit') %}true{% else %}false{% endif %},
+    USE_SELECT2: {% if admin_pool is defined and admin_pool.getOption('use_select2') %}true{% else %}false{% endif %}
 };
 window.SONATA_TRANSLATIONS = {
     CONFIRM_EXIT:  '{{ 'confirm_exit'|trans({}, 'SonataAdminBundle')|escape('js') }}'
@@ -44,6 +46,7 @@ window.SONATA_TRANSLATIONS = {
 '@FOSJsRoutingBundle/Resources/public/js/router.js'
 'js/fos_js_routes.js'
 '@SonataAdminBundle/Resources/public/jquery/jquery.confirmExit.js'
+'@SonataAdminBundle/Resources/public/select2/select2.min.js'
 '@SonataAdminBundle/Resources/public/base.js'
 '@AppBackendBundle/Resources/public/js/global.js'
 %}
@@ -132,6 +135,16 @@ window.SONATA_TRANSLATIONS = {
                                     {% endblock %}
                                     {% block top_bar_after_nav %}{% endblock %}
                                 </ul>
+                                {% block sonata_top_bar_search %}
+                                    {# DISABLED #}
+                                    {% if app.security.token and is_granted('ROLE_SONATA_ADMIN') and 1==0 %}
+                                        <form action="{{ url('sonata_admin_search') }}" method="GET"  class="navbar-search">
+                                            <div class="input-append">
+                                                <input type="text" name="q" value="" class="input-large search-query" placeholder="{{ 'search_placeholder'|trans({}, 'SonataAdminBundle') }}"/>
+                                            </div>
+                                        </form>
+                                    {% endif %}
+                                {% endblock %}
                             </div>
                             {% endblock %}
                         {% endif %}

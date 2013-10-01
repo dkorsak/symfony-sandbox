@@ -426,6 +426,14 @@ legend.sonata-ba-fieldset-collapsed-description + .sonata-ba-collapsed-fields {
 
 }
 
+.sonata-bc .form-horizontal .control-group {
+    margin-bottom: 10px;
+}
+
+span.field-actions {
+    margin-left: 10px;
+}
+
 .ui-dialog .ui-dialog-titlebar-close {
     background-image: url("bootstrap-theme/images/ui-icons_888888_256x240.png");
     background-position: -32px -192px;
@@ -462,3 +470,7 @@ form {
 .ui-dialog .sonata-ba-filter {
     display: none;
 }
+
+div.select2-container {
+    margin-left: 0px !important;
+} 
