@@ -4,7 +4,6 @@ namespace App\BackendBundle\Controller;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use FOS\UserBundle\Model\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ProfileController extends Controller
@@ -17,17 +16,12 @@ class ProfileController extends Controller
      */
     public function editAction()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
-        }
+        $user = $this->getUser();
 
         $form = $this->get('sonata.user.profile.form');
         $formHandler = $this->container->get('sonata.user.profile.form.handler');
         $process = $formHandler->process($user);
         if ($process) {
-            // update username, needs to be the same as email
-            $user->setUsername($user->getEmail());
             $this->get('fos_user.user_manager')->updateUser($user);
             $this->get('session')->getFlashBag()->add('sonata_flash_success', 'flash_edit_success');
 

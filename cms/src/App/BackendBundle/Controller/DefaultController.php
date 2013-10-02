@@ -6,6 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
+    /**
+     * Execute permission denied action
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function error403Action()
     {
         $params = array(

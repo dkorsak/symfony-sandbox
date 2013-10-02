@@ -83,7 +83,6 @@ class ArticleAdmin extends BaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label' => 'Actions',
                     'actions' => array(
                         'show' => array('template' => 'AppBackendBundle:CRUD:list__action_show.html.twig'),
                         'edit' => array('template' => 'AppBackendBundle:CRUD:list__action_edit.html.twig'),

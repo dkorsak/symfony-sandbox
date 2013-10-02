@@ -30,6 +30,10 @@ parameters:
     default_email     : admin@admin.com
     default_sender    : Admin User
 
+    # swift delivery address, where to redirect all emails sending by website
+    # leave empty if you do not need send emails to one email address
+    swiftmailer_delivery_address: ~
+
     locale            : pl
     secret            : ThisTokenIsNotSoSecretChangeIt
     # your website URL

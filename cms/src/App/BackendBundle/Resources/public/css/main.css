@@ -307,12 +307,12 @@ html, body {
 .sonata-bc div.sonata-medium-date {
     overflow: hidden;
 }
-.sonata-bc div.sonata-medium-date select,
-.sonata-filter-form .medium-date select {
+.sonata-bc div.sonata-medium-date select {
     width: 75px;
 }
 .sonata-filter-form .medium-date select {
     margin-bottom: 0px;
+    width: 73px;
 }
 
 .sonata-bc div.sonata-medium-date div {

@@ -11,6 +11,8 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use App\GeneralBundle\Entity\User;
 use App\GeneralBundle\Services\Mailer;
+use Symfony\Component\Validator\Constraint;
+use Sonata\AdminBundle\Form\Type\BooleanType;
 
 /**
  * Admin class for managing users
@@ -34,6 +36,11 @@ class UserAdmin extends BaseAdmin
     protected $baseRoutePattern = 'users';
 
     /**
+     * @var string
+     */
+    protected $baseRouteName = 'user';
+
+    /**
      * @var array
      */
     protected $datagridValues = array(
@@ -45,7 +52,7 @@ class UserAdmin extends BaseAdmin
      * @var array
      */
     protected $formOptions = array(
-        'validation_groups' => array('Admin user')
+        'validation_groups' => array('Admin user', Constraint::DEFAULT_GROUP)
     );
 
     /**
@@ -110,7 +117,7 @@ class UserAdmin extends BaseAdmin
     public function preRemove($object)
     {
         // logged user can not delete own account
-        if ($this->securityContent->getToken()->getUser()->getId() == $object->getId()) {
+        if ($this->getSecurityContext()->getToken()->getUser()->getId() == $object->getId()) {
             throw new ModelManagerException("You can not delete own account");
         }
     }
@@ -162,14 +169,14 @@ class UserAdmin extends BaseAdmin
     {
         $groupsParams = array("expanded" => false, "multiple" => true, "property" => "name", "required" => false);
         $roleParams = array(
-            'empty_value' => $this->getEmptySelectValue(),
-            'attr' => array('data-placeholder' => $this->getEmptySelectValue())
+            'label' => 'Role',
+            'empty_value' => $this->getEmptySelectValue()
         );
         $formMapper
             ->with('General')
                 ->add("firstname")
                 ->add("lastname")
-                ->add("email")
+                ->add("email", null, array('attr' => array('autocomplete' => 'off')))
             ->end()
             ->with('Permissions')
                 ->add("enabled", null, array("required" => false, "label" => "Active"))
@@ -192,11 +199,11 @@ class UserAdmin extends BaseAdmin
             ->add("singleRoleName", null, array("label" => "Role"))
             ->add("groups", null, $groupParams)
             ->add("enabled", null, $enabledParams)
+            ->add('lastLogin', null, array('label' => 'Last login'))
             ->add(
                 '_action',
                 'actions',
                 array(
-                    'label' => 'Actions',
                     'actions' => array(
                         'show' => array('template' => 'AppBackendBundle:CRUD:list__action_show.html.twig'),
                         'edit' => array('template' => 'AppBackendBundle:CRUD:list__action_edit.html.twig'),
@@ -211,6 +218,24 @@ class UserAdmin extends BaseAdmin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
+        $rolesParams = array(
+            'field_type' => 'app_backend_form_user_single_role_type',
+            'label' => 'Role',
+            'empty_value' => $this->getEmptySelectValue(),
+            'field_options' => array(
+                'choices' => User::$userRoles,
+            )
+        );
+        $enabledParams = array(
+            'label' => 'Status',
+            'field_options' => array(
+                'choices' => array(
+                    '' => '',
+                    BooleanType::TYPE_NO => $this->trans('Inactive', array(), null),
+                    BooleanType::TYPE_YES => $this->trans('Active', array(), null)
+                )
+            )
+        );
         $datagridMapper
             ->add(
                 "name",
@@ -229,8 +254,9 @@ class UserAdmin extends BaseAdmin
                         }
                     )
             )
-            ->add("enabled", null, array("label" => "Enabled"))
-            ->add("email", null, array("label" => "Email"));
+            ->add("enabled", null, $enabledParams)
+            ->add('roles', null, $rolesParams)
+            ->add("email");
     }
 
     /**
@@ -244,7 +270,6 @@ class UserAdmin extends BaseAdmin
             $password = StringUtil::generateRandomPassword();
             $user->setPlainPassword($password);
         }
-        $user->setUsername($user->getEmail());
         $this->getUserManager()->updateUser($user);
         // send email with password
         if (isset($password)) {

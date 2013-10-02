@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+{% spaceless %}
+    {% if value %}
+        <span class="label label-success">{%- trans from 'SonataAdminBundle' %}label_type_yes{% endtrans -%}</span>
+    {% else %}
+        <span class="label">{%- trans from 'SonataAdminBundle' %}label_type_no{% endtrans -%}</span>
+    {% endif %}
+{% endspaceless %}
+{% endblock %}

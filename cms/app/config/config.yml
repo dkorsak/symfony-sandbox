@@ -135,6 +135,8 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+    # should be empty in parameters.yml file for production configuration
+    delivery_address: "%swiftmailer_delivery_address%"
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
@@ -142,6 +144,8 @@ fos_user:
     user_class: App\GeneralBundle\Entity\User
     group:
         group_class: App\GeneralBundle\Entity\Group
+    service:
+        user_manager: app_general.services.user_manager
 
 # Sonata Configuration
 sonata_cache:
@@ -165,7 +169,7 @@ sonata_admin:
     options:
         html5_validate: true #disable or enable global form HTML5 validation
         confirm_exit: true #disable or enable confirm exit from page
-        use_select2: false #disable or enable using select2 library for style input type select TODO
+        use_select2: false #disable or enable using select2 - style input select - experimental
     templates:
         user_block:                 "SonataAdminBundle:Core:user_block.html.twig"
         layout:                     "AppBackendBundle::standard_layout.html.twig"
@@ -185,7 +189,7 @@ sonata_admin:
         short_object_description:   "SonataAdminBundle:Helper:short-object-description.html.twig"
         delete:                     "SonataAdminBundle:CRUD:delete.html.twig"
         batch:                      "SonataAdminBundle:CRUD:list__batch.html.twig"
-        batch_confirmation:         "AppBackendBundle:CRUD:batch_confirmation.html.twig"
+        batch_confirmation:         "SonataAdminBundle:CRUD:batch_confirmation.html.twig"
         inner_list_row:             "SonataAdminBundle:CRUD:list_inner_row.html.twig"
         base_list_field:            "SonataAdminBundle:CRUD:base_list_field.html.twig"
         pager_links:                "SonataAdminBundle:Pager:links.html.twig"
@@ -209,10 +213,10 @@ sonata_doctrine_orm_admin:
         types:
             list:
                 array:            SonataAdminBundle:CRUD:list_array.html.twig
-                boolean:          SonataAdminBundle:CRUD:list_boolean.html.twig
-                date:             SonataAdminBundle:CRUD:list_date.html.twig
+                boolean:          AppBackendBundle:CRUD:list_boolean.html.twig
+                date:             AppBackendBundle:CRUD:list_date.html.twig
                 time:             SonataAdminBundle:CRUD:list_time.html.twig
-                datetime:         SonataAdminBundle:CRUD:list_datetime.html.twig
+                datetime:         AppBackendBundle:CRUD:list_datetime.html.twig
                 text:             SonataAdminBundle:CRUD:list_string.html.twig
                 trans:            SonataAdminBundle:CRUD:list_trans.html.twig
                 string:           SonataAdminBundle:CRUD:list_string.html.twig
@@ -227,7 +231,7 @@ sonata_doctrine_orm_admin:
 
             show:
                 array:            SonataAdminBundle:CRUD:show_array.html.twig
-                boolean:          SonataAdminBundle:CRUD:show_boolean.html.twig
+                boolean:          AppBackendBundle:CRUD:show_boolean.html.twig
                 date:             SonataAdminBundle:CRUD:show_date.html.twig
                 time:             SonataAdminBundle:CRUD:show_time.html.twig
                 datetime:         SonataAdminBundle:CRUD:show_datetime.html.twig

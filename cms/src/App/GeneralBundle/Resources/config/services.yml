@@ -1,14 +1,21 @@
 parameters:
 
 services:
-
+    # send mail service
     app_general.services.mailer:
         class: App\GeneralBundle\Services\Mailer
         arguments: [@mailer, %default_email%, %default_sender%]
 
+    # APC stats service
     app_general.services.stats.apc_stats:
         class: App\GeneralBundle\Services\Stats\ApcStats
 
+    # memcached stats service
     app_general.services.stats.memcached_stats:
         class: App\GeneralBundle\Services\Stats\MemcachedStats
         arguments: [%memcached_host%, %memcached_port%]
+
+    # overwrite FOS User Manager
+    app_general.services.user_manager:
+        class: App\GeneralBundle\Services\UserManager
+        parent: fos_user.user_manager.default

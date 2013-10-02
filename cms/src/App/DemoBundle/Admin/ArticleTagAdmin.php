@@ -48,7 +48,6 @@ class ArticleTagAdmin extends BaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label' => 'Actions',
                     'actions' => array(
                         'edit' => array('template' => 'AppBackendBundle:CRUD:list__action_edit.html.twig'),
                         'delete' => array('template' => 'AppBackendBundle:CRUD:list__action_delete.html.twig'),
