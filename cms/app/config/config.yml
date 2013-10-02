@@ -165,7 +165,7 @@ sonata_admin:
     options:
         html5_validate: true #disable or enable global form HTML5 validation
         confirm_exit: true #disable or enable confirm exit from page
-        use_select2: false #disable or enable using select2 library for selects TODO does not work with datepicker
+        use_select2: false #disable or enable using select2 library for style input type select TODO
     templates:
         user_block:                 "SonataAdminBundle:Core:user_block.html.twig"
         layout:                     "AppBackendBundle::standard_layout.html.twig"

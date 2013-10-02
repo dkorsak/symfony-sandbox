@@ -36,7 +36,8 @@ class AppBackendExtension extends Extension
                 $container->getParameter('twig.form.resources'),
                 array(
                     'AppBackendBundle:Form:ckeditor_widget.html.twig',
-                    'AppBackendBundle:Form:autocomplete_widget.html.twig'
+                    'AppBackendBundle:Form:autocomplete_widget.html.twig',
+                    'AppBackendBundle:Form:jquery_date_widget.html.twig'
                 )
             )
         );

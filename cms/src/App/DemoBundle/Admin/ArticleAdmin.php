@@ -2,15 +2,15 @@
 
 namespace App\DemoBundle\Admin;
 
+use App\BackendBundle\Admin\BaseAdmin;
 use App\DemoBundle\Entity\Article;
 use Sonata\AdminBundle\Form\Type\BooleanType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Admin\Admin;
 
-class ArticleAdmin extends Admin
+class ArticleAdmin extends BaseAdmin
 {
     /**
      * @var array
@@ -21,11 +21,24 @@ class ArticleAdmin extends Admin
     );
 
     /**
+     * @return string
+     */
+    public function getUniqid()
+    {
+        return 'article';
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $articleCategoryParams = array('property' => 'name', 'empty_value' => 'Please select', 'label' => 'Category');
+        $articleCategoryParams = array(
+            'property' => 'name',
+            'empty_value' => $this->getEmptySelectValue(),
+            'label' => 'Category',
+            'attr' => array('data-placeholder' => $this->getEmptySelectValue())
+        );
         $tagsParams = array(
             'required' => false, 'expanded' => true, 'property' => 'name', 'by_reference' => false, 'multiple' => true
         );

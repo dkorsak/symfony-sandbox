@@ -10,6 +10,4 @@ services:
         calls:
             - [ setTranslationDomain, ["user"] ]
             - [ setUserManager, [@fos_user.user_manager] ]
-            - [ setSecurityContent, [@security.context] ]
             - [ setMailer, [@app_general.services.mailer] ]
-            - [ setTwig, [@twig] ]

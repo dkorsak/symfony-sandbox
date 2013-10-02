@@ -1,0 +1,21 @@
+{% block app_backend_form_jquery_date_type_widget %}
+    {{ block("genemu_jquerydate_widget") }}
+    {% if widget != "single_text" %}
+        {# UPDATES FOR SELECT2 #}
+        <script type="text/javascript">
+        $(document).ready(function() {
+            if (window.SONATA_CONFIG && window.SONATA_CONFIG.USE_SELECT2 && window.Select2) {
+                $field = $('#{% if widget != "single_text" %}datepicker_{% endif %}{{ id }}');
+                var $year = $('#{{ form.year.vars.id }}');
+                var $month = $('#{{ form.month.vars.id }}');
+                var $day = $('#{{ form.day.vars.id }}');
+                $field.datepicker( "option", "onSelect", function(date) {
+                    $year.select2("val", parseInt(date.substring(0, 4), 10));
+                    $month.select2("val", parseInt(date.substring(5, 7), 10));
+                    $day.select2("val", parseInt(date.substring(8), 10));
+                });
+            }
+        })
+        </script>
+    {% endif %}
+{% endblock %}

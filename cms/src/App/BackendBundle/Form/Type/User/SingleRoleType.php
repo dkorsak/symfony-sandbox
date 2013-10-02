@@ -15,6 +15,7 @@ class SingleRoleType extends AbstractType
     {
         $defaultValues['choices'] = User::$userRoles;
         $defaultValues['empty_value'] = 'Please select';
+        $defaultValues['data-placeholder'] = 'Please select';
         $resolver->setDefaults($defaultValues);
     }
 

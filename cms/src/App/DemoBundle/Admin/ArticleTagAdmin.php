@@ -2,12 +2,12 @@
 
 namespace App\DemoBundle\Admin;
 
+use App\BackendBundle\Admin\BaseAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Admin\Admin;
 
-class ArticleTagAdmin extends Admin
+class ArticleTagAdmin extends BaseAdmin
 {
     /**
      * @var array
@@ -16,6 +16,14 @@ class ArticleTagAdmin extends Admin
         '_sort_order' => 'ASC',
         '_sort_by' => 'name'
     );
+
+    /**
+     * @return string
+     */
+    public function getUniqid()
+    {
+        return 'article_tag';
+    }
 
     /**
      * {@inheritdoc}

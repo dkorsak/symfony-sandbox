@@ -4,13 +4,11 @@ namespace App\BackendBundle\Admin;
 
 use App\GeneralBundle\Utils\StringUtil;
 use Sonata\AdminBundle\Exception\ModelManagerException;
-use Symfony\Component\Security\Core\SecurityContextInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Admin\Admin;
 use App\GeneralBundle\Entity\User;
 use App\GeneralBundle\Services\Mailer;
 
@@ -18,7 +16,7 @@ use App\GeneralBundle\Services\Mailer;
  * Admin class for managing users
  *
  */
-class UserAdmin extends Admin
+class UserAdmin extends BaseAdmin
 {
     /**
      * @var UserManagerInterface
@@ -26,19 +24,9 @@ class UserAdmin extends Admin
     protected $userManager;
 
     /**
-     * @var SecurityContextInterface
-     */
-    protected $securityContent;
-
-    /**
      * @var Mailer
      */
     protected $mailer;
-
-    /**
-     * @var \Twig_Environment
-     */
-    protected $twig;
 
     /**
      * @var string
@@ -101,46 +89,6 @@ class UserAdmin extends Admin
     }
 
     /**
-     * Set twig
-     *
-     * @param \Twig_Environment $twig
-     */
-    public function setTwig(\Twig_Environment $twig)
-    {
-        $this->twig = $twig;
-    }
-
-    /**
-     * Get twig
-     *
-     * @return Twig_Environment
-     */
-    public function getTwig()
-    {
-        return $this->twig;
-    }
-
-    /**
-     * Set securityContext
-     *
-     * @param SecurityContextInterface $securityContext
-     */
-    public function setSecurityContent(SecurityContextInterface $securityContext)
-    {
-        $this->securityContent = $securityContext;
-    }
-
-    /**
-     * Get securityContent
-     *
-     * @return SecurityContextInterface
-     */
-    public function getSecurityContent()
-    {
-        return $this->securityContent;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function preUpdate($user)
@@ -172,7 +120,7 @@ class UserAdmin extends Admin
      */
     public function isGranted($name, $object = null)
     {
-        return $this->securityContent->isGranted(User::ROLE_SUPER_ADMIN);
+        return $this->getSecurityContext()->isGranted(User::ROLE_SUPER_ADMIN);
     }
 
     /**
@@ -213,7 +161,10 @@ class UserAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $groupsParams = array("expanded" => false, "multiple" => true, "property" => "name", "required" => false);
-
+        $roleParams = array(
+            'empty_value' => $this->getEmptySelectValue(),
+            'attr' => array('data-placeholder' => $this->getEmptySelectValue())
+        );
         $formMapper
             ->with('General')
                 ->add("firstname")
@@ -222,7 +173,7 @@ class UserAdmin extends Admin
             ->end()
             ->with('Permissions')
                 ->add("enabled", null, array("required" => false, "label" => "Active"))
-                ->add("singleRole", 'app_backend_form_user_single_role_type', array('label' => 'Role'))
+                ->add("singleRole", 'app_backend_form_user_single_role_type', $roleParams)
                 ->add("groups", null, $groupsParams)
             ->end();
     }
