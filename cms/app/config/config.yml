@@ -374,7 +374,7 @@ services:
         class: Memcached
         calls:
           - [ addServer, [ %memcached_host%, %memcached_port% ]]
-    
+
     session.handler.memcached:
         class: Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler
         arguments: [ @session.memcached, { prefix: %memcached_session_prefix%, expiretime: %memcached_session_expire% } ]
