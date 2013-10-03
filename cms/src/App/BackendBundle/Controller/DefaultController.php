@@ -1,9 +1,19 @@
 <?php
 
+/**
+ * DefaultController class
+ *
+ *
+ */
 namespace App\BackendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Default controller
+ *
+ *
+ */
 class DefaultController extends Controller
 {
     /**

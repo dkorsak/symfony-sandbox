@@ -1,7 +1,17 @@
 <?php
 
+/**
+ * StatsInterface interface
+ *
+ *
+ */
 namespace App\GeneralBundle\Services\Stats;
 
+/**
+ * StatsInterface interface
+ *
+ *
+ */
 interface StatsInterface
 {
     /**

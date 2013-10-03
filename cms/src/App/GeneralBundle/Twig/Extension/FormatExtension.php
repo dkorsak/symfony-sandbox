@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * FormatExtension class
+ *
+ *
+ */
 namespace App\GeneralBundle\Twig\Extension;
 
 class FormatExtension extends \Twig_Extension

@@ -1,15 +1,27 @@
 <?php
 
+/**
+ * SingleRoleType class
+ *
+ *
+ */
 namespace App\BackendBundle\Form\Type\User;
 
 use App\GeneralBundle\Entity\User;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\AbstractType;
 
+/**
+ * Form widget for displaying select with user role
+ *
+ *
+ */
 class SingleRoleType extends AbstractType
 {
     /**
      * {@inheritdoc}
+     *
+     * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -21,6 +33,8 @@ class SingleRoleType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getParent()
     {
@@ -29,6 +43,8 @@ class SingleRoleType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getName()
     {

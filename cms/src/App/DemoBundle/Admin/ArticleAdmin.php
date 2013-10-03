@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * ArticleAdmin class
+ *
+ *
+ */
 namespace App\DemoBundle\Admin;
 
 use App\BackendBundle\Admin\BaseAdmin;
@@ -10,9 +15,30 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
+/**
+ * Admin class for managing articles
+ *
+ *
+ */
 class ArticleAdmin extends BaseAdmin
 {
     /**
+     * Route pattern
+     *
+     * @var string
+     */
+    protected $baseRoutePattern = 'articles';
+
+    /**
+     * Route name
+     *
+     * @var string
+     */
+    protected $baseRouteName = 'article';
+
+    /**
+     * Datagrid params
+     *
      * @var array
      */
     protected $datagridValues = array(
@@ -21,6 +47,8 @@ class ArticleAdmin extends BaseAdmin
     );
 
     /**
+     * {@inheritdoc}
+     *
      * @return string
      */
     public function getUniqid()
@@ -63,6 +91,8 @@ class ArticleAdmin extends BaseAdmin
 
     /**
      * {@inheritdoc}
+     *
+     * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -79,21 +109,13 @@ class ArticleAdmin extends BaseAdmin
             ->add('articleCategory.name', null, $articleCategoryParams)
             ->add('publishDate', null, $publishDateParams)
             ->add('publish', null, array("template" => "AppDemoBundle:Article:list_status.html.twig"))
-            ->add(
-                '_action',
-                'actions',
-                array(
-                    'actions' => array(
-                        'show' => array('template' => 'AppBackendBundle:CRUD:list__action_show.html.twig'),
-                        'edit' => array('template' => 'AppBackendBundle:CRUD:list__action_edit.html.twig'),
-                        'delete' => array('template' => 'AppBackendBundle:CRUD:list__action_delete.html.twig'),
-                    )
-                )
-            );
+            ->add('_action', 'actions', array('actions' => $this->getActions(true)));
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
@@ -103,16 +125,21 @@ class ArticleAdmin extends BaseAdmin
                  'choices' => array(BooleanType::TYPE_NO => 'Disabled', BooleanType::TYPE_YES => 'Published')
             )
         );
-
+        $articleCategortParams = array(
+                'label' => 'Category',
+                'field_options' => array('empty_value' => $this->getEmptySelectValue())
+        );
         $datagridMapper
             ->add('title')
-            ->add('articleCategory', null, array('label' => 'Category'))
+            ->add('articleCategory', null, $articleCategortParams)
             ->add('publishDate', 'jquery_date_range_filter', array('label' => 'Publish date'))
             ->add('publish', null, $publishParams);
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @param ShowMapper $showMapper
      */
     protected function configureShowField(ShowMapper $showMapper)
     {

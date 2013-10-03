@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * LoadUser class
+ * 
+ *
+ */
 namespace App\GeneralBundle\DataFixtures\ORM\Defaults;
 
 use App\GeneralBundle\DataFixtures\ORM\YamlFixtures;

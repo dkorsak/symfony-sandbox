@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * MediaCacheableField class
+ *
+ *
+ */
 namespace App\GeneralBundle\Mapping\Annotation;
 
 /**

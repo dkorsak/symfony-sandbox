@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Mailer class
+ *
+ *
+ */
 namespace App\GeneralBundle\Services;
 
 /**
@@ -11,17 +16,17 @@ class Mailer
     /**
      * @var \Swift_Mailer
      */
-    protected $swift;
+    private $swift;
 
     /**
      * @var string
      */
-    protected $from;
+    private $from;
 
     /**
      * @var string
      */
-    protected $sender;
+    private $sender;
 
     /**
      * Constructor
@@ -52,7 +57,7 @@ class Mailer
 
     /**
      * Set sender
-     * @param  unknown_type $sender
+     * @param  string $sender
      * @return Mailer
      */
     public function setSender($sender)

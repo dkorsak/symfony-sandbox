@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * HtmlExtension class
+ *
+ *
+ */
 namespace App\GeneralBundle\Twig\Extension;
 
 use App\GeneralBundle\Utils\StringUtil;

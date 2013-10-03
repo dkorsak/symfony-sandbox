@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * StringUtil class
+ *
+ *
+ */
 namespace App\GeneralBundle\Utils;
 
 class StringUtil

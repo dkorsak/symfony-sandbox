@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * APCBlock class
+ *
+ *
+ */
 namespace App\BackendBundle\Block;
 
 use App\GeneralBundle\Services\Stats\StatsInterface;
@@ -10,7 +15,6 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Block\BaseBlockService;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Class for displaying admin dashboard block
@@ -43,6 +47,8 @@ class APCBlock extends BaseBlockService
     /**
      * {@inheritdoc}
      * @codeCoverageIgnore
+     * @param ErrorElement   $errorElement
+     * @param BlockInterface $block
      */
     public function validateBlock(ErrorElement $errorElement, BlockInterface $block)
     {
@@ -50,6 +56,9 @@ class APCBlock extends BaseBlockService
 
     /**
      * {@inheritdoc}
+     * @param  BlockContextInterface $block
+     * @param  Response              $response
+     * @return Response
      */
     public function execute(BlockContextInterface $block, Response $response = null)
     {
@@ -64,6 +73,8 @@ class APCBlock extends BaseBlockService
     /**
      * {@inheritdoc}
      * @codeCoverageIgnore
+     * @param FormMapper     $formMapper
+     * @param BlockInterface $block
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
@@ -72,6 +83,7 @@ class APCBlock extends BaseBlockService
     /**
      * {@inheritdoc}
      * @codeCoverageIgnore
+     * @return string
      */
     public function getName()
     {
@@ -80,14 +92,7 @@ class APCBlock extends BaseBlockService
 
     /**
      * {@inheritdoc}
-     * @codeCoverageIgnore
-     */
-    public function setDefaultSettings(OptionsResolverInterface $resolver)
-    {
-    }
-
-    /**
-     * {@inheritdoc}
+     * @return string
      */
     public function getCacheKeys(BlockInterface $block)
     {

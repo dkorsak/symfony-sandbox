@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * User entity class
+ *
+ *
+ */
 namespace App\GeneralBundle\Entity;
 
 use Symfony\Component\Validator\ExecutionContext;
@@ -33,6 +38,8 @@ class User extends BaseUser
     const ROLE_ADMIN = 'ROLE_ADMIN';
 
     /**
+     * User roles
+     *
      * @var array
      */
     public static $userRoles = array(
@@ -41,6 +48,8 @@ class User extends BaseUser
     );
 
     /**
+     * Primary key
+     *
      * @var integer
      *
      * @ORM\Id
@@ -50,6 +59,8 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * User firstname
+     *
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=50, nullable=false)
@@ -58,6 +69,8 @@ class User extends BaseUser
     protected $firstname;
 
     /**
+     * User lastname
+     *
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=50, nullable=false)
@@ -66,6 +79,8 @@ class User extends BaseUser
     protected $lastname;
 
     /**
+     * User email
+     *
      * @var string
      *
      * @Assert\NotBlank()
@@ -74,6 +89,8 @@ class User extends BaseUser
     protected $email;
 
     /**
+     * Created at
+     *
      * @var datetime
      *
      * @Gedmo\Timestampable(on="create")
@@ -82,6 +99,8 @@ class User extends BaseUser
     protected $created;
 
     /**
+     * Updated at
+     *
      * @var datetime
      *
      * @Gedmo\Timestampable(on="update")
@@ -90,6 +109,8 @@ class User extends BaseUser
     protected $updated;
 
     /**
+     * List of groups
+     *
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Group")
@@ -115,11 +136,15 @@ class User extends BaseUser
     protected $singleRole;
 
     /**
+     * Retype password dummy field
+     *
      * @var string
      */
     protected $retypePassword;
 
     /**
+     * Old password dummy field
+     *
      * @var string
      */
     protected $oldPassword;
@@ -140,7 +165,7 @@ class User extends BaseUser
      */
     public function __toString()
     {
-        return trim($this->getName()) != "" ? $this->getName() : 'User create';
+        return trim($this->getName()) != "" ? $this->getName() : 'Create';
     }
 
     /**

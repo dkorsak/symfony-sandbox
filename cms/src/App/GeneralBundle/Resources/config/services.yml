@@ -1,7 +1,7 @@
 parameters:
 
 services:
-    # send mail service
+    # send email service
     app_general.services.mailer:
         class: App\GeneralBundle\Services\Mailer
         arguments: [@mailer, %default_email%, %default_sender%]
@@ -19,3 +19,11 @@ services:
     app_general.services.user_manager:
         class: App\GeneralBundle\Services\UserManager
         parent: fos_user.user_manager.default
+
+    # service for sending user emails
+    app_general.services.user_email_service:
+        class: App\GeneralBundle\Services\UserEmailService
+        arguments:
+            - @app_general.services.mailer
+            - @templating
+            - @translator

@@ -1,16 +1,19 @@
 <?php
 
+/**
+ * UserAdmin class
+ *
+ *
+ */
 namespace App\BackendBundle\Admin;
 
 use App\GeneralBundle\Utils\StringUtil;
 use Sonata\AdminBundle\Exception\ModelManagerException;
-use FOS\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use App\GeneralBundle\Entity\User;
-use App\GeneralBundle\Services\Mailer;
 use Symfony\Component\Validator\Constraint;
 use Sonata\AdminBundle\Form\Type\BooleanType;
 
@@ -21,34 +24,32 @@ use Sonata\AdminBundle\Form\Type\BooleanType;
 class UserAdmin extends BaseAdmin
 {
     /**
-     * @var UserManagerInterface
-     */
-    protected $userManager;
-
-    /**
-     * @var Mailer
-     */
-    protected $mailer;
-
-    /**
+     * Route pattern
+     *
      * @var string
      */
     protected $baseRoutePattern = 'users';
 
     /**
+     * Route name
+     *
      * @var string
      */
     protected $baseRouteName = 'user';
 
     /**
+     * Default data grid values
+     *
      * @var array
      */
     protected $datagridValues = array(
-        '_sort_order' => 'ASC', // sort direction
-        '_sort_by' => 'email' // field name
+        '_sort_order' => 'ASC',
+        '_sort_by' => 'email'
     );
 
     /**
+     * Form options
+     *
      * @var array
      */
     protected $formOptions = array(
@@ -56,82 +57,62 @@ class UserAdmin extends BaseAdmin
     );
 
     /**
-     * Set userManager
+     * {@inheritdoc}
      *
-     * @param UserManagerInterface $userManager
+     * @return UserInterface
      */
-    public function setUserManager(UserManagerInterface $userManager)
+    public function getNewInstance()
     {
-        $this->userManager = $userManager;
-    }
+        $user = $this->getService('fos_user.user_manager')->createUser();
+        foreach ($this->getExtensions() as $extension) {
+            $extension->alterNewInstance($this, $user);
+        }
 
-    /**
-     * Get userManager
-     *
-     * @return UserManagerInterface
-     */
-    public function getUserManager()
-    {
-        return $this->userManager;
-    }
-
-    /**
-     * Set mailer
-     *
-     * @param Mailer $mailer
-     */
-    public function setMailer(Mailer $mailer)
-    {
-        $this->mailer = $mailer;
-    }
-
-    /**
-     * Get mailer
-     *
-     * @return Mailer
-     */
-    public function getMailer()
-    {
-        return $this->mailer;
+        return $user;
     }
 
     /**
      * {@inheritdoc}
-     */
-    public function preUpdate($user)
-    {
-        $this->saveUser($user);
-    }
-
-    /**
-     * {@inheritdoc}
+     *
+     * @param UserInterface $user
      */
     public function prePersist($user)
     {
-        $this->saveUser($user);
+        $password = StringUtil::generateRandomPassword();
+        $user->setPlainPassword($password);
+        $this->getService('fos_user.user_manager')->updateUser($user);
+        $this->getService('app_general.services.user_email_service')->sendNewAdminUserEmail($user, $password);
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @param UserInterface $user
      */
     public function preRemove($object)
     {
         // logged user can not delete own account
-        if ($this->getSecurityContext()->getToken()->getUser()->getId() == $object->getId()) {
+        if ($this->getService('security.context')->getToken()->getUser()->getId() == $object->getId()) {
             throw new ModelManagerException("You can not delete own account");
         }
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @param  string        $name
+     * @param  UserInterface $user
+     * @return boolean
      */
     public function isGranted($name, $object = null)
     {
-        return $this->getSecurityContext()->isGranted(User::ROLE_SUPER_ADMIN);
+        return $this->getService('security.context')->isGranted(User::ROLE_SUPER_ADMIN);
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getUniqid()
     {
@@ -140,6 +121,8 @@ class UserAdmin extends BaseAdmin
 
     /**
      * {@inheritdoc}
+     *
+     * @param ShowMapper $showMapper
      */
     protected function configureShowFields(ShowMapper $showMapper)
     {
@@ -164,6 +147,8 @@ class UserAdmin extends BaseAdmin
 
     /**
      * {@inheritdoc}
+     *
+     * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -187,6 +172,8 @@ class UserAdmin extends BaseAdmin
 
     /**
      * {@inheritdoc}
+     *
+     * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -200,21 +187,13 @@ class UserAdmin extends BaseAdmin
             ->add("groups", null, $groupParams)
             ->add("enabled", null, $enabledParams)
             ->add('lastLogin', null, array('label' => 'Last login'))
-            ->add(
-                '_action',
-                'actions',
-                array(
-                    'actions' => array(
-                        'show' => array('template' => 'AppBackendBundle:CRUD:list__action_show.html.twig'),
-                        'edit' => array('template' => 'AppBackendBundle:CRUD:list__action_edit.html.twig'),
-                        'delete' => array('template' => 'AppBackendBundle:CRUD:list__action_delete.html.twig'),
-                    )
-                )
-            );
+            ->add('_action', 'actions', array('actions' => $this->getActions(true)));
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
@@ -257,25 +236,5 @@ class UserAdmin extends BaseAdmin
             ->add("enabled", null, $enabledParams)
             ->add('roles', null, $rolesParams)
             ->add("email");
-    }
-
-    /**
-     * Save user
-     *
-     * @param User $user
-     */
-    private function saveUser(User $user)
-    {
-        if (!$user->getId()) {
-            $password = StringUtil::generateRandomPassword();
-            $user->setPlainPassword($password);
-        }
-        $this->getUserManager()->updateUser($user);
-        // send email with password
-        if (isset($password)) {
-            $template = "AppBackendBundle:Mail:create.account.html.twig";
-            $body = $this->getTwig()->render($template, array("user" => $user, "password" => $password));
-            $this->getMailer()->send($this->trans("Account was created"), $body, $user->getEmail());
-        }
     }
 }

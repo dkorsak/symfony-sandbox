@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * FeatureContext class
+ *
+ */
 namespace App\BackendBundle\Features\Context;
 
 use Symfony\Component\HttpKernel\KernelInterface;

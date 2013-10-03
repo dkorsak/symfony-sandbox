@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * ChangePasswordValidator class
+ *
+ *
+ *
+ */
 namespace App\GeneralBundle\Validator\Constraints;
 
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;

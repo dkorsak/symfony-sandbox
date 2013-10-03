@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * YamlFixtures class
+ *
+ *
+ */
 namespace App\GeneralBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;

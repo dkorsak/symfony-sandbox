@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * AnnotationDriver class
+ *
+ *
+ */
 namespace App\GeneralBundle\Driver;
 
 use Doctrine\Common\Annotations\Reader;
@@ -11,7 +16,9 @@ use Doctrine\Common\Annotations\Reader;
 class AnnotationDriver
 {
     /**
-     * @var Reader $reader
+     * Annotation reader
+     *
+     * @var Reader
      */
     private $reader;
 

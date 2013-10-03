@@ -24,6 +24,8 @@ class Article
     const IMAGE_UPLOAD_DIR = 'articles';
 
     /**
+     * Primary key
+     *
      * @var integer
      *
      * @ORM\Id
@@ -33,6 +35,8 @@ class Article
     private $id;
 
     /**
+     * Article title
+     *
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
@@ -41,6 +45,8 @@ class Article
     private $title;
 
     /**
+     * Article content
+     *
      * @var string
      *
      * @ORM\Column(name="body", type="text", nullable=true)
@@ -48,6 +54,8 @@ class Article
     private $body;
 
     /**
+     * Publish date
+     *
      * @var \DateTime
      *
      * @ORM\Column(name="publish_date", type="datetime", nullable=false)
@@ -57,6 +65,8 @@ class Article
     private $publishDate;
 
     /**
+     * Is article published
+     *
      * @var boolean
      *
      * @ORM\Column(name="publish", type="boolean", nullable=false)
@@ -64,6 +74,8 @@ class Article
     private $publish;
 
     /**
+     * Article slug
+     *
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
@@ -72,6 +84,8 @@ class Article
     private $slug;
 
     /**
+     * Image
+     *
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
@@ -80,6 +94,8 @@ class Article
     private $image;
 
     /**
+     * Category
+     *
      * @var ArticleCategory
      *
      * @ORM\ManyToOne(targetEntity="ArticleCategory",inversedBy="articles")
@@ -90,6 +106,8 @@ class Article
     private $articleCategory;
 
     /**
+     * List of tags
+     *
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="ArticleTag", inversedBy="articles")
@@ -105,6 +123,8 @@ class Article
     private $tags;
 
     /**
+     * Uploaded image object
+     *
      * @var UploadedFile
      *
      * @Assert\Image()

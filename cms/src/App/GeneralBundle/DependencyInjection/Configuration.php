@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Configuration class
+ *
+ *
+ */
 namespace App\GeneralBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -15,6 +20,8 @@ class Configuration implements ConfigurationInterface
 {
     /**
      * {@inheritDoc}
+     *
+     * @return NodeBuilder
      */
     public function getConfigTreeBuilder()
     {

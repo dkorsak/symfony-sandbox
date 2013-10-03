@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * LoadGroup class
+ * 
+ *
+ */
 namespace App\GeneralBundle\DataFixtures\ORM\Defaults;
 
 use App\GeneralBundle\Entity\Group;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Group entity class
+ *
+ *
+ */
 namespace App\GeneralBundle\Entity;
 
 use FOS\UserBundle\Entity\Group as BaseGroup;
@@ -14,6 +19,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Group extends BaseGroup
 {
     /**
+     * Primary key
+     *
      * @var integer
      *
      * @ORM\Id

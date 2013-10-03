@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * AppFrontendExtension class
+ *
+ *
+ */
 namespace App\FrontendBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -16,6 +21,8 @@ class AppFrontendExtension extends Extension
 {
     /**
      * {@inheritDoc}
+     * @param array            $configs
+     * @param ContainerBuilder $container
      */
     public function load(array $configs, ContainerBuilder $container)
     {

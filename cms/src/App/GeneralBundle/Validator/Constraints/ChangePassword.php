@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * ChangePassword class
+ *
+ *
+ */
 namespace App\GeneralBundle\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;

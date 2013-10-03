@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * UserRepository class
+ *
+ *
+ */
 namespace App\GeneralBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;

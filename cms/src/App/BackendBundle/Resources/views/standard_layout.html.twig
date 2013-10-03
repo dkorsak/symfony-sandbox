@@ -62,7 +62,7 @@ window.SONATA_TRANSLATIONS = {
 <title>{{ admin_pool.title }} - {{ 'Admin'|trans({}, 'SonataAdminBundle') }}</title>
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body class="sonata-bc{% if _side_menu is empty %} sonata-ba-no-side-menu{% endif %}">
+<body class="sonata-bc{% if _side_menu is empty %} sonata-ba-no-side-menu{% endif %} {{ app.request.get('_route') }}">
     <div id="ajax_loader">
         <img src="{{ asset('/bundles/appbackend/images/ajax-loader.gif') }}" alt=""/>
     </div>

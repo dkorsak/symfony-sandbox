@@ -1,6 +1,6 @@
 <?php
 /**
- * Autocomplete Form Type
+ * AutocompleteType class
  *
  *
  */
@@ -17,6 +17,8 @@ class AutocompleteType extends AbstractType
 {
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getParent()
     {
@@ -25,6 +27,8 @@ class AutocompleteType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getName()
     {

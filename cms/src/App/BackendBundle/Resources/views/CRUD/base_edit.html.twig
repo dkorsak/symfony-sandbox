@@ -24,7 +24,9 @@ file that was distributed with this source code.
         {% include 'SonataAdminBundle:Button:show_button.html.twig' %}
         {% include 'SonataAdminBundle:Button:history_button.html.twig' %}
         {% include 'SonataAdminBundle:Button:acl_button.html.twig' %}
-        {% include 'SonataAdminBundle:Button:create_button.html.twig' %}
+        {% if admin.id(object) %}
+            {% include 'SonataAdminBundle:Button:create_button.html.twig' %}
+        {% endif %}
         {% include 'SonataAdminBundle:Button:list_button.html.twig' %}
     </div>
 {% endblock %}

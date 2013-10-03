@@ -1,7 +1,7 @@
 <?php
 
 /**
- * User manager service
+ * UserManager class
  *
  */
 namespace App\GeneralBundle\Services;

@@ -1,11 +1,21 @@
 <?php
 
+/**
+ * ProfileController class
+ *
+ *
+ */
 namespace App\BackendBundle\Controller;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Profile controller
+ *
+ *
+ */
 class ProfileController extends Controller
 {
     /**

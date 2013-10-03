@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * CKEditorType class
+ *
+ *
+ */
 namespace App\BackendBundle\Form\Type;
 
 use Symfony\Component\Form\FormInterface;
@@ -7,10 +12,19 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\AbstractType;
 
+/**
+ * CKEditor form widget
+ *
+ *
+ */
 class CKEditorType extends AbstractType
 {
     /**
      * {@inheritdoc}
+     *
+     * @param FormView      $view
+     * @param FormInterface $form
+     * @param array         $options
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
@@ -20,6 +34,8 @@ class CKEditorType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -33,6 +49,8 @@ class CKEditorType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getParent()
     {
@@ -41,6 +59,8 @@ class CKEditorType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getName()
     {

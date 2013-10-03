@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * MediaCacheableListener class
+ *
+ *
+ */
 namespace App\GeneralBundle\EventListener;
 
 use App\GeneralBundle\Mapping\Annotation\MediaCacheableField;
@@ -18,11 +23,15 @@ use App\GeneralBundle\Driver\AnnotationDriver;
 class MediaCacheableListener implements EventSubscriber
 {
     /**
+     * Annotation driver
+     *
      * @var AnnotationDriver
      */
     private $driver;
 
     /**
+     * Cache manager
+     *
      * @var CacheManager
      */
     private $imageCacheManager;

@@ -1,14 +1,24 @@
 <?php
 
+/**
+ * JQueryDateType class
+ *
+ */
 namespace App\BackendBundle\Form\Type;
 
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\AbstractType;
 
+/**
+ * Form type for displaying jquery datepicker
+ *
+ *
+ */
 class JQueryDateType extends AbstractType
 {
     /**
      * {@inheritdoc}
+     * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -20,6 +30,8 @@ class JQueryDateType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getParent()
     {
@@ -28,6 +40,8 @@ class JQueryDateType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getName()
     {

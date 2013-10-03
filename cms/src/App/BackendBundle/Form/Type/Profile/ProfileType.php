@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * ProfileType class
+ *
+ *
+ */
 namespace App\BackendBundle\Form\Type\Profile;
 
 use Symfony\Component\Form\AbstractType;
@@ -13,6 +18,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ProfileType extends AbstractType
 {
     /**
+     * User class name
+     *
      * @var string
      */
     private $class;
@@ -29,6 +36,9 @@ class ProfileType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @param FormBuilderInterface $builder
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -43,6 +53,8 @@ class ProfileType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -56,6 +68,8 @@ class ProfileType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getName()
     {

@@ -1,10 +1,22 @@
 <?php
 
+/**
+ * MemcachedStats class
+ *
+ *
+ */
 namespace App\GeneralBundle\Services\Stats;
 
+/**
+ * Service for reading memcahce stats
+ *
+ *
+ */
 class MemcachedStats implements StatsInterface
 {
     /**
+     * Memcached stats
+     *
      * @var \ArrayObject
      */
     private $stats;

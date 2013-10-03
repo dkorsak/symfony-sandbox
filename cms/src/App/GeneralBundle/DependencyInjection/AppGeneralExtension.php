@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * AppGeneralExtension class
+ *
+ *
+ */
 namespace App\GeneralBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -16,6 +21,8 @@ class AppGeneralExtension extends Extension
 {
     /**
      * {@inheritDoc}
+     * @param array            $configs
+     * @param ContainerBuilder $container
      */
     public function load(array $configs, ContainerBuilder $container)
     {

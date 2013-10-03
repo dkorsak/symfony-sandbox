@@ -16,36 +16,44 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ArticleCategory
 {
     /**
+     * Primary key
+     *
      * @var integer
      *
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
+     * Category name
+     *
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      * @Assert\NotBlank()
      */
-    protected $name;
+    private $name;
 
     /**
+     * Slug
+     *
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
      * @Gedmo\Slug(fields={"name"}, updatable=true)
      */
-    protected $slug;
+    private $slug;
 
     /**
+     * List of articles
+     *
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Article", mappedBy="articleCategory")
      */
-    protected $articles;
+    private $articles;
 
     /**
      * Constructor
@@ -61,7 +69,7 @@ class ArticleCategory
      */
     public function __toString()
     {
-        return $this->getName() ? $this->getName() : 'Article category create';
+        return $this->getName() ? $this->getName() : 'Create';
     }
 
     /**
