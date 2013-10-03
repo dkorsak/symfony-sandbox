@@ -2,7 +2,7 @@
 
 /**
  * LoadGroup class
- * 
+ *
  *
  */
 namespace App\GeneralBundle\DataFixtures\ORM\Defaults;
