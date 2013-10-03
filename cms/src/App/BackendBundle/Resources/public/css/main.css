@@ -477,4 +477,7 @@ form {
 
 div.select2-container {
     margin-left: 0px !important;
-} 
+}
+div.select2-drop ul {
+    margin: 0px !important;
+}  
