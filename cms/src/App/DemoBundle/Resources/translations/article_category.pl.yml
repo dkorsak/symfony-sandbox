@@ -3,9 +3,10 @@ Article category create: Dodaj nową kategorię
 Article category edit: Edycja kategorii
 Article category delete: Usuwanie kategorii
 Article categories: Kategoria
-Create: Dodaj
+Create: Dodawanie
 Name: Nazwa
 Actions: Akcje
 Action: Akcja
 General: Szczegóły
+Article Category Delete: Usuń
 "Cannot delete category. Category is used.": "Nie można usunąć wybranej kategorii. Kategoria została użyta."
