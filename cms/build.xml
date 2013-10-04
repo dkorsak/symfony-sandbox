@@ -416,6 +416,28 @@
         </sequential>
     </macrodef>
 
+    <macrodef name="composer">
+        <attribute name="action" default="install"/>
+        <sequential>
+            <if>
+                <not>
+                    <available file="${basedir}/cms/composer.phar"/>
+                </not>
+                <then>
+                    <echo>ANT DEBUG: Downloading composer</echo>
+                    <exec executable="curl" dir="cms" output="${basedir}/cms/composer.php"><arg line="-s https://getcomposer.org/installer"/></exec>
+                    <exec executable="php" dir="cms"><arg line="composer.php"/></exec>
+                    <delete file="${basedir}/cms/composer.php"/>
+                </then>
+                <else>
+                    <exec executable="php" dir="cms"><arg line="composer.phar self-update"/></exec>
+                </else>
+            </if>
+            <echo>ANT DEBUG: Updating vendor directory</echo>
+            <exec executable="php" dir="cms"><arg line="composer.phar @{action}  --optimize-autoloader"/></exec>
+        </sequential>
+    </macrodef>
+
     <target name="check">
         <if>
             <equals arg1="${target}" arg2=""/>
@@ -483,34 +505,12 @@
 
     <!--- ################################ TASKS ############################################################### -->
 
-    <target name="composer" description="Update symfony vendor directory">
-        <if>
-            <not>
-                <available file="${basedir}/cms/composer.phar"/>
-            </not>
-            <then>
-                <echo>ANT DEBUG: Downloading composer</echo>
-                <exec executable="curl" dir="cms" output="${basedir}/cms/composer.php"><arg line="-s https://getcomposer.org/installer"/></exec>
-                <exec executable="php" dir="cms"><arg line="composer.php"/></exec>
-                <delete file="${basedir}/cms/composer.php"/>
-            </then>
-            <else>
-                <exec executable="php" dir="cms"><arg line="composer.phar self-update"/></exec>
-            </else>
-        </if>
-        <if>
-            <not>
-                <available file="${basedir}/cms/vendor" type="dir"/>
-            </not>
-            <then>
-                <echo>ANT DEBUG: Installing dependencies</echo>
-                <exec executable="php" dir="cms"><arg line="composer.phar install --optimize-autoloader"/></exec>
-            </then>
-            <else>
-                <echo>ANT DEBUG: Updating vendor directory</echo>
-                <exec executable="php" dir="cms"><arg line="composer.phar update --optimize-autoloader"/></exec>
-            </else>
-        </if>
+    <target name="composer" depends="check" description="Update vendor directory with latest composer.lock file">
+        <composer/>
+    </target>
+
+    <target name="composerupdate" depends="check" description="Update vendor directory to latest lib versions">
+        <composer action="update"/>
     </target>
 
     <target name="fixcs" description="Execute php-cs-fixer">

@@ -21,7 +21,9 @@
 
   cc                   - clear all cache file, dump all assets.
 
-  composer             - execute composer.phar (update vendor directory).
+  composer             - execute composer.phar (install vendors).
+
+  composerupdate       - execute composer.phar (update vendors).
 
   build                - build local project (composer, clear cache, build.db)
 
