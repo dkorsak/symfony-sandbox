@@ -46,6 +46,23 @@ class ProfileType extends AbstractType
             ->add('firstname', null, array('attr' => array('class' => 'span5')))
             ->add('lastname', null, array('attr' => array('class' => 'span5')))
             ->add('email', null, array('attr' => array('class' => 'span5')))
+            ->add(
+                'adminTheme',
+                'choice',
+                array(
+                    'label' => 'Admin theme',
+                    'required' => false,
+                    'choices' => array(
+                        null => 'Default',
+                        'cerulean' => 'Cerulean',
+                        'flatly' => 'Flatly',
+                        'journal' => 'Journal',
+                        'simplex' => 'Simplex',
+                        'spacelab' => 'Spacelab',
+                        'united' => 'United',
+                    )
+                )
+            )
             ->add('oldPassword', 'password', array('required' => false, 'label' => 'Old password'))
             ->add('plainPassword', 'password', array('required' => false, 'label' => 'New password'))
             ->add('retypePassword', 'password', array('required' => false, 'label' => 'Retype password'));
