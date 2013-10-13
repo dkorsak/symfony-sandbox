@@ -150,6 +150,15 @@ class User extends BaseUser
     protected $oldPassword;
 
     /**
+     * User can customize sonata theme
+     *
+     * @var string
+     *
+     * @ORM\Column(name="admin_theme", type="string", nullable=true)
+     */
+    protected $adminTheme;
+
+    /**
      * Constructor
      *
      */
@@ -454,5 +463,28 @@ class User extends BaseUser
         if ($this->groups->count() == 0) {
             $context->addViolationAt('groups', 'This value should not be blank.', array(), null);
         }
+    }
+
+    /**
+     * Set adminTheme
+     *
+     * @param string $adminTheme
+     * @return User
+     */
+    public function setAdminTheme($adminTheme)
+    {
+        $this->adminTheme = $adminTheme;
+    
+        return $this;
+    }
+
+    /**
+     * Get adminTheme
+     *
+     * @return string 
+     */
+    public function getAdminTheme()
+    {
+        return $this->adminTheme;
     }
 }

@@ -36,6 +36,7 @@ class AppBackendExtension extends Extension
         $loader->load('form_widgets.yml');
         $loader->load('blocks.yml');
         $loader->load('filters.yml');
+        $loader->load('twig_extensions.yml');
 
         $container->setParameter(
             'twig.form.resources',
