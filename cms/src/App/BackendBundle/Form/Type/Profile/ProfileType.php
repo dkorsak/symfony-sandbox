@@ -10,6 +10,7 @@ namespace App\BackendBundle\Form\Type\Profile;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use App\GeneralBundle\Entity\User;
 
 /**
  * User profile type
@@ -50,17 +51,10 @@ class ProfileType extends AbstractType
                 'adminTheme',
                 'choice',
                 array(
+                    'empty_value' => false,
                     'label' => 'Admin theme',
                     'required' => false,
-                    'choices' => array(
-                        null => 'Default',
-                        'cerulean' => 'Cerulean',
-                        'flatly' => 'Flatly',
-                        'journal' => 'Journal',
-                        'simplex' => 'Simplex',
-                        'spacelab' => 'Spacelab',
-                        'united' => 'United',
-                    )
+                    'choices' => User::$adminThemes
                 )
             )
             ->add('oldPassword', 'password', array('required' => false, 'label' => 'Old password'))

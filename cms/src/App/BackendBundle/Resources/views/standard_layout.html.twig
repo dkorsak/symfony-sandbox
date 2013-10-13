@@ -16,15 +16,23 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 {% block stylesheets %}
+{% stylesheets filter='cssrewrite,?yui_css' output="css/admin_jquery.css"
+'bundles/appbackend/css/bootstrap-theme/jquery-ui-1.10.3.custom.css'
+%}
+<link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+{% endstylesheets %}
+{% set theme = constant('\\App\\GeneralBundle\\Entity\\User::DEFAULT_THEME') %}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+{% set theme = app.user.adminTheme %}
+{% endif %}
+<link href="{{ asset('bundles/appbackend/bootstrap/css/'~theme~'_bootstrap.css') }}" rel="stylesheet" media="screen"/>
 {% stylesheets filter='cssrewrite,?yui_css' output="css/admin.css"
 'bundles/sonataadmin/select2/select2.css'
-'bundles/appbackend/css/bootstrap-theme/jquery-ui-1.10.3.custom.css'
 'bundles/sonataadmin/css/colors.css'
 'bundles/appbackend/css/main.css'
 %}
 <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
 {% endstylesheets %}
-<link href="{{ asset('bundles/appbackend/bootstrap/css/' ~ admin_theme() ~ '_bootstrap.css') }}" rel="stylesheet" media="screen" />
 {% if form is defined %}{{ form_stylesheet(form) }}{% endif %}
 {% endblock %}
 {% block javascripts %}

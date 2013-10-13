@@ -1,8 +1,0 @@
-services:
-
-    # admin theme twig extension
-    app_backend.twig.extension.admin_theme_extension:
-        class: App\BackendBundle\Twig\Extension\AdminThemeExtension
-        arguments: [ @security.context ]
-        tags:
-            - { name: "twig.extension"}

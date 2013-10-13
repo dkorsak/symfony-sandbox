@@ -37,6 +37,23 @@ class User extends BaseUser
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
     const ROLE_ADMIN = 'ROLE_ADMIN';
 
+    const DEFAULT_THEME = 'simplex';
+
+    /**
+     * CMS themes
+     *
+     * @var array
+     */
+    public static $adminThemes = array(
+        'default' => 'Default',
+        'cerulean' => 'Cerulean',
+        'flatly' => 'Flatly',
+        'journal' => 'Journal',
+        'simplex' => 'Simplex',
+        'spacelab' => 'Spacelab',
+        'united' => 'United',
+    );
+
     /**
      * User roles
      *
@@ -87,6 +104,15 @@ class User extends BaseUser
      * @Assert\Email()
      */
     protected $email;
+
+    /**
+     * User can customize sonata theme
+     *
+     * @var string
+     *
+     * @ORM\Column(name="admin_theme", type="string", nullable=true, length=20)
+     */
+    protected $adminTheme;
 
     /**
      * Created at
@@ -150,15 +176,6 @@ class User extends BaseUser
     protected $oldPassword;
 
     /**
-     * User can customize sonata theme
-     *
-     * @var string
-     *
-     * @ORM\Column(name="admin_theme", type="string", nullable=true)
-     */
-    protected $adminTheme;
-
-    /**
      * Constructor
      *
      */
@@ -167,6 +184,7 @@ class User extends BaseUser
         parent::__construct();
         $this->groups = new ArrayCollection();
         $this->enabled = true;
+        $this->adminTheme = self::DEFAULT_THEME;
     }
 
     /**
@@ -231,6 +249,29 @@ class User extends BaseUser
     public function getLastname()
     {
         return $this->lastname;
+    }
+
+    /**
+     * Set adminTheme
+     *
+     * @param  string $adminTheme
+     * @return User
+     */
+    public function setAdminTheme($adminTheme)
+    {
+        $this->adminTheme = $adminTheme;
+
+        return $this;
+    }
+
+    /**
+     * Get adminTheme
+     *
+     * @return string
+     */
+    public function getAdminTheme()
+    {
+        return $this->adminTheme;
     }
 
     /**
@@ -463,28 +504,5 @@ class User extends BaseUser
         if ($this->groups->count() == 0) {
             $context->addViolationAt('groups', 'This value should not be blank.', array(), null);
         }
-    }
-
-    /**
-     * Set adminTheme
-     *
-     * @param string $adminTheme
-     * @return User
-     */
-    public function setAdminTheme($adminTheme)
-    {
-        $this->adminTheme = $adminTheme;
-    
-        return $this;
-    }
-
-    /**
-     * Get adminTheme
-     *
-     * @return string 
-     */
-    public function getAdminTheme()
-    {
-        return $this->adminTheme;
     }
 }

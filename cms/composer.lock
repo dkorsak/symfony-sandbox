@@ -2778,12 +2778,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "cd9bf9bfe8c3888a98b3c6689dcfd685caf6e2c7"
+                "reference": "e5d1fadb3f5c73869078b6b146289f85042dc82d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/cd9bf9bfe8c3888a98b3c6689dcfd685caf6e2c7",
-                "reference": "cd9bf9bfe8c3888a98b3c6689dcfd685caf6e2c7",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/e5d1fadb3f5c73869078b6b146289f85042dc82d",
+                "reference": "e5d1fadb3f5c73869078b6b146289f85042dc82d",
                 "shasum": ""
             },
             "require": {
@@ -2848,7 +2848,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2013-10-11 08:16:58"
+            "time": "2013-10-13 16:37:08"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -3475,12 +3475,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stof/StofDoctrineExtensionsBundle.git",
-                "reference": "6e8dc798687963ffc4e4e0dfa687b361699855a9"
+                "reference": "9da4489322c5442ff021c4cd3f28dd79b2a8df07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/6e8dc798687963ffc4e4e0dfa687b361699855a9",
-                "reference": "6e8dc798687963ffc4e4e0dfa687b361699855a9",
+                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/9da4489322c5442ff021c4cd3f28dd79b2a8df07",
+                "reference": "9da4489322c5442ff021c4cd3f28dd79b2a8df07",
                 "shasum": ""
             },
             "require": {
@@ -3528,7 +3528,7 @@
                 "translatable",
                 "tree"
             ],
-            "time": "2013-09-16 09:35:16"
+            "time": "2013-10-13 16:27:31"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3809,12 +3809,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "e219481579f5058b6ccaa29efa76b32b119d8792"
+                "reference": "90b483aa440a0968d82ca7b84b13d4feac6be46b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/e219481579f5058b6ccaa29efa76b32b119d8792",
-                "reference": "e219481579f5058b6ccaa29efa76b32b119d8792",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/90b483aa440a0968d82ca7b84b13d4feac6be46b",
+                "reference": "90b483aa440a0968d82ca7b84b13d4feac6be46b",
                 "shasum": ""
             },
             "require": {
@@ -3909,7 +3909,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-10-11 11:59:44"
+            "time": "2013-10-13 06:32:10"
         },
         {
             "name": "twig/extensions",
