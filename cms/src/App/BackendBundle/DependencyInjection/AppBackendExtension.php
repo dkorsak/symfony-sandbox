@@ -42,6 +42,7 @@ class AppBackendExtension extends Extension
             array_merge(
                 $container->getParameter('twig.form.resources'),
                 array(
+                    'SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig',
                     'AppBackendBundle:Form:ckeditor_widget.html.twig',
                     'AppBackendBundle:Form:autocomplete_widget.html.twig',
                     'AppBackendBundle:Form:jquery_date_widget.html.twig'

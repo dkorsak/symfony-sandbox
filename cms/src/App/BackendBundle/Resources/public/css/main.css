@@ -430,6 +430,9 @@ legend.sonata-ba-fieldset-collapsed-description + .sonata-ba-collapsed-fields {
 
 }
 
+.sonata-bc .form-horizontal .sonata-collection-row-without-label {
+    margin-left: 0;
+} 
 .sonata-bc .form-horizontal .control-group {
     margin-bottom: 10px;
 }
