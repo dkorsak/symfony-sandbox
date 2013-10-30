@@ -42,7 +42,7 @@ assetic:
     filters:
         cssrewrite: ~
         sass:    ~
-        compass:
+        compass: ~
             #images_dir: %kernel.root_dir%/../src/App/FrontendBundle/Resources/public/img
             #http_path: /bundles/appfrontend
         closure:
