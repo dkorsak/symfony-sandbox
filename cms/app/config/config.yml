@@ -356,6 +356,9 @@ liip_imagine:
 
 #LexikMaintenanceBundle https://github.com/lexik/LexikMaintenanceBundle
 lexik_maintenance:
+    authorized:
+        path: "(/admin|/uploads|/bundles|/favico)"
+        ips: ['127.0.0.1']
     driver:
         ttl: 3600
         # File driver
