@@ -44,7 +44,7 @@
                                     {% spaceless %}
                                         <th class="sonata-ba-list-field-header-{{ field_description.type}} {% if sortable %} sonata-ba-list-field-header-order-{{ sort_by|lower }} {{ sort_active_class }}{% endif %}">
                                             {% if sortable %}<a href="{{ admin.generateUrl('list', sort_parameters) }}">{% endif %}
-                                            {% if sortable and sort_active_class != "" %}<i class="icon-arrow-{% if sort_by|lower == 'asc' %}down{% else %}up{% endif %}"></i> {% endif %}{{ admin.trans(field_description.label) }}
+                                            {% if sortable and sort_active_class != "" %}<i class="icon-arrow-{% if sort_by|lower == 'asc' %}down{% else %}up{% endif %}"></i> {% endif %}{{ admin.trans(field_description.label, {}, field_description.translationDomain) }}
                                             {% if sortable %}</a>{% endif %}
                                         </th>
                                     {% endspaceless %}
@@ -160,7 +160,7 @@
                     <table class="table table-bordered" style="margin-top: 0px; width: 100%">
                         {% for filter in admin.datagrid.filters %}
                         <tr id="filter_{{ filter.name }}_row" class="filter {{ filter.isActive ? 'active' : 'inactive' }}">
-                                <td class="filter-title">{{ admin.trans(filter.label) }}</td>
+                                <td class="filter-title">{{ admin.trans(filter.label, {}, filter.translationDomain) }}</td>
                                 <td class="filter-type">{{ form_widget(form.children[filter.formName].children['type']) }}</td>
                                 <td class="filter-value">{{ form_widget(form.children[filter.formName].children['value']) }}</td>
                             </tr>

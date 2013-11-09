@@ -70,7 +70,7 @@ window.SONATA_TRANSLATIONS = {
 <title>{{ admin_pool.title }} - {{ 'Admin'|trans({}, 'SonataAdminBundle') }}</title>
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body class="sonata-bc{% if _side_menu is empty %} sonata-ba-no-side-menu{% endif %} {{ app.request.get('_route') }}">
+<body {% block body_attributes %}class="sonata-bc {% if _side_menu is empty %}sonata-ba-no-side-menu{% endif %} {{ app.request.get('_route') }}"{% endblock %}>
     <div id="ajax_loader">
         <img src="{{ asset('/bundles/appbackend/images/ajax-loader.gif') }}" alt=""/>
     </div>
@@ -112,6 +112,8 @@ window.SONATA_TRANSLATIONS = {
                                 <![endif]-->
                                 {% endif %}
                             {% endblock %}
+
+                            {% block sonata_nav_menu_before %}{% endblock %}
 
                             {% block sonata_nav_menu %}
                             <div class="nav-collapse">
@@ -163,6 +165,9 @@ window.SONATA_TRANSLATIONS = {
                                 {% endblock %}
                             </div>
                             {% endblock %}
+
+                            {% block sonata_nav_menu_after %}{% endblock %}
+
                         {% endif %}
                     </div>
                 </div>
