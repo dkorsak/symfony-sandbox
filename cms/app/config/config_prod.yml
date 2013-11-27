@@ -7,8 +7,24 @@ framework:
 
 doctrine:
     orm:
-        metadata_cache_driver: apc
-        query_cache_driver: apc
+        metadata_cache_driver:
+            type: memcached
+            host: %memcached_host%
+            port: %memcached_port%
+            class: Doctrine\Common\Cache\MemcachedCache
+            instance_class: Memcached
+        query_cache_driver:
+            type: memcached
+            host: %memcached_host%
+            port: %memcached_port%
+            class: Doctrine\Common\Cache\MemcachedCache
+            instance_class: Memcached
+        result_cache_driver:
+            type: memcached
+            host: %memcached_host%
+            port: %memcached_port%
+            class: Doctrine\Common\Cache\MemcachedCache
+            instance_class: Memcached
 
 monolog:
     handlers:

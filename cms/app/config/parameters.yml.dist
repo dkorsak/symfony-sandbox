@@ -71,8 +71,8 @@ parameters:
     # auto send files by hudson
     deploy.rsync.execute              : false
     deploy.rsync.clear.cache.file     : true
-    deploy.rsync.clear.sonata.cache   : false
-    deploy.rsync.clear.doctrine.cache : false
+    deploy.rsync.clear.sonata.cache   : true
+    deploy.rsync.clear.doctrine.cache : true
     deploy.rsync.assets.dump          : false
     deploy.rsync.build.db             : false
     deploy.rsync.doctrine.migrations  : true

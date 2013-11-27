@@ -75,12 +75,7 @@ doctrine:
             default:
                 dql: ~
                 metadata_cache_driver: ~
-                result_cache_driver:
-                    type: memcached
-                    host: %memcached_host%
-                    port: %memcached_port%
-                    class: Doctrine\Common\Cache\MemcachedCache
-                    instance_class: Memcached
+                result_cache_driver: ~
                 query_cache_driver: ~
                 mappings:
                     gedmo_translatable:
@@ -369,6 +364,12 @@ lexik_maintenance:
         #options: {key_name: 'maintenance', host: 127.0.0.1, port: 11211}           # need to define a key_name, the host and port
         # Database driver:
         class: 'Lexik\Bundle\MaintenanceBundle\Drivers\DatabaseDriver'             # class for database driver
+
+#https://github.com/ornicar/ApcBundle
+ornicar_apc:
+    host: %server_name%
+    web_dir: %kernel.root_dir%/../web
+    mode: curl
 
 parameters:
     # symfony pdo session database params

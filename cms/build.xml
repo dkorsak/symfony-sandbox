@@ -108,19 +108,26 @@
         <attribute name="execute.clear.doctrine.cache" default="true"/>
         <sequential>
             <if>
+                <equals arg1="${deploy.rsync.execute}" arg2="false"/>
+                <then>
+                    <echo>ANT DEBUG: Cleaning APC cache for destination @{destination} and environment @{env}</echo>
+                </then>
+            </if>
+            <exec executable="php" dir="@{destination}"><arg line="app/console apc:clear"/></exec>
+            <if>
                 <equals arg1="@{execute.clear.sonata.cache}" arg2="true"/>
                 <then>
-                    <echo>ANT DEBUG: Cleaning sonata cache</echo>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console sonata:cache:flush-all"/></exec>
+                    <echo>ANT DEBUG: Cleaning sonata cache for destination @{destination} and environment @{env}</echo>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console sonata:cache:flush-all --env=@{env}"/></exec>
                 </then>
             </if>
             <if>
                 <equals arg1="@{execute.clear.doctrine.cache}" arg2="true"/>
                 <then>
-                    <echo>ANT DEBUG: Cleaning doctrine cache</echo>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-metadata"/></exec>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-query"/></exec>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-result"/></exec>
+                    <echo>ANT DEBUG: Cleaning doctrine cache for destination @{destination} and environment @{env}</echo>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-metadata --env=@{env}"/></exec>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-query --env=@{env}"/></exec>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-result --env=@{env}"/></exec>
                 </then>
             </if>
             <if>
@@ -537,8 +544,8 @@
 
     <target name="cc" description="Clear cache">
         <delete.cache/>
-        <clear.file.cache env="prod"/>
-        <cc symlink="--symlink" env="dev"/>
+        <cc symlink="--symlink" env="prod"/>
+        <cc symlink="--symlink" env="dev" execute.assets.dump="false" execute.clear.cache.file="false"/>
     </target>
 
     <target name="phpunit" description="Execute PHPUnit test" depends="clean-test-result-directory">

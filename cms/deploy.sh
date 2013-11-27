@@ -27,6 +27,9 @@ rsync --progress $dry_run -rlzcC --force --delete --exclude-from=./rsync_exclude
 if [ "$1" == "run" ] 
 then
 
+  echo "Cleaning APC cache............."
+  ssh $user@$host '@deploy.dest@/app/console apc:clear'
+
   if $enablemaitenance
   then
     echo "Enabling maitenance page............."
@@ -43,15 +46,15 @@ then
   if $clearsonata
   then
     echo "Cleaning sonata cache............."
-    ssh $user@$host '@deploy.dest@/app/console sonata:cache:flush-all'
+    ssh $user@$host '@deploy.dest@/app/console sonata:cache:flush-all --env=prod'
   fi
 
   if $cleardoctrine
   then
     echo "Cleaning doctrine cache............."
-    ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-metadata'
-    ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-query'
-    ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-result'
+    ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-metadata --env=prod'
+    ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-query --env=prod'
+    ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-result --env=prod'
   fi
 
   if $assetsdump
@@ -64,8 +67,8 @@ then
   if $buildbd
   then
     echo "Building database..........."
-    ssh $user@$host '@deploy.dest@/app/console doctrine:schema:drop --force'
-    ssh $user@$host '@deploy.dest@/app/console doctrine:schema:create'
+    ssh $user@$host '@deploy.dest@/app/console doctrine:schema:drop --force --env=prod'
+    ssh $user@$host '@deploy.dest@/app/console doctrine:schema:create --env=prod'
     ssh $user@$host '@deploy.dest@/app/console app:create-pdo-session-table'
     ssh $user@$host '@deploy.dest@/app/console doctrine:fixtures:load'
   fi
