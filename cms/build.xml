@@ -106,14 +106,15 @@
         <attribute name="execute.clear.cache.file" default="true"/>
         <attribute name="execute.clear.sonata.cache" default="true"/>
         <attribute name="execute.clear.doctrine.cache" default="true"/>
+        <attribute name="execute.clear.apc.cache" default="true"/>
         <sequential>
             <if>
-                <equals arg1="${deploy.rsync.execute}" arg2="false"/>
+                <equals arg1="@{execute.clear.apc.cache}" arg2="true"/>
                 <then>
-                    <echo>ANT DEBUG: Cleaning APC cache for destination @{destination} and environment @{env}</echo>
+                    <echo>ANT DEBUG: Cleaning APC cache</echo>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console apc:clear"/></exec>
                 </then>
             </if>
-            <exec executable="php" dir="@{destination}"><arg line="app/console apc:clear"/></exec>
             <if>
                 <equals arg1="@{execute.clear.sonata.cache}" arg2="true"/>
                 <then>
@@ -307,7 +308,7 @@
         <attribute name="symlink" default=""/>
         <sequential>
             <delete.cache destination="@{destination}"/>
-            <cc symlink="@{symlink}" destination="@{destination}" env="@{env}" execute.assets.dump="${build.assets.dump}" execute.clear.cache.file="${build.clear.cache.file}" execute.clear.sonata.cache="${build.clear.sonata.cache}" execute.clear.doctrine.cache="${build.clear.doctrine.cache}"/>
+            <cc symlink="@{symlink}" destination="@{destination}" env="@{env}" execute.clear.apc.cache="${build.clear.apc.cache}" execute.assets.dump="${build.assets.dump}" execute.clear.cache.file="${build.clear.cache.file}" execute.clear.sonata.cache="${build.clear.sonata.cache}" execute.clear.doctrine.cache="${build.clear.doctrine.cache}"/>
             <if>
                 <equals arg1="${build.build.db}" arg2="true"/>
                 <then>
@@ -542,10 +543,10 @@
         <build.db env="${env}"/>
     </target>
 
-    <target name="cc" description="Clear cache">
+    <target name="cc" depends="check" description="Clear cache">
         <delete.cache/>
         <cc symlink="--symlink" env="prod"/>
-        <cc symlink="--symlink" env="dev" execute.assets.dump="false" execute.clear.cache.file="false"/>
+        <cc symlink="--symlink" env="dev" execute.assets.dump="false" execute.clear.cache.file="false" execute.clear.apc.cache="false"/>
     </target>
 
     <target name="phpunit" description="Execute PHPUnit test" depends="clean-test-result-directory">

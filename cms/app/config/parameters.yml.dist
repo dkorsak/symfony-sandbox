@@ -53,6 +53,7 @@ parameters:
     build.clear.cache.file          : true
     build.clear.sonata.cache        : true
     build.clear.doctrine.cache      : true
+    build.clear.apc.cache           : true
     build.assets.dump               : true
     build.build.db                  : true
     build.doctrine.migrations       : false
