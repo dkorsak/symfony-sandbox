@@ -50,7 +50,8 @@
         "liip/imagine-bundle": "dev-master",
         "friendsofsymfony/jsrouting-bundle": "1.1.*",
         "lexik/maintenance-bundle": "dev-master",
-        "ornicar/apc-bundle":    "*"
+        "ornicar/apc-bundle":    "*",
+        "redexperts/errbit-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

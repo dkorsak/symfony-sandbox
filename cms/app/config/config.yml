@@ -371,6 +371,16 @@ ornicar_apc:
     web_dir: %kernel.root_dir%/../web
     mode: curl
 
+#https://github.com/Redexperts/RedexpertsErrbitBundle
+redexperts_errbit:
+    errbit:
+        errbit_enable_log: %errbit_enable_log%
+        api_key:           %errbit_api_key%
+        host:              %errbit_host%
+        port:              80
+        environment_name:  %errbit_environment_name%
+        skipped_exceptions:  []
+
 parameters:
     # symfony pdo session database params
     pdo.db_options:

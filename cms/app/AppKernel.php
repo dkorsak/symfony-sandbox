@@ -40,6 +40,7 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Lexik\Bundle\MaintenanceBundle\LexikMaintenanceBundle(),
             new Ornicar\ApcBundle\OrnicarApcBundle(),
+            new Redexperts\ErrbitBundle\RedexpertsErrbitBundle(),
 
             new App\BackendBundle\AppBackendBundle(),
             new App\FrontendBundle\AppFrontendBundle(),
