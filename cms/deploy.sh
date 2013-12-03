@@ -70,7 +70,7 @@ then
     ssh $user@$host '@deploy.dest@/app/console doctrine:schema:drop --force --env=prod'
     ssh $user@$host '@deploy.dest@/app/console doctrine:schema:create --env=prod'
     ssh $user@$host '@deploy.dest@/app/console app:create-pdo-session-table'
-    ssh $user@$host '@deploy.dest@/app/console doctrine:fixtures:load'
+    ssh $user@$host '@deploy.dest@/app/console doctrine:fixtures:load --no-interaction'
   fi
 
   if $migrate
