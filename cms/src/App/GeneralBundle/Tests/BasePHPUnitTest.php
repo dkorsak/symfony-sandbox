@@ -12,6 +12,22 @@ abstract class BasePHPUnitTest extends WebTestCase
     const ADMIN_USER = 'superadmin@admin.com';
     const ADMIN_PASSWORD = 'admin';
 
+    // SonataAdmin Labels - PL
+    const LABEL_LOGIN = 'Zaloguj';
+    const LABEL_ADD = 'Dodaj';
+    const LABEL_UPDATE_AND_CLOSE = 'Zapisz zmiany i zamknij';
+    const LABEL_DELETE = 'Usuń';
+    const LABEL_DELETE_CONFIRM = 'Tak, usuń';
+
+    // SonataAdmin Labels - EN
+    /*
+    const LABEL_LOGIN = 'Login';
+    const LABEL_ADD = 'Add new';
+    const LABEL_UPDATE_AND_CLOSE = 'Update and close';
+    const LABEL_DELETE = 'Delete';
+    const LABEL_DELETE_CONFIRM = 'Yes, delete';
+    */
+
     /**
      * @var ContainerInterface
      */
@@ -87,8 +103,7 @@ abstract class BasePHPUnitTest extends WebTestCase
         $crawler = $client->request('GET', '/admin/login');
         $this->assertTrue($client->getResponse()->isSuccessful());
 
-        //$form = $crawler->selectButton('Login')->form();
-        $form = $crawler->selectButton('Zaloguj')->form();
+        $form = $crawler->selectButton(self::LABEL_LOGIN)->form();
         $formParams = array(
             '_username' => $username,
             '_password' => $password
@@ -113,12 +128,10 @@ abstract class BasePHPUnitTest extends WebTestCase
         $link = $crawler->selectLink($linkName)->link();
         $crawler = $client->click($link);
 
-        //$link = $crawler->selectLink('Delete')->link();
-        $link = $crawler->selectLink('Usuń')->link();
+        $link = $crawler->selectLink(self::LABEL_DELETE)->link();
         $crawler = $client->click($link);
 
-        //$form = $crawler->selectButton('Yes, delete')->form();
-        $form = $crawler->selectButton('Tak, usuń')->form();
+        $form = $crawler->selectButton(self::LABEL_DELETE_CONFIRM)->form();
         $client->submit($form);
         $crawler = $client->followRedirect();
         $this->assertTrue($client->getResponse()->isSuccessful());

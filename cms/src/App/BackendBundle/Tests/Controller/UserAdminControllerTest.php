@@ -8,15 +8,14 @@ use Symfony\Component\BrowserKit\Client;
 
 class UserAdminControllerTest extends BasePHPUnitTest
 {
+
     public function testCreateUser()
     {
         $client = static::createClient();
         $crawler = $this->goToUserPage($client);
-        //$link = $crawler->selectLink('Add new')->link();
-        $link = $crawler->selectLink('Dodaj')->link();
+        $link = $crawler->selectLink(self::LABEL_ADD)->link();
         $crawler = $client->click($link);
-        //$form = $crawler->selectButton('Update and close')->form();
-        $form = $crawler->selectButton('Zapisz zmiany i zamknij')->form();
+        $form = $crawler->selectButton(self::LABEL_UPDATE_AND_CLOSE)->form();
         $formParams = array(
             'user[firstname]' => 'John',
             'user[lastname]' => 'Doe',
