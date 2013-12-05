@@ -154,6 +154,7 @@
         <div class="filter_container {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}" style="display: {% if admin.datagrid.hasActiveFilters %}block{% else %}none;{% endif %}">
         <div class="box-content">
         <form style="margin-bottom: 0px;" class="sonata-filter-form {{ admin.isChild and 1 == admin.datagrid.filters|length ? 'hide' : '' }}" action="{{ admin.generateUrl('list') }}" method="GET">
+           {{ form_errors(form) }}
             <fieldset class="filter_legend" style="border: none;">
 
                 <!-- <div class="filter_container {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}">-->

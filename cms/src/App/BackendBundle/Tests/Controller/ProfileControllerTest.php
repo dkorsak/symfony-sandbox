@@ -16,8 +16,7 @@ class ProfileControllerTest extends BasePHPUnitTest
         $crawler = $client->request('GET', '/admin/profile');
         $this->assertTrue($client->getResponse()->isSuccessful());
 
-        //$form = $crawler->selectButton('Update profile')->form();
-        $form = $crawler->selectButton('Aktualizuj profil')->form();
+        $form = $crawler->selectButton(self::LABEL_UPDATE_PROFILE)->form();
 
         $oldFirstName = $form->get('sonata_user_profile_form[firstname]')->getValue();
         $oldLastName = $form->get('sonata_user_profile_form[lastname]')->getValue();
@@ -32,8 +31,7 @@ class ProfileControllerTest extends BasePHPUnitTest
         $crawler = $client->followRedirect();
 
         $crawler = $client->request('GET', '/admin/profile');
-        //$form = $crawler->selectButton('Update profile')->form();
-        $form = $crawler->selectButton('Aktualizuj profil')->form();
+        $form = $crawler->selectButton(self::LABEL_UPDATE_PROFILE)->form();
         $formParams = array(
             'sonata_user_profile_form[firstname]' => $oldFirstName,
             'sonata_user_profile_form[lastname]' => $oldLastName

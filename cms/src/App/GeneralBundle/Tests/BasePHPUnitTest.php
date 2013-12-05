@@ -18,6 +18,7 @@ abstract class BasePHPUnitTest extends WebTestCase
     const LABEL_UPDATE_AND_CLOSE = 'Zapisz zmiany i zamknij';
     const LABEL_DELETE = 'Usuń';
     const LABEL_DELETE_CONFIRM = 'Tak, usuń';
+    const LABEL_UPDATE_PROFILE = 'Aktualizuj profil';
 
     // SonataAdmin Labels - EN
     /*
@@ -26,6 +27,7 @@ abstract class BasePHPUnitTest extends WebTestCase
     const LABEL_UPDATE_AND_CLOSE = 'Update and close';
     const LABEL_DELETE = 'Delete';
     const LABEL_DELETE_CONFIRM = 'Yes, delete';
+    const LABEL_UPDATE_PROFILE = 'Update profile';
     */
 
     /**

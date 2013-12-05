@@ -33,6 +33,7 @@
         "sonata-project/easy-extends-bundle": "dev-master",
         "sonata-project/user-bundle": "dev-master",
         "sonata-project/seo-bundle": "dev-master",
+        "sonata-project/core-bundle": "~2.2@dev",
         "mockery/mockery": "dev-master",
         "behat/behat": "2.4.*@stable",
         "behat/mink": "1.4.*@stable",

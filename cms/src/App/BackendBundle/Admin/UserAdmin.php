@@ -15,7 +15,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use App\GeneralBundle\Entity\User;
 use Symfony\Component\Validator\Constraint;
-use Sonata\AdminBundle\Form\Type\BooleanType;
+use Sonata\CoreBundle\Form\Type\BooleanType;
 
 /**
  * Admin class for managing users
