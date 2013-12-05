@@ -43,7 +43,7 @@ class UserAdminControllerTest extends BasePHPUnitTest
         $crawler = $this->goToUserPage($client);
 
         $this->doDeleteRecord($crawler, $client, 'John Doe');
-        $deleted = strpos('John Doe', $client->getResponse()->getContent()) === false;
+        $deleted = strpos($client->getResponse()->getContent(), 'John Doe') === false;
         $this->assertTrue($deleted);
     }
 
