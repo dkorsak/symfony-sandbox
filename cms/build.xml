@@ -109,6 +109,12 @@
         <attribute name="execute.clear.apc.cache" default="true"/>
         <sequential>
             <if>
+                <equals arg1="@{execute.clear.cache.file}" arg2="true"/>
+                <then>
+                    <clear.file.cache destination="@{destination}" env="@{env}"/>
+                </then>
+            </if>
+            <if>
                 <equals arg1="@{execute.clear.apc.cache}" arg2="true"/>
                 <then>
                     <echo>ANT DEBUG: Cleaning APC cache</echo>
@@ -126,15 +132,8 @@
                 <equals arg1="@{execute.clear.doctrine.cache}" arg2="true"/>
                 <then>
                     <echo>ANT DEBUG: Cleaning doctrine cache for destination @{destination} and environment @{env}</echo>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-metadata --env=@{env}"/></exec>
                     <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-query --env=@{env}"/></exec>
                     <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:cache:clear-result --env=@{env}"/></exec>
-                </then>
-            </if>
-            <if>
-                <equals arg1="@{execute.clear.cache.file}" arg2="true"/>
-                <then>
-                    <clear.file.cache destination="@{destination}" env="@{env}"/>
                 </then>
             </if>
             <if>

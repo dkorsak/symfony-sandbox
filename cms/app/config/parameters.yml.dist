@@ -14,13 +14,6 @@ parameters:
     memcached_session_prefix : MEMCACHED_SESSION_PREFIX
     memcached_session_expire : 3600
 
-    apc_token         : APC_TOKEN
-    apc_prefix        : APC_PREFIX
-    # website domain (eg. symfony-sandbox)
-    apc_domain        : SITE_URL
-    # website IP address (127.0.0.1 for localhost)
-    apc_ip            : APC_IP
-
     mailer_transport  : smtp
     mailer_host       : 127.0.0.1
     mailer_user       : ~

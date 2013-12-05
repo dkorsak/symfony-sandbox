@@ -27,9 +27,6 @@ rsync --progress $dry_run -rlzcC --force --delete --exclude-from=./rsync_exclude
 if [ "$1" == "run" ] 
 then
 
-  echo "Cleaning APC cache............."
-  ssh $user@$host '@deploy.dest@/app/console apc:clear'
-
   if $enablemaitenance
   then
     echo "Enabling maitenance page............."
@@ -43,6 +40,9 @@ then
     ssh $user@$host '@deploy.dest@/app/console cache:clear --env=prod --no-debug'
   fi
 
+  echo "Cleaning APC cache............."
+  ssh $user@$host '@deploy.dest@/app/console apc:clear'
+
   if $clearsonata
   then
     echo "Cleaning sonata cache............."
@@ -52,7 +52,6 @@ then
   if $cleardoctrine
   then
     echo "Cleaning doctrine cache............."
-    ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-metadata --env=prod'
     ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-query --env=prod'
     ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-result --env=prod'
   fi

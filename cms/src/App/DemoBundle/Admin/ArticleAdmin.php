@@ -9,7 +9,7 @@ namespace App\DemoBundle\Admin;
 
 use App\BackendBundle\Admin\BaseAdmin;
 use App\DemoBundle\Entity\Article;
-use Sonata\AdminBundle\Form\Type\BooleanType;
+use Sonata\CoreBundle\Form\Type\BooleanType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;

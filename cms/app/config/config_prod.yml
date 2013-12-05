@@ -7,12 +7,7 @@ framework:
 
 doctrine:
     orm:
-        metadata_cache_driver:
-            type: memcached
-            host: %memcached_host%
-            port: %memcached_port%
-            class: Doctrine\Common\Cache\MemcachedCache
-            instance_class: Memcached
+        metadata_cache_driver: apc
         query_cache_driver:
             type: memcached
             host: %memcached_host%
@@ -29,10 +24,12 @@ doctrine:
 monolog:
     handlers:
         main:
-            type:         fingers_crossed
+            type: fingers_crossed
             action_level: error
-            handler:      nested
+            handler: nested
         nested:
-            type:  stream
-            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
             level: debug
+        console:
+            type: console
