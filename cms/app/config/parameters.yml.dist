@@ -37,10 +37,10 @@ parameters:
     less.node_paths : "/usr/local/lib/node_modules"
 
     # enable or disable loggining exception to the errbit DO NOT ENABLE FOR LOCAL PROJECT INSTANCE!
-    errbit_enable_log:              false
-    errbit_api_key:                 API_KEY
-    errbit_environment_name:        local
-    errbit_host:                    errbit.redexperts.net
+    errbit_enable_log              : false
+    errbit_api_key                 : API_KEY
+    errbit_environment_name        : local
+    errbit_host                    : errbit.redexperts.net
 
     # selenium server configuration
     selenium.wait                 : 30

@@ -186,6 +186,7 @@ sonata_admin:
         acl:                        "SonataAdminBundle:CRUD:acl.html.twig"
         history_revision_timestamp: "SonataAdminBundle:CRUD:history_revision_timestamp.html.twig"
         action:                     "SonataAdminBundle:CRUD:action.html.twig"
+        select:                     "SonataAdminBundle:CRUD:list__select.html.twig"
         list_block:                 "SonataAdminBundle:Block:block_admin_list.html.twig"
         search_result_block:        "SonataAdminBundle:Block:block_search_result.html.twig"
         short_object_description:   "SonataAdminBundle:Helper:short-object-description.html.twig"
