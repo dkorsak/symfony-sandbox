@@ -216,7 +216,7 @@ sonata_doctrine_orm_admin:
         types:
             list:
                 array:            SonataAdminBundle:CRUD:list_array.html.twig
-                boolean:          AppBackendBundle:CRUD:list_boolean.html.twig
+                boolean:          SonataAdminBundle:CRUD:list_boolean.html.twig
                 date:             AppBackendBundle:CRUD:list_date.html.twig
                 time:             SonataAdminBundle:CRUD:list_time.html.twig
                 datetime:         AppBackendBundle:CRUD:list_datetime.html.twig

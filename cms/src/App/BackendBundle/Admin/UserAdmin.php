@@ -132,6 +132,7 @@ class UserAdmin extends BaseAdmin
                 ->add("email")
             ->end()
             ->with('Permissions')
+            	->add('locked')
                 ->add(
                     "enabled",
                     null,
@@ -178,7 +179,7 @@ class UserAdmin extends BaseAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $groupParams = array("label" => "Groups", "template" => "AppBackendBundle:UserAdmin:list_groups.html.twig");
-        $enabledParams = array("label" => "Status", "template" => "AppBackendBundle:CRUD:list_status.html.twig");
+        $enabledParams = array("label" => "Status");
 
         $listMapper
             ->addIdentifier("name")
