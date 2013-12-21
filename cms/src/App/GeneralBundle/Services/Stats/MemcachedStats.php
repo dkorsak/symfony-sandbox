@@ -8,7 +8,7 @@
 namespace App\GeneralBundle\Services\Stats;
 
 /**
- * Service for reading memcahce stats
+ * Service for reading memcache stats
  *
  *
  */

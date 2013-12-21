@@ -42,7 +42,7 @@ class ProfileController extends Controller
             'AppBackendBundle:Profile:edit_profile.html.twig',
             array(
                 'admin_pool' => $this->get('sonata.admin.pool'),
-                'base_template' => $this->container->parameters['sonata.admin.configuration.templates']['layout'],
+                'base_template' => 'AppBackendBundle::standard_layout.html.twig',
                 'form' => $form->createView(),
             )
         );

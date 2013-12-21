@@ -15,6 +15,10 @@ services:
         class: App\GeneralBundle\Services\Stats\MemcachedStats
         arguments: [%memcached_host%, %memcached_port%]
 
+    # opcache stats
+    app_general.services.stats.opcache_stats:
+        class: App\GeneralBundle\Services\Stats\OPCacheStats
+
     # overwrite FOS User Manager
     app_general.services.user_manager:
         class: App\GeneralBundle\Services\UserManager

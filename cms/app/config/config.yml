@@ -202,6 +202,7 @@ sonata_admin:
         blocks:
             # display a dashboard blocks
             - { position: left, type: app_backend.block.apc_block }
+            - { position: left, type: app_backend.block.opcache_block }
             - { position: right, type: app_backend.block.memcached_block }
 
 sonata_doctrine_orm_admin:
@@ -262,6 +263,9 @@ sonata_block:
             cache: sonata.cache.memcached
             settings: {ttl: 60}
         app_backend.block.memcached_block:
+            cache: sonata.cache.memcached
+            settings: {ttl: 60}
+        app_backend.block.opcache_block:
             cache: sonata.cache.memcached
             settings: {ttl: 60}
 

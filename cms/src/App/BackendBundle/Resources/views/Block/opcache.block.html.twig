@@ -1,12 +1,12 @@
 <div class="box">
     <div class="box-header well">
-        <h2><i class="icon-wrench"></i> {% trans %}APC info{% endtrans %}</h2>
+        <h2><i class="icon-wrench"></i> {% trans %}OPCache info{% endtrans %}</h2>
     </div>
     <div class="box-content">
         {% if service.isConnected %}
             {% include 'AppBackendBundle:Block:_stats.box.html.twig' %}
         {% else %}
-            <div class="alert alert-box">{% trans %}APC is not enabled{% endtrans %}</div>
+            <div class="alert alert-box">{% trans %}OPCache is not enabled{% endtrans %}</div>
         {% endif %}
     </div>
 </div>
