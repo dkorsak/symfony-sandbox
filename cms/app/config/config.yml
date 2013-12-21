@@ -239,6 +239,8 @@ sonata_doctrine_orm_admin:
                 time:             SonataAdminBundle:CRUD:show_time.html.twig
                 datetime:         SonataAdminBundle:CRUD:show_datetime.html.twig
                 text:             SonataAdminBundle:CRUD:base_show_field.html.twig
+                textarea:         SonataAdminBundle:CRUD:list_string.html.twig
+                email:            SonataAdminBundle:CRUD:list_string.html.twig
                 trans:            SonataAdminBundle:CRUD:show_trans.html.twig
                 string:           SonataAdminBundle:CRUD:base_show_field.html.twig
                 smallint:         SonataAdminBundle:CRUD:base_show_field.html.twig

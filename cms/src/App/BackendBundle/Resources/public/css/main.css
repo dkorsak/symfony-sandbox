@@ -483,4 +483,24 @@ div.select2-container {
 }
 div.select2-drop ul {
     margin: 0px !important;
-}  
+}
+/* X-editable */
+
+.sonata-bc td.sonata-ba-list-field .editable {
+    cursor: pointer;
+}
+
+.sonata-bc td.sonata-ba-list-field .btn.editable {
+    border-bottom: solid 1px #BBB;
+}
+
+.sonata-bc td.sonata-ba-list-field .editable-empty:not(.editable-open) {
+    display: none;
+}
+
+.sonata-bc .sonata-ba-list tr:hover .editable-empty {
+    display: inline-block;
+}
+
+.editable-pre-wrapped {
+    white-space: normal;}
