@@ -751,12 +751,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "feedcfae9a03aab01ef147128807e9c6e463e0ab"
+                "reference": "2196da9cd9fc72e343560fce818affbcfbdf93d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/feedcfae9a03aab01ef147128807e9c6e463e0ab",
-                "reference": "feedcfae9a03aab01ef147128807e9c6e463e0ab",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/2196da9cd9fc72e343560fce818affbcfbdf93d0",
+                "reference": "2196da9cd9fc72e343560fce818affbcfbdf93d0",
                 "shasum": ""
             },
             "require": {
@@ -787,7 +787,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
+                    "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -814,7 +814,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2013-12-21 11:33:31"
+            "time": "2013-12-23 05:23:06"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -2695,12 +2695,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/php-option.git",
-                "reference": "1c7e8016289d17d83ced49c56d0f266fd0568941"
+                "reference": "a807c38edb33c1c527ac0df51c256909f62aa764"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/1c7e8016289d17d83ced49c56d0f266fd0568941",
-                "reference": "1c7e8016289d17d83ced49c56d0f266fd0568941",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/a807c38edb33c1c527ac0df51c256909f62aa764",
+                "reference": "a807c38edb33c1c527ac0df51c256909f62aa764",
                 "shasum": ""
             },
             "require": {
@@ -2736,7 +2736,7 @@
                 "php",
                 "type"
             ],
-            "time": "2013-05-19 11:09:35"
+            "time": "2013-12-22 19:01:07"
         },
         {
             "name": "psr/log",
@@ -3193,12 +3193,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "6c5da368355a0012462cda3c3595dac4e34635c5"
+                "reference": "6f79ea4d9dc68c3e427447e38c969ca1a9394c29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/6c5da368355a0012462cda3c3595dac4e34635c5",
-                "reference": "6c5da368355a0012462cda3c3595dac4e34635c5",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/6f79ea4d9dc68c3e427447e38c969ca1a9394c29",
+                "reference": "6f79ea4d9dc68c3e427447e38c969ca1a9394c29",
                 "shasum": ""
             },
             "require": {
@@ -3242,7 +3242,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2013-12-19 14:04:45"
+            "time": "2013-12-22 17:40:54"
         },
         {
             "name": "sonata-project/doctrine-extensions",
@@ -4303,12 +4303,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "ae73953b180d58b13db48169c906c1d615f8cc0b"
+                "reference": "a1f698183c7ccd53f4234ed8bb98a2def9cb93a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/ae73953b180d58b13db48169c906c1d615f8cc0b",
-                "reference": "ae73953b180d58b13db48169c906c1d615f8cc0b",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/a1f698183c7ccd53f4234ed8bb98a2def9cb93a5",
+                "reference": "a1f698183c7ccd53f4234ed8bb98a2def9cb93a5",
                 "shasum": ""
             },
             "require": {
@@ -4354,7 +4354,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2013-12-19 23:46:38"
+            "time": "2013-12-22 19:58:35"
         }
     ],
     "packages-dev": [

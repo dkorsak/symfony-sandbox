@@ -2,6 +2,10 @@ app_frontend:
     resource: "@AppFrontendBundle/Resources/config/routing.yml"
     prefix:   /
 
+app_backend_homepage:
+    pattern:  /admin
+    defaults: { _controller: SonataUserBundle:AdminSecurity:login }
+
 app_backend:
     resource: "@AppBackendBundle/Resources/config/routing.yml"
     prefix:   /admin
@@ -22,10 +26,6 @@ _sonata_admin:
 sonata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
-
-app_backend_homepage:
-    pattern:  /admin
-    defaults: { _controller: SonataUserBundle:AdminSecurity:login }
 
 _imagine:
     resource: .

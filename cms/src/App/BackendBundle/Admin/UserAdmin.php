@@ -132,7 +132,7 @@ class UserAdmin extends BaseAdmin
                 ->add("email")
             ->end()
             ->with('Permissions')
-            	->add('locked')
+                ->add('locked')
                 ->add(
                     "enabled",
                     null,

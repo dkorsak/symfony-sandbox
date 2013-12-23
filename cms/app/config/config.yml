@@ -330,6 +330,8 @@ vich_uploader:
 
 # Gaufrette configuration
 knp_gaufrette:
+    stream_wrapper:
+        protocol: gaufrette
     adapters:
         article_adaper:
             local:

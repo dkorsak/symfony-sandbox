@@ -61,7 +61,8 @@ class OPCacheStats implements StatsInterface
      */
     public function getUsedMemory()
     {
-    	$usage = $this->getStats()->offsetGet('memory_usage');
+        $usage = $this->getStats()->offsetGet('memory_usage');
+
         return $usage['used_memory'];
     }
 
@@ -70,7 +71,8 @@ class OPCacheStats implements StatsInterface
      */
     public function getFreeMemory()
     {
-    	$usage = $this->getStats()->offsetGet('memory_usage');
+        $usage = $this->getStats()->offsetGet('memory_usage');
+
         return $usage['free_memory'];
     }
 }

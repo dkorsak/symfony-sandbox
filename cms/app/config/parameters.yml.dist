@@ -65,6 +65,8 @@ parameters:
     deploy.execute.behat            : true
     deploy.execute.codereport       : true
     deploy.execute.phpdoc           : false
+    # if set to true all routes will be dump into htaccess file. Works only for prod env.
+    deploy.dump.routing             : true
 
     # use rsync to deploy files into destination server
     deploy.rsync                      : false
