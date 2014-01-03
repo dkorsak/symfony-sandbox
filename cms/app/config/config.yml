@@ -261,13 +261,13 @@ sonata_block:
         sonata.admin.block.search_result: ~
         app_backend.block.apc_block:
             cache: sonata.cache.memcached
-            settings: {ttl: 60}
+            settings: {ttl: 60, use_cache: true}
         app_backend.block.memcached_block:
             cache: sonata.cache.memcached
-            settings: {ttl: 60}
+            settings: {ttl: 60, use_cache: true}
         app_backend.block.opcache_block:
             cache: sonata.cache.memcached
-            settings: {ttl: 60}
+            settings: {ttl: 60, use_cache: true}
 
 sonata_user:
     security_acl:     false
