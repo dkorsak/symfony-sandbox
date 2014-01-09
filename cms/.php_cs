@@ -2,7 +2,7 @@
 
 use Symfony\CS\FixerInterface;
 
-$finder = Symfony\CS\Finder\Symfony21Finder::create()
+$finder = Symfony\CS\Finder\DefaultFinder::create()
     ->notName('.php_cs')
     ->notName('composer.*')
     ->notName('phpunit.xml*')
