@@ -2567,12 +2567,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "adfba47a81584bb486cda9923c95a96edfcfb168"
+                "reference": "65d5d72afc21353f25fc7aaf460b0244f1564a2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/adfba47a81584bb486cda9923c95a96edfcfb168",
-                "reference": "adfba47a81584bb486cda9923c95a96edfcfb168",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/65d5d72afc21353f25fc7aaf460b0244f1564a2c",
+                "reference": "65d5d72afc21353f25fc7aaf460b0244f1564a2c",
                 "shasum": ""
             },
             "require": {
@@ -2618,7 +2618,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2014-01-09 14:53:14"
+            "time": "2014-01-13 11:59:21"
         },
         {
             "name": "monolog/monolog",
