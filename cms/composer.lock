@@ -11,16 +11,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "d5a0a351f63e4a4d25fbe82b090f1ae87c4beaa5"
+                "reference": "0b74f1295356da2660987cd37b4b299c2858e19a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/d5a0a351f63e4a4d25fbe82b090f1ae87c4beaa5",
-                "reference": "d5a0a351f63e4a4d25fbe82b090f1ae87c4beaa5",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/0b74f1295356da2660987cd37b4b299c2858e19a",
+                "reference": "0b74f1295356da2660987cd37b4b299c2858e19a",
                 "shasum": ""
             },
             "require": {
                 "behat/gherkin": "~4.0",
+                "behat/transliterator": "~1.0",
                 "php": ">=5.3.3",
                 "symfony/class-loader": "~2.1",
                 "symfony/config": "~2.1",
@@ -43,16 +44,10 @@
                 "bin/behat"
             ],
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-develop": "3.0-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "Behat\\Behat": "src/",
-                    "Behat\\Testwork": "src/",
-                    "Behat\\Transliterator": "src/"
+                    "Behat\\Testwork": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -73,7 +68,7 @@
                 "Behat",
                 "Symfony2"
             ],
-            "time": "2014-01-10 14:07:13"
+            "time": "2014-01-12 18:21:33"
         },
         {
             "name": "behat/gherkin",
@@ -141,12 +136,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Mink.git",
-                "reference": "ffa0363fba5a130e1964343124ca761a3c69c838"
+                "reference": "a2ee5aa47dd3529ac23313abb593ec735a909c7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Mink/zipball/ffa0363fba5a130e1964343124ca761a3c69c838",
-                "reference": "ffa0363fba5a130e1964343124ca761a3c69c838",
+                "url": "https://api.github.com/repos/Behat/Mink/zipball/a2ee5aa47dd3529ac23313abb593ec735a909c7d",
+                "reference": "a2ee5aa47dd3529ac23313abb593ec735a909c7d",
                 "shasum": ""
             },
             "require": {
@@ -188,7 +183,7 @@
                 "testing",
                 "web"
             ],
-            "time": "2013-12-27 10:08:43"
+            "time": "2014-01-10 19:02:19"
         },
         {
             "name": "behat/mink-browserkit-driver",
@@ -251,12 +246,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkExtension.git",
-                "reference": "0c90fe0c7ae8df36cfb44f698ec5d3bbed303b5a"
+                "reference": "4a398672eee5c8f924f60319c48c2ea6a168871f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkExtension/zipball/0c90fe0c7ae8df36cfb44f698ec5d3bbed303b5a",
-                "reference": "0c90fe0c7ae8df36cfb44f698ec5d3bbed303b5a",
+                "url": "https://api.github.com/repos/Behat/MinkExtension/zipball/4a398672eee5c8f924f60319c48c2ea6a168871f",
+                "reference": "4a398672eee5c8f924f60319c48c2ea6a168871f",
                 "shasum": ""
             },
             "require": {
@@ -294,7 +289,7 @@
                 "test",
                 "web"
             ],
-            "time": "2014-01-09 20:55:52"
+            "time": "2014-01-10 23:58:21"
         },
         {
             "name": "behat/mink-selenium2-driver",
@@ -360,12 +355,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Symfony2Extension.git",
-                "reference": "2001cc8a9a5ac17d064ee01e04d4d960d1ed35ba"
+                "reference": "8dbad596c4d43e680d96d6369977639eb230d153"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Symfony2Extension/zipball/2001cc8a9a5ac17d064ee01e04d4d960d1ed35ba",
-                "reference": "2001cc8a9a5ac17d064ee01e04d4d960d1ed35ba",
+                "url": "https://api.github.com/repos/Behat/Symfony2Extension/zipball/8dbad596c4d43e680d96d6369977639eb230d153",
+                "reference": "8dbad596c4d43e680d96d6369977639eb230d153",
                 "shasum": ""
             },
             "require": {
@@ -409,7 +404,47 @@
                 "framework",
                 "symfony"
             ],
-            "time": "2014-01-10 08:59:42"
+            "time": "2014-01-10 20:13:42"
+        },
+        {
+            "name": "behat/transliterator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Behat/Transliterator.git",
+                "reference": "d2e29143917186502edbd5c5ac3536241a18ddda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Behat/Transliterator/zipball/d2e29143917186502edbd5c5ac3536241a18ddda",
+                "reference": "d2e29143917186502edbd5c5ac3536241a18ddda",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Behat\\Transliterator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Artistic-1.0"
+            ],
+            "description": "String transliterator",
+            "keywords": [
+                "i18n",
+                "slug",
+                "transliterator"
+            ],
+            "time": "2014-01-12 15:02:47"
         },
         {
             "name": "doctrine/annotations",
@@ -1205,12 +1240,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "93c110673521c18273b885fb9359d049b6676df4"
+                "reference": "771da768ac522c9717380bf894ed6822c291e7f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/93c110673521c18273b885fb9359d049b6676df4",
-                "reference": "93c110673521c18273b885fb9359d049b6676df4",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/771da768ac522c9717380bf894ed6822c291e7f7",
+                "reference": "771da768ac522c9717380bf894ed6822c291e7f7",
                 "shasum": ""
             },
             "require": {
@@ -1273,7 +1308,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-01-08 19:22:29"
+            "time": "2014-01-12 16:10:20"
         },
         {
             "name": "emgiezet/errbit-php",
@@ -1466,12 +1501,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "c7b53f20f764982b8aa5ff1bd47ab92cd61acdb1"
+                "reference": "35adcaae1a3f50d0d5b73aa50ed8fd28ee35ce54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/c7b53f20f764982b8aa5ff1bd47ab92cd61acdb1",
-                "reference": "c7b53f20f764982b8aa5ff1bd47ab92cd61acdb1",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/35adcaae1a3f50d0d5b73aa50ed8fd28ee35ce54",
+                "reference": "35adcaae1a3f50d0d5b73aa50ed8fd28ee35ce54",
                 "shasum": ""
             },
             "require": {
@@ -1538,7 +1573,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2014-01-09 23:15:21"
+            "time": "2014-01-12 16:34:06"
         },
         {
             "name": "genemu/form-bundle",
@@ -1727,12 +1762,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jdorn/sql-formatter.git",
-                "reference": "8859d664737492d313c34796731b35eca851b362"
+                "reference": "64990d96e0959dff8e059dfcdc1af130728d92bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jdorn/sql-formatter/zipball/8859d664737492d313c34796731b35eca851b362",
-                "reference": "8859d664737492d313c34796731b35eca851b362",
+                "url": "https://api.github.com/repos/jdorn/sql-formatter/zipball/64990d96e0959dff8e059dfcdc1af130728d92bc",
+                "reference": "64990d96e0959dff8e059dfcdc1af130728d92bc",
                 "shasum": ""
             },
             "require": {
@@ -1769,7 +1804,7 @@
                 "highlight",
                 "sql"
             ],
-            "time": "2013-11-27 22:51:13"
+            "time": "2014-01-12 16:20:24"
         },
         {
             "name": "jms/aop-bundle",
@@ -1873,12 +1908,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSDiExtraBundle.git",
-                "reference": "01029f6a19c5a4131b80878311cd44a990ff923a"
+                "reference": "4361495ea88d2eccb5c43749168a2c88f3e6476b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSDiExtraBundle/zipball/01029f6a19c5a4131b80878311cd44a990ff923a",
-                "reference": "01029f6a19c5a4131b80878311cd44a990ff923a",
+                "url": "https://api.github.com/repos/schmittjoh/JMSDiExtraBundle/zipball/4361495ea88d2eccb5c43749168a2c88f3e6476b",
+                "reference": "4361495ea88d2eccb5c43749168a2c88f3e6476b",
                 "shasum": ""
             },
             "require": {
@@ -1931,7 +1966,7 @@
                 "annotations",
                 "dependency injection"
             ],
-            "time": "2013-10-02 11:10:43"
+            "time": "2014-01-10 21:31:29"
         },
         {
             "name": "jms/metadata",
@@ -2999,12 +3034,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "e46820b992b68d8025b9f7d4de182f659a01610b"
+                "reference": "ac899038f0073656e5c981de8f31ef01eb778ed1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/e46820b992b68d8025b9f7d4de182f659a01610b",
-                "reference": "e46820b992b68d8025b9f7d4de182f659a01610b",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/ac899038f0073656e5c981de8f31ef01eb778ed1",
+                "reference": "ac899038f0073656e5c981de8f31ef01eb778ed1",
                 "shasum": ""
             },
             "require": {
@@ -3071,7 +3106,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-01-09 16:25:21"
+            "time": "2014-01-11 21:26:12"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -3080,12 +3115,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataBlockBundle.git",
-                "reference": "6f0507df9cede2dd94accd3e2d5344e82beea635"
+                "reference": "d2950606a54cc55e0f0e6965cdb2c33e14652659"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/6f0507df9cede2dd94accd3e2d5344e82beea635",
-                "reference": "6f0507df9cede2dd94accd3e2d5344e82beea635",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/d2950606a54cc55e0f0e6965cdb2c33e14652659",
+                "reference": "d2950606a54cc55e0f0e6965cdb2c33e14652659",
                 "shasum": ""
             },
             "require": {
@@ -3136,7 +3171,7 @@
                 "block",
                 "sonata"
             ],
-            "time": "2014-01-02 17:16:42"
+            "time": "2014-01-10 17:03:57"
         },
         {
             "name": "sonata-project/cache-bundle",
@@ -3648,12 +3683,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataSeoBundle.git",
-                "reference": "16ac88d3512ffab6bf5154b4eff5743b8dd362d5"
+                "reference": "e824929545e5bfea18dda95f0b7e2572cb250491"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/16ac88d3512ffab6bf5154b4eff5743b8dd362d5",
-                "reference": "16ac88d3512ffab6bf5154b4eff5743b8dd362d5",
+                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/e824929545e5bfea18dda95f0b7e2572cb250491",
+                "reference": "e824929545e5bfea18dda95f0b7e2572cb250491",
                 "shasum": ""
             },
             "require": {
@@ -3701,7 +3736,7 @@
                 "seo",
                 "sonata"
             ],
-            "time": "2014-01-09 16:21:42"
+            "time": "2014-01-10 16:56:33"
         },
         {
             "name": "sonata-project/user-bundle",
@@ -3710,12 +3745,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "ba277163e565450fb481b021c01b3ab4bee246f0"
+                "reference": "13b3f69408ffa45a6543a10e90b5b6f793fe907d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/ba277163e565450fb481b021c01b3ab4bee246f0",
-                "reference": "ba277163e565450fb481b021c01b3ab4bee246f0",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/13b3f69408ffa45a6543a10e90b5b6f793fe907d",
+                "reference": "13b3f69408ffa45a6543a10e90b5b6f793fe907d",
                 "shasum": ""
             },
             "require": {
@@ -3766,7 +3801,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2014-01-10 14:19:19"
+            "time": "2014-01-10 17:03:46"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -4111,12 +4146,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "147c82b39d5c55d49e1b96ffe8d7041fc544f259"
+                "reference": "8ea3a43167571733a4927d5da92c4e7b39d6b7ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/147c82b39d5c55d49e1b96ffe8d7041fc544f259",
-                "reference": "147c82b39d5c55d49e1b96ffe8d7041fc544f259",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/8ea3a43167571733a4927d5da92c4e7b39d6b7ca",
+                "reference": "8ea3a43167571733a4927d5da92c4e7b39d6b7ca",
                 "shasum": ""
             },
             "require": {
@@ -4216,7 +4251,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-01-08 19:31:34"
+            "time": "2014-01-10 14:47:40"
         },
         {
             "name": "twig/extensions",
