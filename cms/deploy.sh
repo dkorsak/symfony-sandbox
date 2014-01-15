@@ -30,59 +30,57 @@ then
   if $enablemaitenance
   then
     echo "Enabling maitenance page............."
-    ssh $user@$host '@deploy.dest@/app/console lexik:maintenance:lock --no-interaction --set-ttl'
+    ssh -p$port $user@$host '@deploy.dest@/app/console lexik:maintenance:lock --no-interaction --set-ttl'
   fi
 
   if $clearfilecache
   then
     echo "Cleaning file cache............."
-    ssh $user@$host 'rm @deploy.dest@/app/cache/* -Rf'
-    ssh $user@$host '@deploy.dest@/app/console cache:clear --env=prod --no-debug'
+    ssh -p$port $user@$host 'rm @deploy.dest@/app/cache/* -Rf'
+    ssh -p$port $user@$host '@deploy.dest@/app/console cache:clear --env=prod --no-debug'
   fi
 
   echo "Cleaning APC cache............."
-  ssh $user@$host '@deploy.dest@/app/console apc:clear'
+  ssh -p$port $user@$host '@deploy.dest@/app/console apc:clear'
 
   if $clearsonata
   then
     echo "Cleaning sonata cache............."
-    ssh $user@$host '@deploy.dest@/app/console sonata:cache:flush-all --env=prod'
+    ssh -p$port $user@$host '@deploy.dest@/app/console sonata:cache:flush-all --env=prod'
   fi
 
   if $cleardoctrine
   then
     echo "Cleaning doctrine cache............."
-    ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-query --env=prod'
-    ssh $user@$host '@deploy.dest@/app/console doctrine:cache:clear-result --env=prod'
+    ssh -p$port $user@$host '@deploy.dest@/app/console doctrine:cache:clear-query --env=prod'
+    ssh -p$port $user@$host '@deploy.dest@/app/console doctrine:cache:clear-result --env=prod'
   fi
 
   if $assetsdump
   then
     echo "Installing assets..........."
-    ssh $user@$host '@deploy.dest@/app/console assets:install @deploy.dest@/web'
-    ssh $user@$host '@deploy.dest@/app/console assetic:dump --env=prod --no-debug'
+    ssh -p$port $user@$host '@deploy.dest@/app/console assets:install @deploy.dest@/web'
+    ssh -p$port $user@$host '@deploy.dest@/app/console assetic:dump --env=prod --no-debug'
   fi
 
   if $buildbd
   then
     echo "Building database..........."
-    ssh $user@$host '@deploy.dest@/app/console doctrine:schema:drop --force --env=prod'
-    ssh $user@$host '@deploy.dest@/app/console doctrine:schema:create --env=prod'
-    ssh $user@$host '@deploy.dest@/app/console app:create-pdo-session-table'
-    ssh $user@$host '@deploy.dest@/app/console doctrine:fixtures:load --no-interaction'
+    ssh -p$port $user@$host '@deploy.dest@/app/console doctrine:schema:drop --force --env=prod'
+    ssh -p$port $user@$host '@deploy.dest@/app/console doctrine:schema:create --env=prod'
+    ssh -p$port $user@$host '@deploy.dest@/app/console app:create-pdo-session-table'
+    ssh -p$port $user@$host '@deploy.dest@/app/console doctrine:fixtures:load --no-interaction'
   fi
 
   if $migrate
   then
      echo "Migrating database........."
-     ssh $user@$host '@deploy.dest@/app/console doctrine:migrations:migrate --no-interaction'
+     ssh -p$port $user@$host '@deploy.dest@/app/console doctrine:migrations:migrate --no-interaction'
   fi
 
   if $enablemaitenance
   then
     echo "Disabling maitenance page............."
-    ssh $user@$host '@deploy.dest@/app/console lexik:maintenance:unlock --no-interaction'
+    ssh -p$port $user@$host '@deploy.dest@/app/console lexik:maintenance:unlock --no-interaction'
   fi
 fi
-
-
