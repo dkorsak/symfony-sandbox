@@ -506,4 +506,8 @@ div.select2-drop ul {
 }
 
 .editable-pre-wrapped {
-    white-space: normal;}
+    white-space: normal;
+}
+.sonata-bc .sonata-ba-list td.sonata-ba-list-field a.sonata-link-identifier {
+    font-weight: bold;
+}
