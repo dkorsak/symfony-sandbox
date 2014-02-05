@@ -1,6 +1,6 @@
 {
-    "name": "symfony2",
-    "description": "Symfony 2 Sandbox",
+    "name": "symfony-sandbox",
+    "description": "Symfony2 Sandbox",
     "autoload": {
         "psr-0": { "": "src/" }
     },
@@ -34,7 +34,7 @@
         "sonata-project/seo-bundle": "dev-master",
         "sonata-project/core-bundle": "~2.2@dev",
         "mockery/mockery": "dev-master",
-        "behat/behat": "*",
+        "behat/behat": "2.5.*@dev",
         "behat/mink": "*",
         "behat/symfony2-extension": "*",
         "behat/mink-extension": "*",
