@@ -285,7 +285,7 @@ sonata_user:
 # Default SEO settings for frontend website
 sonata_seo:
     default:          sonata.seo.page.default #service
-    encoding:         UTF-8
+    encoding:         utf-8
     page:
         title:            Symfony2 Sandbox
         metas:
@@ -302,9 +302,8 @@ sonata_seo:
                 #'og:site_name':       Sonata Project Sandbox
                 #'og:description':     A demo of the some rich bundles for your Symfony2 projects
 
-            http-equiv:
-                'Content-Type':         text/html; charset=utf-8
-                'X-Ua-Compatible':      IE=edge,chrome=1
+            #http-equiv:
+            #    'X-Ua-Compatible':      IE=edge,chrome=1
 
         head:
             'lang':     'en'
@@ -395,7 +394,7 @@ parameters:
         db_id_col:   session_id
         db_data_col: session_value
         db_time_col: session_time
-    #disabe or enable routing caching
+    # disabe or enable routing caching - does not work with dump routing into .htaccess file
     disable_routing_cache: false
 
 services:

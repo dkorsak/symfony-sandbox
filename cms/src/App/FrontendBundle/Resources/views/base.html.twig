@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html {{ sonata_seo_html_attributes() }}>
 <head>
+<meta charset="utf-8">
+{# sonata_seo_head_attributes() #}
 {% block page_title %}
 {{ sonata_seo_title() }}
 {% endblock %}
-{% block page_metadata %}{{ sonata_seo_metadatas() }}{% endblock %}
+{% block page_metadatas %}{{ sonata_seo_metadatas() }}{% endblock %}
+{# sonata_seo_link_canonical() #}
 {% block stylesheets %}
 {% stylesheets filter='cssrewrite,?yui_css' output="css/site.css"
 'bundles/appfrontend/css/main.css'
 %}
-<link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+<link href="{{ asset_url }}" rel="stylesheet" media="screen"/>
 {% endstylesheets %}
 {% endblock %}
-{% block javascripts %}
-{% javascripts filter='?closure' output="js/site.js"
-'@AppFrontendBundle/Resources/public/js/jquery.min.js'
-'@FOSJsRoutingBundle/Resources/public/js/router.js'
-'js/fos_js_routes.js'
-%}
-<script type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}
-{% endblock %}
-{% if app.environment == 'dev' %}
-<script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-{% endif %}
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body class="{{ app.request.attributes.get('_controller')|extract_current_controller }}">
-{% block body %}
-{% endblock %}
+    {% block body %}
+    {% endblock %}
+    {% block javascripts %}
+        {% javascripts filter='?closure' output="js/site.js"
+        '@AppFrontendBundle/Resources/public/js/jquery.min.js'
+        '@FOSJsRoutingBundle/Resources/public/js/router.js'
+        'js/fos_js_routes.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        {% if app.environment == 'dev' %}
+            <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        {% endif %}
+    {% endblock %}
 </body>
 </html>
