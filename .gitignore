@@ -26,3 +26,6 @@ cms/behat.yml
 test_result
 build
 phpdoc
+
+#grunt
+cms/web/assets/vendor
