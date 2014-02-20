@@ -33,3 +33,7 @@ monolog:
             level: debug
         console:
             type: console
+
+twig:
+    globals:
+        assetsPath: assets-built
