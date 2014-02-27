@@ -49,7 +49,7 @@ module.exports = function (grunt) {
                             // List common dependencies here. Only need to list
                             // top level dependencies, "include" will find
                             // nested dependencies inside each of these
-                            include: ['jquery', 'domReady', 'bootstrap', 'fos_router', 'routing']
+                            include: ['jquery', 'domReady', 'bootstrap']
                         },
 
 
@@ -63,7 +63,7 @@ module.exports = function (grunt) {
                         // require in the page*.js files.
                         {
                             // module names are relative to baseUrl/paths config
-                            name: 'app/homepage',
+                            name: 'app/modules/homepage',
                             exclude: ['common']
                         }
                     ]

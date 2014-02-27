@@ -19,9 +19,7 @@ requirejs.config({
          * shim (beyond what you see for the bootstrap shim).
          */
         jquery: '../vendor/jquery/jquery.min',
-        bootstrap: '../vendor/bootstrap/dist/js/bootstrap.min',
-        fos_router: '../../bundles/fosjsrouting/js/router',
-        routing: '../../js/fos_js_routes'
+        bootstrap: '../vendor/bootstrap/dist/js/bootstrap.min'
     },
     shim: {
         /**

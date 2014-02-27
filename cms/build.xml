@@ -52,8 +52,9 @@
                     <exclude name="web/app_dev.php"/>
                     <exclude name="web/app_test.php"/>
                     <exclude name="web/config.php"/>
-                    <exclude name="web/css/**"/>
-                    <exclude name="web/js/**"/>
+                    <exclude name="/web/assets/**"/>
+                    <exclude name="/web/js/**"/>
+                    <exclude name="/web/css/**"/>
                     <exclude name="web/.htaccess-template"/>
                     <exclude name="behat*.*"/>
                     <exclude name="composer*.*"/>
@@ -65,6 +66,14 @@
                     <exclude name="src/App/**/Features/**"/>
                     <exclude name="src/App/**/Tests/**"/>
                     <exclude name="vendor/liip/imagine-bundle/Liip/ImagineBundle/Tests/Fixtures/assets/**"/>
+                    <exclude name="web/assets/**"/>
+                    <exclude name="README.md"/>
+                    <exclude name=".sass-cache/**"/>
+                    <exclude name="node_modules/**"/>
+                    <exclude name="Gruntfile.js"/>
+                    <exclude name="package.json"/>
+                    <exclude name="bower.json"/>
+                    <exclude name=".bowerrc"/>
                 </fileset>
                 <preserveInTarget>
                     <include name="app/cache/prod/**"/>
@@ -72,8 +81,7 @@
                     <include name="web/uploads/**"/>
                     <include name="app/config/parameters.yml"/>
                     <include name="web/bundles/**"/>
-                    <include name="web/css/**"/>
-                    <include name="web/js/**"/>
+                    <include name="web/assets-built/**"/>
                 </preserveInTarget>
             </sync>
         </sequential>
@@ -96,6 +104,17 @@
                     <exec executable="php" dir="@{destination}"><arg line="app/console doctrine:fixtures:load --env=@{env}  --no-interaction"/></exec>
                 </then>
             </if>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="grunt">
+        <attribute name="destination" default="cms"/>
+        <sequential>
+            <echo>ANT DEBUG: Executing grunt commands</echo>
+            <exec executable="bower" dir="@{destination}"><arg line="install"/></exec>
+            <exec executable="npm" dir="@{destination}"><arg line="install"/></exec>
+            <exec executable="grunt" dir="@{destination}"></exec>
+            <exec executable="grunt" dir="@{destination}"><arg line="production"/></exec>
         </sequential>
     </macrodef>
 
@@ -143,7 +162,7 @@
                     <echo>ANT DEBUG: Installing assets</echo>
                     <exec executable="php" dir="@{destination}"><arg line="app/console assets:install web @{symlink}"/></exec>
                     <echo>ANT DEBUG: Creating FOS js routing file</echo>
-                    <exec executable="php" dir="@{destination}"><arg line="app/console fos:js-routing:dump"/></exec>
+                    <exec executable="php" dir="@{destination}"><arg line="app/console fos:js-routing:dump --target=web/assets-built/js/fos_js_routes.js"/></exec>
                     <echo>ANT DEBUG: Dumping @{env} assets</echo>
                     <exec executable="php" dir="@{destination}"><arg line="app/console assetic:dump --env=@{env} --no-debug"/></exec>
                 </then>
@@ -559,7 +578,11 @@
         <build.db env="${env}"/>
     </target>
 
-    <target name="cc" depends="check" description="Clear cache">
+    <target name="grunt" description="Execute grunt commands">
+        <grunt/>
+    </target>
+
+    <target name="cc" depends="check, grunt" description="Clear cache">
         <delete.cache/>
         <cc symlink="--symlink" env="prod"/>
         <cc symlink="--symlink" env="dev" execute.assets.dump="false" execute.clear.cache.file="false" execute.clear.apc.cache="false"/>
@@ -597,7 +620,7 @@
         <codereport/>
     </target>
 
-    <target name="build" depends="check, composer">
+    <target name="build" depends="check, composer, grunt">
         <if>
             <equals arg1="${build.clear.cache.file}" arg2="true"/>
             <then>
@@ -607,7 +630,7 @@
         <build env="dev" symlink="--symlink"/>
     </target>
 
-    <target name="deploy" depends="check, clean-test-result-directory, composer">
+    <target name="deploy" depends="check, clean-test-result-directory, composer, grunt">
         <deploy destination="${deploy.destination}"/>
     </target>
 

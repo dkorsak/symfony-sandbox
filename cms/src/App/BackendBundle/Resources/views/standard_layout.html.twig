@@ -16,7 +16,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 {% block stylesheets %}
-{% stylesheets filter='cssrewrite,?yui_css' output="css/admin_jquery.css"
+{% stylesheets filter='cssrewrite,?yui_css' output="assets-built/css/admin_jquery.css"
 'bundles/appbackend/css/bootstrap-theme/jquery-ui-1.10.3.custom.css'
 %}
 <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
@@ -26,7 +26,7 @@
 {% set theme = app.user.adminTheme %}
 {% endif %}
 <link href="{{ asset('bundles/appbackend/bootstrap/css/'~theme~'_bootstrap.css') }}" rel="stylesheet" media="screen"/>
-{% stylesheets filter='cssrewrite,?yui_css' output="css/admin.css"
+{% stylesheets filter='cssrewrite,?yui_css' output="assets-built/css/admin.css"
 'bundles/sonataadmin/select2/select2.css'
 'bundles/sonataadmin/css/colors.css'
 'bundles/sonataadmin/x-editable/css/bootstrap-editable.css'
@@ -46,7 +46,7 @@ window.SONATA_TRANSLATIONS = {
     CONFIRM_EXIT:  '{{ 'confirm_exit'|trans({}, 'SonataAdminBundle')|escape('js') }}'
 };
 </script>
-{% javascripts filter='?closure' output="js/admin.js"
+{% javascripts filter='?closure' output="assets-built/js/admin.js"
 '@SonatajQueryBundle/Resources/public/jquery-1.8.3.js'
 '@AppBackendBundle/Resources/public/js/ui/minified/jquery-ui.custom.min.js'
 '@AppBackendBundle/Resources/public/js/ui/i18n/jquery.ui.datepicker-pl.js'
@@ -54,7 +54,7 @@ window.SONATA_TRANSLATIONS = {
 '@AppBackendBundle/Resources/public/bootstrap/js/bootstrap.min.js'
 '@SonataAdminBundle/Resources/public/x-editable/js/bootstrap-editable.min.js'
 '@FOSJsRoutingBundle/Resources/public/js/router.js'
-'js/fos_js_routes.js'
+'assets-built/js/fos_js_routes.js'
 '@SonataAdminBundle/Resources/public/jquery/jquery.confirmExit.js'
 '@SonataAdminBundle/Resources/public/select2/select2.min.js'
 '@SonataAdminBundle/Resources/public/base.js'

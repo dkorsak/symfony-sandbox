@@ -1,5 +1,9 @@
 {% extends 'AppFrontendBundle::base.html.twig' %}
 
+{% block requirejs %}
+    {{ include('AppFrontendBundle::_requirejs.html.twig', {'module': 'app/modules/homepage'}) }}
+{% endblock %}
+
 {% block body %}
 HOMEPAGE
 {% endblock %}

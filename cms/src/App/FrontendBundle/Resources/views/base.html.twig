@@ -8,24 +8,14 @@
 {% endblock %}
 {% block page_metadatas %}{{ sonata_seo_metadatas() }}{% endblock %}
 {# sonata_seo_link_canonical() #}
-{#
-    This replaces the javascripts block. Required modules are added
-    to the dom as script tags with the async attribute. This means
-    that only the actual require.js file is "blocking" (except for IE9 and earlier),
-    and it's *less* important to have JavaScripts in the footer.
-    Additionally, putting them here (which will cause *some* blocking),
-    could cause your JavaScript to start responding faster since
-    it begins downloading earlier.
-    Usage in children templates (notice you don't need to call parent()),
-    since the app/default module is *always* loaded in _requirejs.html.twig.
-
-    {% block requirejs %}
-        {{ include('EventBundle::_requirejs.html.twig', {
-            module: 'app/mypage'
-        }) }}
-    {% endblock %}
-#}
 {% block javascripts %}
+    {% javascripts filter='?closure' output="assets-built/js/main.js"
+        '@FOSJsRoutingBundle/Resources/public/js/router.js'
+        'assets-built/js/fos_js_routes.js'
+        'assets/vendor/requirejs/require.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
     {% block requirejs %}
         {{ include('AppFrontendBundle::_requirejs.html.twig', {module: false}) }}
     {% endblock %}
