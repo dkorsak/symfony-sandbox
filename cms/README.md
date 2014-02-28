@@ -16,6 +16,7 @@
     sudo npm install -g bower
     sudo npm install -g compass
     sudo npm install -g grunt-cli
+    ```
 
 1. Download the bower dependencies:
 
