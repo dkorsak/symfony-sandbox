@@ -34,5 +34,6 @@ class AppGeneralExtension extends Extension
         $loader->load('validators.yml');
         $loader->load('twig_extensions.yml');
         $loader->load('media_cacheable.yml');
+        $loader->load('vich.yml');
     }
 }

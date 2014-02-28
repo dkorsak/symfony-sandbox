@@ -2,6 +2,7 @@
 
 namespace App\DemoBundle\Entity;
 
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -92,6 +93,28 @@ class Article
      * @MediaCacheableField(filters={"article_thumb"}, path_getter="imageUploadDir")
      */
     private $image;
+
+    /**
+     *
+     * Created at
+     *
+     * @var \DateTime
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
+     *
+     * Updated at
+     *
+     * @var \DateTime
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
 
     /**
      * Category
@@ -300,6 +323,54 @@ class Article
     }
 
     /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Article
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     *
+     * @return Article
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
      * Set articleCategory
      *
      * @param  \App\DemoBundle\Entity\ArticleCategory $articleCategory
@@ -361,9 +432,14 @@ class Article
      * @param  UploadedFile $uploadedImage
      * @return Article
      */
-    public function setUploadedImage(UploadedFile $uploadedImage = null)
+    public function setUploadedImage(File $uploadedImage = null)
     {
         $this->uploadedImage = $uploadedImage;
+        // FIX Cannot Overwrite / Update Uploaded File
+        // http://mossco.co.uk/symfony-2/vichuploaderbundle-how-to-fix-cannot-overwrite-update-uploaded-file/
+        if ($uploadedImage instanceof File) {
+            $this->setUpdated(new \DateTime());
+        }
 
         return $this;
     }
@@ -396,5 +472,13 @@ class Article
         }
 
         return "";
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlugFileName()
+    {
+        return $this->getTitle();
     }
 }

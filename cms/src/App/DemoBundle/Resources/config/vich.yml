@@ -1,3 +1,0 @@
-services:
-    app_demo.vich.namer.article_image_namer:
-        class: App\DemoBundle\Vich\Namer\ArticleImageNamer

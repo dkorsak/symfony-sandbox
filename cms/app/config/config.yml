@@ -324,7 +324,7 @@ vich_uploader:
         article_image:
             uri_prefix: /uploads/articles
             upload_destination: article_image_fs
-            namer: app_demo.vich.namer.article_image_namer
+            namer: app_general.vich.namer.slug_namer
             delete_on_remove: true
             inject_on_load: true
 
@@ -376,7 +376,7 @@ lexik_maintenance:
 ornicar_apc:
     host: %server_name%
     web_dir: %kernel.root_dir%/../web
-    mode: curl
+    mode: curl #or fopen for SSL
 
 #https://github.com/Redexperts/RedexpertsErrbitBundle
 redexperts_errbit:

@@ -25,6 +25,5 @@ class AppDemoExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
         $loader->load('controller_services.yml');
-        $loader->load('vich.yml');
     }
 }
