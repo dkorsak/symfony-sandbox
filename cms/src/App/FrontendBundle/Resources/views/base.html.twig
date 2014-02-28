@@ -10,9 +10,10 @@
 {# sonata_seo_link_canonical() #}
 {% block javascripts %}
     {% javascripts filter='?closure' output="assets-built/js/main.js"
+        'assets/vendor/requirejs/require.js'
+        'assets/js/common.js'
         '@FOSJsRoutingBundle/Resources/public/js/router.js'
         'assets-built/js/fos_js_routes.js'
-        'assets/vendor/requirejs/require.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}

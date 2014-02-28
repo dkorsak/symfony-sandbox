@@ -1,6 +1,6 @@
-<script>
-    requirejs.config({baseUrl: '/{{ assetsPath }}/js'});
-    require(['common' ,'app/default'], function (common) {
+<script type="text/javascript">
+    requirejs.config({baseUrl: '{{ app.request.basePath }}/{{ assetsPath }}/js'});
+    require(['app/default'], function () {
         {% if module %}require(['{{ module }}']);{% endif %}
     });
 </script>

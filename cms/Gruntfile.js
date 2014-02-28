@@ -45,7 +45,7 @@ module.exports = function (grunt) {
                         // First set up the common build layer.
                         {
                             // module names are relative to baseUrl
-                            name: 'common',
+                            name: 'app/default',
                             // List common dependencies here. Only need to list
                             // top level dependencies, "include" will find
                             // nested dependencies inside each of these
@@ -64,7 +64,7 @@ module.exports = function (grunt) {
                         {
                             // module names are relative to baseUrl/paths config
                             name: 'app/modules/homepage',
-                            exclude: ['common']
+                            exclude: ['app/default']
                         }
                     ]
                 }

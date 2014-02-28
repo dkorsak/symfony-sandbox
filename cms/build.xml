@@ -52,7 +52,6 @@
                     <exclude name="web/app_dev.php"/>
                     <exclude name="web/app_test.php"/>
                     <exclude name="web/config.php"/>
-                    <exclude name="/web/assets/**"/>
                     <exclude name="/web/js/**"/>
                     <exclude name="/web/css/**"/>
                     <exclude name="web/.htaccess-template"/>
@@ -66,7 +65,6 @@
                     <exclude name="src/App/**/Features/**"/>
                     <exclude name="src/App/**/Tests/**"/>
                     <exclude name="vendor/liip/imagine-bundle/Liip/ImagineBundle/Tests/Fixtures/assets/**"/>
-                    <exclude name="web/assets/**"/>
                     <exclude name="README.md"/>
                     <exclude name=".sass-cache/**"/>
                     <exclude name="node_modules/**"/>
@@ -74,6 +72,11 @@
                     <exclude name="package.json"/>
                     <exclude name="bower.json"/>
                     <exclude name=".bowerrc"/>
+                    <exclude name="web/assets-built/sass/**"/>
+                    <exclude name="web/assets-built/vendor/**"/>
+                    <exclude name="web/assets-built/build.txt"/>
+                    <exclude name="web/assets-built/js/common.js"/>
+                    <exclude name="web/assets-built/js/fos_js_routes.js"/>
                 </fileset>
                 <preserveInTarget>
                     <include name="app/cache/prod/**"/>
@@ -81,7 +84,8 @@
                     <include name="web/uploads/**"/>
                     <include name="app/config/parameters.yml"/>
                     <include name="web/bundles/**"/>
-                    <include name="web/assets-built/**"/>
+                    <include name="web/assets-built/js/**"/>
+                    <include name="web/assets-built/css/**"/>
                 </preserveInTarget>
             </sync>
         </sequential>
@@ -328,6 +332,12 @@
         <sequential>
             <delete.cache destination="@{destination}"/>
             <cc symlink="@{symlink}" destination="@{destination}" env="@{env}" execute.clear.apc.cache="${build.clear.apc.cache}" execute.assets.dump="${build.assets.dump}" execute.clear.cache.file="${build.clear.cache.file}" execute.clear.sonata.cache="${build.clear.sonata.cache}" execute.clear.doctrine.cache="${build.clear.doctrine.cache}"/>
+            <delete includeemptydirs="true" failonerror="false">
+                <fileset dir="@{destination}/web/assets" includes="**/*" defaultexcludes="false"/>
+            </delete>
+            <delete dir="@{destination}/web/assets"/>
+            <delete file="@{destination}/web/assets-built/js/common.js"/>
+            <delete file="@{destination}/web/assets-built/js/fos_js_routes.js"/>
             <if>
                 <equals arg1="${build.build.db}" arg2="true"/>
                 <then>
@@ -351,6 +361,7 @@
                 <equals arg1="${local-build}" arg2="false"/>
                 <then>
                     <copy preservelastmodified="true" overwrite="true" file="${basedir}/cms/app/config/parameters.${target}.yml" tofile="${basedir}/cms/app/config/parameters.yml"/>
+                    <delete.cache destination="cms"/>
                 </then>
             </if>
             <echo>ANT DEBUG: Syncing cms into @{destination} directory</echo>
