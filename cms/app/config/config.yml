@@ -170,33 +170,33 @@ sonata_admin:
     options:
         html5_validate: true #disable or enable global form HTML5 validation
         confirm_exit: true #disable or enable confirm exit from page
-        use_select2: false #disable or enable using select2 - style input select - experimental
+        use_select2: true #disable or enable using select2 - style input select - experimental
         pager_links: 10     # pager max links to display if is null is getting from BaseAdmin
-    templates:
-        user_block:                 "SonataAdminBundle:Core:user_block.html.twig"
-        layout:                     "AppBackendBundle::standard_layout.html.twig"
-        ajax:                       "SonataAdminBundle::ajax_layout.html.twig"
-        dashboard:                  "SonataAdminBundle:Core:dashboard.html.twig"
-        search:                     "SonataAdminBundle:Core:search.html.twig"
-        list:                       "AppBackendBundle:CRUD:list.html.twig"
-        show:                       "SonataAdminBundle:CRUD:show.html.twig"
-        edit:                       "AppBackendBundle:CRUD:edit.html.twig"
-        preview:                    "SonataAdminBundle:CRUD:preview.html.twig"
-        history:                    "SonataAdminBundle:CRUD:history.html.twig"
-        acl:                        "SonataAdminBundle:CRUD:acl.html.twig"
-        history_revision_timestamp: "SonataAdminBundle:CRUD:history_revision_timestamp.html.twig"
-        action:                     "SonataAdminBundle:CRUD:action.html.twig"
-        select:                     "SonataAdminBundle:CRUD:list__select.html.twig"
-        list_block:                 "SonataAdminBundle:Block:block_admin_list.html.twig"
-        search_result_block:        "SonataAdminBundle:Block:block_search_result.html.twig"
-        short_object_description:   "SonataAdminBundle:Helper:short-object-description.html.twig"
-        delete:                     "SonataAdminBundle:CRUD:delete.html.twig"
-        batch:                      "SonataAdminBundle:CRUD:list__batch.html.twig"
-        batch_confirmation:         "SonataAdminBundle:CRUD:batch_confirmation.html.twig"
-        inner_list_row:             "SonataAdminBundle:CRUD:list_inner_row.html.twig"
-        base_list_field:            "SonataAdminBundle:CRUD:base_list_field.html.twig"
-        pager_links:                "SonataAdminBundle:Pager:links.html.twig"
-        pager_results:              "SonataAdminBundle:Pager:results.html.twig"
+    #templates:
+    #    user_block:                 "SonataAdminBundle:Core:user_block.html.twig"
+    #    layout:                     "AppBackendBundle::standard_layout.html.twig"
+    #    ajax:                       "SonataAdminBundle::ajax_layout.html.twig"
+    #    dashboard:                  "SonataAdminBundle:Core:dashboard.html.twig"
+    #    search:                     "SonataAdminBundle:Core:search.html.twig"
+    #    list:                       "AppBackendBundle:CRUD:list.html.twig"
+    #    show:                       "SonataAdminBundle:CRUD:show.html.twig"
+    #    edit:                       "AppBackendBundle:CRUD:edit.html.twig"
+    #    preview:                    "SonataAdminBundle:CRUD:preview.html.twig"
+    #    history:                    "SonataAdminBundle:CRUD:history.html.twig"
+    #    acl:                        "SonataAdminBundle:CRUD:acl.html.twig"
+    #    history_revision_timestamp: "SonataAdminBundle:CRUD:history_revision_timestamp.html.twig"
+    #    action:                     "SonataAdminBundle:CRUD:action.html.twig"
+    #    select:                     "SonataAdminBundle:CRUD:list__select.html.twig"
+    #    list_block:                 "SonataAdminBundle:Block:block_admin_list.html.twig"
+    #    search_result_block:        "SonataAdminBundle:Block:block_search_result.html.twig"
+    #    short_object_description:   "SonataAdminBundle:Helper:short-object-description.html.twig"
+    #    delete:                     "SonataAdminBundle:CRUD:delete.html.twig"
+    #    batch:                      "SonataAdminBundle:CRUD:list__batch.html.twig"
+    #    batch_confirmation:         "SonataAdminBundle:CRUD:batch_confirmation.html.twig"
+    #    inner_list_row:             "SonataAdminBundle:CRUD:list_inner_row.html.twig"
+    #    base_list_field:            "SonataAdminBundle:CRUD:base_list_field.html.twig"
+    #    pager_links:                "SonataAdminBundle:Pager:links.html.twig"
+    #    pager_results:              "SonataAdminBundle:Pager:results.html.twig"
     persist_filters: true #keep filters in session
     dashboard:
         blocks:
@@ -209,48 +209,48 @@ sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration
     entity_manager: ~
 
-    templates:
-        form:
-            - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
-        filter:
-            - SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
-        types:
-            list:
-                array:            SonataAdminBundle:CRUD:list_array.html.twig
-                boolean:          SonataAdminBundle:CRUD:list_boolean.html.twig
-                date:             AppBackendBundle:CRUD:list_date.html.twig
-                time:             SonataAdminBundle:CRUD:list_time.html.twig
-                datetime:         AppBackendBundle:CRUD:list_datetime.html.twig
-                text:             SonataAdminBundle:CRUD:list_string.html.twig
-                trans:            SonataAdminBundle:CRUD:list_trans.html.twig
-                string:           SonataAdminBundle:CRUD:list_string.html.twig
-                smallint:         SonataAdminBundle:CRUD:list_string.html.twig
-                bigint:           SonataAdminBundle:CRUD:list_string.html.twig
-                integer:          SonataAdminBundle:CRUD:list_string.html.twig
-                decimal:          SonataAdminBundle:CRUD:list_string.html.twig
-                identifier:       SonataAdminBundle:CRUD:list_string.html.twig
-                currency:         SonataAdminBundle:CRUD:list_currency.html.twig
-                percent:          SonataAdminBundle:CRUD:list_percent.html.twig
-                choice:           SonataAdminBundle:CRUD:list_choice.html.twig
+    templates: ~
+        #form:
+        #    - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
+        #filter:
+        #    - SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
+        #types:
+        #    list:
+        #        array:            SonataAdminBundle:CRUD:list_array.html.twig
+        #        boolean:          SonataAdminBundle:CRUD:list_boolean.html.twig
+        #        date:             AppBackendBundle:CRUD:list_date.html.twig
+        #        time:             SonataAdminBundle:CRUD:list_time.html.twig
+        #        datetime:         AppBackendBundle:CRUD:list_datetime.html.twig
+        #        text:             SonataAdminBundle:CRUD:list_string.html.twig
+        #        trans:            SonataAdminBundle:CRUD:list_trans.html.twig
+        #        string:           SonataAdminBundle:CRUD:list_string.html.twig
+        #        smallint:         SonataAdminBundle:CRUD:list_string.html.twig
+        #        bigint:           SonataAdminBundle:CRUD:list_string.html.twig
+        #        integer:          SonataAdminBundle:CRUD:list_string.html.twig
+        #        decimal:          SonataAdminBundle:CRUD:list_string.html.twig
+        #        identifier:       SonataAdminBundle:CRUD:list_string.html.twig
+        #        currency:         SonataAdminBundle:CRUD:list_currency.html.twig
+        #        percent:          SonataAdminBundle:CRUD:list_percent.html.twig
+        #        choice:           SonataAdminBundle:CRUD:list_choice.html.twig
 
-            show:
-                array:            SonataAdminBundle:CRUD:show_array.html.twig
-                boolean:          AppBackendBundle:CRUD:show_boolean.html.twig
-                date:             SonataAdminBundle:CRUD:show_date.html.twig
-                time:             SonataAdminBundle:CRUD:show_time.html.twig
-                datetime:         SonataAdminBundle:CRUD:show_datetime.html.twig
-                text:             SonataAdminBundle:CRUD:base_show_field.html.twig
-                textarea:         SonataAdminBundle:CRUD:list_string.html.twig
-                email:            SonataAdminBundle:CRUD:list_string.html.twig
-                trans:            SonataAdminBundle:CRUD:show_trans.html.twig
-                string:           SonataAdminBundle:CRUD:base_show_field.html.twig
-                smallint:         SonataAdminBundle:CRUD:base_show_field.html.twig
-                bigint:           SonataAdminBundle:CRUD:base_show_field.html.twig
-                integer:          SonataAdminBundle:CRUD:base_show_field.html.twig
-                decimal:          SonataAdminBundle:CRUD:base_show_field.html.twig
-                currency:         SonataAdminBundle:CRUD:base_currency.html.twig
-                percent:          SonataAdminBundle:CRUD:base_percent.html.twig
-                choice:           SonataAdminBundle:CRUD:show_choice.html.twig
+        #    show:
+        #       array:            SonataAdminBundle:CRUD:show_array.html.twig
+        #        boolean:          AppBackendBundle:CRUD:show_boolean.html.twig
+        #        date:             SonataAdminBundle:CRUD:show_date.html.twig
+        #        time:             SonataAdminBundle:CRUD:show_time.html.twig
+        #        datetime:         SonataAdminBundle:CRUD:show_datetime.html.twig
+        #        text:             SonataAdminBundle:CRUD:base_show_field.html.twig
+        #        textarea:         SonataAdminBundle:CRUD:list_string.html.twig
+        #        email:            SonataAdminBundle:CRUD:list_string.html.twig
+        #        trans:            SonataAdminBundle:CRUD:show_trans.html.twig
+         #       string:           SonataAdminBundle:CRUD:base_show_field.html.twig
+         #       smallint:         SonataAdminBundle:CRUD:base_show_field.html.twig
+         #       bigint:           SonataAdminBundle:CRUD:base_show_field.html.twig
+         #       integer:          SonataAdminBundle:CRUD:base_show_field.html.twig
+         #       decimal:          SonataAdminBundle:CRUD:base_show_field.html.twig
+         #       currency:         SonataAdminBundle:CRUD:base_currency.html.twig
+         #       percent:          SonataAdminBundle:CRUD:base_percent.html.twig
+         #       choice:           SonataAdminBundle:CRUD:show_choice.html.twig
 
 # Sonata block configuration
 sonata_block:
@@ -259,6 +259,8 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts:   [admin]
         sonata.admin.block.search_result: ~
+        sonata.user.block.menu: ~
+        sonata.block.service.text: ~
         app_backend.block.apc_block:
             cache: sonata.cache.memcached
             settings: {ttl: 60, use_cache: true}

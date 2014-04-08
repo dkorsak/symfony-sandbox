@@ -5,3 +5,11 @@ app_backend_profile:
 app_backend_error_403:
     pattern:  /error403
     defaults: { _controller: AppBackendBundle:Default:error403 }
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+sonata_user:
+    resource: "@SonataUserBundle/Resources/config/routing/sonata_profile_1.xml"
+    prefix: /profile
