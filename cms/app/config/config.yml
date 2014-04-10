@@ -159,13 +159,13 @@ sonata_cache:
         memcached:
             prefix:  %memcached_prefix%
             servers:
-                - {host: %memcached_host%, port: %memcached_port%}
+                - { host: %memcached_host%, port: %memcached_port% }
 
 sonata_admin:
     #security:
     #    handler: sonata.admin.security.handler.role
 
-    title:      Content Management System
+    title:      CMS
     title_logo: /bundles/appbackend/images/cms.gif
     options:
         html5_validate: true #disable or enable global form HTML5 validation
@@ -204,6 +204,8 @@ sonata_admin:
             - { position: left, type: app_backend.block.apc_block }
             - { position: left, type: app_backend.block.opcache_block }
             - { position: right, type: app_backend.block.memcached_block }
+            #- { position: right, type:  sonata.user.block.menu }
+            #- { position: right, type:  sonata.user.block.account }
 
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration
@@ -261,22 +263,23 @@ sonata_block:
         sonata.admin.block.search_result: ~
         sonata.user.block.menu: ~
         sonata.block.service.text: ~
+        sonata.user.block.menu: ~
+        sonata.user.block.account: ~
         app_backend.block.apc_block:
             cache: sonata.cache.memcached
-            settings: {ttl: 60, use_cache: true}
+            settings: {ttl: 60, use_cache: false}
         app_backend.block.memcached_block:
             cache: sonata.cache.memcached
-            settings: {ttl: 60, use_cache: true}
+            settings: {ttl: 60, use_cache: false}
         app_backend.block.opcache_block:
             cache: sonata.cache.memcached
-            settings: {ttl: 60, use_cache: true}
+            settings: {ttl: 60, use_cache: false}
 
 sonata_user:
     security_acl:     false
     class:
         user:         App\GeneralBundle\Entity\User
         group:        App\GeneralBundle\Entity\Group
-
     profile:
         form:
             type:               app_backend_form_profile_profile_type

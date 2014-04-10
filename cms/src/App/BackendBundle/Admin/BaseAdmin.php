@@ -17,7 +17,7 @@ use Sonata\AdminBundle\Admin\Admin;
 class BaseAdmin extends Admin
 {
     /**
-     * Max paginator page links
+     * Max links per page
      *
      * @var integer
      */
@@ -45,17 +45,17 @@ class BaseAdmin extends Admin
     }
 
     /**
-     * Get datagrid actions
+     * Get list actions
      *
-     * @param  string $withShow
+     * @param bool $withShow
      * @return array
      */
     protected function getActions($withShow = false)
     {
         $actions = array(
-            'show' => array('template' => 'AppBackendBundle:CRUD:list__action_show.html.twig'),
-            'edit' => array('template' => 'AppBackendBundle:CRUD:list__action_edit.html.twig'),
-            'delete' => array('template' => 'AppBackendBundle:CRUD:list__action_delete.html.twig'),
+            'show' => array(),
+            'edit' => array(),
+            'delete' => array(),
         );
 
         if (!$withShow) {

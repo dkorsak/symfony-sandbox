@@ -8,13 +8,13 @@
 namespace App\BackendBundle\Block;
 
 use App\GeneralBundle\Services\Stats\StatsInterface;
-use Symfony\Component\Templating\EngineInterface;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Component\HttpFoundation\Response;
-use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Block\BaseBlockService;
+use Sonata\BlockBundle\Block\BlockContextInterface;
+use Sonata\BlockBundle\Model\BlockInterface;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Templating\EngineInterface;
 
 /**
  * Class for displaying admin dashboard block
@@ -62,9 +62,14 @@ class APCBlock extends BaseBlockService
      */
     public function execute(BlockContextInterface $block, Response $response = null)
     {
-        $template = 'AppBackendBundle:Block:apc.block.html.twig';
+        $template = 'AppBackendBundle:Block:base.stats.block.html.twig';
 
-        $response = $this->renderResponse($template, array('service' => $this->apcStats), $response);
+        $params = array(
+            'service' => $this->apcStats,
+            'title' => 'APC info',
+            'warning' => 'APC is not enabled'
+        );
+        $response = $this->renderResponse($template, $params, $response);
         $response->setTtl($block->getSetting('ttl'));
 
         return $response;
