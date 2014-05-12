@@ -26,3 +26,4 @@ cms/behat.yml
 test_result
 build
 phpdoc
+.idea
