@@ -47,7 +47,7 @@
         "genemu/form-bundle": "2.2.*",
         "vich/uploader-bundle": "dev-master",
         "knplabs/knp-gaufrette-bundle" : "dev-master",
-        "liip/imagine-bundle": "dev-master",
+        "liip/imagine-bundle": "0.x-dev",
         "friendsofsymfony/jsrouting-bundle": "1.1.*",
         "lexik/maintenance-bundle": "dev-master",
         "ornicar/apc-bundle":    "*",
