@@ -184,6 +184,7 @@ class User extends BaseUser
         parent::__construct();
         $this->groups = new ArrayCollection();
         $this->enabled = true;
+        $this->groups = new ArrayCollection();
         $this->adminTheme = self::DEFAULT_THEME;
     }
 
