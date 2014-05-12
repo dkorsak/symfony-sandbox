@@ -8,7 +8,7 @@
 1. cp ./cms/app/config/parameters.yml.dist ./cms/app/config/parameters.yml
 1. ant composer
 1. Configure your project, edit /cms/app/config/parameters.yml file and set database connection, APC, Memcached etc.
-1. Install grunt and bower see LINK
+1. Install grunt and bower see https://github.com/dkorsak/symfony-sandbox/blob/grunt/cms/README.md
 1. ant build
 
 $ ant - shows all available ant tasks

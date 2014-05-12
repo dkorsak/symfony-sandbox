@@ -26,11 +26,9 @@ cms/behat.yml
 test_result
 build
 phpdoc
+.idea
 
-#grunt
 cms/web/assets/vendor
 cms/.sass-cache
 cms/node_modules
 cms/web/assets-built
-.idea
-
