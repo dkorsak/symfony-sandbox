@@ -14,4 +14,6 @@ jQuery(document).ready(function() {
     jQuery(document).ajaxStop(function() {
         jQuery('#ajax_loader').hide();
     });
+
+    Admin.setup_list_modal = function(modal) {};
 });

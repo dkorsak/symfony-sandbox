@@ -15,7 +15,6 @@ class SlugNamer implements NamerInterface
 {
     public function name($obj, PropertyMapping $mapping)
     {
-        //$file = call_user_func(array($obj, 'get' . $field));
         $file = $mapping->getFile($obj);
         $ext = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
         if ("" != $ext) {

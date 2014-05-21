@@ -57,6 +57,6 @@ security:
         - { path: ^/admin/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/logout$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login-check$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin$, roles: [ROLE_SUPER_ADMIN, ROLE_ADMIN] }
         - { path: ^/admin, roles: [ROLE_SUPER_ADMIN, ROLE_ADMIN] }
         - { path: ^/.*, roles: IS_AUTHENTICATED_ANONYMOUSLY }

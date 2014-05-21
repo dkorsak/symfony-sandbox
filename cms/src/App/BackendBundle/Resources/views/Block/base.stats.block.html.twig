@@ -2,13 +2,6 @@
     <div class="box-header">
         <span class="glyphicon glyphicon-wrench"></span>
         <h3 class="box-title">{{ title|trans }}</h3>
-        {% if service.isConnected %}
-            <div class="pull-right box-tools">
-                <button data-action="TODO" type="button" data-original-title="{% trans %}Click here to clear cache{% endtrans %}" data-toggle="tooltip" class="btn btn-warning btn-xs btn-clear-cache">
-                    <i class="fa fa-fw fa-refresh"></i> {% trans %}clear{% endtrans %}
-                </button>
-            </div>
-        {% endif %}
     </div>
     <div class="box-body">
         {% if service.isConnected %}

@@ -38,6 +38,19 @@ li.user-header-no-image {
     height: auto !important;
 }
 
+body {
+    margin-bottom: 0px;
+}
+
+#ajax_loader {
+    display: none;
+    position: fixed;
+    right: 30px;
+    top: 60px;
+    z-index: 1000;
+}
+
+
 /* MODULES STYLES */
 
 #article_uploadedImage {
@@ -47,4 +60,8 @@ li.user-header-no-image {
 
 #filter_publishDate_value label {
     font-weight: normal;
+}
+
+#article_articleCategory {
+    margin-bottom: 6px;
 }

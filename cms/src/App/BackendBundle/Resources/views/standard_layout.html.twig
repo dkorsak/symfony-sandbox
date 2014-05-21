@@ -1,5 +1,7 @@
 {% extends 'SonataAdminBundle::standard_layout.html.twig' %}
 
+{% block html_attributes %}class="no-js bg-black"{% endblock %}
+
 {% block side_bar_after_nav %}{# disable sonata text #}{% endblock %}
 {% block sonata_sidebar_search %}{# disable search form #}{% endblock %}
 
@@ -37,3 +39,10 @@
         </nav>
     {% endif %}
 {% endblock sonata_page_content_nav %}
+
+{% block sonata_header %}
+    <div id="ajax_loader">
+        <img src="/bundles/appbackend/images/ajax-loader.gif" alt=""/>
+    </div>
+    {{ parent() }}
+{% endblock sonata_header %}

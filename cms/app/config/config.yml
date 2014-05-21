@@ -241,6 +241,8 @@ sonata_admin:
             - bundles/sonataadmin/vendor/select2/select2.min.js
             - bundles/sonataadmin/App.js
             - bundles/sonataadmin/Admin.js
+        # OUR
+            - bundles/appbackend/js/global.js
 
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration

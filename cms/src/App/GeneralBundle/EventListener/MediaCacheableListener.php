@@ -70,7 +70,8 @@ class MediaCacheableListener implements EventSubscriber
     {
         $object = $args->getEntity();
         if ($this->isMediaCacheable($object)) {
-            $class = new \ReflectionClass($object);
+            $realClass= \Doctrine\Common\Util\ClassUtils::getRealClass(get_class($object));
+            $class = new \ReflectionClass($realClass);
             $mapping = $this->driver->readMediaCacheableFields($class);
             foreach ($mapping as $field) {
                 $fieldName = $field->getPropertyName();
@@ -130,7 +131,8 @@ class MediaCacheableListener implements EventSubscriber
      */
     private function isMediaCacheable($obj)
     {
-        $class = new \ReflectionClass($obj);
+        $realClass= \Doctrine\Common\Util\ClassUtils::getRealClass(get_class($obj));
+        $class = new \ReflectionClass($realClass);
 
         return null !== $this->driver->readMediaCacheable($class);
     }

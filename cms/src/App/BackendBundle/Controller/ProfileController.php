@@ -32,7 +32,7 @@ class ProfileController extends Controller
         $formHandler = $this->container->get('sonata.user.profile.form.handler');
         $process = $formHandler->process($user);
         if ($process) {
-            $this->get('session')->getFlashBag()->add('sonata_flash_success', 'flash_edit_success');
+            $this->get('session')->getFlashBag()->add('sonata_flash_success', 'Profile has been updated.');
 
             return new RedirectResponse($this->generateUrl('app_backend_profile'));
         }
