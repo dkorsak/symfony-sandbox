@@ -15,7 +15,7 @@ abstract class BasePHPUnitTest extends WebTestCase
     // SonataAdmin Labels - PL
     const LABEL_LOGIN = 'Zaloguj';
     const LABEL_ADD = 'Dodaj';
-    const LABEL_UPDATE_AND_CLOSE = 'Zapisz zmiany i zamknij';
+    const LABEL_UPDATE_AND_CLOSE = 'Zapisz i wróć do listy';
     const LABEL_DELETE = 'Usuń';
     const LABEL_DELETE_CONFIRM = 'Tak, usuń';
     const LABEL_UPDATE_PROFILE = 'Aktualizuj profil';

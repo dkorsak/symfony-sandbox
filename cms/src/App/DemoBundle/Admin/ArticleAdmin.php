@@ -96,10 +96,18 @@ class ArticleAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        $articleCategoryParams = array(
+            'sortable' => true, 'label' => 'Category', 'template' => 'SonataAdminBundle::CRUD:base_list_field.html.twig'
+        );
+
+        $publishDateParams = array(
+            'label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:list_date.html.twig'
+        );
+
         $listMapper
             ->addIdentifier('title')
             ->add('articleCategory.name')
-            ->add('publishDate')
+            ->add('publishDate', null, $publishDateParams)
             ->add('publish', null, array("template" => "AppDemoBundle:Article:list_status.html.twig"))
             ->add('_action', 'actions', array('actions' => $this->getActions(true)));
     }
@@ -133,7 +141,7 @@ class ArticleAdmin extends BaseAdmin
      *
      * @param ShowMapper $showMapper
      */
-    protected function configureShowField(ShowMapper $showMapper)
+    protected function configureShowFields(ShowMapper $showMapper)
     {
         $publishDateParams = array(
             'label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:show_date.html.twig'

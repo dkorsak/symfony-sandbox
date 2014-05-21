@@ -178,7 +178,7 @@ sonata_admin:
         title_mode:           single_text # One of "single_text"; "single_image"; "both"
 
     templates:
-        #user_block:           'SonataAdminBundle:Core:user_block.html.twig'
+        user_block:           'AppBackendBundle:Core:user_block.html.twig'
         add_block:            'SonataAdminBundle:Core:add_block.html.twig'
         layout:               'AppBackendBundle::standard_layout.html.twig'
         ajax:                 'SonataAdminBundle::ajax_layout.html.twig'
@@ -316,15 +316,6 @@ sonata_user:
     class:
         user:         App\GeneralBundle\Entity\User
         group:        App\GeneralBundle\Entity\Group
-    #admin:
-        #group:
-        #    class:                ~
-        #    controller:           'SonataAdminBundle:CRUD'
-        #    translation:          SonataUserBundle
-    #    user:
-    #        class:                App\BackendBundle\Admin\UserAdmin
-    #        controller:           AppBackendBundle:UserAdmin
-            #translation:          SonataUserBundle
     profile:
         form:
             type:               app_backend_form_profile_profile_type

@@ -22,3 +22,29 @@
     border-color: #EBCCD1;
     color: #A94442;
 }
+
+div.sonata-medium-date select {
+    margin-right: 10px;
+}
+
+.medium-date select {
+    margin-right: 0px;
+    width: 67px;
+    padding: 3px 6px;
+    height: 28px;
+}
+
+li.user-header-no-image {
+    height: auto !important;
+}
+
+/* MODULES STYLES */
+
+#article_uploadedImage {
+    height: auto;
+    margin-top: 10px;
+}
+
+#filter_publishDate_value label {
+    font-weight: normal;
+}

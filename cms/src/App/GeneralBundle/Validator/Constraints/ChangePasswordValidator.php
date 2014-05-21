@@ -39,22 +39,30 @@ class ChangePasswordValidator extends ConstraintValidator
         }
 
         if ($user->getOldPassword() == "") {
-            $this->context->addViolationAt('oldPassword', $constraint->messageEmptyOldPassword);
+            $this->context->buildViolation($constraint->messageEmptyOldPassword)
+                ->atPath('oldPassword')
+                ->addViolation();
         } else {
             $encoder = $this->encoderFactory->getEncoder($user);
             if (!$encoder->isPasswordValid($user->getPassword(), $user->getOldPassword(), $user->getSalt())) {
-                $this->context->addViolationAt('oldPassword', $constraint->messageInvalidOldPassword);
+                $this->context->buildViolation($constraint->messageInvalidOldPassword)
+                    ->atPath('oldPassword')
+                    ->addViolation();
             }
         }
 
         if ($user->getRetypePassword() == "") {
-            $this->context->addViolationAt('retypePassword', $constraint->messageEmptyRetypePassword);
+            $this->context->buildViolation($constraint->messageEmptyRetypePassword)
+                ->atPath('oldPassword')
+                ->addViolation();
 
             return;
         }
 
         if ($user->getRetypePassword() != $user->getPlainPassword()) {
-            $this->context->addViolationAt('plainPassword', $constraint->messagePasswordsMustBeEqual);
+            $this->context->buildViolation($constraint->messagePasswordsMustBeEqual)
+                ->atPath('plainPassword')
+                ->addViolation();
         }
     }
 }

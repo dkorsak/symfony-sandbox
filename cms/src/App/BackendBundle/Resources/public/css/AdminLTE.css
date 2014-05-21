@@ -1,4 +1,4 @@
-
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic&subset=latin,latin-ext);
 /*!
  *   AdminLTE v1.2
  *   Author: AlmsaeedStudio.com
@@ -13,6 +13,7 @@ html,
 body {
   overflow-x: hidden!important;
   -webkit-font-smoothing: antialiased;
+ font-family: 'Roboto', sans-serif;
   min-height: 100%;
   background: #f9f9f9;
 }
