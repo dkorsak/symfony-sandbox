@@ -96,18 +96,10 @@ class ArticleAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
-        $articleCategoryParams = array(
-            'sortable' => true, 'label' => 'Category', 'template' => 'SonataAdminBundle::CRUD:base_list_field.html.twig'
-        );
-
-        $publishDateParams = array(
-            'label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:list_date.html.twig'
-        );
-
         $listMapper
             ->addIdentifier('title')
-            ->add('articleCategory.name', null, $articleCategoryParams)
-            ->add('publishDate', null, $publishDateParams)
+            ->add('articleCategory.name')
+            ->add('publishDate')
             ->add('publish', null, array("template" => "AppDemoBundle:Article:list_status.html.twig"))
             ->add('_action', 'actions', array('actions' => $this->getActions(true)));
     }
@@ -126,8 +118,8 @@ class ArticleAdmin extends BaseAdmin
             )
         );
         $articleCategortParams = array(
-                'label' => 'Category',
-                'field_options' => array('empty_value' => $this->getEmptySelectValue())
+            'label' => 'Category',
+            'field_options' => array('empty_value' => $this->getEmptySelectValue())
         );
         $datagridMapper
             ->add('title')

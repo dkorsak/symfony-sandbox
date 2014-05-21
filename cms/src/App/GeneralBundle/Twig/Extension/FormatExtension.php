@@ -49,8 +49,8 @@ class FormatExtension extends \Twig_Extension
     }
 
     /**
-     * @param        $amount
-     * @param int    $total
+     * @param         $amount
+     * @param  int    $total
      * @return string
      */
     public function getPercentage($amount, $total = 100)

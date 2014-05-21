@@ -15,7 +15,6 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use App\GeneralBundle\Entity\User;
 use Symfony\Component\Validator\Constraint;
-use Sonata\CoreBundle\Form\Type\BooleanType;
 
 /**
  * Admin class for managing users
@@ -132,15 +131,7 @@ class UserAdmin extends BaseAdmin
                 ->add("email")
             ->end()
             ->with('Permissions')
-                ->add('locked')
-                ->add(
-                    "enabled",
-                    null,
-                    array(
-                        'label' => 'Status',
-                        'template' => 'AppBackendBundle:CRUD:show_status.html.twig'
-                    )
-                )
+                ->add("enabled")
                 ->add("singleRoleName", null, array("label" => "Role"))
                 ->add("groups", null, array('template' => 'AppBackendBundle:UserAdmin:show_groups.html.twig'))
             ->end();
@@ -179,14 +170,13 @@ class UserAdmin extends BaseAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $groupParams = array("label" => "Groups", "template" => "AppBackendBundle:UserAdmin:list_groups.html.twig");
-        $enabledParams = array("label" => "Status");
 
         $listMapper
             ->addIdentifier("name")
             ->add("email")
             ->add("singleRoleName", null, array("label" => "Role"))
             ->add("groups", null, $groupParams)
-            ->add("enabled", null, $enabledParams)
+            ->add("enabled")
             ->add('lastLogin', null, array('label' => 'Last login'))
             ->add('_action', 'actions', array('actions' => $this->getActions(true)));
     }
@@ -204,16 +194,6 @@ class UserAdmin extends BaseAdmin
             'empty_value' => $this->getEmptySelectValue(),
             'field_options' => array(
                 'choices' => User::$userRoles,
-            )
-        );
-        $enabledParams = array(
-            'label' => 'Status',
-            'field_options' => array(
-                'choices' => array(
-                    '' => '',
-                    BooleanType::TYPE_NO => $this->trans('Inactive', array(), null),
-                    BooleanType::TYPE_YES => $this->trans('Active', array(), null)
-                )
             )
         );
         $datagridMapper
@@ -234,7 +214,7 @@ class UserAdmin extends BaseAdmin
                         }
                     )
             )
-            ->add("enabled", null, $enabledParams)
+            ->add("enabled")
             ->add('roles', null, $rolesParams)
             ->add("email");
     }

@@ -4,6 +4,21 @@
     text-align: center;
 }
 
+.content .alert {
+    margin-left: 0px;
+    padding-left: 15px;
+}
+
+.right-side .content-header {
+    padding-left: 15px;
+}
+
 #login-box .footer p {
     display: none;
+}
+
+.alert-error {
+    background-color: #F2DEDE;
+    border-color: #EBCCD1;
+    color: #A94442;
 }

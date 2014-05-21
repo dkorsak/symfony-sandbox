@@ -1,5 +1,0 @@
-{% if admin.isGranted('EDIT', object) and admin.hasRoute('edit') %}
-    <a href="{{ admin.generateObjectUrl('edit', object) }}" class="btn btn-info btn-small" title="{{ 'action_edit'|trans({}, 'SonataAdminBundle') }}">
-        <i class="icon-edit icon-white"></i> {{ 'action_edit'|trans({}, 'SonataAdminBundle') }}
-    </a>
-{% endif %}

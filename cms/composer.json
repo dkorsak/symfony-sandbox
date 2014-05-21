@@ -2,7 +2,7 @@
     "name": "symfony-sandbox",
     "description": "Symfony2 Sandbox",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
     "require": {
         "php": ">=5.3.3",

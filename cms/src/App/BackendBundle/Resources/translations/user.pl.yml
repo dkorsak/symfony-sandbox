@@ -1,6 +1,6 @@
 # user list page
 Actions: Akcje
-Action: Akcja
+Action: ""
 Name: Imię i nazwisko
 General: Dane podstawowe
 Permissions: Uprawnienia
@@ -20,6 +20,7 @@ Role: Rola
 Single Role: Rola
 Last login: Ostatnie logowanie
 Create: Dodawanie
+User list: Lista
 
 #account created
 Account was created: "Twoje konto zostało założone"

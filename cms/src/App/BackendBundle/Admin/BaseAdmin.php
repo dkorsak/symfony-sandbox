@@ -47,7 +47,7 @@ class BaseAdmin extends Admin
     /**
      * Get list actions
      *
-     * @param bool $withShow
+     * @param  bool  $withShow
      * @return array
      */
     protected function getActions($withShow = false)
