@@ -517,7 +517,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan H. Wage",
+                    "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -755,12 +755,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "6252da0cf1ed04cc790af533f0841bf5c01de44e"
+                "reference": "fcc2a3cfd69eec0734636838fbb782919a0447e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/6252da0cf1ed04cc790af533f0841bf5c01de44e",
-                "reference": "6252da0cf1ed04cc790af533f0841bf5c01de44e",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/fcc2a3cfd69eec0734636838fbb782919a0447e9",
+                "reference": "fcc2a3cfd69eec0734636838fbb782919a0447e9",
                 "shasum": ""
             },
             "require": {
@@ -821,7 +821,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-05-16 11:43:27"
+            "time": "2014-05-21 17:49:35"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -2328,7 +2328,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -2398,7 +2398,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -4676,12 +4676,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "b2855a55dd0428a22f799a4298a57599e209cfd4"
+                "reference": "85e08278ca7d15f70790446bd88dd07c1b172864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/b2855a55dd0428a22f799a4298a57599e209cfd4",
-                "reference": "b2855a55dd0428a22f799a4298a57599e209cfd4",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/85e08278ca7d15f70790446bd88dd07c1b172864",
+                "reference": "85e08278ca7d15f70790446bd88dd07c1b172864",
                 "shasum": ""
             },
             "require": {
@@ -4784,7 +4784,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-05-18 15:36:54"
+            "time": "2014-05-21 16:04:07"
         },
         {
             "name": "twig/extensions",
@@ -4989,7 +4989,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com",
                     "homepage": "http://www.willdurand.fr"
                 }
