@@ -49,20 +49,18 @@ class FormatExtension extends \Twig_Extension
     }
 
     /**
-     * Get percentage value of 2 variables
-     *
-     * @param  number $amount
-     * @param  number $total
+     * @param         $amount
+     * @param  int    $total
      * @return string
      */
     public function getPercentage($amount, $total = 100)
     {
         if (0 == $total) {
-            return '00.00%';
+            return '00.00';
         }
         $percent = round(($amount / $total) * 100, 2);
 
-        return $percent . '%';
+        return $percent;
     }
 
     /**

@@ -1,0 +1,4 @@
+title_user_authentication: Admin panel
+security.login.username: E-mail
+security.login.password: Password
+forgotten_password: ""

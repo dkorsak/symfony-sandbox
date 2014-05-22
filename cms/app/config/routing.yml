@@ -2,8 +2,12 @@ app_frontend:
     resource: "@AppFrontendBundle/Resources/config/routing.yml"
     prefix:   /
 
+sonata_dashboard:
+    path:  /admin
+    defaults: { _controller: SonataAdminBundle:Core:dashboard }
+
 app_backend_homepage:
-    pattern:  /admin
+    path:  /admin
     defaults: { _controller: SonataUserBundle:AdminSecurity:login }
 
 app_backend:

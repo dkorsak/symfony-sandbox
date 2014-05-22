@@ -3,27 +3,19 @@
 namespace App\GeneralBundle\Vich\Namer;
 
 use Gedmo\Sluggable\Util\Urlizer;
+use Vich\UploaderBundle\Mapping\PropertyMapping;
 use Vich\UploaderBundle\Naming\NamerInterface;
 
 /**
- * Class for generate user frienly file name
+ * Class for generate user friendly file name
  *
  *
  */
 class SlugNamer implements NamerInterface
 {
-    /**
-     * Generate file name
-     * Object should has method getSlugFileName or getSlug
-     * @see \Vich\UploaderBundle\Naming\NamerInterface::name()
-     *
-     * @param object $obj
-     * @param string $file
-     * @return string
-     */
-    public function name($obj, $field)
+    public function name($obj, PropertyMapping $mapping)
     {
-        $file = call_user_func(array($obj, 'get' . $field));
+        $file = $mapping->getFile($obj);
         $ext = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
         if ("" != $ext) {
             $ext = '.' . $ext;
