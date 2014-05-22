@@ -1,4 +1,4 @@
-# Symfony2 Sandbox
+# Symfony2 Sandbox based on the old bootstrap 2 theme
 
 ## How to install:
 
@@ -9,7 +9,7 @@ Included SonataAdminBundle
 3. cd symfony-sandbox
 4. ant composer
 5. cp ./cms/app/config/parameters.yml.dist ./cms/app/config/parameters.yml
-6. Configure your project, edit /cms/app/config/parameters.yml file and set database connection, APC, Memcached etc.
+6. Configure your project, edit /cms/app/config/parameters.yml file and set database connection, Memcached etc.
 7. ant cc
 8. ant build.db
 
