@@ -574,7 +574,7 @@
             </not>
             <then>
                 <echo>ANT DEBUG: Downloading php-cs-fixer.phar</echo>
-                <exec executable="curl" dir="cms"><arg line="-s http://cs.sensiolabs.org/get/php-cs-fixer.phar -o php-cs-fixer.phar"/></exec>
+                <exec executable="wget" dir="cms"><arg line="http://get.sensiolabs.org/php-cs-fixer.phar -O php-cs-fixer.phar"/></exec>
                 <exec executable="php" dir="cms"><arg line="php-cs-fixer.phar self-update"/></exec>
             </then>
             <else>

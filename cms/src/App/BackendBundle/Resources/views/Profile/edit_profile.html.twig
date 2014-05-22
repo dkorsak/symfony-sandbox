@@ -3,42 +3,40 @@
 {% form_theme form 'AppBackendBundle:Form:form_admin_fields.html.twig' %}
 
 {% block form %}
-    <form class="form-horizontal" action="{{ path('app_backend_profile') }}" {{ form_enctype(form) }} method="POST">
-
-        <div class="box">
-            <div class="box-header well"><h2>{% trans from 'profile' %}Personal data{% endtrans %}</h2></div>
-            <div class="box-content">
-                <fieldset>
-                    <div class="sonata-ba-collapsed-fields">
-                        {{ form_row(form.firstname) }}
-                        {{ form_row(form.lastname) }}
-                        {{ form_row(form.email) }}
-                        {{ form_row(form.adminTheme) }}
+    <form action="{{ path('app_backend_profile') }}" {{ form_enctype(form) }} method="POST">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h4 class="box-title">{% trans from 'SonataUserBundle' %}Personal data{% endtrans %}</h4>
                     </div>
-                </fieldset>
+                    <div class="box-body">
+                        <div class="sonata-ba-collapsed-fields">
+                            {{ form_row(form.firstname) }}
+                            {{ form_row(form.lastname) }}
+                            {{ form_row(form.email) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h4 class="box-title">{% trans from 'SonataUserBundle' %}Change password{% endtrans %}</h4>
+                    </div>
+                    <div class="box-body">
+                        <div class="sonata-ba-collapsed-fields">
+                            {{ form_row(form.oldPassword) }}
+                            {{ form_row(form.plainPassword) }}
+                            {{ form_row(form.retypePassword) }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="box">
-            <div class="box-header well"><h2>{% trans from 'profile' %}Change password{% endtrans %}</h2></div>
-            <div class="box-content">
-                <fieldset>
-                    <div class="sonata-ba-collapsed-fields">
-                        {{ form_row(form.oldPassword) }}
-                        {{ form_row(form.plainPassword) }}
-                        {{ form_row(form.retypePassword) }}
-                    </div>
-                </fieldset>
-            </div>
-        </div>
-
         <div class="well well-small form-actions">
-            <button type="submit" class="btn btn-primary" name="btn_update" value="btn_update"><i class="icon-edit icon-white"></i> {% trans from 'profile' %}Update profile{% endtrans %}</button>
+            <button type="submit" class="btn btn-success" name="btn_update" value="btn_update"><i class="fa fa-save"></i> {% trans from 'SonataUserBundle' %}Update profile{% endtrans %}</button>
         </div>
         {{ form_rest(form) }}
     </form>
-{% endblock %}
-
-{% block title %}
-    {% trans from 'profile' %}Edit profile{% endtrans %}
 {% endblock %}

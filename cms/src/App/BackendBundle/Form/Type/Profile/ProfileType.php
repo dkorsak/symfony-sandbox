@@ -47,16 +47,6 @@ class ProfileType extends AbstractType
             ->add('firstname', null, array('attr' => array('class' => 'span5')))
             ->add('lastname', null, array('attr' => array('class' => 'span5')))
             ->add('email', null, array('attr' => array('class' => 'span5')))
-            ->add(
-                'adminTheme',
-                'choice',
-                array(
-                    'empty_value' => false,
-                    'label' => 'Admin theme',
-                    'required' => false,
-                    'choices' => User::$adminThemes
-                )
-            )
             ->add('oldPassword', 'password', array('required' => false, 'label' => 'Old password'))
             ->add('plainPassword', 'password', array('required' => false, 'label' => 'New password'))
             ->add('retypePassword', 'password', array('required' => false, 'label' => 'Retype password'));
@@ -71,8 +61,7 @@ class ProfileType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => $this->class,
-                'translation_domain' => 'profile'
+                'data_class' => $this->class
             )
         );
     }

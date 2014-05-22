@@ -1,4 +1,7 @@
-# Symfony2 Sandbox based on the old bootstrap 2 theme Grund, Bower and Sass Edition
+# Symfony2 Sandbox based on bootstrap 3 sonata admin theme. Included Grund, Bower and Sass.
+
+
+[See theme here](http://almsaeedstudio.com/AdminLTE/) 
 
 
 ## How to install:
@@ -14,3 +17,5 @@
 
 
 $ ant - shows all available ant tasks
+
+

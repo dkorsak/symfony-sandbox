@@ -1,3 +1,4 @@
+Articles: Artykuły
 Article List: Artykuły
 Article create: Dodawanie
 Article edit: Edycja artykułu
@@ -10,10 +11,12 @@ Publish date: Data publikacji
 Published: Opublikowany
 Disabled: Ukryty
 Actions: Akcje
-Action: Akcja
+Action: ""
 Publish: Status
 "If checked, article will be visible": "Jeżeli opcja jest zaznaczona, artykuł będzie widoczny."
 Body: Treść
 General: Szczegóły
 Tags: Tagi
 Uploaded Image: Zdjęcie
+Article Category Name: Kategoria
+Publish Date: Data publikacji

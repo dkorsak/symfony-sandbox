@@ -1,10 +1,29 @@
 #definition of all sonata admin controllers
 services:
-    # user list
+
+######### DISABLE SONAT USER ADMIN MODULES #########################################
+
+    sonata.user.admin.user:
+        class: %sonata.user.admin.user.class%
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Users, label: User list, show_in_dashboard: false }
+        arguments: [null, %sonata.user.admin.user.entity%, %sonata.user.admin.user.controller%]
+
+    sonata.user.admin.group:
+        class: %sonata.user.admin.group.class%
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Users, label: User list, show_in_dashboard: false }
+        arguments: [null, %sonata.user.admin.group.entity%, %sonata.user.admin.group.controller%]
+
+#####################################################################################
+
+    #see http://fortawesome.github.io/Font-Awesome/icons/ for icons
+
+    # users
     app_backend.admin.user_admin:
         class: App\BackendBundle\Admin\UserAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Users, label: User list }
+            - { name: sonata.admin, manager_type: orm, group: Users, label: User list, icon: '<i class="fa fa-users"></i>' }
         arguments: [null, App\GeneralBundle\Entity\User, AppBackendBundle:UserAdmin]
         calls:
-            - [ setTranslationDomain, ["user"] ]
+           - [ setTranslationDomain, ["user"] ]

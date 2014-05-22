@@ -106,7 +106,7 @@ class ArticleAdmin extends BaseAdmin
 
         $listMapper
             ->addIdentifier('title')
-            ->add('articleCategory.name', null, $articleCategoryParams)
+            ->add('articleCategory.name')
             ->add('publishDate', null, $publishDateParams)
             ->add('publish', null, array("template" => "AppDemoBundle:Article:list_status.html.twig"))
             ->add('_action', 'actions', array('actions' => $this->getActions(true)));
@@ -126,8 +126,8 @@ class ArticleAdmin extends BaseAdmin
             )
         );
         $articleCategortParams = array(
-                'label' => 'Category',
-                'field_options' => array('empty_value' => $this->getEmptySelectValue())
+            'label' => 'Category',
+            'field_options' => array('empty_value' => $this->getEmptySelectValue())
         );
         $datagridMapper
             ->add('title')
@@ -141,7 +141,7 @@ class ArticleAdmin extends BaseAdmin
      *
      * @param ShowMapper $showMapper
      */
-    protected function configureShowField(ShowMapper $showMapper)
+    protected function configureShowFields(ShowMapper $showMapper)
     {
         $publishDateParams = array(
             'label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:show_date.html.twig'
