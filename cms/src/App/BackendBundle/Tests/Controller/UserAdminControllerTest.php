@@ -28,7 +28,7 @@ class UserAdminControllerTest extends BasePHPUnitTest
         $this->assertTrue($client->getResponse()->isRedirect());
         $mailCollector = $client->getProfile()->getCollector('swiftmailer');
 
-        $crawler = $client->followRedirect();
+        $client->followRedirect();
 
         // check if email was sent
         $this->assertEquals(1, $mailCollector->getMessageCount());
@@ -42,7 +42,7 @@ class UserAdminControllerTest extends BasePHPUnitTest
         $crawler = $this->goToUserPage($client);
 
         $this->doDeleteRecord($crawler, $client, 'John Doe');
-        $deleted = strpos($client->getResponse()->getContent(), 'John Doe') === false;
+        $deleted = strpos($client->getResponse()->getContent(), sprintf(self::DELETED_MSG, 'John Doe')) !== false;
         $this->assertTrue($deleted);
     }
 
