@@ -115,9 +115,9 @@ class ArticleAdmin extends BaseAdmin
     /**
      * {@inheritdoc}
      *
-     * @param DatagridMapper $datagridMapper
+     * @param DatagridMapper $filter
      */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $publishParams = array(
             'field_options' => array(
@@ -129,7 +129,7 @@ class ArticleAdmin extends BaseAdmin
             'label' => 'Category',
             'field_options' => array('empty_value' => $this->getEmptySelectValue())
         );
-        $datagridMapper
+        $filter
             ->add('title')
             ->add('articleCategory', null, $articleCategortParams)
             ->add('publishDate', 'jquery_date_range_filter', array('label' => 'Publish date'))
