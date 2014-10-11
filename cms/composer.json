@@ -24,7 +24,7 @@
         "sonata-project/user-bundle": "dev-master",
         "sonata-project/seo-bundle": "dev-master",
 
-        "behat/behat": "2.5.*@dev",
+        "behat/behat": "3.0.*@dev",
         "behat/mink": "*",
         "behat/symfony2-extension": "*",
         "behat/mink-extension": "*",
