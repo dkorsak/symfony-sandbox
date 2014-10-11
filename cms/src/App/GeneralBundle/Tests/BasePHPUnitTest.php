@@ -19,6 +19,7 @@ abstract class BasePHPUnitTest extends WebTestCase
     const LABEL_DELETE = 'Usuń';
     const LABEL_DELETE_CONFIRM = 'Tak, usuń';
     const LABEL_UPDATE_PROFILE = 'Aktualizuj profil';
+    const DELETED_MSG = 'Element "%s" został pomyślnie usunięty.';
 
     // SonataAdmin Labels - EN
     /*
@@ -28,6 +29,7 @@ abstract class BasePHPUnitTest extends WebTestCase
     const LABEL_DELETE = 'Delete';
     const LABEL_DELETE_CONFIRM = 'Yes, delete';
     const LABEL_UPDATE_PROFILE = 'Update profile';
+    const DELETED_MSG = 'Item "%s" has been deleted successfully.';
     */
 
     /**
@@ -123,7 +125,6 @@ abstract class BasePHPUnitTest extends WebTestCase
      * @param  Crawler $crawler
      * @param  Client  $client
      * @param  string  $linkName
-     * @return Crawler
      */
     protected function doDeleteRecord(Crawler $crawler, Client $client, $linkName)
     {
@@ -135,9 +136,8 @@ abstract class BasePHPUnitTest extends WebTestCase
 
         $form = $crawler->selectButton(self::LABEL_DELETE_CONFIRM)->form();
         $client->submit($form);
-        $crawler = $client->followRedirect();
-        $this->assertTrue($client->getResponse()->isSuccessful());
 
-        return $crawler;
+        $client->followRedirect();
+        $this->assertTrue($client->getResponse()->isSuccessful());
     }
 }

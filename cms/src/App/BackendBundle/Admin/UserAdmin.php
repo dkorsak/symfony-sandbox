@@ -184,9 +184,9 @@ class UserAdmin extends BaseAdmin
     /**
      * {@inheritdoc}
      *
-     * @param DatagridMapper $datagridMapper
+     * @param DatagridMapper $filter
      */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $rolesParams = array(
             'field_type' => 'app_backend_form_user_single_role_type',
@@ -196,7 +196,7 @@ class UserAdmin extends BaseAdmin
                 'choices' => User::$userRoles,
             )
         );
-        $datagridMapper
+        $filter
             ->add(
                 "name",
                 "doctrine_orm_callback",

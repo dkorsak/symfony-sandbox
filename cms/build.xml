@@ -180,8 +180,8 @@
         <sequential>
             <clear.file.cache destination="@{destination}" env="test"/>
             <echo>ANT DEBUG: Executing PHPUnit tests</echo>
-            <exec executable="phpunit" dir="@{destination}">
-                <arg line="-v -c app/phpunit.xml --coverage-html '${basedir}/test_result/coverage' --coverage-clover '${basedir}/test_result/clover.xml' --stderr --log-junit '${basedir}/test_result/phpunit.xml'"/>
+            <exec executable="phpunit" dir="@{destination}/bin">
+                <arg line="-v -c ../app/phpunit.xml --coverage-html '${basedir}/test_result/coverage' --coverage-clover '${basedir}/test_result/clover.xml' --stderr --log-junit '${basedir}/test_result/phpunit.xml'"/>
             </exec>
         </sequential>
     </macrodef>
@@ -656,5 +656,12 @@
                 <behat bundle="${bundle}"/>
             </else>
         </if>
+    </target>
+
+    <target name="pu" description="Execute PHPUnit test without code covarage">
+        <echo>ANT DEBUG: Executing PHPUnit tests without code coverage</echo>
+        <exec executable="phpunit" dir="cms/bin">
+            <arg line="-v -c ../app/phpunit.xml --colors --debug"/>
+        </exec>
     </target>
 </project>
