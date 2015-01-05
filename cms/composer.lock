@@ -1222,12 +1222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "8c76b05de4b16723855c878f5d081dc2a18e8510"
+                "reference": "6c8b756d5b1cc1194d0989ba67adebe347ed9443"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/8c76b05de4b16723855c878f5d081dc2a18e8510",
-                "reference": "8c76b05de4b16723855c878f5d081dc2a18e8510",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/6c8b756d5b1cc1194d0989ba67adebe347ed9443",
+                "reference": "6c8b756d5b1cc1194d0989ba67adebe347ed9443",
                 "shasum": ""
             },
             "require": {
@@ -1291,7 +1291,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2014-12-29 13:19:19"
+            "time": "2015-01-05 14:29:22"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -3157,12 +3157,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "524d1b16c2022e8225adbb2cc53d475982f2c0b3"
+                "reference": "b6999b11d2a93bb23735c52e93928247a73d64c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/524d1b16c2022e8225adbb2cc53d475982f2c0b3",
-                "reference": "524d1b16c2022e8225adbb2cc53d475982f2c0b3",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/b6999b11d2a93bb23735c52e93928247a73d64c4",
+                "reference": "b6999b11d2a93bb23735c52e93928247a73d64c4",
                 "shasum": ""
             },
             "require": {
@@ -3180,6 +3180,7 @@
                 "symfony/http-foundation": "~2.3",
                 "symfony/routing": "~2.3",
                 "symfony/security-bundle": "~2.3",
+                "symfony/translation": "~2.3",
                 "symfony/twig-bridge": "~2.3",
                 "symfony/validator": "~2.3",
                 "twig/extensions": "~1.0",
@@ -3228,7 +3229,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2015-01-05 11:20:36"
+            "time": "2015-01-05 14:50:47"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -4323,12 +4324,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "a054bede9fe7f98b99be72a37e468cae72ee535e"
+                "reference": "12d8261d21032c8a478887f93bbfe0bfcf77747a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/a054bede9fe7f98b99be72a37e468cae72ee535e",
-                "reference": "a054bede9fe7f98b99be72a37e468cae72ee535e",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/12d8261d21032c8a478887f93bbfe0bfcf77747a",
+                "reference": "12d8261d21032c8a478887f93bbfe0bfcf77747a",
                 "shasum": ""
             },
             "require": {
@@ -4431,7 +4432,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-01-04 18:08:19"
+            "time": "2015-01-05 14:28:40"
         },
         {
             "name": "twig/extensions",

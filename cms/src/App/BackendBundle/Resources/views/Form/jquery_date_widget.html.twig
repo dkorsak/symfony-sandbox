@@ -5,9 +5,9 @@
     {% else %}
         <div {{ block("widget_container_attributes") }}>
             {{ date_pattern|replace({
-            "{{ year }}":  form_widget(form.year, {'attr': {'class': 'form-control pull-left select-year'}}),
-            "{{ month }}": form_widget(form.month, {'attr': {'class': 'form-control pull-left select-month'}}),
-            "{{ day }}":   form_widget(form.day, {'attr': {'class': 'form-control pull-left select-day'}})
+            "{{ year }}":  form_widget(form.year, {'attr': {'class': 'form-control pull-left select-year', 'data-sonata-select2' : 'false'}}),
+            "{{ month }}": form_widget(form.month, {'attr': {'class': 'form-control pull-left select-month', 'data-sonata-select2' : 'false'}}),
+            "{{ day }}":   form_widget(form.day, {'attr': {'class': 'form-control pull-left select-day', 'data-sonata-select2' : 'false'}})
             })|raw }}
 
             {% set attr = {"size": 10}|merge(attr) %}

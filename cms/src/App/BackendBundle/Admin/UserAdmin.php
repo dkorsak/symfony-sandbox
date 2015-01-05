@@ -150,12 +150,12 @@ class UserAdmin extends BaseAdmin
             'empty_value' => $this->getEmptySelectValue(),
         );
         $formMapper
-            ->with('General')
+            ->with('General', array('class' => 'col-md-6'))
                 ->add("firstname")
                 ->add("lastname")
                 ->add("email", null, array('attr' => array('autocomplete' => 'off')))
             ->end()
-            ->with('Permissions')
+            ->with('Permissions', array('class' => 'col-md-6'))
                 ->add("enabled", null, array("required" => false, "label" => "Active"))
                 ->add("singleRole", 'app_backend_form_user_single_role_type', $roleParams)
                 ->add("groups", null, $groupsParams)
