@@ -8,7 +8,7 @@
         "php": ">=5.3.3",
         "ext-memcached": "*",
         "ext-apc": "*",
-        "symfony/symfony": "2.5.x-dev",
+        "symfony/symfony": "2.6.x-dev",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
@@ -23,13 +23,6 @@
         "sonata-project/easy-extends-bundle": "dev-master",
         "sonata-project/user-bundle": "dev-master",
         "sonata-project/seo-bundle": "dev-master",
-
-        "behat/behat": "3.0.*@dev",
-        "behat/mink": "*",
-        "behat/symfony2-extension": "*",
-        "behat/mink-extension": "*",
-        "behat/mink-browserkit-driver": "*",
-        "behat/mink-selenium2-driver": "*",
 
         "doctrine/doctrine-fixtures-bundle": "~2.2.0",
         "doctrine/migrations": "dev-master",
@@ -50,7 +43,13 @@
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
         "mockery/mockery": "dev-master",
-        "phpunit/phpunit": "4.2.*"
+        "phpunit/phpunit": "4.2.*",
+        "behat/behat": "~3.0",
+        "behat/mink": "*",
+        "behat/symfony2-extension": "*",
+        "behat/mink-extension": "*",
+        "behat/mink-browserkit-driver": "*",
+        "behat/mink-selenium2-driver": "*"
     },
     "scripts": {
         "post-root-package-install": [

@@ -8,7 +8,6 @@ use Symfony\Component\BrowserKit\Client;
 
 class UserAdminControllerTest extends BasePHPUnitTest
 {
-
     public function testCreateUser()
     {
         $client = static::createClient();

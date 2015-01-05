@@ -50,9 +50,9 @@ class MediaCacheableListenerTest extends BasePHPUnitTest
             ->once()
             ->with('topImage')
             ->andReturn('old_logo.png');
-        $this->prepareImageCacheManager('fake_upload_dir' . DIRECTORY_SEPARATOR . 'old_logo.png', 'top_filter1');
-        $this->prepareImageCacheManager('fake_upload_dir' . DIRECTORY_SEPARATOR . 'old_logo.png', 'top_filter2');
-        $this->prepareImageCacheManager('fake_upload_dir' . DIRECTORY_SEPARATOR . 'bottom_logo.png', 'bottom_filter');
+        $this->prepareImageCacheManager('fake_upload_dir'.DIRECTORY_SEPARATOR.'old_logo.png', 'top_filter1');
+        $this->prepareImageCacheManager('fake_upload_dir'.DIRECTORY_SEPARATOR.'old_logo.png', 'top_filter2');
+        $this->prepareImageCacheManager('fake_upload_dir'.DIRECTORY_SEPARATOR.'bottom_logo.png', 'bottom_filter');
 
         $this->listener->preUpdate($this->preUpdateEventArgsMock);
     }
@@ -64,9 +64,9 @@ class MediaCacheableListenerTest extends BasePHPUnitTest
             ->lifecycleEventArgs
             ->shouldReceive('getEntity')
             ->andReturn($entity);
-        $this->prepareImageCacheManager('fake_upload_dir' . DIRECTORY_SEPARATOR . 'logo.png', 'top_filter1');
-        $this->prepareImageCacheManager('fake_upload_dir' . DIRECTORY_SEPARATOR . 'logo.png', 'top_filter2');
-        $this->prepareImageCacheManager('fake_upload_dir' . DIRECTORY_SEPARATOR . 'bottom_logo.png', 'bottom_filter');
+        $this->prepareImageCacheManager('fake_upload_dir'.DIRECTORY_SEPARATOR.'logo.png', 'top_filter1');
+        $this->prepareImageCacheManager('fake_upload_dir'.DIRECTORY_SEPARATOR.'logo.png', 'top_filter2');
+        $this->prepareImageCacheManager('fake_upload_dir'.DIRECTORY_SEPARATOR.'bottom_logo.png', 'bottom_filter');
         $this->listener->postRemove($this->lifecycleEventArgs);
     }
 

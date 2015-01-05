@@ -23,7 +23,7 @@ class JQueryDateType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $defaultValues = array(
-            'culture' => $this->getJQueryCulture()
+            'culture' => $this->getJQueryCulture(),
         );
         $resolver->setDefaults($defaultValues);
     }

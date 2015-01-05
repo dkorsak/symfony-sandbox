@@ -40,7 +40,7 @@ class ArticleCategoryAdmin extends BaseAdmin
      */
     protected $datagridValues = array(
         '_sort_order' => 'ASC',
-        '_sort_by' => 'name'
+        '_sort_by' => 'name',
     );
 
     /**

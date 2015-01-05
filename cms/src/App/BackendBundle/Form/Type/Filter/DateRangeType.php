@@ -28,7 +28,7 @@ class DateRangeType extends AbstractType
         $fieldOptions = array_merge(
             array(
                 'required' => false,
-                'attr' => array('class' => 'medium-date')
+                'attr' => array('class' => 'medium-date'),
             ),
             $options['field_options']
         );

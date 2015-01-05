@@ -30,7 +30,7 @@ class HtmlExtension extends \Twig_Extension
     {
         $details = StringUtil::extractDetailsFromControllerName($controller);
 
-        return strtolower($details['bundle'] . ' ' . $details['controller'] . ' ' . $details['action']);
+        return strtolower($details['bundle'].' '.$details['controller'].' '.$details['action']);
     }
 
     /**

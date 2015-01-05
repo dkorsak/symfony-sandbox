@@ -42,7 +42,7 @@ class CKEditorType extends AbstractType
         $defaultValues = array(
             'custom_config' => 'bundles/appbackend/js/ckeditor_config.js',
             'language' => $this->getCKEditorCulture(),
-            'required' => false
+            'required' => false,
         );
         $resolver->setDefaults($defaultValues);
     }

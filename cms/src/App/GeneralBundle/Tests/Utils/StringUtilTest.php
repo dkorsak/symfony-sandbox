@@ -26,7 +26,7 @@ class StringUtilTest extends \PHPUnit_Framework_TestCase
     public function testGenerateRandomPassword()
     {
         $passwords = array();
-        for ($i=0; $i<=100; $i++) {
+        for ($i = 0; $i <= 100; $i++) {
             $password = StringUtil::generateRandomPassword();
             $this->assertFalse(in_array($password, $passwords));
             $passwords[] = $password;

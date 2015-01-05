@@ -369,8 +369,7 @@ genemu_form:
 #Vich uploader configuration
 vich_uploader:
     db_driver: orm # or mongodb
-    gaufrette: true
-    storage: vich_uploader.storage.gaufrette
+    storage: gaufrette
     mappings:
         article_image:
             uri_prefix: /uploads/articles

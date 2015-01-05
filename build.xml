@@ -36,8 +36,7 @@
 
   pu                   - execute phpunit tests without code coverage report.
 
-  behat                - execute E2E (selenium) bahat tests for given -Dbundle=
-                         parameter. Default bundle="".
+  behat                - execute E2E (selenium) bahat tests.
 
   ###################### CODING STANDARDS ################################
 

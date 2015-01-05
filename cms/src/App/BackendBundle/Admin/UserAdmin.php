@@ -43,7 +43,7 @@ class UserAdmin extends BaseAdmin
      */
     protected $datagridValues = array(
         '_sort_order' => 'ASC',
-        '_sort_by' => 'email'
+        '_sort_by' => 'email',
     );
 
     /**
@@ -52,7 +52,7 @@ class UserAdmin extends BaseAdmin
      * @var array
      */
     protected $formOptions = array(
-        'validation_groups' => array('Admin user', Constraint::DEFAULT_GROUP)
+        'validation_groups' => array('Admin user', Constraint::DEFAULT_GROUP),
     );
 
     /**
@@ -147,7 +147,7 @@ class UserAdmin extends BaseAdmin
         $groupsParams = array("expanded" => false, "multiple" => true, "property" => "name", "required" => false);
         $roleParams = array(
             'label' => 'Role',
-            'empty_value' => $this->getEmptySelectValue()
+            'empty_value' => $this->getEmptySelectValue(),
         );
         $formMapper
             ->with('General')
@@ -194,15 +194,14 @@ class UserAdmin extends BaseAdmin
             'empty_value' => $this->getEmptySelectValue(),
             'field_options' => array(
                 'choices' => User::$userRoles,
-            )
+            ),
         );
         $filter
             ->add(
                 "name",
                 "doctrine_orm_callback",
                 array(
-                    'callback' =>
-                        function ($queryBuilder, $alias, $field, $value) {
+                    'callback' => function ($queryBuilder, $alias, $field, $value) {
                             if (!$value || $value['value'] == "") {
                                 return;
                             }
@@ -211,7 +210,7 @@ class UserAdmin extends BaseAdmin
                             $queryBuilder->setParameter('name', '%'.$value['value'].'%');
 
                             return true;
-                        }
+                        },
                     )
             )
             ->add("enabled")

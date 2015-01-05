@@ -66,7 +66,7 @@ class MemcachedBlock extends BaseBlockService
         $params = array(
             'service' => $this->memcachedStats,
             'title' => 'Memcache server info',
-            'warning' => 'Memcached is not enabled'
+            'warning' => 'Memcached is not enabled',
         );
 
         $response = $this->renderResponse($template, $params, $response);

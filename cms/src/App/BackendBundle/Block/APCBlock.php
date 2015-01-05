@@ -67,7 +67,7 @@ class APCBlock extends BaseBlockService
         $params = array(
             'service' => $this->apcStats,
             'title' => 'APC info',
-            'warning' => 'APC is not enabled'
+            'warning' => 'APC is not enabled',
         );
         $response = $this->renderResponse($template, $params, $response);
         $response->setTtl($block->getSetting('ttl'));

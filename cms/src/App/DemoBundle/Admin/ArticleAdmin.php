@@ -43,7 +43,7 @@ class ArticleAdmin extends BaseAdmin
      */
     protected $datagridValues = array(
         '_sort_order' => 'DESC',
-        '_sort_by' => 'publishDate'
+        '_sort_by' => 'publishDate',
     );
 
     /**
@@ -65,10 +65,10 @@ class ArticleAdmin extends BaseAdmin
             'property' => 'name',
             'empty_value' => $this->getEmptySelectValue(),
             'label' => 'Category',
-            'attr' => array('data-placeholder' => $this->getEmptySelectValue())
+            'attr' => array('data-placeholder' => $this->getEmptySelectValue()),
         );
         $tagsParams = array(
-            'required' => false, 'expanded' => true, 'property' => 'name', 'by_reference' => false, 'multiple' => true
+            'required' => false, 'expanded' => true, 'property' => 'name', 'by_reference' => false, 'multiple' => true,
         );
 
         $translation = $this->trans('If checked, article will be visible');
@@ -97,11 +97,11 @@ class ArticleAdmin extends BaseAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $articleCategoryParams = array(
-            'sortable' => true, 'label' => 'Category', 'template' => 'SonataAdminBundle::CRUD:base_list_field.html.twig'
+            'sortable' => true, 'label' => 'Category', 'template' => 'SonataAdminBundle::CRUD:base_list_field.html.twig',
         );
 
         $publishDateParams = array(
-            'label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:list_date.html.twig'
+            'label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:list_date.html.twig',
         );
 
         $listMapper
@@ -122,12 +122,12 @@ class ArticleAdmin extends BaseAdmin
         $publishParams = array(
             'field_options' => array(
                  'catalogue' => 'article',
-                 'choices' => array(BooleanType::TYPE_NO => 'Disabled', BooleanType::TYPE_YES => 'Published')
-            )
+                 'choices' => array(BooleanType::TYPE_NO => 'Disabled', BooleanType::TYPE_YES => 'Published'),
+            ),
         );
         $articleCategortParams = array(
             'label' => 'Category',
-            'field_options' => array('empty_value' => $this->getEmptySelectValue())
+            'field_options' => array('empty_value' => $this->getEmptySelectValue()),
         );
         $filter
             ->add('title')
@@ -144,7 +144,7 @@ class ArticleAdmin extends BaseAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $publishDateParams = array(
-            'label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:show_date.html.twig'
+            'label' => 'Publish date', 'template' => 'AppBackendBundle:CRUD:show_date.html.twig',
         );
         $imageParams = array('label' => 'Uploaded Image', 'template' => 'AppDemoBundle:Article:show_image.html.twig');
 

@@ -26,7 +26,7 @@ class FormatExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'percentage' => new \Twig_Function_Method($this, 'getPercentage')
+            'percentage' => new \Twig_Function_Method($this, 'getPercentage'),
         );
     }
 
@@ -38,14 +38,14 @@ class FormatExtension extends \Twig_Extension
      */
     public function formatBytesFilter($bytes)
     {
-        foreach (array('','k','M','G') as $k) {
+        foreach (array('', 'k', 'M', 'G') as $k) {
             if ($bytes < 1024) {
                 break;
             }
-            $bytes/=1024;
+            $bytes /= 1024;
         }
 
-        return round($bytes, 2) . " {$k}B";
+        return round($bytes, 2)." {$k}B";
     }
 
     /**

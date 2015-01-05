@@ -57,7 +57,7 @@ class MediaCacheableListener implements EventSubscriber
     {
         return array(
             'preUpdate',
-            'postRemove'
+            'postRemove',
         );
     }
 
@@ -70,16 +70,16 @@ class MediaCacheableListener implements EventSubscriber
     {
         $object = $args->getEntity();
         if ($this->isMediaCacheable($object)) {
-            $realClass= \Doctrine\Common\Util\ClassUtils::getRealClass(get_class($object));
+            $realClass = \Doctrine\Common\Util\ClassUtils::getRealClass(get_class($object));
             $class = new \ReflectionClass($realClass);
             $mapping = $this->driver->readMediaCacheableFields($class);
             foreach ($mapping as $field) {
                 $fieldName = $field->getPropertyName();
-                $filePath = call_user_func(array($object, 'get' . ucfirst($field->getPathGetter())));
+                $filePath = call_user_func(array($object, 'get'.ucfirst($field->getPathGetter())));
                 if ($args->hasChangedField($fieldName)) {
                     $fileName = $args->getOldValue($fieldName);
                 } else {
-                    $fileName = call_user_func(array($object, 'get' . ucfirst($fieldName)));
+                    $fileName = call_user_func(array($object, 'get'.ucfirst($fieldName)));
                 }
                 $this->removeCache($field, $filePath, $fileName);
             }
@@ -99,8 +99,8 @@ class MediaCacheableListener implements EventSubscriber
             $mapping = $this->driver->readMediaCacheableFields($class);
             foreach ($mapping as $field) {
                 $fieldName = $field->getPropertyName();
-                $filePath = call_user_func(array($object, 'get' . ucfirst($field->getPathGetter())));
-                $fileName = call_user_func(array($object, 'get' . ucfirst($fieldName)));
+                $filePath = call_user_func(array($object, 'get'.ucfirst($field->getPathGetter())));
+                $fileName = call_user_func(array($object, 'get'.ucfirst($fieldName)));
                 $this->removeCache($field, $filePath, $fileName);
             }
         }
@@ -119,7 +119,7 @@ class MediaCacheableListener implements EventSubscriber
             return;
         }
         foreach ($field->getFilters() as $filterName) {
-            $this->imageCacheManager->remove($filePath . DIRECTORY_SEPARATOR . $fileName, $filterName);
+            $this->imageCacheManager->remove($filePath.DIRECTORY_SEPARATOR.$fileName, $filterName);
         }
     }
 
@@ -131,7 +131,7 @@ class MediaCacheableListener implements EventSubscriber
      */
     private function isMediaCacheable($obj)
     {
-        $realClass= \Doctrine\Common\Util\ClassUtils::getRealClass(get_class($obj));
+        $realClass = \Doctrine\Common\Util\ClassUtils::getRealClass(get_class($obj));
         $class = new \ReflectionClass($realClass);
 
         return null !== $this->driver->readMediaCacheable($class);

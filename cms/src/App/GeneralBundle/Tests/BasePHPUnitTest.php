@@ -48,7 +48,7 @@ abstract class BasePHPUnitTest extends WebTestCase
         $kernel = static::createKernel();
         $kernel->boot();
         $this->container = $kernel->getContainer();
-        $this->fixturesDir = $kernel->getBundle('AppGeneralBundle')->getPath() . '/Resources/phpunit/';
+        $this->fixturesDir = $kernel->getBundle('AppGeneralBundle')->getPath().'/Resources/phpunit/';
     }
 
     protected function tearDown()
@@ -91,7 +91,7 @@ abstract class BasePHPUnitTest extends WebTestCase
      */
     protected function loadFixtures($file)
     {
-        $fixturesFile = $this->fixturesDir . $file;
+        $fixturesFile = $this->fixturesDir.$file;
 
         return Yaml::parse(file_get_contents($fixturesFile));
     }
@@ -110,7 +110,7 @@ abstract class BasePHPUnitTest extends WebTestCase
         $form = $crawler->selectButton(self::LABEL_LOGIN)->form();
         $formParams = array(
             '_username' => $username,
-            '_password' => $password
+            '_password' => $password,
         );
         $client->submit($form, $formParams);
         $this->assertTrue($client->getResponse()->isRedirect());
@@ -122,9 +122,9 @@ abstract class BasePHPUnitTest extends WebTestCase
     /**
      * Delete row in CMS functional test
      *
-     * @param  Crawler $crawler
-     * @param  Client  $client
-     * @param  string  $linkName
+     * @param Crawler $crawler
+     * @param Client  $client
+     * @param string  $linkName
      */
     protected function doDeleteRecord(Crawler $crawler, Client $client, $linkName)
     {

@@ -42,8 +42,8 @@ class MemcachedStats implements StatsInterface
 
         if ($service->addServer($host, $port)) {
             $stats = $service->getStats();
-            if (isset($stats[$host . ':' . $port])) {
-                $this->stats = new \ArrayObject($stats[$host . ':' . $port]);
+            if (isset($stats[$host.':'.$port])) {
+                $this->stats = new \ArrayObject($stats[$host.':'.$port]);
             }
             $this->connected = true;
         }

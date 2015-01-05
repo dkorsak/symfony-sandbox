@@ -67,7 +67,7 @@ class OPCacheBlock extends BaseBlockService
         $params = array(
             'service' => $this->opCacheService,
             'title' => 'OPCache info',
-            'warning' => 'OPCache is not enabled'
+            'warning' => 'OPCache is not enabled',
         );
         $response = $this->renderResponse($template, $params, $response);
         $response->setTtl($block->getSetting('ttl'));

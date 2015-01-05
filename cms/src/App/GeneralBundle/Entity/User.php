@@ -44,7 +44,7 @@ class User extends BaseUser
      */
     public static $userRoles = array(
         'ROLE_SUPER_ADMIN' => 'Super administrator',
-        'ROLE_ADMIN' => 'Administrator'
+        'ROLE_ADMIN' => 'Administrator',
     );
 
     /**
@@ -327,7 +327,7 @@ class User extends BaseUser
      */
     public function getName()
     {
-        return $this->getFirstname() . ' ' . $this->getLastname();
+        return $this->getFirstname().' '.$this->getLastname();
     }
 
     /**
@@ -380,7 +380,7 @@ class User extends BaseUser
             return static::$userRoles[$constRole];
         }
 
-        return null;
+        return;
     }
 
     /**

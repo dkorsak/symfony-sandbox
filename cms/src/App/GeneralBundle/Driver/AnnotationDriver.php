@@ -83,7 +83,7 @@ class AnnotationDriver
 
             return $field;
         } catch (\ReflectionException $e) {
-            return null;
+            return;
         }
     }
 }

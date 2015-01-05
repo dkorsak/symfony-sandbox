@@ -468,7 +468,7 @@ class Article
     public function getFullImagePath()
     {
         if ($this->getImage() != "") {
-            return $this->getImageUploadDir() . DIRECTORY_SEPARATOR . $this->getImage();
+            return $this->getImageUploadDir().DIRECTORY_SEPARATOR.$this->getImage();
         }
 
         return "";

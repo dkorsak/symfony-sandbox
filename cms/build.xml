@@ -5,7 +5,7 @@
     <property name="bundle" value=""/>
     <property name="env" value="dev"/>
     <property name="debug" value="true"/>
-    <property name="selenium.jar" value="${java.lib}/selenium-server-standalone-2.39.0.jar"/>
+    <property name="selenium.jar" value="${java.lib}/selenium-server-standalone-2.44.0.jar"/>
 
     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
         <classpath>
@@ -62,7 +62,6 @@
                     <exclude name="behat.sh"/>
                     <exclude name=".php_cs"/>
                     <exclude name="rsync_exclude.txt"/>
-                    <exclude name="src/App/**/Features/**"/>
                     <exclude name="src/App/**/Tests/**"/>
                     <exclude name="vendor/liip/imagine-bundle/Liip/ImagineBundle/Tests/Fixtures/assets/**"/>
                     <exclude name="README.md"/>
@@ -72,6 +71,7 @@
                     <exclude name="package.json"/>
                     <exclude name="bower.json"/>
                     <exclude name=".bowerrc"/>
+                    <exclude name="features/**"/>
                     <exclude name="web/assets-built/sass/**"/>
                     <exclude name="web/assets-built/vendor/**"/>
                     <exclude name="web/assets-built/build.txt"/>
@@ -410,8 +410,7 @@
             <if>
                 <equals arg1="${deploy.execute.behat}" arg2="true"/>
                 <then>
-                    <behat bundle="frontend"/>
-                    <behat bundle="backend"/>
+                    <behat/>
                 </then>
             </if>
             <if>
@@ -431,15 +430,14 @@
 
     <macrodef name="behat">
         <attribute name="destination" default="cms"/>
-        <attribute name="bundle" default=""/>
         <sequential>
             <copy overwrite="true" file="${basedir}/cms/behat-template.yml" tofile="@{destination}/behat.yml">
                 <filterset filtersfile="${parameters-file-path}"/>
             </copy>
             <replace file="@{destination}/behat.yml" token="@file_path@" value="${basedir}"/>
             <antcall target="start-server"/>
-            <echo>ANT DEBUG: Executing behat tests - @{bundle}</echo>
-            <exec executable="php" dir="@{destination}"><arg line="bin/behat -p @{bundle} -f pretty,junit --out ,'${basedir}/test_result/behat'"/></exec>
+            <echo>ANT DEBUG: Executing behat tests</echo>
+            <exec executable="php" dir="@{destination}"><arg line="bin/behat -f pretty -f progress"/></exec>
             <antcall target="stop-server"/>
         </sequential>
     </macrodef>
@@ -646,16 +644,7 @@
     </target>
 
     <target name="behat" depends="check, clean-test-result-directory">
-        <if>
-            <equals arg1="${bundle}" arg2=""/>
-            <then>
-                <behat bundle="frontend"/>
-                <behat bundle="backend"/>
-            </then>
-            <else>
-                <behat bundle="${bundle}"/>
-            </else>
-        </if>
+        <behat/>
     </target>
 
     <target name="pu" description="Execute PHPUnit test without code covarage">

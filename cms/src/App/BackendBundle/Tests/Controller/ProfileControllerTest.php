@@ -23,7 +23,7 @@ class ProfileControllerTest extends BasePHPUnitTest
 
         $formParams = array(
             'sonata_user_profile_form[firstname]' => 'LAMA',
-            'sonata_user_profile_form[lastname]' => 'ALDONA'
+            'sonata_user_profile_form[lastname]' => 'ALDONA',
         );
         $client->submit($form, $formParams);
 
@@ -34,7 +34,7 @@ class ProfileControllerTest extends BasePHPUnitTest
         $form = $crawler->selectButton(self::LABEL_UPDATE_PROFILE)->form();
         $formParams = array(
             'sonata_user_profile_form[firstname]' => $oldFirstName,
-            'sonata_user_profile_form[lastname]' => $oldLastName
+            'sonata_user_profile_form[lastname]' => $oldLastName,
         );
         $client->submit($form, $formParams);
 

@@ -45,7 +45,7 @@ class AppBackendExtension extends Extension
                     'SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig',
                     'AppBackendBundle:Form:ckeditor_widget.html.twig',
                     'AppBackendBundle:Form:autocomplete_widget.html.twig',
-                    'AppBackendBundle:Form:jquery_date_widget.html.twig'
+                    'AppBackendBundle:Form:jquery_date_widget.html.twig',
                 )
             )
         );
