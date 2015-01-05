@@ -75,17 +75,26 @@ class ArticleAdmin extends BaseAdmin
         $publishParams = array('required' => false, 'help' => $translation);
 
         $imagePath = $this->getSubject()->getFullImagePath();
-        $uploadImageParams = array('required' => false, 'image_filter' => 'article_thumb', 'image_path' => $imagePath);
+        $uploadImageParams = array(
+            'required' => false,
+            'image_filter' => 'article_thumb',
+            'image_path' => $imagePath,
+            'label' => false
+        );
 
         $formMapper
-            ->with('General')
+            ->with('General', array('class' => 'col-md-6'))
                 ->add('articleCategory', 'sonata_type_model', $articleCategoryParams)
                 ->add('tags', 'sonata_type_model', $tagsParams)
                 ->add('title')
                 ->add('publishDate', 'app_backend_form_jquery_date_type', array('label' => 'Publish date'))
                 ->add('publish', null, $publishParams)
-                ->add('body', 'app_backend_form_ckeditor_type')
+            ->end()
+            ->with('Image', array('class' => 'col-md-6'))
                 ->add('uploadedImage', 'liip_imagine_image', $uploadImageParams)
+            ->end()
+            ->with('Content', array('class' => 'col-md-12'))
+                ->add('body', 'app_backend_form_ckeditor_type', array('label' => false))
             ->end();
     }
 
