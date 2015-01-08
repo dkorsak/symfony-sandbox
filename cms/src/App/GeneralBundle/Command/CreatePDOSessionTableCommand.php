@@ -46,11 +46,16 @@ class CreatePDOSessionTableCommand extends ContainerAwareCommand
             $params = $this->getContainer()->getParameter('pdo.db_options');
             $pdo = $this->getContainer()->get('pdo');
             $sql = sprintf(
-                "CREATE TABLE IF NOT EXISTS %s (%s VARCHAR(255) PRIMARY KEY, %s TEXT, %s INTEGER)",
+                "CREATE TABLE IF NOT EXISTS %s
+                    (%s VARBINARY(128) NOT NULL PRIMARY KEY,
+                     %s BLOB NOT NULL,
+                     %s INTEGER UNSIGNED NOT NULL,
+                     %s MEDIUMINT NOT NULL) COLLATE utf8_bin, ENGINE = InnoDB",
                 $params['db_table'],
                 $params['db_id_col'],
                 $params['db_data_col'],
-                $params['db_time_col']
+                $params['db_time_col'],
+                $params['db_lifetime_col']
             );
             $pdo->exec($sql);
         }
