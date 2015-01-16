@@ -510,6 +510,11 @@
         </path>
         <script language="javascript" classpathref="script.classpath">
         <![CDATA[
+            try {
+                load("nashorn:mozilla_compat.js");
+            } catch (e) {
+               // ignore the exception - perhaps we are running on Rhino!
+            }
             importPackage(Packages.org.yaml.snakeyaml);
             importPackage(java.lang, java.util, java.io);
             var input = new FileInputStream(new File(project.getProperty("parameters-file-path")));
