@@ -79,7 +79,7 @@ class ArticleAdmin extends BaseAdmin
             'required' => false,
             'image_filter' => 'article_thumb',
             'image_path' => $imagePath,
-            'label' => false
+            'label' => false,
         );
 
         $formMapper

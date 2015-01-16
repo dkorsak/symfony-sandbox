@@ -56,8 +56,7 @@
                     <exclude name="/web/css/**"/>
                     <exclude name="web/.htaccess-template"/>
                     <exclude name="behat*.*"/>
-                    <exclude name="composer*.*"/>
-                    <exclude name="*.phar"/>
+                    <exclude name="php-cs-fixer.phar"/>
                     <exclude name="deploy.sh"/>
                     <exclude name="behat.sh"/>
                     <exclude name=".php_cs"/>
@@ -194,12 +193,12 @@
             <if>
                 <equals arg1="@{debug}" arg2="true"/>
                 <then>
-                    <exec dir="@{destination}" executable="phpcs" failonerror="false">
+                    <exec dir="@{destination}" executable="./bin/phpcs" failonerror="false">
                         <arg line="-s --standard=${basedir}/coding_standards/PSR2/ruleset.xml --report=full ./src"/>
                     </exec>
                 </then>
                 <else>
-                    <exec dir="@{destination}" executable="phpcs" failonerror="false">
+                    <exec dir="@{destination}" executable="./bin/phpcs" failonerror="false">
                         <arg line="-s --standard=${basedir}/coding_standards/PSR2/ruleset.xml --report=checkstyle --report-file=${basedir}/test_result/checkstyle.xml ./src"/>
                     </exec>
                 </else>
@@ -215,12 +214,12 @@
             <if>
                 <equals arg1="@{debug}" arg2="true"/>
                 <then>
-                    <exec executable="phpmd" dir="@{destination}/src" failonerror="off">
+                    <exec executable="../bin/phpmd" dir="@{destination}/src" failonerror="off">
                         <arg line=". xml codesize,unusedcode,design --exclude /App/BackendBundle/Resources,/App/FrontendBundle/Resources,/App/GeneralBundle/Resources"/>
                     </exec>
                 </then>
                 <else>
-                    <exec executable="phpmd" dir="@{destination}/src" failonerror="off">
+                    <exec executable="../bin/phpmd" dir="@{destination}/src" failonerror="off">
                         <arg line=". xml codesize,unusedcode,design --reportfile '${basedir}/test_result/pmd.xml' --exclude /App/BackendBundle/Resources,/App/FrontendBundle/Resources,/App/GeneralBundle/Resources"/>
                     </exec>
                 </else>
@@ -236,7 +235,7 @@
             <if>
                 <equals arg1="@{debug}" arg2="true"/>
                 <then>
-                    <exec executable="phpcpd" dir="@{destination}" failonerror="off">
+                    <exec executable="./bin/phpcpd" dir="@{destination}" failonerror="off">
                         <arg value="--min-lines"/>
                         <arg value="5"/>
                         <arg value="--exclude"/>
@@ -251,7 +250,7 @@
                     </exec>
                 </then>
                 <else>
-                    <exec executable="phpcpd" dir="@{destination}" failonerror="off">
+                    <exec executable="./bin/phpcpd" dir="@{destination}" failonerror="off">
                         <arg value="--min-lines"/>
                         <arg value="5"/>
                         <arg value="--exclude"/>
@@ -274,7 +273,7 @@
         <attribute name="destination" default="cms"/>
         <sequential>
             <echo>ANT DEBUG: Creating software metrics report using PHP_Depend</echo>
-            <exec executable="pdepend" dir="@{destination}" failonerror="off">
+            <exec executable="./bin/pdepend" dir="@{destination}" failonerror="off">
                 <arg value="--jdepend-xml=${basedir}/test_result/pdepend-jdepend.xml"/>
                 <arg value="--jdepend-chart=${basedir}/test_result/pdepend-dependencies.svg"/>
                 <arg value="--overview-pyramid=${basedir}/test_result/pdepend-overview-pyramid.svg"/>
@@ -288,7 +287,7 @@
         <attribute name="destination" default="cms"/>
         <sequential>
             <echo>ANT DEBUG: Creating measure project size using report</echo>
-            <exec executable="phploc" dir="@{destination}" failonerror="off">
+            <exec executable="./bin/phploc" dir="@{destination}" failonerror="off">
                 <arg value="--log-csv"/>
                 <arg value="${basedir}/test_result/phploc.csv"/>
                 <arg value="--exclude"/>
@@ -306,8 +305,8 @@
         <attribute name="destination" default="cms"/>
         <sequential>
             <echo>ANT DEBUG: Aggregating output with PHP_CodeBrowser</echo>
-            <exec executable="phpcb" dir="@{destination}" failonerror="off">
-                <arg line="--log ${basedir}/test_result --source ./src --output ${basedir}/test_result/code-browser --ignore ./src/App/BackendBundle/Resources,./src/App/FrontendBundle/Resources,./src/App/GeneralBundle/Resources"/>
+            <exec executable="./bin/phpcb" dir="@{destination}" failonerror="off">
+                <arg line="--log ${basedir}/test_result --source ./src --output ${basedir}/test_result/code-browser --ignore ./src/App/BackendBundle/Resources --ignore ./src/App/FrontendBundle/Resources --ignore ./ant behat./src/App/GeneralBundle/Resources"/>
             </exec>
         </sequential>
     </macrodef>
@@ -377,6 +376,10 @@
             <chmod dir="@{destination}/app/console" perm="+x"/>
             <echo>AND DEBUG: Copying ${parameters-file-path} file</echo>
             <copy preservelastmodified="true" overwrite="true" file="${parameters-file-path}" tofile="@{destination}/app/config/parameters.yml"/>
+            <exec executable="php" dir="@{destination}"><arg line="composer.phar install --no-dev --optimize-autoloader --no-scripts"/></exec>
+            <delete file="@{destination}/composer.phar"/>
+            <delete file="@{destination}/composer.json"/>
+            <delete file="@{destination}/composer.lock"/>
             <build destination="@{destination}" env="prod"/>
             <if>
                 <equals arg1="${deploy.dump.routing}" arg2="true"/>
