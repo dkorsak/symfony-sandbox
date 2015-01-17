@@ -306,7 +306,7 @@
         <sequential>
             <echo>ANT DEBUG: Aggregating output with PHP_CodeBrowser</echo>
             <exec executable="./bin/phpcb" dir="@{destination}" failonerror="off">
-                <arg line="--log ${basedir}/test_result --source ./src --output ${basedir}/test_result/code-browser --ignore ./src/App/BackendBundle/Resources --ignore ./src/App/FrontendBundle/Resources --ignore ./ant behat./src/App/GeneralBundle/Resources"/>
+                <arg line="--log ${basedir}/test_result --source ./src --output ${basedir}/test_result/code-browser --ignore ./src/App/BackendBundle/Resources --ignore ./src/App/FrontendBundle/Resources --ignore ./src/App/GeneralBundle/Resources"/>
             </exec>
         </sequential>
     </macrodef>
