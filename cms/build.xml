@@ -565,11 +565,11 @@
 
     <!--- ################################ TASKS ############################################################### -->
 
-    <target name="composer" depends="check" description="Update vendor directory with latest composer.lock file">
+    <target name="composer" description="Update vendor directory with latest composer.lock file">
         <composer/>
     </target>
 
-    <target name="composerupdate" depends="check" description="Update vendor directory to latest lib versions">
+    <target name="composerupdate" description="Update vendor directory to latest lib versions">
         <composer action="update"/>
     </target>
 
@@ -658,7 +658,7 @@
     <target name="pu" description="Execute PHPUnit test without code covarage">
         <echo>ANT DEBUG: Executing PHPUnit tests without code coverage</echo>
         <exec executable="phpunit" dir="cms/bin">
-            <arg line="-v -c ../app/phpunit.xml --colors --debug"/>
+            <arg line="-v -c ../app/phpunit.xml --debug"/>
         </exec>
     </target>
 </project>
