@@ -10,35 +10,6 @@
     {% if form is defined %}{{ form_javascript(form) }}{% endif %}
 {% endblock javascripts %}
 
-{% block sonata_page_content_nav %}
-    {% if _tab_menu is not empty or _actions is not empty %}
-        <nav class="navbar navbar-default" role="navigation">
-            {% if _navbar_title is not empty %}
-                <div class="navbar-header">
-                    <span class="navbar-brand">{{ _navbar_title|raw }}</span>
-                </div>
-            {% endif %}
-            <div class="container-fluid">
-                <div class="navbar-left">
-                    {% if _tab_menu is not empty %}
-                        {{ _tab_menu|raw }}
-                    {% endif %}
-                </div>
-                {% if _actions|replace({ '<li>': '', '</li>': '' })|trim is not empty %}
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown sonata-actions">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'link_actions'|trans({}, 'SonataAdminBundle') }} <b class="caret"></b></a>
-                            <ul class="dropdown-menu" role="menu">
-                                {{ _actions|raw }}
-                            </ul>
-                        </li>
-                    </ul>
-                {% endif %}
-            </div>
-        </nav>
-    {% endif %}
-{% endblock sonata_page_content_nav %}
-
 {% block sonata_header %}
     <div id="ajax_loader">
         <img src="/bundles/appbackend/images/ajax-loader.gif" alt=""/>
