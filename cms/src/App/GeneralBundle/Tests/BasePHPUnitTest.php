@@ -53,7 +53,10 @@ abstract class BasePHPUnitTest extends WebTestCase
 
     protected function tearDown()
     {
-        $this->container->get('doctrine')->getConnection()->close();
+        if ($this->container) {
+            $this->container->get('doctrine')->getConnection()->close();
+        }
+
         \Mockery::close();
         $refl = new \ReflectionObject($this);
         foreach ($refl->getProperties() as $prop) {
