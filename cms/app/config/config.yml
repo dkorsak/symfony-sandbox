@@ -245,7 +245,7 @@ sonata_admin:
             - bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js
             - bundles/sonataadmin/vendor/jqueryui/ui/minified/jquery-ui.min.js
             - bundles/sonataadmin/vendor/jqueryui/ui/minified/i18n/jquery-ui-i18n.min.js
-            - bundles/sonataadmin/jquery/jquery.form.js
+            - bundles/sonataadmin/vendor/jquery-form/jquery.form.js
             - bundles/sonataadmin/jquery/jquery.confirmExit.js
             - bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js
             - bundles/sonatacore/vendor/select2/select2.min.js
@@ -340,7 +340,6 @@ sonata_user:
 
 # Default SEO settings for frontend website
 sonata_seo:
-    default:          sonata.seo.page.default #service
     encoding:         utf-8
     page:
         title:            Symfony2 Sandbox
@@ -365,6 +364,8 @@ sonata_seo:
             'lang':     'en'
             #'xmlns:og':           http://opengraphprotocol.org/schema/
             #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
+        default:          sonata.seo.page.default #service
+
 
 # Genmenu form configuration
 genemu_form:
