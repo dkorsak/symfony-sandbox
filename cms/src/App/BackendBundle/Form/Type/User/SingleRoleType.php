@@ -8,7 +8,7 @@
 namespace App\BackendBundle\Form\Type\User;
 
 use App\GeneralBundle\Entity\User;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\AbstractType;
 
 /**
@@ -21,9 +21,9 @@ class SingleRoleType extends AbstractType
     /**
      * {@inheritdoc}
      *
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $defaultValues['choices'] = User::$userRoles;
         $defaultValues['empty_value'] = 'Please select';

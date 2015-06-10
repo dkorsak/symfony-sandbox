@@ -9,7 +9,7 @@ namespace App\BackendBundle\Form\Type;
 
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\AbstractType;
 
 /**
@@ -35,9 +35,9 @@ class CKEditorType extends AbstractType
     /**
      * {@inheritdoc}
      *
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $defaultValues = array(
             'custom_config' => 'bundles/appbackend/js/ckeditor_config.js',

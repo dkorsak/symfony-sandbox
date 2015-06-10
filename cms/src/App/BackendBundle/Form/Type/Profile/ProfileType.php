@@ -9,8 +9,7 @@ namespace App\BackendBundle\Form\Type\Profile;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use App\GeneralBundle\Entity\User;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * User profile type
@@ -55,9 +54,9 @@ class ProfileType extends AbstractType
     /**
      * {@inheritdoc}
      *
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
             array(

@@ -172,7 +172,7 @@ sonata_admin:
         html5_validate:       true
         confirm_exit:         true #disable or enable confirm exit from page
         use_select2:          true #disable or enable global form HTML5 validation
-        use_icheck:           false
+        use_icheck:           true
         pager_links:          10 # pager max links to display if is null is getting from BaseAdmin
         form_type:            standard
         dropdown_number_groups_per_colums:  2
@@ -397,15 +397,18 @@ knp_gaufrette:
 
 # Lipp imagine configuration
 liip_imagine:
-    driver:               gd #gd, imagick, gmagick
-    web_root:             %kernel.root_dir%/../web
-    data_root:            %kernel.root_dir%/../web/uploads
-    cache_mkdir_mode:     0777
-    cache_prefix:         /uploads/cache
-    cache:                web_path
-    cache_clearer:        true
-    data_loader:          filesystem
-    controller_action:    liip_imagine.controller:filterAction
+    resolvers:
+        default:
+            web_path:
+                web_root: %kernel.root_dir%/../web
+                cache_prefix: /uploads/cache
+    loaders:
+        default:
+            filesystem:
+                data_root: %kernel.root_dir%/../web/uploads
+    driver:               gd
+    cache:                default
+    data_loader:          default
     filter_sets:
         article_thumb:
             filters:

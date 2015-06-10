@@ -6,7 +6,7 @@
  */
 namespace App\BackendBundle\Form\Type;
 
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\AbstractType;
 
 /**
@@ -18,9 +18,9 @@ class JQueryDateType extends AbstractType
 {
     /**
      * {@inheritdoc}
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $defaultValues = array(
             'culture' => $this->getJQueryCulture(),
