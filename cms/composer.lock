@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0fbefc21dddcbeadb2eec75c95d25895",
+    "hash": "99f71f536cd2b2d7011e5ec5b7cfbf0a",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -56,7 +56,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/00ff0cb27e986c4a33a4682790ea527e1a9f420b",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/cdd2426ef869c82d46dec6dbf2cb0c5a5471814b",
                 "reference": "00ff0cb27e986c4a33a4682790ea527e1a9f420b",
                 "shasum": ""
             },
@@ -1042,7 +1042,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/900b55d16afdcdeb5100d435a7166d3a425b9873",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/14ff7f50cfea67d8a4dca37b8ca364d2a83b9864",
                 "reference": "900b55d16afdcdeb5100d435a7166d3a425b9873",
                 "shasum": ""
             },
@@ -1894,7 +1894,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSSecurityExtraBundle/zipball/59b777ebaa37803a75803982ddab18c08a47e48f",
+                "url": "https://api.github.com/repos/schmittjoh/JMSSecurityExtraBundle/zipball/9e9a697fd39c8cd2f6af73fbe4762227848f8e31",
                 "reference": "59b777ebaa37803a75803982ddab18c08a47e48f",
                 "shasum": ""
             },
@@ -2622,7 +2622,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/77aef55318035d37dbd4e87ea0c37a191f3e766e",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/3f1ac6544cedfb6285035521d4b9f231567ca821",
                 "reference": "77aef55318035d37dbd4e87ea0c37a191f3e766e",
                 "shasum": ""
             },
@@ -2699,7 +2699,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/NelmioApiDocBundle/zipball/a679eb80891fc037c9356a381a92d090a83533cb",
+                "url": "https://api.github.com/repos/nelmio/NelmioApiDocBundle/zipball/c7909c576e17ef013d59d7f5166ba3c7325e459b",
                 "reference": "a679eb80891fc037c9356a381a92d090a83533cb",
                 "shasum": ""
             },
@@ -3243,7 +3243,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/2bb5c41dd77f73f8b449021278dc23dc0826e76e",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/e60b9b51dcd05e75889f2f4ccd6c87e337915c94",
                 "reference": "2bb5c41dd77f73f8b449021278dc23dc0826e76e",
                 "shasum": ""
             },
@@ -3329,7 +3329,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/7a429165bb4c53682d272c1d71a4cc546865a267",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/95068d0ae8d8a5dae08193d34aa06fac23c2386e",
                 "reference": "7a429165bb4c53682d272c1d71a4cc546865a267",
                 "shasum": ""
             },
@@ -3523,7 +3523,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/97b5139a7e7cf89c45f086b3907ca2672f6cea09",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/95ef6c5fdcfa50f90de746c0cff2d81c44d89df7",
                 "reference": "97b5139a7e7cf89c45f086b3907ca2672f6cea09",
                 "shasum": ""
             },
@@ -3816,7 +3816,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/exporter/zipball/f0d5264c824b75ebab8e3d6c97eace60299678eb",
+                "url": "https://api.github.com/repos/sonata-project/exporter/zipball/1af98eaec1d984c761c55450399c5b2c9578ea06",
                 "reference": "f0d5264c824b75ebab8e3d6c97eace60299678eb",
                 "shasum": ""
             },
@@ -3928,7 +3928,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/e9f39b7ce83991077f693410b1e17b85d7f4d323",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/84b81f4aeff9e30c52a2cbd9d138159c3dc357bb",
                 "reference": "e9f39b7ce83991077f693410b1e17b85d7f4d323",
                 "shasum": ""
             },
@@ -3990,7 +3990,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/a0c1cea3c79c33a374b6afd416480b958c9f30ea",
+                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/57b89ab365fa28d242c6a7f0dd5d94c9d159c874",
                 "reference": "a0c1cea3c79c33a374b6afd416480b958c9f30ea",
                 "shasum": ""
             },
@@ -4056,7 +4056,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/2f5b1abfbf2edc91203c1bfd2e2c346c761362a8",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/e9e22626b99f6177a4c0278fb74f4adc7fbff314",
                 "reference": "2f5b1abfbf2edc91203c1bfd2e2c346c761362a8",
                 "shasum": ""
             },
@@ -4424,12 +4424,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "eb366b926465b33f2c36ec381df4d1ddb03a48d0"
+                "reference": "58f1420722977ca0028894a1fd8a7024142866fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/eb366b926465b33f2c36ec381df4d1ddb03a48d0",
-                "reference": "eb366b926465b33f2c36ec381df4d1ddb03a48d0",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/58f1420722977ca0028894a1fd8a7024142866fb",
+                "reference": "58f1420722977ca0028894a1fd8a7024142866fb",
                 "shasum": ""
             },
             "require": {
@@ -4538,7 +4538,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-06-10 18:57:31"
+            "time": "2015-06-11 22:37:12"
         },
         {
             "name": "twig/extensions",
@@ -4753,7 +4753,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com",
                     "homepage": "http://www.willdurand.fr"
                 }
@@ -4820,7 +4820,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-code/zipball/66419fd66181ca9dea948b9b8d4cfd065cbb44e8",
+                "url": "https://api.github.com/repos/zendframework/zend-code/zipball/b17e072465a6e1d055c2e2c5a81929b00645cc50",
                 "reference": "66419fd66181ca9dea948b9b8d4cfd065cbb44e8",
                 "shasum": ""
             },
@@ -5701,20 +5701,20 @@
         },
         {
             "name": "phploc/phploc",
-            "version": "dev-master",
+            "version": "2.1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phploc.git",
-                "reference": "4b21840dfefa8b5a21cb7c95eb66be29190fc83b"
+                "reference": "ab893cbe5c4b63760b1560b370fedc001eb5717f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phploc/zipball/4b21840dfefa8b5a21cb7c95eb66be29190fc83b",
-                "reference": "4b21840dfefa8b5a21cb7c95eb66be29190fc83b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phploc/zipball/ab893cbe5c4b63760b1560b370fedc001eb5717f",
+                "reference": "ab893cbe5c4b63760b1560b370fedc001eb5717f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6",
+                "php": ">=5.3.3",
                 "sebastian/finder-facade": "~1.1",
                 "sebastian/git": "~2.0",
                 "sebastian/version": "~1.0.3",
@@ -5729,7 +5729,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
             "autoload": {
@@ -5750,7 +5750,7 @@
             ],
             "description": "A tool for quickly measuring the size of a PHP project.",
             "homepage": "https://github.com/sebastianbergmann/phploc",
-            "time": "2015-06-06 05:01:32"
+            "time": "2015-06-04 13:18:14"
         },
         {
             "name": "phpmd/phpmd",
@@ -6081,7 +6081,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/eab81d02569310739373308137284e0158424330",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/db63be1159c81df649cd0260e30249a586d4129e",
                 "reference": "eab81d02569310739373308137284e0158424330",
                 "shasum": ""
             },
@@ -6130,7 +6130,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/52614404b26c963c07b729740bcb204a89324ed6",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/962b4c72d7467f0d1b352898efdd1e2127612bc0",
                 "reference": "52614404b26c963c07b729740bcb204a89324ed6",
                 "shasum": ""
             },
@@ -6202,7 +6202,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/5034a3d9f2057a7b7d6ad03a984509dadfdda3cc",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/47205991b1842798eba5f15dc2f0beb8a601c1cd",
                 "reference": "5034a3d9f2057a7b7d6ad03a984509dadfdda3cc",
                 "shasum": ""
             },
@@ -6939,6 +6939,7 @@
         "lexik/maintenance-bundle": 20,
         "redexperts/errbit-bundle": 20,
         "mockery/mockery": 20,
+        "phploc/phploc": 20,
         "phpmd/phpmd": 0
     },
     "prefer-stable": false,
