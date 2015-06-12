@@ -176,12 +176,24 @@
 
     <macrodef name="phpunit" description="PHPUnit and Clover PHP">
         <attribute name="destination" default="cms"/>
+        <attribute name="coverage" default="false"/>
         <sequential>
             <clear.file.cache destination="@{destination}" env="test"/>
-            <echo>ANT DEBUG: Executing PHPUnit tests</echo>
-            <exec executable="./phpunit" dir="@{destination}/bin">
-                <arg line="-v -c ../app/phpunit.xml --coverage-html '${basedir}/test_result/coverage' --coverage-clover '${basedir}/test_result/clover.xml' --stderr --log-junit '${basedir}/test_result/phpunit.xml'"/>
-            </exec>
+            <if>
+                <equals arg1="@{coverage}" arg2="true"/>
+                <then>
+                    <echo>ANT DEBUG: Executing PHPUnit tests with code coverage</echo>
+                    <exec executable="./phpunit" dir="@{destination}/bin">
+                        <arg line="-v -c ../app/phpunit.xml --coverage-html '${basedir}/test_result/coverage' --coverage-clover '${basedir}/test_result/clover.xml' --stderr --log-junit '${basedir}/test_result/phpunit.xml'"/>
+                    </exec>
+                </then>
+                <else>
+                    <echo>ANT DEBUG: Executing PHPUnit tests</echo>
+                    <exec executable="./phpunit" dir="@{destination}/bin">
+                        <arg line="-v -c ../app/phpunit.xml --debug --stderr --log-junit '${basedir}/test_result/phpunit.xml'"/>
+                    </exec>
+                </else>
+            </if>
         </sequential>
     </macrodef>
 
@@ -407,7 +419,7 @@
             <if>
                 <equals arg1="${deploy.execute.phpunit}" arg2="true"/>
                 <then>
-                    <phpunit/>
+                    <phpunit coverage="${deploy.execute.code.coverage}"/>
                 </then>
             </if>
             <if>
@@ -440,7 +452,7 @@
             <replace file="@{destination}/behat.yml" token="@file_path@" value="${basedir}"/>
             <antcall target="start-server"/>
             <echo>ANT DEBUG: Executing behat tests</echo>
-            <exec executable="php" dir="@{destination}"><arg line="bin/behat -f progress -f pretty"/></exec>
+            <exec executable="php" dir="@{destination}"><arg line="bin/behat -f junit --out '${basedir}/test_result/behat' -f pretty --out ,"/></exec>
             <antcall target="stop-server"/>
         </sequential>
     </macrodef>

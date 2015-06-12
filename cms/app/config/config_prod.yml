@@ -3,7 +3,9 @@ imports:
 
 framework:
     validation:
-        cache: apc
+        cache: validator.mapping.cache.doctrine.memcached
+    serializer:
+        cache: serializer.mapping.cache.doctrine.memcached
 
 doctrine:
     orm:

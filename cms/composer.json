@@ -37,19 +37,23 @@
         "liip/imagine-bundle": "dev-master",
         "friendsofsymfony/jsrouting-bundle": "dev-master",
         "lexik/maintenance-bundle": "dev-master",
-        "ornicar/apc-bundle":    "*",
+        "ornicar/apc-bundle": "*",
         "redexperts/errbit-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
+
         "mockery/mockery": "dev-master",
-        "phpunit/phpunit": "~4.3",
+        "phpunit/phpunit": "~4.8",
+
         "pdepend/pdepend" : "~2.0.4",
         "phploc/phploc": "2.1.x-dev",
         "squizlabs/php_codesniffer": "2.*",
         "phpmd/phpmd": "@stable",
         "sebastian/phpcpd": "*",
+        "theseer/phpdox": "dev-master",
         "mayflower/php-codebrowser": "~1.1",
+
         "behat/behat": "~3.0",
         "behat/mink": "*",
         "behat/symfony2-extension": "*",

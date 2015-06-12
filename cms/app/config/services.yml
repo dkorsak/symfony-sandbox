@@ -1,0 +1,44 @@
+# GLOBAL APPLICATION SERVICES
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    # wrapper for doctine cache
+    validator.mapping.cache.doctrine.memcached:
+        class: Symfony\Component\Validator\Mapping\Cache\DoctrineCache
+        public: false
+        arguments:
+            - @doctrine_cache.providers.framework_memcached
+
+    # wrapper for doctine cache
+    serializer.mapping.cache.doctrine.memcached:
+        class: Symfony\Component\Validator\Mapping\Cache\DoctrineCache
+        public: false
+        arguments:
+            - @doctrine_cache.providers.framework_memcached
+
+    # store symfony session in memcached
+    session.memcached:
+        class: Memcached
+        calls:
+          - [ addServer, [ %memcached_host%, %memcached_port% ]]
+
+    session.handler.memcached:
+        class: Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler
+        arguments: [ @session.memcached, { prefix: %memcached_session_prefix%, expiretime: %memcached_session_expire% } ]
+
+    # store symfony session in PDO
+    pdo:
+        class: PDO
+        arguments:
+            - "mysql:dbname=%database_name%;host=%database_host%;port=%database_port%"
+            - %database_user%
+            - %database_password%
+        calls:
+            - [setAttribute, [3, 2]] # \PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION
+
+    session.handler.pdo:
+        class:     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+        arguments: [@pdo, %pdo.db_options%]

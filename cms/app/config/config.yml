@@ -1,6 +1,21 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: pl
+    # symfony pdo session database params
+    pdo.db_options:
+        db_table:        session
+        db_id_col:       session_id
+        db_data_col:     session_value
+        db_time_col:     session_time
+        db_lifetime_col: session_lifetime
+    # disabe or enable routing caching - does not work with dump routing into .htaccess file
+    disable_routing_cache: false
 
 framework:
     #esi: ~
@@ -58,6 +73,14 @@ assetic:
             node: %less.node%
             node_paths: [%less.node_paths%]
 
+#https://github.com/doctrine/DoctrineCacheBundle
+doctrine_cache:
+    providers:
+        framework_memcached:
+            memcached:
+                servers:
+                     %memcached_host%: %memcached_port%
+
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -68,6 +91,7 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        server_version: 5.5 #https://github.com/doctrine/DoctrineBundle/issues/351
 
         types:
             json: Sonata\Doctrine\Types\JsonType
@@ -445,39 +469,3 @@ redexperts_errbit:
         port:              80
         environment_name:  %errbit_environment_name%
         skipped_exceptions:  []
-
-parameters:
-    # symfony pdo session database params
-    pdo.db_options:
-        db_table:        session
-        db_id_col:       session_id
-        db_data_col:     session_value
-        db_time_col:     session_time
-        db_lifetime_col: session_lifetime
-    # disabe or enable routing caching - does not work with dump routing into .htaccess file
-    disable_routing_cache: false
-
-services:
-    # store symfony session in memcached
-    session.memcached:
-        class: Memcached
-        calls:
-          - [ addServer, [ %memcached_host%, %memcached_port% ]]
-
-    session.handler.memcached:
-        class: Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler
-        arguments: [ @session.memcached, { prefix: %memcached_session_prefix%, expiretime: %memcached_session_expire% } ]
-
-    # store symfony session in PDO
-    pdo:
-        class: PDO
-        arguments:
-            - "mysql:dbname=%database_name%;host=%database_host%;port=%database_port%"
-            - %database_user%
-            - %database_password%
-        calls:
-            - [setAttribute, [3, 2]] # \PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION
-
-    session.handler.pdo:
-        class:     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
-        arguments: [@pdo, %pdo.db_options%]

@@ -27,7 +27,6 @@ parameters:
     # leave empty if you do not need send emails to one email address
     swiftmailer_delivery_address: ~
 
-    locale            : pl
     secret            : ThisTokenIsNotSoSecretChangeIt
     # your website URL
     server_name       : http://SITE_URL
@@ -59,12 +58,17 @@ parameters:
 
     # deploy project into server parameters for ANT deploy task
     deploy.destination              : build
-    # enable or disable maitenance page
+
+    # enable or disable maintenance page
     deploy.lock                     : false
     deploy.execute.phpunit          : true
+
+    # execute PHPUnit with code coverage
+    deploy.execute.code.coverage    : true
     deploy.execute.behat            : true
     deploy.execute.codereport       : true
     deploy.execute.phpdoc           : false
+
     # if set to true all routes will be dump into htaccess file. Works only for prod env.
     deploy.dump.routing             : true
 

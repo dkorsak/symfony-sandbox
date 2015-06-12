@@ -1,4 +1,4 @@
-# This is a basic VCL configuration file for Symfony 2 Sandbox varnish.
+# This is a basic VCL configuration file for Symfony 2 Sandbox varnish 3.x.
 
 # Default backend definition.  Set this to point to your content
 # server.
