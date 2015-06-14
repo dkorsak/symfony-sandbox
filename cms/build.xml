@@ -451,8 +451,9 @@
             </copy>
             <replace file="@{destination}/behat.yml" token="@file_path@" value="${basedir}"/>
             <antcall target="start-server"/>
+
             <echo>ANT DEBUG: Executing behat tests</echo>
-            <exec executable="php" dir="@{destination}"><arg line="bin/behat -f junit --out '${basedir}/test_result/behat' -f pretty --out ,"/></exec>
+            <exec executable="php" dir="@{destination}"><arg line="bin/behat -f junit --out '${basedir}/test_result/behat'"/></exec>
             <antcall target="stop-server"/>
         </sequential>
     </macrodef>

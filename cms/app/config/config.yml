@@ -419,7 +419,7 @@ knp_gaufrette:
         article_image_fs:
             adapter:    article_adaper
 
-# Lipp imagine configuration
+# Liip imagine configuration
 liip_imagine:
     resolvers:
         default:

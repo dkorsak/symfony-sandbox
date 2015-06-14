@@ -24,6 +24,13 @@ class BaseAdmin extends Admin
     protected $maxPageLinks = 10;
 
     /**
+     * Disable list modes
+     *
+     * @var array
+     */
+    protected $listModes = array();
+
+    /**
      * Get service from container
      *
      * @param  string $serviceName

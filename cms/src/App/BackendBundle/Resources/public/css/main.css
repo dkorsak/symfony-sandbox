@@ -25,6 +25,7 @@
 
 div.sonata-medium-date select {
     margin-right: 10px;
+    width: 90px;
 }
 
 .medium-date select {
