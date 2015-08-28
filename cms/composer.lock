@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "098c97eb13d681b4d05357c21f6300b7",
+    "hash": "cbd9ea8e0b2aa6c8c05d8c257e9470db",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -4396,6 +4396,64 @@
             "time": "2015-08-01 17:21:06"
         },
         {
+            "name": "symfony/security-acl",
+            "version": "2.8.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/security-acl.git",
+                "reference": "ec72d7849cd334b161c60ceb6e8f6fa05a507516"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/security-acl/zipball/ec72d7849cd334b161c60ceb6e8f6fa05a507516",
+                "reference": "ec72d7849cd334b161c60ceb6e8f6fa05a507516",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "symfony/security-core": "~2.4|~3.0.0"
+            },
+            "require-dev": {
+                "doctrine/common": "~2.2",
+                "doctrine/dbal": "~2.2",
+                "psr/log": "~1.0",
+                "symfony/phpunit-bridge": "~2.7|~3.0.0"
+            },
+            "suggest": {
+                "doctrine/dbal": "For using the built-in ACL implementation",
+                "symfony/class-loader": "For using the ACL generateSql script",
+                "symfony/finder": "For using the ACL generateSql script"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Security\\Acl\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Security Component - ACL (Access Control List)",
+            "homepage": "https://symfony.com",
+            "time": "2015-07-22 11:24:41"
+        },
+        {
             "name": "symfony/swiftmailer-bundle",
             "version": "dev-master",
             "source": {
@@ -4454,22 +4512,23 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "2.7.x-dev",
+            "version": "2.8.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "f42dd21d490d213f27ec11b393ac9ac1b9bf22ca"
+                "reference": "a1deb42ea61e06a3f66943078ea157d118d70118"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/f42dd21d490d213f27ec11b393ac9ac1b9bf22ca",
-                "reference": "f42dd21d490d213f27ec11b393ac9ac1b9bf22ca",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/a1deb42ea61e06a3f66943078ea157d118d70118",
+                "reference": "a1deb42ea61e06a3f66943078ea157d118d70118",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.3",
                 "php": ">=5.3.9",
                 "psr/log": "~1.0",
+                "symfony/security-acl": "~2.8",
                 "twig/twig": "~1.20|~2.0"
             },
             "replace": {
@@ -4501,7 +4560,6 @@
                 "symfony/proxy-manager-bridge": "self.version",
                 "symfony/routing": "self.version",
                 "symfony/security": "self.version",
-                "symfony/security-acl": "self.version",
                 "symfony/security-bundle": "self.version",
                 "symfony/security-core": "self.version",
                 "symfony/security-csrf": "self.version",
@@ -4532,7 +4590,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev"
+                    "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
@@ -4572,7 +4630,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-08-27 21:38:40"
+            "time": "2015-08-28 10:03:25"
         },
         {
             "name": "twig/extensions",

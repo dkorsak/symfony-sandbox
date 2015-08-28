@@ -8,7 +8,7 @@
         "php": ">=5.3.9",
         "ext-memcached": "*",
         "ext-apc": "*",
-        "symfony/symfony": "2.7.x-dev",
+        "symfony/symfony": "2.8.x-dev",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
