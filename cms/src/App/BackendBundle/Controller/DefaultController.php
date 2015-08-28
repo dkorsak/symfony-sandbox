@@ -1,23 +1,19 @@
 <?php
 
 /**
- * DefaultController class
- *
- *
+ * DefaultController class.
  */
 namespace App\BackendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Default controller
- *
- *
+ * Default controller.
  */
 class DefaultController extends Controller
 {
     /**
-     * Execute permission denied action
+     * Execute permission denied action.
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */

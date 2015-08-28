@@ -7,9 +7,7 @@ use Vich\UploaderBundle\Mapping\PropertyMapping;
 use Vich\UploaderBundle\Naming\NamerInterface;
 
 /**
- * Class for generate user friendly file name
- *
- *
+ * Class for generate user friendly file name.
  */
 class SlugNamer implements NamerInterface
 {
@@ -17,7 +15,7 @@ class SlugNamer implements NamerInterface
     {
         $file = $mapping->getFile($obj);
         $ext = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
-        if ("" != $ext) {
+        if ('' != $ext) {
             $ext = '.'.$ext;
         }
         if (method_exists($obj, 'getSlug') && $obj->getSlug() != '') {

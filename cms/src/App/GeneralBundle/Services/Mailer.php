@@ -1,15 +1,12 @@
 <?php
 
 /**
- * Mailer class
- *
- *
+ * Mailer class.
  */
 namespace App\GeneralBundle\Services;
 
 /**
- * Mailer service
- *
+ * Mailer service.
  */
 class Mailer
 {
@@ -29,13 +26,13 @@ class Mailer
     private $sender;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param \Swift_Mailer $swift
      * @param string        $from
      * @param string        $sender
      */
-    public function __construct(\Swift_Mailer $swift, $from = "", $sender = "")
+    public function __construct(\Swift_Mailer $swift, $from = '', $sender = '')
     {
         $this->swift = $swift;
         $this->from = $from;
@@ -43,9 +40,10 @@ class Mailer
     }
 
     /**
-     * Set from
+     * Set from.
      *
-     * @param  string $from
+     * @param string $from
+     *
      * @return Mailer
      */
     public function setFrom($from)
@@ -56,8 +54,10 @@ class Mailer
     }
 
     /**
-     * Set sender
-     * @param  string $sender
+     * Set sender.
+     *
+     * @param string $sender
+     *
      * @return Mailer
      */
     public function setSender($sender)
@@ -68,12 +68,13 @@ class Mailer
     }
 
     /**
-     * Send email
+     * Send email.
      *
-     * @param  string  $title
-     * @param  string  $body
-     * @param  string  $to
-     * @return boolean
+     * @param string $title
+     * @param string $body
+     * @param string $to
+     *
+     * @return bool
      */
     public function send($title, $body, $to)
     {

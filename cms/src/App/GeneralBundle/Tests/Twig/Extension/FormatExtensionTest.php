@@ -19,15 +19,15 @@ class FormatExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testFormatBytesFilter()
     {
-        $this->assertEquals("1 kB", $this->extension->formatBytesFilter(1024));
-        $this->assertEquals("1 MB", $this->extension->formatBytesFilter(1024*1024));
-        $this->assertEquals("1 GB", $this->extension->formatBytesFilter(1024*1024*1024));
+        $this->assertEquals('1 kB', $this->extension->formatBytesFilter(1024));
+        $this->assertEquals('1 MB', $this->extension->formatBytesFilter(1024 * 1024));
+        $this->assertEquals('1 GB', $this->extension->formatBytesFilter(1024 * 1024 * 1024));
     }
 
     public function testGetPercentage()
     {
-        $this->assertEquals("10", $this->extension->getPercentage(10, 100));
-        $this->assertEquals("33.33", $this->extension->getPercentage(33, 99));
-        $this->assertEquals("00.00", $this->extension->getPercentage(33, 0));
+        $this->assertEquals('10', $this->extension->getPercentage(10, 100));
+        $this->assertEquals('33.33', $this->extension->getPercentage(33, 99));
+        $this->assertEquals('00.00', $this->extension->getPercentage(33, 0));
     }
 }

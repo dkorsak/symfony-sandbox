@@ -1,9 +1,7 @@
 <?php
 
 /**
- * ArticleAdmin class
- *
- *
+ * ArticleAdmin class.
  */
 namespace App\DemoBundle\Admin;
 
@@ -16,28 +14,26 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
 /**
- * Admin class for managing articles
- *
- *
+ * Admin class for managing articles.
  */
 class ArticleAdmin extends BaseAdmin
 {
     /**
-     * Route pattern
+     * Route pattern.
      *
      * @var string
      */
     protected $baseRoutePattern = 'articles';
 
     /**
-     * Route name
+     * Route name.
      *
      * @var string
      */
     protected $baseRouteName = 'article';
 
     /**
-     * Datagrid params
+     * Datagrid params.
      *
      * @var array
      */
@@ -117,7 +113,7 @@ class ArticleAdmin extends BaseAdmin
             ->addIdentifier('title')
             ->add('articleCategory.name')
             ->add('publishDate', null, $publishDateParams)
-            ->add('publish', null, array("template" => "AppDemoBundle:Article:list_status.html.twig"))
+            ->add('publish', null, array('template' => 'AppDemoBundle:Article:list_status.html.twig'))
             ->add('_action', 'actions', array('actions' => $this->getActions(true)));
     }
 

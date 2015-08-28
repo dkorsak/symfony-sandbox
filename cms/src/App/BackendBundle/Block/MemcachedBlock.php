@@ -1,9 +1,7 @@
 <?php
 
 /**
- * MemcachedBlock class
- *
- *
+ * MemcachedBlock class.
  */
 namespace App\BackendBundle\Block;
 
@@ -18,21 +16,19 @@ use Symfony\Component\Templating\EngineInterface;
 
 /**
  * Class for displaying admin dashboard block
- * with memcache server stats
- *
- *
+ * with memcache server stats.
  */
 class MemcachedBlock extends BaseBlockService
 {
     /**
-     * Mamcached stats service
+     * Mamcached stats service.
      *
      * @var MemcachedStats
      */
     private $memcachedStats;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string          $name
      * @param EngineInterface $templating
@@ -46,7 +42,9 @@ class MemcachedBlock extends BaseBlockService
 
     /**
      * {@inheritdoc}
+     *
      * @codeCoverageIgnore
+     *
      * @param ErrorElement   $errorElement
      * @param BlockInterface $block
      */
@@ -56,7 +54,9 @@ class MemcachedBlock extends BaseBlockService
 
     /**
      * {@inheritdoc}
-     * @param  Response $response
+     *
+     * @param Response $response
+     *
      * @return Response
      */
     public function execute(BlockContextInterface $block, Response $response = null)
@@ -77,7 +77,9 @@ class MemcachedBlock extends BaseBlockService
 
     /**
      * {@inheritdoc}
+     *
      * @codeCoverageIgnore
+     *
      * @param FormMapper     $formMapper
      * @param BlockInterface $block
      */
@@ -87,7 +89,9 @@ class MemcachedBlock extends BaseBlockService
 
     /**
      * {@inheritdoc}
+     *
      * @codeCoverageIgnore
+     *
      * @return string
      */
     public function getName()
@@ -97,6 +101,7 @@ class MemcachedBlock extends BaseBlockService
 
     /**
      * {@inheritdoc}
+     *
      * @return string
      */
     public function getCacheKeys(BlockInterface $block)

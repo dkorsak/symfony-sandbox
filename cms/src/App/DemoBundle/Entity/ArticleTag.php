@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * App\DemoBundle\Entity\ArticleTag
+ * App\DemoBundle\Entity\ArticleTag.
  *
  * @ORM\Table(name="demo_article_tag")
  * @ORM\Entity()
@@ -18,9 +18,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class ArticleTag
 {
     /**
-     * Primary key
+     * Primary key.
      *
-     * @var integer
+     * @var int
      *
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -29,7 +29,7 @@ class ArticleTag
     private $id;
 
     /**
-     * Tag name
+     * Tag name.
      *
      * @var string
      *
@@ -39,7 +39,7 @@ class ArticleTag
     private $name;
 
     /**
-     * Slug
+     * Slug.
      *
      * @var string
      *
@@ -49,7 +49,7 @@ class ArticleTag
     private $slug;
 
     /**
-     * List of articles
+     * List of articles.
      *
      * @var ArrayCollection
      *
@@ -58,7 +58,7 @@ class ArticleTag
     private $articles;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -74,9 +74,9 @@ class ArticleTag
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -84,9 +84,10 @@ class ArticleTag
     }
 
     /**
-     * Set name
+     * Set name.
      *
-     * @param  string     $name
+     * @param string $name
+     *
      * @return ArticleTag
      */
     public function setName($name)
@@ -97,7 +98,7 @@ class ArticleTag
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -107,9 +108,10 @@ class ArticleTag
     }
 
     /**
-     * Set slug
+     * Set slug.
      *
-     * @param  string     $slug
+     * @param string $slug
+     *
      * @return ArticleTag
      */
     public function setSlug($slug)
@@ -120,7 +122,7 @@ class ArticleTag
     }
 
     /**
-     * Get slug
+     * Get slug.
      *
      * @return string
      */
@@ -130,9 +132,10 @@ class ArticleTag
     }
 
     /**
-     * Add articles
+     * Add articles.
      *
-     * @param  \App\DemoBundle\Entity\Article $articles
+     * @param \App\DemoBundle\Entity\Article $articles
+     *
      * @return ArticleTag
      */
     public function addArticle(\App\DemoBundle\Entity\Article $articles)
@@ -143,7 +146,7 @@ class ArticleTag
     }
 
     /**
-     * Remove articles
+     * Remove articles.
      *
      * @param \App\DemoBundle\Entity\Article $articles
      */
@@ -153,7 +156,7 @@ class ArticleTag
     }
 
     /**
-     * Get articles
+     * Get articles.
      *
      * @return \Doctrine\Common\Collections\Collection
      */

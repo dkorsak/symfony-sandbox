@@ -1,9 +1,7 @@
 <?php
 
 /**
- * YamlFixtures class
- *
- *
+ * YamlFixtures class.
  */
 namespace App\GeneralBundle\DataFixtures\ORM;
 
@@ -13,8 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Loading fixtures from YML file
- *
+ * Loading fixtures from YML file.
  */
 abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInterface
 {
@@ -24,14 +21,14 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
     protected $container;
 
     /**
-     * YML file name
+     * YML file name.
      *
      * @return string
      */
     abstract public function getModelFile();
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     public function setContainer(ContainerInterface $container = null)
     {
@@ -39,7 +36,7 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
     }
 
     /**
-     * Load fixtures from file
+     * Load fixtures from file.
      *
      * @return array
      */
@@ -53,7 +50,7 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
     }
 
     /**
-     * Set object variables from given array
+     * Set object variables from given array.
      *
      * @param object $object
      * @param array  $array
@@ -61,7 +58,7 @@ abstract class YamlFixtures extends AbstractFixture implements ContainerAwareInt
     protected function fromArray($object, $array)
     {
         foreach ($array as $key => $value) {
-            $method = 'set'.str_replace(" ", "", ucfirst(str_replace("_", " ", $key)));
+            $method = 'set'.str_replace(' ', '', ucfirst(str_replace('_', ' ', $key)));
             if (method_exists($object, $method)) {
                 $object->$method($value);
             }

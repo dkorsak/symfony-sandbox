@@ -1,9 +1,7 @@
 <?php
 
 /**
- * AppGeneralBundle class
- *
- *
+ * AppGeneralBundle class.
  */
 namespace App\GeneralBundle;
 
@@ -14,7 +12,8 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 class AppGeneralBundle extends Bundle
 {
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see \Symfony\Component\HttpKernel\Bundle\Bundle::build()
      *
      * @param ContainerBuilder $container

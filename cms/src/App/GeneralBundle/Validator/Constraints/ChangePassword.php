@@ -1,9 +1,7 @@
 <?php
 
 /**
- * ChangePassword class
- *
- *
+ * ChangePassword class.
  */
 namespace App\GeneralBundle\Validator\Constraints;
 
@@ -17,22 +15,22 @@ class ChangePassword extends Constraint
     /**
      * @var string
      */
-    public $messageEmptyOldPassword = "Please provide old password";
+    public $messageEmptyOldPassword = 'Please provide old password';
 
     /**
      * @var string
      */
-    public $messageEmptyRetypePassword = "Please retype password";
+    public $messageEmptyRetypePassword = 'Please retype password';
 
     /**
      * @var string
      */
-    public $messagePasswordsMustBeEqual = "Passwords are not equal";
+    public $messagePasswordsMustBeEqual = 'Passwords are not equal';
 
     /**
      * @var string
      */
-    public $messageInvalidOldPassword = "Old password is not valid";
+    public $messageInvalidOldPassword = 'Old password is not valid';
 
     /**
      * {@inheritdoc}

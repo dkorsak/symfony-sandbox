@@ -1,18 +1,14 @@
 <?php
 
 /**
- * ArticleAdminController class
- *
- *
+ * ArticleAdminController class.
  */
 namespace App\DemoBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 
 /**
- * Controller for managing articles
- *
- *
+ * Controller for managing articles.
  */
 class ArticleAdminController extends Controller
 {

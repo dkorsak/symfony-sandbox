@@ -1,9 +1,7 @@
 <?php
 
 /**
- * UserEmailService class
- *
- *
+ * UserEmailService class.
  */
 namespace App\GeneralBundle\Services;
 
@@ -12,9 +10,7 @@ use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Templating\EngineInterface;
 
 /**
- * Servcie for sending user emails
- *
- *
+ * Servcie for sending user emails.
  */
 class UserEmailService
 {
@@ -34,7 +30,7 @@ class UserEmailService
     private $translator;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param Mailer              $mailer
      * @param EngineInterface     $templating
@@ -48,17 +44,18 @@ class UserEmailService
     }
 
     /**
-     * Send email with password to user created by admin panel
+     * Send email with password to user created by admin panel.
      *
-     * @param  UserInterface $user
-     * @param  string        $password
-     * @return boolean
+     * @param UserInterface $user
+     * @param string        $password
+     *
+     * @return bool
      */
     public function sendNewAdminUserEmail(UserInterface $user, $password)
     {
-        $template = "AppBackendBundle:Mail:create.account.html.twig";
-        $body = $this->templating->render($template, array("user" => $user, "password" => $password));
-        $subject = $this->translator->trans("Account was created", array(), 'user');
+        $template = 'AppBackendBundle:Mail:create.account.html.twig';
+        $body = $this->templating->render($template, array('user' => $user, 'password' => $password));
+        $subject = $this->translator->trans('Account was created', array(), 'user');
 
         return $this->mailer->send($subject, $body, $user->getEmail());
     }

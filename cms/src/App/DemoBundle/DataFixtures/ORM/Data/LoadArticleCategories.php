@@ -42,7 +42,7 @@ class LoadArticleCategories extends YamlFixtures implements OrderedFixtureInterf
     }
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     protected function getBundle()
     {

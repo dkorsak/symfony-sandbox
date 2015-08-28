@@ -1,9 +1,7 @@
 <?php
 
 /**
- * ProfileType class
- *
- *
+ * ProfileType class.
  */
 namespace App\BackendBundle\Form\Type\Profile;
 
@@ -12,20 +10,19 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * User profile type
- *
+ * User profile type.
  */
 class ProfileType extends AbstractType
 {
     /**
-     * User class name
+     * User class name.
      *
      * @var string
      */
     private $class;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $class The User class name
      */

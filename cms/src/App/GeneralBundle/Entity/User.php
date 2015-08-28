@@ -1,9 +1,7 @@
 <?php
 
 /**
- * User entity class
- *
- *
+ * User entity class.
  */
 namespace App\GeneralBundle\Entity;
 
@@ -19,7 +17,7 @@ use App\GeneralBundle\Validator\Constraints as AppGeneralAssert;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 /**
- * App\GeneralBundle\Entity\User
+ * App\GeneralBundle\Entity\User.
  *
  * @ORM\Table(name="user", indexes={
  *     @ORM\Index(name="username_idx", columns={"username"}),
@@ -38,7 +36,7 @@ class User extends BaseUser
     const ROLE_ADMIN = 'ROLE_ADMIN';
 
     /**
-     * User roles
+     * User roles.
      *
      * @var array
      */
@@ -48,9 +46,9 @@ class User extends BaseUser
     );
 
     /**
-     * Primary key
+     * Primary key.
      *
-     * @var integer
+     * @var int
      *
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -59,7 +57,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * User firstname
+     * User firstname.
      *
      * @var string
      *
@@ -69,7 +67,7 @@ class User extends BaseUser
     protected $firstname;
 
     /**
-     * User lastname
+     * User lastname.
      *
      * @var string
      *
@@ -79,7 +77,7 @@ class User extends BaseUser
     protected $lastname;
 
     /**
-     * User email
+     * User email.
      *
      * @var string
      *
@@ -89,7 +87,7 @@ class User extends BaseUser
     protected $email;
 
     /**
-     * Created at
+     * Created at.
      *
      * @var datetime
      *
@@ -99,7 +97,7 @@ class User extends BaseUser
     protected $created;
 
     /**
-     * Updated at
+     * Updated at.
      *
      * @var datetime
      *
@@ -109,7 +107,7 @@ class User extends BaseUser
     protected $updated;
 
     /**
-     * List of groups
+     * List of groups.
      *
      * @var ArrayCollection
      *
@@ -127,7 +125,7 @@ class User extends BaseUser
 
     /**
      * Sometimes user has only one role.
-     * This property is for managing user permissions only for one role
+     * This property is for managing user permissions only for one role.
      *
      * @var string
      *
@@ -136,22 +134,21 @@ class User extends BaseUser
     protected $singleRole;
 
     /**
-     * Retype password dummy field
+     * Retype password dummy field.
      *
      * @var string
      */
     protected $retypePassword;
 
     /**
-     * Old password dummy field
+     * Old password dummy field.
      *
      * @var string
      */
     protected $oldPassword;
 
     /**
-     * Constructor
-     *
+     * Constructor.
      */
     public function __construct()
     {
@@ -166,13 +163,13 @@ class User extends BaseUser
      */
     public function __toString()
     {
-        return trim($this->getName()) != "" ? $this->getName() : 'Create';
+        return trim($this->getName()) != '' ? $this->getName() : 'Create';
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -180,9 +177,10 @@ class User extends BaseUser
     }
 
     /**
-     * Set firstname
+     * Set firstname.
      *
-     * @param  string $firstname
+     * @param string $firstname
+     *
      * @return User
      */
     public function setFirstname($firstname)
@@ -193,7 +191,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get firstname
+     * Get firstname.
      *
      * @return string
      */
@@ -203,9 +201,10 @@ class User extends BaseUser
     }
 
     /**
-     * Set lastname
+     * Set lastname.
      *
-     * @param  string $lastname
+     * @param string $lastname
+     *
      * @return User
      */
     public function setLastname($lastname)
@@ -216,7 +215,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get lastname
+     * Get lastname.
      *
      * @return string
      */
@@ -226,9 +225,10 @@ class User extends BaseUser
     }
 
     /**
-     * Set created
+     * Set created.
      *
-     * @param  \DateTime $created
+     * @param \DateTime $created
+     *
      * @return User
      */
     public function setCreated($created)
@@ -239,7 +239,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get created
+     * Get created.
      *
      * @return \DateTime
      */
@@ -249,9 +249,10 @@ class User extends BaseUser
     }
 
     /**
-     * Set updated
+     * Set updated.
      *
-     * @param  \DateTime $updated
+     * @param \DateTime $updated
+     *
      * @return User
      */
     public function setUpdated($updated)
@@ -262,7 +263,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get updated
+     * Get updated.
      *
      * @return \DateTime
      */
@@ -272,9 +273,10 @@ class User extends BaseUser
     }
 
     /**
-     * Add groups
+     * Add groups.
      *
-     * @param  GroupInterface $groups
+     * @param GroupInterface $groups
+     *
      * @return User
      */
     public function addGroup(GroupInterface $group)
@@ -285,9 +287,10 @@ class User extends BaseUser
     }
 
     /**
-     * Remove all old groups and add new one
+     * Remove all old groups and add new one.
      *
-     * @param  GroupInterface $group
+     * @param GroupInterface $group
+     *
      * @return User
      */
     public function setGroups(GroupInterface $group)
@@ -301,7 +304,7 @@ class User extends BaseUser
     }
 
     /**
-     * Remove groups
+     * Remove groups.
      *
      * @param GroupInterface $groups
      */
@@ -311,7 +314,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get groups
+     * Get groups.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -321,7 +324,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get user full name
+     * Get user full name.
      *
      * @return string
      */
@@ -332,9 +335,10 @@ class User extends BaseUser
 
     /**
      * Set singleRole
-     * Clear all user roles and set new one
+     * Clear all user roles and set new one.
      *
-     * @param  string $role
+     * @param string $role
+     *
      * @return User
      */
     public function setSingleRole($role)
@@ -349,7 +353,7 @@ class User extends BaseUser
     }
 
     /**
-     * Post load doctrine event
+     * Post load doctrine event.
      *
      * @ORM\PostLoad()
      */
@@ -359,7 +363,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get singleRole
+     * Get singleRole.
      *
      * @return string
      */
@@ -376,7 +380,7 @@ class User extends BaseUser
     public function getSingleRoleName()
     {
         $constRole = $this->getSingleRole();
-        if ($constRole != "" && isset(static::$userRoles[$constRole])) {
+        if ($constRole != '' && isset(static::$userRoles[$constRole])) {
             return static::$userRoles[$constRole];
         }
 
@@ -384,9 +388,10 @@ class User extends BaseUser
     }
 
     /**
-     * Set retypePassword
+     * Set retypePassword.
      *
-     * @param  string $retypePassword
+     * @param string $retypePassword
+     *
      * @return User
      */
     public function setRetypePassword($retypePassword)
@@ -397,7 +402,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get retypePassword
+     * Get retypePassword.
      *
      * @return string
      */
@@ -407,9 +412,10 @@ class User extends BaseUser
     }
 
     /**
-     * Set oldPassword
+     * Set oldPassword.
      *
-     * @param  string $oldPassword
+     * @param string $oldPassword
+     *
      * @return User
      */
     public function setOldPassword($oldPassword)
@@ -420,7 +426,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get oldPassword
+     * Get oldPassword.
      *
      * @return string
      */
@@ -446,7 +452,7 @@ class User extends BaseUser
     }
 
     /**
-     * Validate if use group is not empty
+     * Validate if use group is not empty.
      *
      * @param ExecutionContext $context
      */

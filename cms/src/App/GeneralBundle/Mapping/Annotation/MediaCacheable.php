@@ -1,14 +1,12 @@
 <?php
 
 /**
- * MediaCacheable class
- *
- *
+ * MediaCacheable class.
  */
 namespace App\GeneralBundle\Mapping\Annotation;
 
 /**
- * MediaCacheable
+ * MediaCacheable.
  *
  * @Annotation
  */

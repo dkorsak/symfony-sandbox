@@ -1,28 +1,24 @@
 <?php
 
 /**
- * MemcachedStats class
- *
- *
+ * MemcachedStats class.
  */
 namespace App\GeneralBundle\Services\Stats;
 
 /**
- * Service for reading opcache stats - requires min PHP 5.5.5
- *
- *
+ * Service for reading opcache stats - requires min PHP 5.5.5.
  */
 class OPCacheStats implements StatsInterface
 {
     /**
-     * OPCache stats
+     * OPCache stats.
      *
      * @var \ArrayObject
      */
     private $stats;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {

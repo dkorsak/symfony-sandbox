@@ -1,9 +1,7 @@
 <?php
 
 /**
- * GeneralCompilerPass class
- *
- *
+ * GeneralCompilerPass class.
  */
 namespace App\GeneralBundle\DependencyInjection\CompilerPass;
 
@@ -13,7 +11,8 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 class GeneralCompilerPass implements CompilerPassInterface
 {
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see \Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface::process()
      *
      * @param ContainerBuilder $container
@@ -37,7 +36,7 @@ class GeneralCompilerPass implements CompilerPassInterface
     }
 
     /**
-     * Connfigure read routing from htaccess file
+     * Connfigure read routing from htaccess file.
      *
      * @param ContainerBuilder $container
      */
@@ -47,10 +46,10 @@ class GeneralCompilerPass implements CompilerPassInterface
             return;
         }
         $env = $container->getParameter('kernel.environment');
-        if ("prod" != $env) {
+        if ('prod' != $env) {
             return;
         }
-        $container->setParameter("router.options.matcher.cache_class", null);
-        $container->setParameter("router.options.matcher_class", "Symfony\Component\Routing\Matcher\ApacheUrlMatcher");
+        $container->setParameter('router.options.matcher.cache_class', null);
+        $container->setParameter('router.options.matcher_class', "Symfony\Component\Routing\Matcher\ApacheUrlMatcher");
     }
 }

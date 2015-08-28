@@ -1,9 +1,7 @@
 <?php
 
 /**
- * ArticleTagAdmin class
- *
- *
+ * ArticleTagAdmin class.
  */
 namespace App\DemoBundle\Admin;
 
@@ -13,28 +11,26 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
 /**
- * Admin class for managing article tags
- *
- *
+ * Admin class for managing article tags.
  */
 class ArticleTagAdmin extends BaseAdmin
 {
     /**
-     * Route pattern
+     * Route pattern.
      *
      * @var string
      */
     protected $baseRoutePattern = 'article-tags';
 
     /**
-     * Route name
+     * Route name.
      *
      * @var string
      */
     protected $baseRouteName = 'article_tag';
 
     /**
-     * Datagrid params
+     * Datagrid params.
      *
      * @var array
      */

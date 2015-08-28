@@ -48,7 +48,7 @@ class LoadArticles extends YamlFixtures implements OrderedFixtureInterface, Cont
     }
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     protected function getBundle()
     {

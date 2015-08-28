@@ -1,9 +1,7 @@
 <?php
 
 /**
- * AppBackendBundle class
- *
- *
+ * AppBackendBundle class.
  */
 namespace App\BackendBundle\Form\Type\Filter;
 
@@ -11,14 +9,12 @@ use Sonata\AdminBundle\Form\Type\Filter\DateRangeType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * Datatgrid daterange filter
- *
- *
+ * Datatgrid daterange filter.
  */
 class FilterDateRangeType extends DateRangeType
 {
     /**
-     * Build form
+     * Build form.
      *
      * @param FormBuilderInterface $builder
      * @param array                $options
@@ -36,7 +32,7 @@ class FilterDateRangeType extends DateRangeType
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @return string
      */

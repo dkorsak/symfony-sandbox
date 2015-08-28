@@ -1,17 +1,14 @@
 <?php
+
 /**
- * AutocompleteType class
- *
- *
+ * AutocompleteType class.
  */
 namespace App\BackendBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 
 /**
- * Form type for displaying widget with autocompleter
- *
- *
+ * Form type for displaying widget with autocompleter.
  */
 class AutocompleteType extends AbstractType
 {

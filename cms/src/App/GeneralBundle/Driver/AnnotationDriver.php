@@ -1,29 +1,26 @@
 <?php
 
 /**
- * AnnotationDriver class
- *
- *
+ * AnnotationDriver class.
  */
 namespace App\GeneralBundle\Driver;
 
 use Doctrine\Common\Annotations\Reader;
 
 /**
- * AnnotationDriver
- *
+ * AnnotationDriver.
  */
 class AnnotationDriver
 {
     /**
-     * Annotation reader
+     * Annotation reader.
      *
      * @var Reader
      */
     private $reader;
 
     /**
-     * Constructs a new instance of AnnotationDriver
+     * Constructs a new instance of AnnotationDriver.
      *
      * @param \Doctrine\Common\Annotations\Reader $reader The  annotation reader
      */
@@ -35,7 +32,8 @@ class AnnotationDriver
     /**
      * Attempts to read the media cacheable annotation.
      *
-     * @param  \ReflectionClass                                          $class The reflection class.
+     * @param \ReflectionClass $class The reflection class.
+     *
      * @return null|\App\GeneralBundle\Mapping\Annotation\MediaCacheable The annotation.
      */
     public function readMediaCacheable(\ReflectionClass $class)
@@ -45,10 +43,11 @@ class AnnotationDriver
     }
 
     /**
-     * Attempts to read the media cacheable field annotations
+     * Attempts to read the media cacheable field annotations.
      *
-     * @param  \ReflectionClass $class The reflection class.
-     * @return array            An array of media cacheable field annotations
+     * @param \ReflectionClass $class The reflection class.
+     *
+     * @return array An array of media cacheable field annotations
      */
     public function readMediaCacheableFields(\ReflectionClass $class)
     {
@@ -68,10 +67,11 @@ class AnnotationDriver
     }
 
     /**
-     * Get class property annotation
+     * Get class property annotation.
      *
-     * @param  \ReflectionClass    $class
-     * @param  string              $fieldName
+     * @param \ReflectionClass $class
+     * @param string           $fieldName
+     *
      * @return MediaCacheableField
      */
     public function readCacheableField(\ReflectionClass $class, $fieldName)

@@ -1,39 +1,36 @@
 <?php
 
 /**
- * BaseAdmin class
- *
- *
+ * BaseAdmin class.
  */
 namespace App\BackendBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 
 /**
- * Class for overwrite some of sonata admin class method
- *
- *
+ * Class for overwrite some of sonata admin class method.
  */
 class BaseAdmin extends Admin
 {
     /**
-     * Max links per page
+     * Max links per page.
      *
-     * @var integer
+     * @var int
      */
     protected $maxPageLinks = 10;
 
     /**
-     * Disable list modes
+     * Disable list modes.
      *
      * @var array
      */
     protected $listModes = array();
 
     /**
-     * Get service from container
+     * Get service from container.
      *
-     * @param  string $serviceName
+     * @param string $serviceName
+     *
      * @return object
      */
     protected function getService($serviceName)
@@ -42,7 +39,7 @@ class BaseAdmin extends Admin
     }
 
     /**
-     * Get empty value for input type select
+     * Get empty value for input type select.
      *
      * @return string
      */
@@ -52,9 +49,10 @@ class BaseAdmin extends Admin
     }
 
     /**
-     * Get list actions
+     * Get list actions.
      *
-     * @param  bool  $withShow
+     * @param bool $withShow
+     *
      * @return array
      */
     protected function getActions($withShow = false)

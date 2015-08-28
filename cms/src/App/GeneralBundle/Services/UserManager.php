@@ -1,8 +1,7 @@
 <?php
 
 /**
- * UserManager class
- *
+ * UserManager class.
  */
 namespace App\GeneralBundle\Services;
 
@@ -11,18 +10,19 @@ use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Doctrine\UserManager as BaseUserManager;
 
 /**
- * User manager service class
- *
+ * User manager service class.
  */
 class UserManager extends BaseUserManager
 {
     /**
-     * Update user
+     * Update user.
      *
      * (non-PHPdoc)
+     *
      * @see \FOS\UserBundle\Doctrine\UserManager::updateUser()
+     *
      * @param UserInterface $user
-     * @param boolean       $andFlush
+     * @param bool          $andFlush
      */
     public function updateUser(UserInterface $user, $andFlush = true)
     {

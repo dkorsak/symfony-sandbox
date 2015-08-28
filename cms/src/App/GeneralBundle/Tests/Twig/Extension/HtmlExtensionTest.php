@@ -21,6 +21,6 @@ class HtmlExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $controller = 'App\\BundleName\\Controller\\FooController::barAction';
         $result = $this->extension->extractCurrentController($controller);
-        $this->assertEquals("appbundlename foocontroller baraction", $result);
+        $this->assertEquals('appbundlename foocontroller baraction', $result);
     }
 }

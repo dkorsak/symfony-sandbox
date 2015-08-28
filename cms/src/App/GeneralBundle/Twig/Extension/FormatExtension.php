@@ -16,7 +16,7 @@ class FormatExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'format_bytes' => new \Twig_Filter_Method($this, 'formatBytesFilter'),
+            new \Twig_SimpleFilter('format_bytes', array($this, 'formatBytesFilter')),
         );
     }
 
@@ -26,7 +26,7 @@ class FormatExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'percentage' => new \Twig_Function_Method($this, 'getPercentage'),
+            new \Twig_SimpleFunction('percentage', array($this, 'getPercentage')),
         );
     }
 

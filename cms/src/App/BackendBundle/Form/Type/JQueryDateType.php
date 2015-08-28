@@ -1,8 +1,7 @@
 <?php
 
 /**
- * JQueryDateType class
- *
+ * JQueryDateType class.
  */
 namespace App\BackendBundle\Form\Type;
 
@@ -10,14 +9,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\AbstractType;
 
 /**
- * Form type for displaying jquery datepicker
- *
- *
+ * Form type for displaying jquery datepicker.
  */
 class JQueryDateType extends AbstractType
 {
     /**
      * {@inheritdoc}
+     *
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -49,7 +47,7 @@ class JQueryDateType extends AbstractType
     }
 
     /**
-     * Get jQuery valid culture from current locale
+     * Get jQuery valid culture from current locale.
      *
      * @return string
      */
@@ -57,7 +55,7 @@ class JQueryDateType extends AbstractType
     {
         $locale = \Locale::getDefault();
         if (strpos($locale, '_') !== false) {
-            list($localeJQuery, $locale) = explode("_", $locale);
+            list($localeJQuery, $locale) = explode('_', $locale);
         } else {
             $localeJQuery = $locale;
         }

@@ -1,23 +1,19 @@
 <?php
 
 /**
- * HomepageController class
- *
- *
+ * HomepageController class.
  */
 namespace App\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Controller for managing homepage actions
- *
- *
+ * Controller for managing homepage actions.
  */
 class HomepageController extends Controller
 {
     /**
-     * Display homepage action
+     * Display homepage action.
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */

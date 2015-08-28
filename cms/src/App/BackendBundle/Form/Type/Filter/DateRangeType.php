@@ -1,8 +1,7 @@
 <?php
 
 /**
- * DateRangeType class
- *
+ * DateRangeType class.
  */
 namespace App\BackendBundle\Form\Type\Filter;
 
@@ -11,14 +10,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Form widget for displaying filter date range
- *
- *
+ * Form widget for displaying filter date range.
  */
 class DateRangeType extends AbstractType
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @param FormBuilderInterface $builder
      * @param array                $options

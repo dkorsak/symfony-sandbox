@@ -18,7 +18,7 @@ class HtmlExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'extract_current_controller' => new \Twig_Filter_Method($this, 'extractCurrentController'),
+            new \Twig_SimpleFilter('extract_current_controller', array($this, 'extractCurrentController')),
         );
     }
 

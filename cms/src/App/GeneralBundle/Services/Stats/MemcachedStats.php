@@ -1,36 +1,32 @@
 <?php
 
 /**
- * MemcachedStats class
- *
- *
+ * MemcachedStats class.
  */
 namespace App\GeneralBundle\Services\Stats;
 
 /**
- * Service for reading memcache stats
- *
- *
+ * Service for reading memcache stats.
  */
 class MemcachedStats implements StatsInterface
 {
     /**
-     * Memcached stats
+     * Memcached stats.
      *
      * @var \ArrayObject
      */
     private $stats;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $connected;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param string  $host
-     * @param integer $port
+     * @param string $host
+     * @param int    $port
      */
     public function __construct($host, $port)
     {

@@ -1,9 +1,7 @@
 <?php
 
 /**
- * SingleRoleType class
- *
- *
+ * SingleRoleType class.
  */
 namespace App\BackendBundle\Form\Type\User;
 
@@ -12,9 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\AbstractType;
 
 /**
- * Form widget for displaying select with user role
- *
- *
+ * Form widget for displaying select with user role.
  */
 class SingleRoleType extends AbstractType
 {

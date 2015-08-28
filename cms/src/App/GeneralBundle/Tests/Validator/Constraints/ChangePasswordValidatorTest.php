@@ -45,18 +45,18 @@ class ChangePasswordValidatorTest extends BasePHPUnitTest
     public function testShouldNotDisplayAnyErrorMessages()
     {
         $user = new User();
-        $user->setPlainPassword("");
+        $user->setPlainPassword('');
         $this->assertNull($this->service->validate($user, $this->constraint));
 
-        $user->setPlainPassword("password");
+        $user->setPlainPassword('password');
         $this->assertNull($this->service->validate($user, $this->constraint));
     }
 
     public function testShouldOnlyDisplayOldPasswordIsRequiredMessage()
     {
         $user = $this->createObjectWithId('App\GeneralBundle\Entity\User', 1);
-        $user->setPlainPassword("password");
-        $user->setRetypePassword("password");
+        $user->setPlainPassword('password');
+        $user->setRetypePassword('password');
         $this->service->validate($user, $this->constraint);
     }
 
@@ -64,9 +64,9 @@ class ChangePasswordValidatorTest extends BasePHPUnitTest
     {
         $this->encoderMock->shouldReceive('isPasswordValid')->withAnyArgs()->andReturn(false);
         $user = $this->createObjectWithId('App\GeneralBundle\Entity\User', 1);
-        $user->setPlainPassword("password");
-        $user->setRetypePassword("password");
-        $user->setOldPassword("password invalid");
+        $user->setPlainPassword('password');
+        $user->setRetypePassword('password');
+        $user->setOldPassword('password invalid');
         $this->service->validate($user, $this->constraint);
     }
 
@@ -75,9 +75,9 @@ class ChangePasswordValidatorTest extends BasePHPUnitTest
         $this->encoderMock->shouldReceive('isPasswordValid')->withAnyArgs()->andReturn(true);
 
         $user = $this->createObjectWithId('App\GeneralBundle\Entity\User', 1);
-        $user->setPlainPassword("password");
-        $user->setRetypePassword("password");
-        $user->setOldPassword("password valid");
+        $user->setPlainPassword('password');
+        $user->setRetypePassword('password');
+        $user->setOldPassword('password valid');
         $this->service->validate($user, $this->constraint);
     }
 
@@ -86,9 +86,9 @@ class ChangePasswordValidatorTest extends BasePHPUnitTest
         $this->encoderMock->shouldReceive('isPasswordValid')->withAnyArgs()->andReturn(true);
 
         $user = $this->createObjectWithId('App\GeneralBundle\Entity\User', 1);
-        $user->setPlainPassword("password");
-        $user->setRetypePassword("password retype not equal");
-        $user->setOldPassword("password valid");
+        $user->setPlainPassword('password');
+        $user->setRetypePassword('password retype not equal');
+        $user->setOldPassword('password valid');
         $this->service->validate($user, $this->constraint);
     }
 
@@ -97,18 +97,18 @@ class ChangePasswordValidatorTest extends BasePHPUnitTest
         $this->encoderMock->shouldReceive('isPasswordValid')->withAnyArgs()->andReturn(true);
 
         $user = $this->createObjectWithId('App\GeneralBundle\Entity\User', 1);
-        $user->setPlainPassword("password");
-        $user->setRetypePassword("");
-        $user->setOldPassword("password valid");
+        $user->setPlainPassword('password');
+        $user->setRetypePassword('');
+        $user->setOldPassword('password valid');
         $this->service->validate($user, $this->constraint);
     }
 
     public function testShouldDisplayOldPasswordIsEmptyAndRetypePasswordIsEmptyMessages()
     {
         $user = $this->createObjectWithId('App\GeneralBundle\Entity\User', 1);
-        $user->setPlainPassword("password");
-        $user->setRetypePassword("");
-        $user->setOldPassword("");
+        $user->setPlainPassword('password');
+        $user->setRetypePassword('');
+        $user->setOldPassword('');
         $this->service->validate($user, $this->constraint);
     }
 }

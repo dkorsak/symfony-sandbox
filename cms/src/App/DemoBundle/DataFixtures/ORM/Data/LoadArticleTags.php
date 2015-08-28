@@ -42,7 +42,7 @@ class LoadArticleTags extends YamlFixtures implements OrderedFixtureInterface, C
     }
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     protected function getBundle()
     {

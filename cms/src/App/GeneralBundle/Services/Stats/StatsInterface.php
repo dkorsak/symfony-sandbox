@@ -1,23 +1,19 @@
 <?php
 
 /**
- * StatsInterface interface
- *
- *
+ * StatsInterface interface.
  */
 namespace App\GeneralBundle\Services\Stats;
 
 /**
- * StatsInterface interface
- *
- *
+ * StatsInterface interface.
  */
 interface StatsInterface
 {
     /**
-     * Check if PHP extension is enabled and application can use stats
+     * Check if PHP extension is enabled and application can use stats.
      *
-     * @return boolean
+     * @return bool
      */
     public function isConnected();
 

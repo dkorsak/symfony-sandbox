@@ -1,28 +1,24 @@
 <?php
 
 /**
- * CreatePDOSessionTableCommand class
- *
- *
+ * CreatePDOSessionTableCommand class.
  */
 namespace App\GeneralBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler;
 
 /**
  * Create database table for storing session in database
- * if PDO session handler is enabled
- *
- *
+ * if PDO session handler is enabled.
  */
 class CreatePDOSessionTableCommand extends ContainerAwareCommand
 {
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see \Symfony\Component\Console\Command\Command::configure()
      */
     protected function configure()
@@ -33,8 +29,10 @@ class CreatePDOSessionTableCommand extends ContainerAwareCommand
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see \Symfony\Component\Console\Command\Command::execute()
+     *
      * @param InputInterface  $input
      * @param OutputInterface $output
      */
@@ -42,15 +40,15 @@ class CreatePDOSessionTableCommand extends ContainerAwareCommand
     {
         $isInstance = $this->getContainer()->get('session.handler') instanceof PdoSessionHandler;
         if ($isInstance && $this->getContainer()->has('pdo')) {
-            $output->writeln("Creating session database table if not exists.");
+            $output->writeln('Creating session database table if not exists.');
             $params = $this->getContainer()->getParameter('pdo.db_options');
             $pdo = $this->getContainer()->get('pdo');
             $sql = sprintf(
-                "CREATE TABLE IF NOT EXISTS %s
+                'CREATE TABLE IF NOT EXISTS %s
                     (%s VARBINARY(128) NOT NULL PRIMARY KEY,
                      %s BLOB NOT NULL,
                      %s INTEGER UNSIGNED NOT NULL,
-                     %s MEDIUMINT NOT NULL) COLLATE utf8_bin, ENGINE = InnoDB",
+                     %s MEDIUMINT NOT NULL) COLLATE utf8_bin, ENGINE = InnoDB',
                 $params['db_table'],
                 $params['db_id_col'],
                 $params['db_data_col'],

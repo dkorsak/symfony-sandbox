@@ -1,9 +1,7 @@
 <?php
 
 /**
- * StringUtil class
- *
- *
+ * StringUtil class.
  */
 namespace App\GeneralBundle\Utils;
 
@@ -11,9 +9,10 @@ class StringUtil
 {
     /**
      * Parse given controller name and return array with
-     * controller namespace, bundle name, controller name, and action name
+     * controller namespace, bundle name, controller name, and action name.
      *
-     * @param  string $controller
+     * @param string $controller
+     *
      * @return string
      */
     public static function extractDetailsFromControllerName($controller)
@@ -26,7 +25,7 @@ class StringUtil
         $action = $matches[3];
 
         preg_match('/(.*)\\\Controller/', $namespace, $matches);
-        $bundle  = str_replace('\\', "", str_replace('Bundle\\', "", $matches[1]));
+        $bundle = str_replace('\\', '', str_replace('Bundle\\', '', $matches[1]));
 
         return array('namespace' => $namespace, 'bundle' => $bundle, 'controller' => $controller, 'action' => $action);
     }

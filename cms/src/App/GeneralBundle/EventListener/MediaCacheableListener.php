@@ -1,9 +1,7 @@
 <?php
 
 /**
- * MediaCacheableListener class
- *
- *
+ * MediaCacheableListener class.
  */
 namespace App\GeneralBundle\EventListener;
 
@@ -17,27 +15,26 @@ use App\GeneralBundle\Driver\AnnotationDriver;
 /**
  * Media Cacheable Listener
  * Find entity with App\GeneralBundle\Mapping\Annotation\MediaCacheable annotation
- * and remove Liip image cache from all uploaded entity fields
- *
+ * and remove Liip image cache from all uploaded entity fields.
  */
 class MediaCacheableListener implements EventSubscriber
 {
     /**
-     * Annotation driver
+     * Annotation driver.
      *
      * @var AnnotationDriver
      */
     private $driver;
 
     /**
-     * Cache manager
+     * Cache manager.
      *
      * @var CacheManager
      */
     private $imageCacheManager;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param AnnotationDriver $driver
      * @param CacheManager     $imageCacheManager
@@ -62,7 +59,7 @@ class MediaCacheableListener implements EventSubscriber
     }
 
     /**
-     * PreUpdate entity event
+     * PreUpdate entity event.
      *
      * @param PreUpdateEventArgs $args
      */
@@ -87,7 +84,7 @@ class MediaCacheableListener implements EventSubscriber
     }
 
     /**
-     * PostRemove entity event
+     * PostRemove entity event.
      *
      * @param LifecycleEventArgs $args
      */
@@ -107,7 +104,7 @@ class MediaCacheableListener implements EventSubscriber
     }
 
     /**
-     * Remove file ceche
+     * Remove file ceche.
      *
      * @param MediaCacheableField $field
      * @param string              $filePath
@@ -115,7 +112,7 @@ class MediaCacheableListener implements EventSubscriber
      */
     private function removeCache(MediaCacheableField $field, $filePath, $fileName)
     {
-        if ("" == $fileName) {
+        if ('' == $fileName) {
             return;
         }
         foreach ($field->getFilters() as $filterName) {
@@ -124,10 +121,11 @@ class MediaCacheableListener implements EventSubscriber
     }
 
     /**
-     * Check if entity is annotated as media cacheable
+     * Check if entity is annotated as media cacheable.
      *
-     * @param  object  $obj
-     * @return boolean
+     * @param object $obj
+     *
+     * @return bool
      */
     private function isMediaCacheable($obj)
     {

@@ -32,7 +32,7 @@ class OPCacheBlockTest extends BasePHPUnitTest
         $response = $this->opcacheBlock->execute($block);
         $this->assertTrue($response instanceof Response);
         // used memory in percentage
-        $this->assertContains("45%", $response->getContent());
+        $this->assertContains('45%', $response->getContent());
     }
 
     public function testGetCacheKeys()

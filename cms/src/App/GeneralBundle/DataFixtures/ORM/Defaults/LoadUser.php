@@ -1,9 +1,7 @@
 <?php
 
 /**
- * LoadUser class
- *
- *
+ * LoadUser class.
  */
 namespace App\GeneralBundle\DataFixtures\ORM\Defaults;
 

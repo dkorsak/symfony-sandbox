@@ -1,9 +1,7 @@
 <?php
 
 /**
- * ProfileController class
- *
- *
+ * ProfileController class.
  */
 namespace App\BackendBundle\Controller;
 
@@ -12,16 +10,15 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Profile controller
- *
- *
+ * Profile controller.
  */
 class ProfileController extends Controller
 {
     /**
-     * Edit profile action
+     * Edit profile action.
      *
      * @throws AccessDeniedException
+     *
      * @return Response
      */
     public function editAction()

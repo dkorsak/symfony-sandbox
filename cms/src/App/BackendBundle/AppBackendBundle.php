@@ -1,17 +1,14 @@
 <?php
 
 /**
- * AppBackendBundle class
- *
+ * AppBackendBundle class.
  */
 namespace App\BackendBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * AppBackendBundle class
- *
- *
+ * AppBackendBundle class.
  */
 class AppBackendBundle extends Bundle
 {

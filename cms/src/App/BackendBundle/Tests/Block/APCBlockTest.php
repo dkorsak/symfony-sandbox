@@ -32,7 +32,7 @@ class APCBlockTest extends BasePHPUnitTest
         $response = $this->apcBlock->execute($block);
         $this->assertTrue($response instanceof Response);
         // used memory in percentage
-        $this->assertContains("45.5%", $response->getContent());
+        $this->assertContains('45.5%', $response->getContent());
     }
 
     public function testGetCacheKeys()

@@ -16,12 +16,12 @@ class MailerTest extends BasePHPUnitTest
     {
         parent::setUp();
         $this->service = new Mailer($this->container->get('mailer'));
-        $this->service->setFrom("foo@bar.com");
-        $this->service->setSender("John Doe");
+        $this->service->setFrom('foo@bar.com');
+        $this->service->setSender('John Doe');
     }
 
     public function testSend()
     {
-        $this->assertTrue((boolean) $this->service->send("Title", "Body", "foo@bar.com"));
+        $this->assertTrue((boolean) $this->service->send('Title', 'Body', 'foo@bar.com'));
     }
 }

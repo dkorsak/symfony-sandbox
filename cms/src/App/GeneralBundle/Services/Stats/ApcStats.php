@@ -1,29 +1,24 @@
 <?php
 
 /**
- * ApcStats class
- *
- *
- *
+ * ApcStats class.
  */
 namespace App\GeneralBundle\Services\Stats;
 
 /**
- * Service for reading APC stats
- *
- *
+ * Service for reading APC stats.
  */
 class ApcStats implements StatsInterface
 {
     /**
-     * APC info
+     * APC info.
      *
      * @var \ArrayObject
      */
     private $memoryInfo;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {

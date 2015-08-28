@@ -1,18 +1,14 @@
 <?php
 
 /**
- * ArticleTagAdminController class
- *
- *
+ * ArticleTagAdminController class.
  */
 namespace App\DemoBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 
 /**
- * Controller for managing article tags
- *
- *
+ * Controller for managing article tags.
  */
 class ArticleTagAdminController extends Controller
 {

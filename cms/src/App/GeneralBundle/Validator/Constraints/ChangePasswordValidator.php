@@ -1,10 +1,7 @@
 <?php
 
 /**
- * ChangePasswordValidator class
- *
- *
- *
+ * ChangePasswordValidator class.
  */
 namespace App\GeneralBundle\Validator\Constraints;
 
@@ -20,7 +17,7 @@ class ChangePasswordValidator extends ConstraintValidator
     protected $encoderFactory;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param EncoderFactoryInterface $encoderFactory
      */
@@ -34,11 +31,11 @@ class ChangePasswordValidator extends ConstraintValidator
      */
     public function validate($user, Constraint $constraint)
     {
-        if ($user->getPlainPassword() == "" || !$user->getId()) {
+        if ($user->getPlainPassword() == '' || !$user->getId()) {
             return;
         }
 
-        if ($user->getOldPassword() == "") {
+        if ($user->getOldPassword() == '') {
             $this->context->buildViolation($constraint->messageEmptyOldPassword)
                 ->atPath('oldPassword')
                 ->addViolation();
@@ -51,7 +48,7 @@ class ChangePasswordValidator extends ConstraintValidator
             }
         }
 
-        if ($user->getRetypePassword() == "") {
+        if ($user->getRetypePassword() == '') {
             $this->context->buildViolation($constraint->messageEmptyRetypePassword)
                 ->atPath('oldPassword')
                 ->addViolation();

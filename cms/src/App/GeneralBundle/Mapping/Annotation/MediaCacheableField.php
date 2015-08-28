@@ -1,17 +1,14 @@
 <?php
 
 /**
- * MediaCacheableField class
- *
- *
+ * MediaCacheableField class.
  */
 namespace App\GeneralBundle\Mapping\Annotation;
 
 /**
- * Media Cacheable Field
+ * Media Cacheable Field.
  *
  * @Annotation
- *
  */
 class MediaCacheableField
 {
@@ -31,7 +28,7 @@ class MediaCacheableField
     private $pathGetter;
 
     /**
-     * Constructs a new instance of MediaCacheableField
+     * Constructs a new instance of MediaCacheableField.
      *
      * @param array $options
      */
@@ -60,7 +57,7 @@ class MediaCacheableField
     }
 
     /**
-     * Set filters
+     * Set filters.
      *
      * @param array $filters
      */
@@ -70,7 +67,7 @@ class MediaCacheableField
     }
 
     /**
-     * Get the property name
+     * Get the property name.
      *
      * @return string The property name.
      */
@@ -80,7 +77,7 @@ class MediaCacheableField
     }
 
     /**
-     * Set the property name
+     * Set the property name.
      *
      * @param $propertyName The property name.
      */
@@ -90,7 +87,7 @@ class MediaCacheableField
     }
 
     /**
-     * Get path getter
+     * Get path getter.
      *
      * @return string
      */
@@ -100,7 +97,7 @@ class MediaCacheableField
     }
 
     /**
-     * Set path getter
+     * Set path getter.
      *
      * @param string $pathGetter
      */

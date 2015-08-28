@@ -1,9 +1,7 @@
 <?php
 
 /**
- * UserAdmin class
- *
- *
+ * UserAdmin class.
  */
 namespace App\BackendBundle\Admin;
 
@@ -17,27 +15,26 @@ use App\GeneralBundle\Entity\User;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * Admin class for managing users
- *
+ * Admin class for managing users.
  */
 class UserAdmin extends BaseAdmin
 {
     /**
-     * Route pattern
+     * Route pattern.
      *
      * @var string
      */
     protected $baseRoutePattern = 'users';
 
     /**
-     * Route name
+     * Route name.
      *
      * @var string
      */
     protected $baseRouteName = 'user';
 
     /**
-     * Default data grid values
+     * Default data grid values.
      *
      * @var array
      */
@@ -47,7 +44,7 @@ class UserAdmin extends BaseAdmin
     );
 
     /**
-     * Form options
+     * Form options.
      *
      * @var array
      */
@@ -92,16 +89,17 @@ class UserAdmin extends BaseAdmin
     {
         // logged user can not delete own account
         if ($this->getService('security.context')->getToken()->getUser()->getId() == $object->getId()) {
-            throw new ModelManagerException("You can not delete own account");
+            throw new ModelManagerException('You can not delete own account');
         }
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param  string        $name
-     * @param  UserInterface $user
-     * @return boolean
+     * @param string        $name
+     * @param UserInterface $user
+     *
+     * @return bool
      */
     public function isGranted($name, $object = null)
     {
@@ -126,14 +124,14 @@ class UserAdmin extends BaseAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->with("General")
-                ->add("name")
-                ->add("email")
+            ->with('General')
+                ->add('name')
+                ->add('email')
             ->end()
             ->with('Permissions')
-                ->add("enabled")
-                ->add("singleRoleName", null, array("label" => "Role"))
-                ->add("groups", null, array('template' => 'AppBackendBundle:UserAdmin:show_groups.html.twig'))
+                ->add('enabled')
+                ->add('singleRoleName', null, array('label' => 'Role'))
+                ->add('groups', null, array('template' => 'AppBackendBundle:UserAdmin:show_groups.html.twig'))
             ->end();
     }
 
@@ -144,21 +142,21 @@ class UserAdmin extends BaseAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $groupsParams = array("expanded" => false, "multiple" => true, "property" => "name", "required" => false);
+        $groupsParams = array('expanded' => false, 'multiple' => true, 'property' => 'name', 'required' => false);
         $roleParams = array(
             'label' => 'Role',
             'empty_value' => $this->getEmptySelectValue(),
         );
         $formMapper
             ->with('General', array('class' => 'col-md-6'))
-                ->add("firstname")
-                ->add("lastname")
-                ->add("email", null, array('attr' => array('autocomplete' => 'off')))
+                ->add('firstname')
+                ->add('lastname')
+                ->add('email', null, array('attr' => array('autocomplete' => 'off')))
             ->end()
             ->with('Permissions', array('class' => 'col-md-6'))
-                ->add("enabled", null, array("required" => false, "label" => "Active"))
-                ->add("singleRole", 'app_backend_form_user_single_role_type', $roleParams)
-                ->add("groups", null, $groupsParams)
+                ->add('enabled', null, array('required' => false, 'label' => 'Active'))
+                ->add('singleRole', 'app_backend_form_user_single_role_type', $roleParams)
+                ->add('groups', null, $groupsParams)
             ->end();
     }
 
@@ -169,14 +167,14 @@ class UserAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
-        $groupParams = array("label" => "Groups", "template" => "AppBackendBundle:UserAdmin:list_groups.html.twig");
+        $groupParams = array('label' => 'Groups', 'template' => 'AppBackendBundle:UserAdmin:list_groups.html.twig');
 
         $listMapper
-            ->addIdentifier("name")
-            ->add("email")
-            ->add("singleRoleName", null, array("label" => "Role"))
-            ->add("groups", null, $groupParams)
-            ->add("enabled")
+            ->addIdentifier('name')
+            ->add('email')
+            ->add('singleRoleName', null, array('label' => 'Role'))
+            ->add('groups', null, $groupParams)
+            ->add('enabled')
             ->add('lastLogin', null, array('label' => 'Last login'))
             ->add('_action', 'actions', array('actions' => $this->getActions(true)));
     }
@@ -198,11 +196,11 @@ class UserAdmin extends BaseAdmin
         );
         $filter
             ->add(
-                "name",
-                "doctrine_orm_callback",
+                'name',
+                'doctrine_orm_callback',
                 array(
                     'callback' => function ($queryBuilder, $alias, $field, $value) {
-                            if (!$value || $value['value'] == "") {
+                            if (!$value || $value['value'] == '') {
                                 return;
                             }
                             $queryBuilder->orWhere($alias.'.firstname LIKE :name');
@@ -213,8 +211,8 @@ class UserAdmin extends BaseAdmin
                         },
                     )
             )
-            ->add("enabled")
+            ->add('enabled')
             ->add('roles', null, $rolesParams)
-            ->add("email");
+            ->add('email');
     }
 }

@@ -13,7 +13,7 @@ use App\GeneralBundle\Mapping\Annotation\MediaCacheable;
 use App\GeneralBundle\Mapping\Annotation\MediaCacheableField;
 
 /**
- * App\DemoBundle\Entity\Article
+ * App\DemoBundle\Entity\Article.
  *
  * @ORM\Table(name="demo_article")
  * @ORM\Entity()
@@ -25,9 +25,9 @@ class Article
     const IMAGE_UPLOAD_DIR = 'articles';
 
     /**
-     * Primary key
+     * Primary key.
      *
-     * @var integer
+     * @var int
      *
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -36,7 +36,7 @@ class Article
     private $id;
 
     /**
-     * Article title
+     * Article title.
      *
      * @var string
      *
@@ -46,7 +46,7 @@ class Article
     private $title;
 
     /**
-     * Article content
+     * Article content.
      *
      * @var string
      *
@@ -55,7 +55,7 @@ class Article
     private $body;
 
     /**
-     * Publish date
+     * Publish date.
      *
      * @var \DateTime
      *
@@ -66,16 +66,16 @@ class Article
     private $publishDate;
 
     /**
-     * Is article published
+     * Is article published.
      *
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="publish", type="boolean", nullable=false)
      */
     private $publish;
 
     /**
-     * Article slug
+     * Article slug.
      *
      * @var string
      *
@@ -85,7 +85,7 @@ class Article
     private $slug;
 
     /**
-     * Image
+     * Image.
      *
      * @var string
      *
@@ -95,8 +95,7 @@ class Article
     private $image;
 
     /**
-     *
-     * Created at
+     * Created at.
      *
      * @var \DateTime
      *
@@ -106,8 +105,7 @@ class Article
     private $created;
 
     /**
-     *
-     * Updated at
+     * Updated at.
      *
      * @var \DateTime
      *
@@ -117,7 +115,7 @@ class Article
     private $updated;
 
     /**
-     * Category
+     * Category.
      *
      * @var ArticleCategory
      *
@@ -129,7 +127,7 @@ class Article
     private $articleCategory;
 
     /**
-     * List of tags
+     * List of tags.
      *
      * @var ArrayCollection
      *
@@ -146,7 +144,7 @@ class Article
     private $tags;
 
     /**
-     * Uploaded image object
+     * Uploaded image object.
      *
      * @var UploadedFile
      *
@@ -156,8 +154,7 @@ class Article
     private $uploadedImage;
 
     /**
-     * Constructor
-     *
+     * Constructor.
      */
     public function __construct()
     {
@@ -175,9 +172,9 @@ class Article
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -185,9 +182,10 @@ class Article
     }
 
     /**
-     * Set title
+     * Set title.
      *
-     * @param  string  $title
+     * @param string $title
+     *
      * @return Article
      */
     public function setTitle($title)
@@ -198,7 +196,7 @@ class Article
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -208,9 +206,10 @@ class Article
     }
 
     /**
-     * Set body
+     * Set body.
      *
-     * @param  string  $body
+     * @param string $body
+     *
      * @return Article
      */
     public function setBody($body)
@@ -221,7 +220,7 @@ class Article
     }
 
     /**
-     * Get body
+     * Get body.
      *
      * @return string
      */
@@ -231,9 +230,10 @@ class Article
     }
 
     /**
-     * Set publishDate
+     * Set publishDate.
      *
-     * @param  \DateTime $publishDate
+     * @param \DateTime $publishDate
+     *
      * @return Article
      */
     public function setPublishDate($publishDate)
@@ -244,7 +244,7 @@ class Article
     }
 
     /**
-     * Get publishDate
+     * Get publishDate.
      *
      * @return \DateTime
      */
@@ -254,9 +254,10 @@ class Article
     }
 
     /**
-     * Set publish
+     * Set publish.
      *
-     * @param  boolean $publish
+     * @param bool $publish
+     *
      * @return Article
      */
     public function setPublish($publish)
@@ -267,9 +268,9 @@ class Article
     }
 
     /**
-     * Get publish
+     * Get publish.
      *
-     * @return boolean
+     * @return bool
      */
     public function getPublish()
     {
@@ -277,9 +278,10 @@ class Article
     }
 
     /**
-     * Set slug
+     * Set slug.
      *
-     * @param  string  $slug
+     * @param string $slug
+     *
      * @return Article
      */
     public function setSlug($slug)
@@ -290,7 +292,7 @@ class Article
     }
 
     /**
-     * Get slug
+     * Get slug.
      *
      * @return string
      */
@@ -300,9 +302,10 @@ class Article
     }
 
     /**
-     * Set image
+     * Set image.
      *
-     * @param  string  $image
+     * @param string $image
+     *
      * @return Article
      */
     public function setImage($image)
@@ -313,7 +316,7 @@ class Article
     }
 
     /**
-     * Get image
+     * Get image.
      *
      * @return string
      */
@@ -323,7 +326,7 @@ class Article
     }
 
     /**
-     * Set created
+     * Set created.
      *
      * @param \DateTime $created
      *
@@ -337,7 +340,7 @@ class Article
     }
 
     /**
-     * Get created
+     * Get created.
      *
      * @return \DateTime
      */
@@ -347,7 +350,7 @@ class Article
     }
 
     /**
-     * Set updated
+     * Set updated.
      *
      * @param \DateTime $updated
      *
@@ -361,7 +364,7 @@ class Article
     }
 
     /**
-     * Get updated
+     * Get updated.
      *
      * @return \DateTime
      */
@@ -371,9 +374,10 @@ class Article
     }
 
     /**
-     * Set articleCategory
+     * Set articleCategory.
      *
-     * @param  \App\DemoBundle\Entity\ArticleCategory $articleCategory
+     * @param \App\DemoBundle\Entity\ArticleCategory $articleCategory
+     *
      * @return Article
      */
     public function setArticleCategory(\App\DemoBundle\Entity\ArticleCategory $articleCategory)
@@ -384,7 +388,7 @@ class Article
     }
 
     /**
-     * Get articleCategory
+     * Get articleCategory.
      *
      * @return \App\DemoBundle\Entity\ArticleCategory
      */
@@ -394,9 +398,10 @@ class Article
     }
 
     /**
-     * Add tags
+     * Add tags.
      *
-     * @param  \App\DemoBundle\Entity\ArticleTag $tags
+     * @param \App\DemoBundle\Entity\ArticleTag $tags
+     *
      * @return Article
      */
     public function addTag(\App\DemoBundle\Entity\ArticleTag $tags)
@@ -407,7 +412,7 @@ class Article
     }
 
     /**
-     * Remove tags
+     * Remove tags.
      *
      * @param \App\DemoBundle\Entity\ArticleTag $tags
      */
@@ -417,7 +422,7 @@ class Article
     }
 
     /**
-     * Get tags
+     * Get tags.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -427,9 +432,10 @@ class Article
     }
 
     /**
-     * Set uploadedImage
+     * Set uploadedImage.
      *
-     * @param  UploadedFile $uploadedImage
+     * @param UploadedFile $uploadedImage
+     *
      * @return Article
      */
     public function setUploadedImage(File $uploadedImage = null)
@@ -445,7 +451,7 @@ class Article
     }
 
     /**
-     * Get uploadedImage
+     * Get uploadedImage.
      *
      * @return UploadedFile
      */
@@ -467,11 +473,11 @@ class Article
      */
     public function getFullImagePath()
     {
-        if ($this->getImage() != "") {
+        if ($this->getImage() != '') {
             return $this->getImageUploadDir().DIRECTORY_SEPARATOR.$this->getImage();
         }
 
-        return "";
+        return '';
     }
 
     /**

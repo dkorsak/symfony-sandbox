@@ -7,7 +7,7 @@ use App\GeneralBundle\Mapping\Annotation\MediaCacheableField;
 
 /**
  * Fake entity class for testing media cacheable
- * and media translatable doctrine event listeners
+ * and media translatable doctrine event listeners.
  *
  * @MediaCacheable
  */
@@ -21,7 +21,6 @@ class TestMediaCacheableEntity
     private $topImage;
 
     /**
-     *
      * @var string
      *
      * @MediaCacheableField(filters={"bottom_filter"}, path_getter="bottomImagePath")
@@ -29,7 +28,7 @@ class TestMediaCacheableEntity
     private $bottomImage;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $topImage
      * @param string $bottomImage

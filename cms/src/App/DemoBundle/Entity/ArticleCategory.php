@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * App\DemoBundle\Entity\ArticleCategory
+ * App\DemoBundle\Entity\ArticleCategory.
  *
  * @ORM\Table(name="demo_article_category")
  * @ORM\Entity()
@@ -16,9 +16,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ArticleCategory
 {
     /**
-     * Primary key
+     * Primary key.
      *
-     * @var integer
+     * @var int
      *
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -27,7 +27,7 @@ class ArticleCategory
     private $id;
 
     /**
-     * Category name
+     * Category name.
      *
      * @var string
      *
@@ -37,7 +37,7 @@ class ArticleCategory
     private $name;
 
     /**
-     * Slug
+     * Slug.
      *
      * @var string
      *
@@ -47,7 +47,7 @@ class ArticleCategory
     private $slug;
 
     /**
-     * List of articles
+     * List of articles.
      *
      * @var ArrayCollection
      *
@@ -56,8 +56,7 @@ class ArticleCategory
     private $articles;
 
     /**
-     * Constructor
-     *
+     * Constructor.
      */
     public function __construct()
     {
@@ -73,9 +72,9 @@ class ArticleCategory
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -83,9 +82,10 @@ class ArticleCategory
     }
 
     /**
-     * Set name
+     * Set name.
      *
-     * @param  string          $name
+     * @param string $name
+     *
      * @return ArticleCategory
      */
     public function setName($name)
@@ -96,7 +96,7 @@ class ArticleCategory
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -106,9 +106,10 @@ class ArticleCategory
     }
 
     /**
-     * Set slug
+     * Set slug.
      *
-     * @param  string          $slug
+     * @param string $slug
+     *
      * @return ArticleCategory
      */
     public function setSlug($slug)
@@ -119,7 +120,7 @@ class ArticleCategory
     }
 
     /**
-     * Get slug
+     * Get slug.
      *
      * @return string
      */
@@ -129,9 +130,10 @@ class ArticleCategory
     }
 
     /**
-     * Add articles
+     * Add articles.
      *
-     * @param  \App\DemoBundle\Entity\ArticleCategory $articles
+     * @param \App\DemoBundle\Entity\ArticleCategory $articles
+     *
      * @return ArticleCategory
      */
     public function addArticle(\App\DemoBundle\Entity\ArticleCategory $articles)
@@ -142,7 +144,7 @@ class ArticleCategory
     }
 
     /**
-     * Remove articles
+     * Remove articles.
      *
      * @param \App\DemoBundle\Entity\ArticleCategory $articles
      */
@@ -152,7 +154,7 @@ class ArticleCategory
     }
 
     /**
-     * Get articles
+     * Get articles.
      *
      * @return \Doctrine\Common\Collections\Collection
      */

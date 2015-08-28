@@ -69,10 +69,11 @@ abstract class BasePHPUnitTest extends WebTestCase
     }
 
     /**
-     * Create object from class name and set id property
+     * Create object from class name and set id property.
      *
-     * @param  string  $class
-     * @param  integer $id
+     * @param string $class
+     * @param int    $id
+     *
      * @return object
      */
     protected function createObjectWithId($class, $id)
@@ -87,9 +88,10 @@ abstract class BasePHPUnitTest extends WebTestCase
     }
 
     /**
-     * Load fixtures file - YML file
+     * Load fixtures file - YML file.
      *
-     * @param  string $file
+     * @param string $file
+     *
      * @return array
      */
     protected function loadFixtures($file)
@@ -100,9 +102,10 @@ abstract class BasePHPUnitTest extends WebTestCase
     }
 
     /**
-     * @param  Client                               $client
-     * @param  string                               $username
-     * @param  string                               $password
+     * @param Client $client
+     * @param string $username
+     * @param string $password
+     *
      * @return Symfony\Component\DomCrawler\Crawler
      */
     protected function doAdminLogin(Client $client, $username = self::ADMIN_USER, $password = self::ADMIN_PASSWORD)
@@ -123,7 +126,7 @@ abstract class BasePHPUnitTest extends WebTestCase
     }
 
     /**
-     * Delete row in CMS functional test
+     * Delete row in CMS functional test.
      *
      * @param Crawler $crawler
      * @param Client  $client

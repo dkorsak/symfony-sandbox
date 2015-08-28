@@ -4,7 +4,6 @@ namespace App\GeneralBundle\Tests\EventListener;
 
 use App\GeneralBundle\Tests\BasePHPUnitTest;
 use App\GeneralBundle\EventListener\MediaCacheableListener;
-use Doctrine\ORM\Event\PreUpdateEventArgs;
 use App\GeneralBundle\Driver\AnnotationDriver;
 use App\GeneralBundle\Tests\Resources\Entity\TestMediaCacheableEntity;
 
@@ -71,7 +70,7 @@ class MediaCacheableListenerTest extends BasePHPUnitTest
     }
 
     /**
-     * Prepare mocked image cache manager object
+     * Prepare mocked image cache manager object.
      *
      * @param string $path
      * @param string $filter

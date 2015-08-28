@@ -1,9 +1,7 @@
 <?php
 
 /**
- * ArticleCategoryAdmin class
- *
- *
+ * ArticleCategoryAdmin class.
  */
 namespace App\DemoBundle\Admin;
 
@@ -13,28 +11,26 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
 /**
- * Admin class for managing article categories
- *
- *
+ * Admin class for managing article categories.
  */
 class ArticleCategoryAdmin extends BaseAdmin
 {
     /**
-     * Route pattern
+     * Route pattern.
      *
      * @var string
      */
     protected $baseRoutePattern = 'article-categories';
 
     /**
-     * Route name
+     * Route name.
      *
      * @var string
      */
     protected $baseRouteName = 'article_category';
 
     /**
-     * Datagrid params
+     * Datagrid params.
      *
      * @var array
      */

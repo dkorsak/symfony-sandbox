@@ -1,9 +1,7 @@
 <?php
 
 /**
- * CKEditorType class
- *
- *
+ * CKEditorType class.
  */
 namespace App\BackendBundle\Form\Type;
 
@@ -13,9 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\AbstractType;
 
 /**
- * CKEditor form widget
- *
- *
+ * CKEditor form widget.
  */
 class CKEditorType extends AbstractType
 {
@@ -68,7 +64,7 @@ class CKEditorType extends AbstractType
     }
 
     /**
-     * Get CKEditor valid culture from current locale
+     * Get CKEditor valid culture from current locale.
      *
      * @return string
      */
@@ -76,7 +72,7 @@ class CKEditorType extends AbstractType
     {
         $locale = \Locale::getDefault();
         if (strpos($locale, '_') !== false) {
-            list($localeCKEditor, $locale) = explode("_", $locale);
+            list($localeCKEditor, $locale) = explode('_', $locale);
         } else {
             $localeCKEditor = $locale;
         }
