@@ -394,12 +394,6 @@
             <delete file="@{destination}/composer.lock"/>
             <build destination="@{destination}" env="prod"/>
             <if>
-                <equals arg1="${deploy.dump.routing}" arg2="true"/>
-                <then>
-                    <dump.routes destination="@{destination}"/>
-                </then>
-            </if>
-            <if>
                 <equals arg1="${deploy.rsync}" arg2="true"/>
                 <then>
                     <echo>AND DEBUG: Preparing deploy.sh file</echo>
@@ -493,16 +487,6 @@
             </if>
             <echo>ANT DEBUG: Updating vendor directory</echo>
             <exec executable="php" dir="cms"><arg line="composer.phar @{action}  --optimize-autoloader"/></exec>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="dump.routes">
-        <attribute name="destination" default="build"/>
-        <sequential>
-            <echo>AND DEBUG: Dumping routes into .htaccess file</echo>
-            <exec outputproperty="routecontent" executable="php" dir="${basedir}/cms"><arg line="app/console router:dump-apache -env=prod --no-debug"/></exec>
-            <copy overwrite="true" file="${basedir}/cms/web/.htaccess-template" tofile="@{destination}/web/.htaccess"/>
-            <replace file="@{destination}/web/.htaccess" token="@APACHE_ROUTES@" value="${routecontent}"/>
         </sequential>
     </macrodef>
 

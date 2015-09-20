@@ -20,6 +20,6 @@ class AppGeneralBundle extends Bundle
      */
     public function build(ContainerBuilder $container)
     {
-        $container->addCompilerPass(new GeneralCompilerPass());
+        //$container->addCompilerPass(new GeneralCompilerPass());
     }
 }

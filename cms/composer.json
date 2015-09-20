@@ -8,7 +8,7 @@
         "php": ">=5.3.9",
         "ext-memcached": "*",
         "ext-apc": "*",
-        "symfony/symfony": "2.8.x-dev",
+        "symfony/symfony": "2.8.x",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
@@ -38,11 +38,10 @@
         "friendsofsymfony/jsrouting-bundle": "dev-master",
         "lexik/maintenance-bundle": "dev-master",
         "ornicar/apc-bundle": "*",
-        "redexperts/errbit-bundle": "dev-master"
+        "redexperts/errbit-bundle": "dev-master",
+        "sensio/generator-bundle": "~2.3"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3",
-
         "mockery/mockery": "dev-master",
         "phpunit/phpunit": "~4.8",
 

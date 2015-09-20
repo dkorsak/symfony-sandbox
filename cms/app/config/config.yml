@@ -14,8 +14,6 @@ parameters:
         db_data_col:     session_value
         db_time_col:     session_time
         db_lifetime_col: session_lifetime
-    # disabe or enable routing caching - does not work with dump routing into .htaccess file
-    disable_routing_cache: false
 
 framework:
     #esi: ~
